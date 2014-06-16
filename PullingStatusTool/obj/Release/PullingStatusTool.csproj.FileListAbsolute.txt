@@ -1,0 +1,15 @@
+D:\Work\Data Pulling\PullingStatusTool\PullingStatusTool\PullingStatusTool\bin\Release\PullingStatusTool.exe
+D:\Work\Data Pulling\PullingStatusTool\PullingStatusTool\PullingStatusTool\bin\Release\PullingStatusTool.pdb
+D:\Work\Data Pulling\PullingStatusTool\PullingStatusTool\PullingStatusTool\obj\Release\ResolveAssemblyReference.cache
+D:\Work\Data Pulling\PullingStatusTool\PullingStatusTool\PullingStatusTool\obj\Release\PullingStatusTool.Frm_DataPullingStatus.resources
+D:\Work\Data Pulling\PullingStatusTool\PullingStatusTool\PullingStatusTool\obj\Release\PullingStatusTool.Frm_ReportDetail.resources
+D:\Work\Data Pulling\PullingStatusTool\PullingStatusTool\PullingStatusTool\obj\Release\PullingStatusTool.Properties.Resources.resources
+D:\Work\Data Pulling\PullingStatusTool\PullingStatusTool\PullingStatusTool\obj\Release\PullingStatusTool.csproj.GenerateResource.Cache
+D:\Work\Data Pulling\PullingStatusTool\PullingStatusTool\PullingStatusTool\obj\Release\PullingStatusTool.exe.licenses
+D:\Work\Data Pulling\PullingStatusTool\PullingStatusTool\PullingStatusTool\obj\Release\PullingStatusTool.exe
+D:\Work\Data Pulling\PullingStatusTool\PullingStatusTool\PullingStatusTool\obj\Release\PullingStatusTool.pdb
+D:\Work\Data Pulling\PullingStatusTool\PullingStatusTool\PullingStatusTool\bin\Release\PullingStatusTool.exe.manifest
+D:\Work\Data Pulling\PullingStatusTool\PullingStatusTool\PullingStatusTool\bin\Release\PullingStatusTool.application
+D:\Work\Data Pulling\PullingStatusTool\PullingStatusTool\PullingStatusTool\obj\Release\PullingStatusTool.exe.manifest
+D:\Work\Data Pulling\PullingStatusTool\PullingStatusTool\PullingStatusTool\obj\Release\PullingStatusTool.application
+D:\Work\Data Pulling\PullingStatusTool\PullingStatusTool\PullingStatusTool\obj\Release\PullingStatusTool.Frm_PullingStatusService.resources

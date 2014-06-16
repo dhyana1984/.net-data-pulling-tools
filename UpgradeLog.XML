@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="PullingStatusTool">
+</Property><Property Name="Solution File" Value="D:\Work\Retailer&amp;Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool.sln">
+</Property><Property Name="Date" Value="Monday, June 16, 2014">
+</Property><Property Name="Time" Value="12:36">
+</Property></Properties><Event ErrorLevel="0" Project="PullingStatusTool" Source="PullingStatusTool\PullingStatusTool.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="PullingStatusTool" Source="PullingStatusTool\PullingStatusTool.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="PullingStatusTool.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="PullingStatusTool.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="PullingStatusTool" Source="PullingStatusTool\PullingStatusTool.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>
