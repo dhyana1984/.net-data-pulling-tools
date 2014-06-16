@@ -91,32 +91,32 @@ namespace PullingStatusTool
             string weeklyPeriod = String.Format("%{0}-{1} WK {2}%", txt_year.Text.Trim(), txt_month.Text.Trim(),txt_Week.Text.Trim());
             resdate = dailydate == "" ? "" : String.Format("%{0:yyyy-MM-dd}-%", Convert.ToDateTime(dailydate.Replace("%", "")).AddDays(-7).ToString("yyyy-MM-dd"));//如果查daily的，也要讲7天前的日期传过去作为查询R7文件的条件
             weeklyPeriod = cbx_weekly.Checked ? weeklyPeriod : "";
-            if (ckbx_68.Checked)
-            {
-                db_helper.getPullingFileCountStatus("192.168.10.68", "T3ci94043", dailydate, weeklyPeriod, resdate, cbx_Attrib.Checked, isMonday);
-            }
-            if (ckbx_70.Checked)
-            {
-                db_helper.getPullingFileCountStatus("192.168.28.70", "T3ci94043", dailydate, weeklyPeriod, resdate, cbx_Attrib.Checked, isMonday);
-            }
-            if (ckbx_71.Checked)
-            {
-                db_helper.getPullingFileCountStatus("192.168.10.71", "t3ci94043", dailydate, weeklyPeriod, resdate, cbx_Attrib.Checked, isMonday);
-            }
-            if (ckbx_72.Checked)
-            {
-                db_helper.getPullingFileCountStatus("192.168.10.72", "T3ci94043", dailydate, weeklyPeriod, resdate, cbx_Attrib.Checked, isMonday);
-            }
-            if (ckbx_77.Checked)
-            {
-                db_helper.getPullingFileCountStatus("192.168.10.77", "T3ci94043", dailydate, weeklyPeriod, resdate, cbx_Attrib.Checked, isMonday);
-            }
-            if (ckbx_78.Checked)
-            {
-                db_helper.getPullingFileCountStatus("192.168.10.78", "T3ci94043", dailydate, weeklyPeriod, resdate, cbx_Attrib.Checked, isMonday);
-            }
+            //if (ckbx_68.Checked)
+            //{
+            //    db_helper.getPullingFileCountStatus("192.168.10.68", "T3ci94043", dailydate, weeklyPeriod, resdate, cbx_Attrib.Checked, isMonday);
+            //}
+            //if (ckbx_70.Checked)
+            //{
+            //    db_helper.getPullingFileCountStatus("192.168.28.70", "T3ci94043", dailydate, weeklyPeriod, resdate, cbx_Attrib.Checked, isMonday);
+            //}
+            //if (ckbx_71.Checked)
+            //{
+            //    db_helper.getPullingFileCountStatus("192.168.10.71", "t3ci94043", dailydate, weeklyPeriod, resdate, cbx_Attrib.Checked, isMonday);
+            //}
+            //if (ckbx_72.Checked)
+            //{
+            //    db_helper.getPullingFileCountStatus("192.168.10.72", "T3ci94043", dailydate, weeklyPeriod, resdate, cbx_Attrib.Checked, isMonday);
+            //}
+            //if (ckbx_77.Checked)
+            //{
+            //    db_helper.getPullingFileCountStatus("192.168.10.77", "T3ci94043", dailydate, weeklyPeriod, resdate, cbx_Attrib.Checked, isMonday);
+            //}
+            //if (ckbx_78.Checked)
+            //{
+            //    db_helper.getPullingFileCountStatus("192.168.10.78", "T3ci94043", dailydate, weeklyPeriod, resdate, cbx_Attrib.Checked, isMonday);
+            //}
 
-
+            db_helper.getPullingFileCountStatus_view("192.168.10.68", "T3ci94043", dailydate, weeklyPeriod, resdate, cbx_Attrib.Checked, isMonday);
 
             ListFileStatus = db_helper.getPullingFileCount();
             GC_PullingFileStatus.DataSource = getReportExpect(isMonday);

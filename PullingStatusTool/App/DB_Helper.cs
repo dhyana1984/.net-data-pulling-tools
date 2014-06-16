@@ -328,6 +328,55 @@ namespace PullingStatusTool
 
 
         }
+
+        public void getPullingFileCountStatus_view(string IP, string pswd, string dayTime, string period, string restatementDate, bool attribute, bool isMonday)
+        {
+
+            string sql = isMonday ? getMondayStatusSQL(period) : getFileCountStatusSQL(dayTime, period, restatementDate, attribute);
+
+            if (sql != "")
+            {
+                string connStr = "server=" + IP + ";database =TargetPullingStatus;user id=sa;password=" + pswd;//连接字符串  
+                SqlConnection mySqlConnection = new SqlConnection();
+                mySqlConnection.ConnectionString = connStr;
+                try
+                {
+                    mySqlConnection.Open();//打开连接  
+                    SqlCommand mycmd = new SqlCommand(sql, mySqlConnection);//新建SqlCommand对象  
+                    SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
+                    while (sdr.Read())
+                    {
+                        if (sdr[1] != null)//只选取当天的Attribute
+                        {
+                            DataPullingFileCountStatus fileCount = new DataPullingFileCountStatus(sdr[0].ToString(), sdr[1].ToString(), sdr[2].ToString(), sdr[3].ToString(), sdr[4].ToString(), sdr[6].ToString(), pswd, sdr[5].ToString());
+                            ListPullFileStatus.Add(fileCount);
+                        }
+                    }
+                    sdr.Close();//读取完毕即关闭  
+
+                }
+
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(IP + ":" + ex.Message);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    mySqlConnection.Close();//关闭连接  
+
+
+                }
+
+            }
+
+
+
+        }
         public void getPullingFileCountStatus(string IP,string pswd,string dayTime,string period,string restatementDate,bool attribute,bool isMonday)
         {
 
@@ -735,7 +784,7 @@ namespace PullingStatusTool
                 {
                     if (sql.Trim().ToUpper() == "WHERE")
                     {
-                        sql += " (a.uploadstatus like '%suc%' or a.dataformatstatus like '%suc%') and a.currentlocation !='existent' and ";
+                        //sql += " (a.uploadstatus like '%suc%' or a.dataformatstatus like '%suc%') and a.currentlocation !='existent' and ";
                         sql += " ((reportname not like '%r7%' and ReportName like '" + date + "') or ReportName like '" + period + "' ";//查询daily或者weekly的时间条件     
                         sql +=resdate==""?")": " or ReportName like '" + resdate + "')";//如果查询R7的数据就把条件附上
                     }

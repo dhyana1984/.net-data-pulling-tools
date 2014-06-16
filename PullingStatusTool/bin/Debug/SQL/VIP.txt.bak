@@ -1,6 +1,6 @@
 select  
 case 
-when  reportname like 'cate%'  then vendor +' Category' else vendor 
+when  reportname like 'cat%'  then vendor +' Category' else vendor 
 end vendor,
 case  
 when  Vendor not like '%colgate%' and vendor not like '%kcc%' and reportname not like 'dc%' and reportname not like '%attri%' and reportname like '%store%' or (ReportName like '%inv1%' or ReportName like '%inv2%')    then 'Store Inventory' 
@@ -11,13 +11,13 @@ end datatype,
 case
 when (ConfigName like '%inv1%' or ScheduleName like '%inv1%' or ReportName like 'inv1') and configname not like '%pcna%' and configname not like '%flna%' and configname not like '%qtg%' and reportname not like '%dc%' and reportname not like '%attri%'   then 'INV1' 
 End Subgroup,
-COUNT(distinct reportname) filecount,a.status, MAX(dateadd(hour,12,EndFormattingTime)) finishTime
-from RSI_TOOLS_TargetConn_Report a join  v$RSI_TOOLS_TargetConn_EventStatus b on a.EventID=b.EventID
-where (a.uploadstatus like '%suc%' or a.dataformatstatus like '%suc%') and a.currentlocation !='existent'  and reportname like '%@period%' and (vendor like '%P&G%' or vendor like '%JNJ%' or Vendor like '%Unilever%' or Vendor like '%colgate%' or Vendor like '%kcc%')
+COUNT(distinct reportname) filecount,status, MAX(dateadd(hour,12,EndFormattingTime)) finishTime
+from view_pullingstatus
+where   reportname like '%@period%' and (vendor like '%P&G%' or vendor like '%JNJ%' or Vendor like '%Unilever%' or Vendor like '%colgate%' or Vendor like '%kcc%')
 group by 
-a.status,
+status,
 case
-when  reportname like 'cate%'  then vendor +' Category' else vendor  
+when  reportname like 'cat%'  then vendor +' Category' else vendor  
 end,
 case  
 when  Vendor not like '%colgate%' and vendor not like '%kcc%' and reportname not like 'dc%' and reportname not like '%attri%' and reportname like '%store%' or (ReportName like '%inv1%' or ReportName like '%inv2%')    then 'Store Inventory' 

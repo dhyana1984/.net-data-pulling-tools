@@ -19,7 +19,7 @@ select
  sum(Case
  when dateadd(hour,12, EndFormattingTime)>'@Date 17:00' then 1 else 0 end )LateFormat,
  dateadd(hour,12, MIN(EndFormattingTime)) FirstFormatTime,dateadd(hour,12, max(EndFormattingTime)) LastFormatTime
- from  v$RSI_TOOLS_TargetConn_FormattedReport a join  v$RSI_TOOLS_TargetConn_EventStatus b on a.EventID=b.EventID
+ from  view_pullingstatus
  where reportname not like '%attrib%' and
  reportname not like '%-r%' and
  (ReportName like '%@Period%' or ReportName like '%@Daily%') and CurrentLocation not like '%existent%' and DataFormatStatus like '%succ%'

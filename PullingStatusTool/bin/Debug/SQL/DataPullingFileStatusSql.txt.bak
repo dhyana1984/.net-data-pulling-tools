@@ -37,7 +37,7 @@ when reportname not like '%store%' and reportname like '%attri%'   and (ConfigNa
 when reportname not like '%store%' and reportname like '%attri%'   and (ConfigName  like '%Gatorade%' or ScheduleName  like '%Gatorade%') then 'Gatorade' 
 else ''
 end Subgroup,
-COUNT(distinct reportname) filecount,status, MAX(dateadd(hour,12,EndFormattingTime)) finishTime,IP
+COUNT(distinct reportname) filecount,status, MAX(dateadd(hour,12,EndFormattingTime)) finishTime
 from view_pullingstatus
 where
 group by 
@@ -79,7 +79,7 @@ when reportname not like '%store%' and reportname like '%attri%'   and (ConfigNa
 when reportname not like '%store%' and reportname like '%attri%'   and (ConfigName  like '%QTG%' or ScheduleName  like '%QTG%') then 'QTG' 
 when reportname not like '%store%' and reportname like '%attri%'   and (ConfigName  like '%Gatorade%' or ScheduleName  like '%Gatorade%') then 'Gatorade' 
 else ''
-end,IP
+end
 order by vendor,datatype
 
 
