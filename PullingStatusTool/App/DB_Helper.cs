@@ -22,7 +22,7 @@ namespace PullingStatusTool
 
         public void getSLAChart(string serverIP, string psw, string startDate, string endDate,string period)
         {
-            string connStr = "server=" + serverIP + ";database =TargetConnector;user id=sa;password=" + psw;//连接字符串  
+            string connStr = "server=" + serverIP + ";database =TargetPullingStatus;user id=sa;password=" + psw;//连接字符串  
             SqlConnection mySqlConnection = new SqlConnection();
             mySqlConnection.ConnectionString = connStr;
             try
@@ -33,8 +33,8 @@ namespace PullingStatusTool
                 {
                     string sqlStr = "select"
                                  + " count(distinct ReportName)"
-                                 + " from  v$RSI_TOOLS_TargetConn_FormattedReport a join  v$RSI_TOOLS_TargetConn_EventStatus b on a.EventID=b.EventID"
-                                 + " where reportname not like '%attrib%' and reportname not like '%-r%' and CurrentLocation not like '%existent%' and DataFormatStatus like '%succ%' and reportname not like '%adhoc%' and "
+                                 + " from View_PullingStatus "
+                                 + " where reportname not like '%attrib%' and reportname not like '%-r%'  and reportname not like '%adhoc%' and "
                                  + " (ReportName like '" + period + "' or ReportName like '%" + Convert.ToDateTime(startDate).AddDays(-1).ToString("yyyy-MM-dd") + "%') and"
                                  + " dateadd(hour,12, EndFormattingTime)>'" + Convert.ToDateTime(startDate).ToString("yyyy-MM-dd") + " 17:00:00.000'";
 
@@ -83,7 +83,7 @@ namespace PullingStatusTool
         }
         public void getRepullChart(string serverIP, string psw, string startDate, string endDate)
         {
-            string connStr = "server=" + serverIP + ";database =TargetConnector;user id=sa;password=" + psw;//连接字符串  
+            string connStr = "server=" + serverIP + ";database =TargetPullingStatus;user id=sa;password=" + psw;//连接字符串  
             SqlConnection mySqlConnection = new SqlConnection();
             mySqlConnection.ConnectionString = connStr;
             //string sqlStr = "select distinct vendor,schedulename,status,eventstarttime,DownloadingStatus,FormattingStatus,UploadingStatus,configname,eventid,IRID" + 
@@ -92,9 +92,9 @@ namespace PullingStatusTool
 
             string sqlStr = "select repulldate,COUNT(*) from "
                            + " (select ReportName,Vendor,CONVERT(VARCHAR(10),EndFormattingTime ,120) repulldate from"
-                           + " v$RSI_TOOLS_TargetConn_FormattedReport a join  v$RSI_TOOLS_TargetConn_EventStatus b on a.EventID=b.EventID"
+                           + " View_PullingStatus"
                            + " where EndFormattingTime between '"+startDate+"' and '"+endDate+"'"
-                           + " and CurrentLocation not like '%existent%' and DataFormatStatus like '%succ%' "
+                           
                            + " group by ReportName,Vendor,CONVERT(VARCHAR(10),EndFormattingTime ,120)  "
                            + " having COUNT(ReportName)>1) t"
                            + " group by repulldate";

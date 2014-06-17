@@ -44,22 +44,22 @@ namespace PullingStatusTool
                 period = "%" + ExcelApplication.getIRCalendarWeek(Convert.ToDateTime(txt_StartDate.Text)) + "%";
 
 
-            //  db_helper.getSLAChart("192.168.10.68", "T3ci94043", txt_StartDate.Text, txt_EndDate.Text, period);
-            db_helper.getSLAChart("192.168.28.70", "T3ci94043", txt_StartDate.Text, txt_EndDate.Text, period);
-            db_helper.getSLAChart("192.168.10.71", "t3ci94043", txt_StartDate.Text, txt_EndDate.Text, period);
-            db_helper.getSLAChart("192.168.10.72", "T3ci94043", txt_StartDate.Text, txt_EndDate.Text, period);
-            db_helper.getSLAChart("192.168.10.77", "T3ci94043", txt_StartDate.Text, txt_EndDate.Text, period);
-            db_helper.getSLAChart("192.168.10.78", "T3ci94043", txt_StartDate.Text, txt_EndDate.Text, period);
+             db_helper.getSLAChart("192.168.10.68", "T3ci94043", txt_StartDate.Text, txt_EndDate.Text, period);
+            //db_helper.getSLAChart("192.168.28.70", "T3ci94043", txt_StartDate.Text, txt_EndDate.Text, period);
+            //db_helper.getSLAChart("192.168.10.71", "t3ci94043", txt_StartDate.Text, txt_EndDate.Text, period);
+            //db_helper.getSLAChart("192.168.10.72", "T3ci94043", txt_StartDate.Text, txt_EndDate.Text, period);
+            //db_helper.getSLAChart("192.168.10.77", "T3ci94043", txt_StartDate.Text, txt_EndDate.Text, period);
+            //db_helper.getSLAChart("192.168.10.78", "T3ci94043", txt_StartDate.Text, txt_EndDate.Text, period);
             ListSLA = db_helper.getRePullChart();
             string startDate = AMESTime.BeijingTimeToAMESTime(Convert.ToDateTime(txt_StartDate.Text + " 00:00:00")).ToString("yyyy-MM-dd HH:mm:ss");
             string endDate = AMESTime.BeijingTimeToAMESTime(Convert.ToDateTime(txt_EndDate.Text + " 23:59:59")).ToString("yyyy-MM-dd HH:mm:ss");
 
-            //db_heler.getRepullChart("192.168.10.68", "T3ci94043", startDate, endDate); 
-            db_hhelper.getRepullChart("192.168.28.70", "T3ci94043", startDate, endDate);
-            db_hhelper.getRepullChart("192.168.10.71", "t3ci94043", startDate, endDate);
-            db_hhelper.getRepullChart("192.168.10.72", "T3ci94043", startDate, endDate);
-            db_hhelper.getRepullChart("192.168.10.77", "T3ci94043", startDate, endDate);
-            db_hhelper.getRepullChart("192.168.10.78", "T3ci94043", startDate, endDate);
+            db_hhelper.getRepullChart("192.168.10.68", "T3ci94043", startDate, endDate); 
+            //db_hhelper.getRepullChart("192.168.28.70", "T3ci94043", startDate, endDate);
+            //db_hhelper.getRepullChart("192.168.10.71", "t3ci94043", startDate, endDate);
+            //db_hhelper.getRepullChart("192.168.10.72", "T3ci94043", startDate, endDate);
+            //db_hhelper.getRepullChart("192.168.10.77", "T3ci94043", startDate, endDate);
+            //db_hhelper.getRepullChart("192.168.10.78", "T3ci94043", startDate, endDate);
             ListRepull = db_hhelper.getRePullChart();
             int count = ListRepull.Count < ListSLA.Count ? ListRepull.Count : ListSLA.Count;
             for (int i = 0; i < count; i++)

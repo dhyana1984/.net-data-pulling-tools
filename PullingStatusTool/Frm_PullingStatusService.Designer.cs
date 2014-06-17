@@ -56,8 +56,7 @@
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rToolStripMenuItem_TCGUI = new System.Windows.Forms.ToolStripMenuItem();
             this.rePullToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rePullToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.sLAMonitorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.repullSLAChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileCoutExpectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ckbx_78 = new DevExpress.XtraEditors.CheckEdit();
@@ -68,7 +67,6 @@
             this.ckbx_68 = new DevExpress.XtraEditors.CheckEdit();
             this.cbx_Attrib = new DevExpress.XtraEditors.CheckEdit();
             this.Btn_MondayStatus = new DevExpress.XtraEditors.SimpleButton();
-            this.repullSLAChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.GC_PullingFileStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.drp_DailyDate.Properties.VistaTimeProperties)).BeginInit();
@@ -354,26 +352,17 @@
             // rePullToolStripMenuItem
             // 
             this.rePullToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rePullToolStripMenuItem1,
-            this.sLAMonitorToolStripMenuItem,
             this.repullSLAChartToolStripMenuItem});
             this.rePullToolStripMenuItem.Name = "rePullToolStripMenuItem";
             this.rePullToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.rePullToolStripMenuItem.Text = "Pulling Performance";
             // 
-            // rePullToolStripMenuItem1
+            // repullSLAChartToolStripMenuItem
             // 
-            this.rePullToolStripMenuItem1.Name = "rePullToolStripMenuItem1";
-            this.rePullToolStripMenuItem1.Size = new System.Drawing.Size(164, 22);
-            this.rePullToolStripMenuItem1.Text = "Re-Pull Monitor";
-            this.rePullToolStripMenuItem1.Click += new System.EventHandler(this.rePullToolStripMenuItem1_Click);
-            // 
-            // sLAMonitorToolStripMenuItem
-            // 
-            this.sLAMonitorToolStripMenuItem.Name = "sLAMonitorToolStripMenuItem";
-            this.sLAMonitorToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.sLAMonitorToolStripMenuItem.Text = "SLA Monitor";
-            this.sLAMonitorToolStripMenuItem.Click += new System.EventHandler(this.sLAMonitorToolStripMenuItem_Click);
+            this.repullSLAChartToolStripMenuItem.Name = "repullSLAChartToolStripMenuItem";
+            this.repullSLAChartToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.repullSLAChartToolStripMenuItem.Text = "Repull/SLA Chart";
+            this.repullSLAChartToolStripMenuItem.Click += new System.EventHandler(this.repullSLAChartToolStripMenuItem_Click);
             // 
             // fToolStripMenuItem
             // 
@@ -464,13 +453,6 @@
             this.Btn_MondayStatus.Text = "Monday";
             this.Btn_MondayStatus.Click += new System.EventHandler(this.Btn_MondayStatus_Click);
             // 
-            // repullSLAChartToolStripMenuItem
-            // 
-            this.repullSLAChartToolStripMenuItem.Name = "repullSLAChartToolStripMenuItem";
-            this.repullSLAChartToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.repullSLAChartToolStripMenuItem.Text = "Repull/SLA Chart";
-            this.repullSLAChartToolStripMenuItem.Click += new System.EventHandler(this.repullSLAChartToolStripMenuItem_Click);
-            // 
             // Frm_PullingStatusService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -498,7 +480,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Frm_PullingStatusService";
-            this.Text = "PullingStatusTool v1.2";
+            this.Text = "PullingStatusTool v1.3";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Frm_PullingStatusService_Load);
             ((System.ComponentModel.ISupportInitialize)(this.GC_PullingFileStatus)).EndInit();
@@ -562,8 +544,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn DelayReason;
         private DevExpress.XtraGrid.Columns.GridColumn finishTm;
         private System.Windows.Forms.ToolStripMenuItem rePullToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem rePullToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem sLAMonitorToolStripMenuItem;
         private DevExpress.XtraEditors.SimpleButton Btn_MondayStatus;
         private System.Windows.Forms.ToolStripMenuItem repullSLAChartToolStripMenuItem;
     }
