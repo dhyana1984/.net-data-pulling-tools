@@ -128,6 +128,7 @@
             this.vendor.OptionsColumn.AllowEdit = false;
             this.vendor.OptionsColumn.AllowSize = false;
             this.vendor.OptionsColumn.ReadOnly = true;
+            this.vendor.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.vendor.Visible = true;
             this.vendor.VisibleIndex = 0;
             this.vendor.Width = 94;

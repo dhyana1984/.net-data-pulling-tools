@@ -90,12 +90,12 @@ namespace PullingStatusTool
             //                 " from v$RSI_TOOLS_TargetConn_EventStatus"+
             //                 " where eventstarttime >= '" + startDate + "' and eventstarttime <= '"+ endDate + "'";//SQL语句  
 
-            string sqlStr = "select repulldate,COUNT(*) from "
-                           + " (select ReportName,Vendor,CONVERT(VARCHAR(10),EndFormattingTime ,120) repulldate from"
+            string sqlStr = "select repulldate,COUNT(*)-9 from "
+                           + " (select ReportName,Vendor,CONVERT(VARCHAR(10),dateadd(hour,12,EndFormattingTime) ,120) repulldate from"
                            + " View_PullingStatus"
                            + " where EndFormattingTime between '"+startDate+"' and '"+endDate+"'"
-                           
-                           + " group by ReportName,Vendor,CONVERT(VARCHAR(10),EndFormattingTime ,120)  "
+
+                           + " group by ReportName,Vendor,CONVERT(VARCHAR(10),dateadd(hour,12,EndFormattingTime) ,120) "
                            + " having COUNT(ReportName)>1) t"
                            + " group by repulldate";
                         
