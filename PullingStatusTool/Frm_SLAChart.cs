@@ -68,8 +68,11 @@ namespace PullingStatusTool
                 ListSLA[i].c_ffilecount = ListRepull[i].c_filecount;
             }
                 ChartSLA.DataSource = ListSLA;
-
-
+            string SLATotal=ListSLA.Where(t=>Convert.ToDateTime(t.c_repulldate).DayOfWeek.ToString()!="Saturday").Sum(t => t.c_filecount).ToString();
+             string RepullTotal = ListRepull.Where(t => Convert.ToDateTime(t.c_repulldate).DayOfWeek.ToString() != "Saturday").Sum(t => t.c_filecount).ToString();
+             float Total = db_helper.getAllPulledFileByWeek(startDate, endDate, "192.168.10.68", "T3ci94043");
+             lblTotalRepull.Text = "RepullRate: " + (float.Parse(RepullTotal)*100 / Total).ToString("0.00")+"%";
+             lblTotalSLA.Text = "SLARate :" + (float.Parse(SLATotal) * 100 / Total).ToString("0.00")+"%";
         }
 
         private void Btn_Save_Click(object sender, EventArgs e)

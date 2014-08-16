@@ -81,6 +81,49 @@ namespace PullingStatusTool
 
 
         }
+
+        public int getAllPulledFileByWeek(string StarDate, string endDate, string serverIP, string psw)
+        {
+            int FileCount=1;
+            string connStr = "server=" + serverIP + ";database =TargetPullingStatus;user id=sa;password=" + psw;//连接字符串  
+            SqlConnection mySqlConnection = new SqlConnection();
+            mySqlConnection.ConnectionString = connStr;
+            //string sqlStr = "select distinct vendor,schedulename,status,eventstarttime,DownloadingStatus,FormattingStatus,UploadingStatus,configname,eventid,IRID" + 
+            //                 " from v$RSI_TOOLS_TargetConn_EventStatus"+
+            //                 " where eventstarttime >= '" + startDate + "' and eventstarttime <= '"+ endDate + "'";//SQL语句  
+
+            string sqlStr = "select COUNT(*) from View_PullingStatus  "
+                                    + "where	DATEADD(hour, 12, EndFormattingTime) between '"+StarDate+"' and '"+endDate+"' ";
+
+
+            try
+            {
+                mySqlConnection.Open();//打开连接  
+                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
+                SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
+                sdr.Read();
+                FileCount = int.Parse(sdr[0].ToString());
+                sdr.Close();//读取完毕即关闭  
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(serverIP + ":" + ex.Message);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                mySqlConnection.Close();//关闭连接  
+
+
+            }
+            return FileCount;
+        }
+
         public void getRepullChart(string serverIP, string psw, string startDate, string endDate)
         {
             string connStr = "server=" + serverIP + ";database =TargetPullingStatus;user id=sa;password=" + psw;//连接字符串  
@@ -90,7 +133,7 @@ namespace PullingStatusTool
             //                 " from v$RSI_TOOLS_TargetConn_EventStatus"+
             //                 " where eventstarttime >= '" + startDate + "' and eventstarttime <= '"+ endDate + "'";//SQL语句  
 
-            string sqlStr = "select repulldate,COUNT(*)-9 from "
+            string sqlStr = "select repulldate,COUNT(*)-1 from "
                            + " (select ReportName,Vendor,CONVERT(VARCHAR(10),dateadd(hour,12,EndFormattingTime) ,120) repulldate from"
                            + " View_PullingStatus"
                            + " where EndFormattingTime between '"+startDate+"' and '"+endDate+"'"

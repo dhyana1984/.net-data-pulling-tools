@@ -46,6 +46,8 @@
             this.btn_Fresh = new DevExpress.XtraEditors.SimpleButton();
             this.Btn_Save = new DevExpress.XtraEditors.SimpleButton();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.lblTotalSLA = new DevExpress.XtraEditors.LabelControl();
+            this.lblTotalRepull = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.ChartSLA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
@@ -69,8 +71,8 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.ChartSLA.AppearanceName = "Dark Flat";
             xyDiagram1.AxisX.Range.Auto = false;
-            xyDiagram1.AxisX.Range.MaxValueInternal = 4.8390232979852525;
-            xyDiagram1.AxisX.Range.MinValueInternal = -0.5;
+            xyDiagram1.AxisX.Range.MaxValueInternal = 4.8390232979852525D;
+            xyDiagram1.AxisX.Range.MinValueInternal = -0.5D;
             xyDiagram1.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
             xyDiagram1.AxisX.Range.SideMarginsEnabled = true;
             xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
@@ -172,11 +174,29 @@
             this.Btn_Save.Text = "Save to PNG";
             this.Btn_Save.Click += new System.EventHandler(this.Btn_Save_Click);
             // 
+            // lblTotalSLA
+            // 
+            this.lblTotalSLA.Location = new System.Drawing.Point(252, 24);
+            this.lblTotalSLA.Name = "lblTotalSLA";
+            this.lblTotalSLA.Size = new System.Drawing.Size(42, 13);
+            this.lblTotalSLA.TabIndex = 10;
+            this.lblTotalSLA.Text = "TotalSLA";
+            // 
+            // lblTotalRepull
+            // 
+            this.lblTotalRepull.Location = new System.Drawing.Point(252, 43);
+            this.lblTotalRepull.Name = "lblTotalRepull";
+            this.lblTotalRepull.Size = new System.Drawing.Size(53, 13);
+            this.lblTotalRepull.TabIndex = 11;
+            this.lblTotalRepull.Text = "TotalRepull";
+            // 
             // Frm_SLAChart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(690, 454);
+            this.Controls.Add(this.lblTotalRepull);
+            this.Controls.Add(this.lblTotalSLA);
             this.Controls.Add(this.Btn_Save);
             this.Controls.Add(this.btn_Fresh);
             this.Controls.Add(this.txt_EndDate);
@@ -218,5 +238,7 @@
         private DevExpress.XtraEditors.SimpleButton btn_Fresh;
         private DevExpress.XtraEditors.SimpleButton Btn_Save;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
+        private DevExpress.XtraEditors.LabelControl lblTotalSLA;
+        private DevExpress.XtraEditors.LabelControl lblTotalRepull;
     }
 }
