@@ -18,10 +18,50 @@ namespace PullingStatusTool
         List<Repull> ListRePull = new List<Repull>();
         List<Repull> ListRePullChart = new List<Repull>();
         List<PullingPerformance> ListPerformance = new List<PullingPerformance>();
-
-
-        public void getSLAChart(string serverIP, string psw, string startDate, string endDate,string period)
+        public string getIRCalendarbyDate(string serverIP, string psw,string date)
         {
+            string connStr = "server=" + serverIP + ";database =TargetPullingStatus;user id=sa;password=" + psw;//连接字符串  
+            SqlConnection mySqlConnection = new SqlConnection();
+            mySqlConnection.ConnectionString = connStr;
+            //string sqlStr = "select distinct vendor,schedulename,status,eventstarttime,DownloadingStatus,FormattingStatus,UploadingStatus,configname,eventid,IRID" + 
+            //                 " from v$RSI_TOOLS_TargetConn_EventStatus"+
+            //                 " where eventstarttime >= '" + startDate + "' and eventstarttime <= '"+ endDate + "'";//SQL语句  
+
+            string sqlStr = "select top 1 * from IRCalendar  "
+                                    + "where endingdate<='" + Convert.ToDateTime(date).AddDays(-7) + "' order by endingdate desc";
+            string period = "2014-01 WK 1";
+
+            try
+            {
+                mySqlConnection.Open();//打开连接  
+                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
+                SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
+                sdr.Read();
+                period = sdr[0].ToString();
+                sdr.Close();//读取完毕即关闭  
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(serverIP + ":" + ex.Message);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                mySqlConnection.Close();//关闭连接  
+              
+
+            }
+            return period;
+        }
+
+        public void getSLAChart(string serverIP, string psw, string startDate, string endDate)
+        {
+            DB_Helper db_helper = new DB_Helper();
             string connStr = "server=" + serverIP + ";database =TargetPullingStatus;user id=sa;password=" + psw;//连接字符串  
             SqlConnection mySqlConnection = new SqlConnection();
             mySqlConnection.ConnectionString = connStr;
@@ -31,6 +71,9 @@ namespace PullingStatusTool
                 mySqlConnection.Open();//打开连接  
                 while (Convert.ToDateTime(startDate).CompareTo(Convert.ToDateTime(endDate)) <= 0)
                 {
+                    string period = "";
+                    if (Convert.ToDateTime(startDate).DayOfWeek.ToString() == "Monday")
+                        period = "%" + db_helper.getIRCalendarbyDate("192.168.10.68", "T3ci94043", startDate) + "%";
                     string sqlStr = "select"
                                  + " count(distinct ReportName)"
                                  + " from View_PullingStatus "

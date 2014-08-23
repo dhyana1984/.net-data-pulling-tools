@@ -22,58 +22,7 @@ namespace PullingStatusTool
 
 
 
-        public void fillFileCountStatus()
-        {
-            Microsoft.Office.Interop.Excel.Application xApp = new ApplicationClass();
-           // xApp.Visible = true;
-            string path = System.Windows.Forms.Application.StartupPath;
-            path += @"\PullingFileCountStatus\Target Data Pull Status.xlsx";
-            Workbook xBook = xApp.Workbooks._Open(path , Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value);
-            Worksheet xSheet = (Worksheet)xBook.Sheets["Ongoing Data Pull Status"];
-            Range rng5 = xSheet.get_Range("A1", Type.Missing);//读数据
-           // Range rng3 = xSheet.get_Range("C6", Missing.Value);//写数据
-            fillFileCount(xSheet);
-            xBook.Save();
-            KillSpecialExcel(xApp);
         
-        }
-        private void fillFileCount(Worksheet sheet)
-           
-        {
-         //   string dayofweek = DateTime.Now.DayOfWeek.ToString();
-            string dayofweek = "Monday";
-            for (int i = 2; i < sheet.Rows.Count; i++)
-            {
-                Range dayOW = sheet.get_Range("A" + i.ToString(), Type.Missing);
-                Range vendor =sheet.get_Range("B" + i.ToString(), Type.Missing);
-                Range datatype = sheet.get_Range("C" + i.ToString(), Type.Missing);
-                Range subGroup = sheet.get_Range("D" + i.ToString(), Type.Missing);
-                Range pulled = sheet.get_Range("G" + i.ToString(), Type.Missing);
-                Range upload = sheet.get_Range("H" + i.ToString(), Type.Missing);
-                if (dayOW.Value2 != null)
-                {
-                    if (subGroup.Value2 == null && dayOW.Value2.ToString().ToLower().Contains(dayofweek.ToLower()))
-                    {
-                        if (ListFileStatus.Where(t => t.c_vendor == vendor.Value2.ToString() && t.c_dataType == datatype.Value2.ToString() && t.c_status == "Formatted").Count()>0)
-                        {
-                            pulled.Value2= ListFileStatus.Where(t => t.c_vendor == vendor.Value2.ToString() && t.c_dataType == datatype.Value2.ToString()&&t.c_status=="Formatted").ToArray()[0].c_filecount.ToString();
-                        }
-                        if (ListFileStatus.Where(t => t.c_vendor == vendor.Value2.ToString() && t.c_dataType == datatype.Value2.ToString() && t.c_status == "Uploaded").Count() > 0)
-                        {
-                            upload.Value2 = ListFileStatus.Where(t => t.c_vendor == vendor.Value2.ToString() && t.c_dataType == datatype.Value2.ToString() && t.c_status == "Uploaded").ToArray()[0].c_filecount.ToString();
-
-                        }
-                    }
-
-
-
-                }
-                else
-                    break;
-
-
-            }
-        }
         public static string getIRCalendarWeek(DateTime date)
         {
 

@@ -1,4 +1,4 @@
-select     
+select  
 case 
 when reportname like '%cat%' or ScheduleName like '%Category%' or configname like '%Category%'  or ScheduleName like '%Cattrib%' or configname like '%Cattrib%' then vendor +' Category' else vendor end vendor,
 case  

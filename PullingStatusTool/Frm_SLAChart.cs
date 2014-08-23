@@ -39,12 +39,10 @@ namespace PullingStatusTool
             DB_Helper db_hhelper = new DB_Helper();
             List<Repull> ListSLA = new List<Repull>();
             List<Repull> ListRepull = new List<Repull>();
-            string period = "";
-            if (Convert.ToDateTime(txt_StartDate.Text).DayOfWeek.ToString() == "Monday")
-                period = "%" + ExcelApplication.getIRCalendarWeek(Convert.ToDateTime(txt_StartDate.Text)) + "%";
+   
 
 
-             db_helper.getSLAChart("192.168.10.68", "T3ci94043", txt_StartDate.Text, txt_EndDate.Text, period);
+             db_helper.getSLAChart("192.168.10.68", "T3ci94043", txt_StartDate.Text, txt_EndDate.Text);
             //db_helper.getSLAChart("192.168.28.70", "T3ci94043", txt_StartDate.Text, txt_EndDate.Text, period);
             //db_helper.getSLAChart("192.168.10.71", "t3ci94043", txt_StartDate.Text, txt_EndDate.Text, period);
             //db_helper.getSLAChart("192.168.10.72", "T3ci94043", txt_StartDate.Text, txt_EndDate.Text, period);
@@ -72,7 +70,7 @@ namespace PullingStatusTool
              string RepullTotal = ListRepull.Where(t => Convert.ToDateTime(t.c_repulldate).DayOfWeek.ToString() != "Saturday").Sum(t => t.c_filecount).ToString();
              float Total = db_helper.getAllPulledFileByWeek(startDate, endDate, "192.168.10.68", "T3ci94043");
              lblTotalRepull.Text = "RepullRate: " + (float.Parse(RepullTotal)*100 / Total).ToString("0.00")+"%";
-             lblTotalSLA.Text = "SLARate :" + (float.Parse(SLATotal) * 100 / Total).ToString("0.00")+"%";
+             lblTotalSLA.Text = "SLARate :" + ((Total-float.Parse(SLATotal)) * 100 / Total).ToString("0.00") + "%";
         }
 
         private void Btn_Save_Click(object sender, EventArgs e)

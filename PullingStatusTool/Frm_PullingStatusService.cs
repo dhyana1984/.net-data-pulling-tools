@@ -23,9 +23,10 @@ namespace PullingStatusTool
             DB_Helper db_helper = new DB_Helper();
             drp_DailyDate.Text = DateTime.Now.ToShortDateString();
             txt_year.Text = DateTime.Now.Year.ToString();
-            string weekly = ExcelApplication.getIRCalendarWeek(DateTime.Now);//根据当前日期查询Target IR Calendar 出来的mohth_weekofmonth
-            txt_month.Text = weekly.Split('_')[0];
-            txt_Week.Text = weekly.Split('_')[1];
+            string weekly = db_helper.getIRCalendarbyDate("192.168.10.68", "T3ci94043", drp_DailyDate.Text);//根据当前日期查询Target IR Calendar 出来的mohth_weekofmonth
+           // string weekly = "2014-08 wk 3";
+            txt_month.Text = weekly.Substring(5, 2);
+            txt_Week.Text = weekly.Substring(11, 1);
 
        
 
@@ -162,13 +163,6 @@ namespace PullingStatusTool
         private void cbx_daily_CheckedChanged(object sender, EventArgs e)
         {
             drp_DailyDate.Enabled = cbx_daily.Checked;
-        }
-
-        private void simpleButton1_Click(object sender, EventArgs e)
-        {
-            ExcelApplication excelApp = new ExcelApplication(ListFileStatus);
-            excelApp.fillFileCountStatus();
-           // MessageBox.Show(gridView1.RowCount.ToString());
         }
 
         private void rToolStripMenuItem_TCGUI_Click(object sender, EventArgs e)

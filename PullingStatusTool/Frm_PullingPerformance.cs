@@ -73,9 +73,9 @@ namespace PullingStatusTool
 
         private void getWeekly()
         {
-            
-            weekly = ExcelApplication.getIRCalendarWeek(Convert.ToDateTime(drp_DailyDate.Text));//根据当前日期查询Target IR Calendar 出来的mohth_weekofmonth
-            weekly = drp_DailyDate.Text.Split('/')[2] + "-" + weekly.Split('_')[0] + " WK " + weekly.Split('_')[1];
+            DB_Helper dbhelper = new DB_Helper();
+            weekly =dbhelper.getIRCalendarbyDate("192.168.10.68","T3ci94043",drp_DailyDate.Text);//根据当前日期查询Target IR Calendar 出来的mohth_weekofmonth
+          
 
         }
 
