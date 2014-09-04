@@ -50,8 +50,6 @@
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.txt_Week = new DevExpress.XtraEditors.TextEdit();
             this.btn_refresh = new DevExpress.XtraEditors.SimpleButton();
-            this.cbx_daily = new DevExpress.XtraEditors.CheckEdit();
-            this.cbx_weekly = new DevExpress.XtraEditors.CheckEdit();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rToolStripMenuItem_TCGUI = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,14 +57,9 @@
             this.repullSLAChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileCoutExpectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ckbx_78 = new DevExpress.XtraEditors.CheckEdit();
-            this.ckbx_77 = new DevExpress.XtraEditors.CheckEdit();
-            this.ckbx_72 = new DevExpress.XtraEditors.CheckEdit();
-            this.ckbx_71 = new DevExpress.XtraEditors.CheckEdit();
-            this.ckbx_70 = new DevExpress.XtraEditors.CheckEdit();
-            this.ckbx_68 = new DevExpress.XtraEditors.CheckEdit();
-            this.cbx_Attrib = new DevExpress.XtraEditors.CheckEdit();
+            this.uploadFileSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Btn_MondayStatus = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.GC_PullingFileStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.drp_DailyDate.Properties.VistaTimeProperties)).BeginInit();
@@ -74,16 +67,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_year.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_month.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Week.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbx_daily.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbx_weekly.Properties)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ckbx_78.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckbx_77.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckbx_72.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckbx_71.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckbx_70.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckbx_68.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbx_Attrib.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // GC_PullingFileStatus
@@ -91,10 +75,10 @@
             this.GC_PullingFileStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.GC_PullingFileStatus.Location = new System.Drawing.Point(12, 78);
+            this.GC_PullingFileStatus.Location = new System.Drawing.Point(12, 57);
             this.GC_PullingFileStatus.MainView = this.gridView1;
             this.GC_PullingFileStatus.Name = "GC_PullingFileStatus";
-            this.GC_PullingFileStatus.Size = new System.Drawing.Size(840, 521);
+            this.GC_PullingFileStatus.Size = new System.Drawing.Size(840, 542);
             this.GC_PullingFileStatus.TabIndex = 1;
             this.GC_PullingFileStatus.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -235,7 +219,7 @@
             // drp_DailyDate
             // 
             this.drp_DailyDate.EditValue = null;
-            this.drp_DailyDate.Location = new System.Drawing.Point(12, 52);
+            this.drp_DailyDate.Location = new System.Drawing.Point(81, 31);
             this.drp_DailyDate.Name = "drp_DailyDate";
             this.drp_DailyDate.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
             this.drp_DailyDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -248,14 +232,14 @@
             // 
             // txt_year
             // 
-            this.txt_year.Location = new System.Drawing.Point(164, 52);
+            this.txt_year.Location = new System.Drawing.Point(215, 31);
             this.txt_year.Name = "txt_year";
             this.txt_year.Size = new System.Drawing.Size(48, 20);
             this.txt_year.TabIndex = 5;
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(136, 55);
+            this.labelControl3.Location = new System.Drawing.Point(187, 34);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(22, 13);
             this.labelControl3.TabIndex = 6;
@@ -263,7 +247,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(218, 55);
+            this.labelControl4.Location = new System.Drawing.Point(269, 34);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(30, 13);
             this.labelControl4.TabIndex = 7;
@@ -271,14 +255,14 @@
             // 
             // txt_month
             // 
-            this.txt_month.Location = new System.Drawing.Point(254, 52);
+            this.txt_month.Location = new System.Drawing.Point(305, 31);
             this.txt_month.Name = "txt_month";
             this.txt_month.Size = new System.Drawing.Size(27, 20);
             this.txt_month.TabIndex = 8;
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(287, 55);
+            this.labelControl5.Location = new System.Drawing.Point(338, 34);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(25, 13);
             this.labelControl5.TabIndex = 9;
@@ -286,42 +270,19 @@
             // 
             // txt_Week
             // 
-            this.txt_Week.Location = new System.Drawing.Point(320, 52);
+            this.txt_Week.Location = new System.Drawing.Point(371, 31);
             this.txt_Week.Name = "txt_Week";
             this.txt_Week.Size = new System.Drawing.Size(27, 20);
             this.txt_Week.TabIndex = 10;
             // 
             // btn_refresh
             // 
-            this.btn_refresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_refresh.Location = new System.Drawing.Point(777, 48);
+            this.btn_refresh.Location = new System.Drawing.Point(485, 28);
             this.btn_refresh.Name = "btn_refresh";
             this.btn_refresh.Size = new System.Drawing.Size(75, 23);
             this.btn_refresh.TabIndex = 11;
             this.btn_refresh.Text = "Refresh";
             this.btn_refresh.Click += new System.EventHandler(this.btn_refresh_Click);
-            // 
-            // cbx_daily
-            // 
-            this.cbx_daily.EditValue = true;
-            this.cbx_daily.Location = new System.Drawing.Point(10, 27);
-            this.cbx_daily.Name = "cbx_daily";
-            this.cbx_daily.Properties.Caption = "daily report";
-            this.cbx_daily.Size = new System.Drawing.Size(102, 19);
-            this.cbx_daily.TabIndex = 12;
-            this.cbx_daily.Visible = false;
-            this.cbx_daily.CheckedChanged += new System.EventHandler(this.cbx_daily_CheckedChanged);
-            // 
-            // cbx_weekly
-            // 
-            this.cbx_weekly.EditValue = true;
-            this.cbx_weekly.Location = new System.Drawing.Point(134, 27);
-            this.cbx_weekly.Name = "cbx_weekly";
-            this.cbx_weekly.Properties.Caption = "weekly report";
-            this.cbx_weekly.Size = new System.Drawing.Size(102, 19);
-            this.cbx_weekly.TabIndex = 13;
-            this.cbx_weekly.Visible = false;
-            this.cbx_weekly.CheckedChanged += new System.EventHandler(this.cbx_weekly_CheckedChanged);
             // 
             // menuStrip1
             // 
@@ -368,10 +329,12 @@
             // fToolStripMenuItem
             // 
             this.fToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileCoutExpectToolStripMenuItem});
+            this.fileCoutExpectToolStripMenuItem,
+            this.uploadFileSetToolStripMenuItem});
             this.fToolStripMenuItem.Name = "fToolStripMenuItem";
             this.fToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.fToolStripMenuItem.Text = "Settings";
+            this.fToolStripMenuItem.Click += new System.EventHandler(this.fToolStripMenuItem_Click);
             // 
             // fileCoutExpectToolStripMenuItem
             // 
@@ -380,96 +343,38 @@
             this.fileCoutExpectToolStripMenuItem.Text = "File Cout Expect";
             this.fileCoutExpectToolStripMenuItem.Click += new System.EventHandler(this.fileCoutExpectToolStripMenuItem_Click);
             // 
-            // ckbx_78
+            // uploadFileSetToolStripMenuItem
             // 
-            this.ckbx_78.EditValue = true;
-            this.ckbx_78.Location = new System.Drawing.Point(569, 52);
-            this.ckbx_78.Name = "ckbx_78";
-            this.ckbx_78.Properties.Caption = "192.168.10.78";
-            this.ckbx_78.Size = new System.Drawing.Size(100, 19);
-            this.ckbx_78.TabIndex = 21;
-            // 
-            // ckbx_77
-            // 
-            this.ckbx_77.EditValue = true;
-            this.ckbx_77.Location = new System.Drawing.Point(459, 52);
-            this.ckbx_77.Name = "ckbx_77";
-            this.ckbx_77.Properties.Caption = "192.168.10.77";
-            this.ckbx_77.Size = new System.Drawing.Size(97, 19);
-            this.ckbx_77.TabIndex = 20;
-            // 
-            // ckbx_72
-            // 
-            this.ckbx_72.EditValue = true;
-            this.ckbx_72.Location = new System.Drawing.Point(353, 52);
-            this.ckbx_72.Name = "ckbx_72";
-            this.ckbx_72.Properties.Caption = "192.168.10.72";
-            this.ckbx_72.Size = new System.Drawing.Size(100, 19);
-            this.ckbx_72.TabIndex = 19;
-            // 
-            // ckbx_71
-            // 
-            this.ckbx_71.EditValue = true;
-            this.ckbx_71.Location = new System.Drawing.Point(569, 26);
-            this.ckbx_71.Name = "ckbx_71";
-            this.ckbx_71.Properties.Caption = "192.168.10.71";
-            this.ckbx_71.Size = new System.Drawing.Size(100, 19);
-            this.ckbx_71.TabIndex = 18;
-            // 
-            // ckbx_70
-            // 
-            this.ckbx_70.EditValue = true;
-            this.ckbx_70.Location = new System.Drawing.Point(459, 25);
-            this.ckbx_70.Name = "ckbx_70";
-            this.ckbx_70.Properties.Caption = "192.168.28.70";
-            this.ckbx_70.Size = new System.Drawing.Size(101, 19);
-            this.ckbx_70.TabIndex = 17;
-            // 
-            // ckbx_68
-            // 
-            this.ckbx_68.Location = new System.Drawing.Point(353, 27);
-            this.ckbx_68.Name = "ckbx_68";
-            this.ckbx_68.Properties.Caption = "192.168.10.68";
-            this.ckbx_68.Size = new System.Drawing.Size(100, 19);
-            this.ckbx_68.TabIndex = 16;
-            // 
-            // cbx_Attrib
-            // 
-            this.cbx_Attrib.EditValue = true;
-            this.cbx_Attrib.Location = new System.Drawing.Point(242, 26);
-            this.cbx_Attrib.Name = "cbx_Attrib";
-            this.cbx_Attrib.Properties.Caption = "attrib";
-            this.cbx_Attrib.Size = new System.Drawing.Size(102, 19);
-            this.cbx_Attrib.TabIndex = 22;
-            this.cbx_Attrib.Visible = false;
-            this.cbx_Attrib.CheckedChanged += new System.EventHandler(this.cbx_Attrib_CheckedChanged);
+            this.uploadFileSetToolStripMenuItem.Name = "uploadFileSetToolStripMenuItem";
+            this.uploadFileSetToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.uploadFileSetToolStripMenuItem.Text = "Upload File Set";
+            this.uploadFileSetToolStripMenuItem.Click += new System.EventHandler(this.uploadFileSetToolStripMenuItem_Click);
             // 
             // Btn_MondayStatus
             // 
-            this.Btn_MondayStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Btn_MondayStatus.Location = new System.Drawing.Point(696, 48);
+            this.Btn_MondayStatus.Location = new System.Drawing.Point(404, 28);
             this.Btn_MondayStatus.Name = "Btn_MondayStatus";
             this.Btn_MondayStatus.Size = new System.Drawing.Size(75, 23);
             this.Btn_MondayStatus.TabIndex = 23;
             this.Btn_MondayStatus.Text = "Monday";
             this.Btn_MondayStatus.Click += new System.EventHandler(this.Btn_MondayStatus_Click);
             // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(12, 34);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(62, 13);
+            this.labelControl1.TabIndex = 24;
+            this.labelControl1.Text = "Choose Date";
+            // 
             // Frm_PullingStatusService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(864, 611);
+            this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.Btn_MondayStatus);
-            this.Controls.Add(this.cbx_Attrib);
-            this.Controls.Add(this.ckbx_78);
-            this.Controls.Add(this.ckbx_77);
-            this.Controls.Add(this.ckbx_72);
-            this.Controls.Add(this.ckbx_71);
-            this.Controls.Add(this.ckbx_70);
-            this.Controls.Add(this.ckbx_68);
             this.Controls.Add(this.btn_refresh);
-            this.Controls.Add(this.cbx_weekly);
-            this.Controls.Add(this.cbx_daily);
             this.Controls.Add(this.txt_Week);
             this.Controls.Add(this.labelControl5);
             this.Controls.Add(this.txt_month);
@@ -481,7 +386,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Frm_PullingStatusService";
-            this.Text = "PullingStatusTool v1.3";
+            this.Text = "PullingStatusTool v1.4";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Frm_PullingStatusService_Load);
             ((System.ComponentModel.ISupportInitialize)(this.GC_PullingFileStatus)).EndInit();
@@ -491,17 +396,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_year.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_month.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Week.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbx_daily.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbx_weekly.Properties)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ckbx_78.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckbx_77.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckbx_72.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckbx_71.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckbx_70.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckbx_68.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbx_Attrib.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -525,19 +421,10 @@
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.TextEdit txt_Week;
         private DevExpress.XtraEditors.SimpleButton btn_refresh;
-        private DevExpress.XtraEditors.CheckEdit cbx_daily;
-        private DevExpress.XtraEditors.CheckEdit cbx_weekly;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rToolStripMenuItem_TCGUI;
-        private DevExpress.XtraEditors.CheckEdit ckbx_78;
-        private DevExpress.XtraEditors.CheckEdit ckbx_77;
-        private DevExpress.XtraEditors.CheckEdit ckbx_72;
-        private DevExpress.XtraEditors.CheckEdit ckbx_71;
-        private DevExpress.XtraEditors.CheckEdit ckbx_70;
-        private DevExpress.XtraEditors.CheckEdit ckbx_68;
         private DevExpress.XtraGrid.Columns.GridColumn subgroup;
-        private DevExpress.XtraEditors.CheckEdit cbx_Attrib;
         private System.Windows.Forms.ToolStripMenuItem fToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fileCoutExpectToolStripMenuItem;
         private DevExpress.XtraGrid.Columns.GridColumn fileCountFormatted;
@@ -547,5 +434,7 @@
         private System.Windows.Forms.ToolStripMenuItem rePullToolStripMenuItem;
         private DevExpress.XtraEditors.SimpleButton Btn_MondayStatus;
         private System.Windows.Forms.ToolStripMenuItem repullSLAChartToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem uploadFileSetToolStripMenuItem;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }

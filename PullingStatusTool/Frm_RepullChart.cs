@@ -49,30 +49,10 @@ namespace PullingStatusTool
         {
             DB_Helper db_heler = new DB_Helper();
             List<Repull> ListRepullChart = new List<Repull>();
-                if (ckbx_68)
-                {
-                    db_heler.getRepullChart("192.168.10.68", "T3ci94043", startDate, endDate);
-                }
-                if (ckbx_70)
-                {
-                    db_heler.getRepullChart("192.168.28.70", "T3ci94043", startDate, endDate);
-                }
-                if (ckbx_71)
-                {
-                    db_heler.getRepullChart("192.168.10.71", "t3ci94043", startDate, endDate);
-                }
-                if (ckbx_72)
-                {
-                    db_heler.getRepullChart("192.168.10.72", "T3ci94043", startDate, endDate);
-                }
-                if (ckbx_77)
-                {
-                    db_heler.getRepullChart("192.168.10.77", "T3ci94043", startDate, endDate);
-                }
-                if (ckbx_78)
-                {
-                    db_heler.getRepullChart("192.168.10.78", "T3ci94043", startDate, endDate);
-                }
+       
+                    db_heler.getRepullChart(  startDate, endDate);
+                
+
              ListRepullChart = db_heler.getRePullChart();
 
              Chart_Repull.DataSource = null;

@@ -35,9 +35,10 @@
     <InstallUrl>http://10.176.1.50:8002/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>14</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.4.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -58,6 +59,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="DevExpress.Charts.v10.1.Core, Version=10.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -105,21 +113,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App\AMESTime.cs" />
-    <Compile Include="Frm_PullingPerformance.cs">
+    <Compile Include="App\Users.cs" />
+    <Compile Include="Frm_FileUploadManage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm_PullingPerformance.Designer.cs">
-      <DependentUpon>Frm_PullingPerformance.cs</DependentUpon>
+    <Compile Include="Frm_FileUploadManage.Designer.cs">
+      <DependentUpon>Frm_FileUploadManage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm_SLAChart.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_SLAChart.Designer.cs">
-      <DependentUpon>Frm_SLAChart.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataPullingFileCountStatus.cs" />
-    <Compile Include="App\DB_Helper.cs" />
-    <Compile Include="App\ExcelApplication.cs" />
     <Compile Include="Frm_DataPullingStatus.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +131,12 @@
     </Compile>
     <Compile Include="Frm_FileCountExpect.Designer.cs">
       <DependentUpon>Frm_FileCountExpect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_PullingPerformance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_PullingPerformance.Designer.cs">
+      <DependentUpon>Frm_PullingPerformance.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_PullingStatusService.cs">
       <SubType>Form</SubType>
@@ -144,16 +150,47 @@
     <Compile Include="Frm_ReportDetail.Designer.cs">
       <DependentUpon>Frm_ReportDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_RepullChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_RepullChart.Designer.cs">
+      <DependentUpon>Frm_RepullChart.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_RepullMonitor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frm_RepullMonitor.Designer.cs">
       <DependentUpon>Frm_RepullMonitor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_SLAChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_SLAChart.Designer.cs">
+      <DependentUpon>Frm_SLAChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UploadFile.cs" />
+    <Compile Include="Model\DataPullingFileCountStatus.cs" />
+    <Compile Include="App\DB_Helper.cs" />
+    <Compile Include="App\ExcelApplication.cs" />
     <Compile Include="Model\ListFileExpect.cs" />
     <Compile Include="Model\PullingPerformance.cs" />
+    <Compile Include="Frm_Password.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Password.Designer.cs">
+      <DependentUpon>Frm_Password.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Frm_UploadPath.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_UploadPath.Designer.cs">
+      <DependentUpon>Frm_UploadPath.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Frm_FileUploadManage.resx">
+      <DependentUpon>Frm_FileUploadManage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_DataPullingStatus.resx">
       <DependentUpon>Frm_DataPullingStatus.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,11 +206,17 @@
     <EmbeddedResource Include="Frm_ReportDetail.resx">
       <DependentUpon>Frm_ReportDetail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_RepullChart.resx">
+      <DependentUpon>Frm_RepullChart.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_RepullMonitor.resx">
       <DependentUpon>Frm_RepullMonitor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_SLAChart.resx">
       <DependentUpon>Frm_SLAChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Password.resx">
+      <DependentUpon>Frm_Password.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -181,14 +224,16 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm_RepullChart.resx">
-      <DependentUpon>Frm_RepullChart.cs</DependentUpon>
-    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Frm_UploadPath.resx">
+      <DependentUpon>Frm_UploadPath.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -202,12 +247,6 @@
     <Compile Include="Model\ReportExpect.cs" />
     <Compile Include="Model\Repull.cs" />
     <Compile Include="Model\ServerStatus.cs" />
-    <Compile Include="Frm_RepullChart.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_RepullChart.Designer.cs">
-      <DependentUpon>Frm_RepullChart.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -242,12 +281,16 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dll\DevExpress.Charts.v10.1.Core.dll" />
     <Content Include="dll\DevExpress.Data.v10.1.dll" />
     <Content Include="dll\DevExpress.Utils.v10.1.dll" />
     <Content Include="dll\DevExpress.Xpo.v10.1.dll" />
+    <Content Include="dll\DevExpress.XtraCharts.v10.1.dll" />
+    <Content Include="dll\DevExpress.XtraCharts.v10.1.UI.dll" />
     <Content Include="dll\DevExpress.XtraEditors.v10.1.dll" />
     <Content Include="dll\DevExpress.XtraGrid.v10.1.dll" />
     <Content Include="dll\DevExpress.XtraLayout.v10.1.dll" />
+    <Content Include="dll\DevExpress.XtraNavBar.v10.1.dll" />
     <Content Include="dll\DevExpress.XtraVerticalGrid.v10.1.dll" />
     <Content Include="icon_32X32.ico" />
     <Content Include="icon_64X64.ico" />
@@ -281,7 +324,198 @@
       <Isolated>False</Isolated>
     </COMReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <PublishFile Include="DevExpress.Charts.v10.1.Core">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.Data.v10.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.RichEdit.v10.1.Core">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.Utils.v10.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.Xpo.v10.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraBars.v10.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraCharts.v10.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraCharts.v10.1.UI">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraEditors.v10.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraGrid.v10.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraLayout.v10.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraNavBar.v10.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraPrinting.v10.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraRichEdit.v10.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraTreeList.v10.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraVerticalGrid.v10.1">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.Office.Interop.Excel">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.Vbe.Interop">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="office">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

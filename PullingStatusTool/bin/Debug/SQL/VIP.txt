@@ -11,7 +11,7 @@ end datatype,
 case
 when (ConfigName like '%inv1%' or ScheduleName like '%inv1%' or ReportName like 'inv1') and configname not like '%pcna%' and configname not like '%flna%' and configname not like '%qtg%' and reportname not like '%dc%' and reportname not like '%attri%'   then 'INV1' 
 End Subgroup,
-COUNT(distinct reportname) filecount,status, MAX(dateadd(hour,12,EndFormattingTime)) finishTime,IP
+COUNT(distinct reportname) filecount,status, MAX(EndFormattingTime) finishTime,IP
 from view_pullingstatus
 where   reportname like '%@period%' and (vendor like '%P&G%' or vendor like '%JNJ%' or Vendor like '%Unilever%' or Vendor like '%colgate%' or Vendor like '%kcc%')
 group by 

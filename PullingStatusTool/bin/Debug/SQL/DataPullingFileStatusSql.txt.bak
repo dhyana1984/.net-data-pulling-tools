@@ -2,7 +2,7 @@ select
 case 
 when reportname like '%cat%' or ScheduleName like '%Category%' or configname like '%Category%'  or ScheduleName like '%Cattrib%' or configname like '%Cattrib%' then vendor +' Category' else vendor end vendor,
 case  
-when  vendor not like '%Pepsico%' and reportname not like '%dc%' and reportname not like '%attri%' and reportname like '%store%' or (ReportName like '%inv1%' or ReportName like '%inv2%')    then 'Store Inventory' 
+when  vendor not like '%Pepsico%' and reportname not like '% dc %' and reportname not like '%attri%' and reportname like '%store%' or (reportname like '%stock%' or ReportName like '%inv1%' or ReportName like '%inv2%')    then 'Store Inventory' 
 when reportname like '%DC %' and reportname not like '%attrib%' and reportname not like '%store%' and configname not like '%qtg%' and ReportName not like '%receipt%'  then 'DC Inventory' 
 when(reportname like '%pos%' or ReportName like '%daily%')and configname not like '%PCNA%' and ConfigName not like '%flna%' and ConfigName not like '%qtg%' and ConfigName not like '%Gatorade%' and reportname not like '%valid%' and CHARINDEX('WK',ReportName)=0  then 'Daily POS' 
 when reportname like '%valid%'    then 'Daily Valid' 
@@ -45,7 +45,7 @@ status,
 case 
 when reportname like '%cat%' or ScheduleName like '%Category%' or configname like '%Category%'  or ScheduleName like '%Cattrib%' or configname like '%Cattrib%' then vendor +' Category' else vendor end ,
 case  
-when   vendor not like '%Pepsico%' and reportname not like '%dc%'  and reportname not like '%attri%' and reportname like '%store%' or (ReportName like '%inv1%' or ReportName like '%inv2%')   then 'Store Inventory' 
+when  vendor not like '%Pepsico%' and reportname not like '% dc %' and reportname not like '%attri%' and reportname like '%store%' or (reportname like '%stock%' or ReportName like '%inv1%' or ReportName like '%inv2%')    then 'Store Inventory' 
 when reportname like '%DC %' and reportname not like '%attrib%' and reportname not like '%store%' and configname not like '%qtg%' and ReportName not like '%receipt%'  then 'DC Inventory' 
 when(reportname like '%pos%' or ReportName like '%daily%')and configname not like '%PCNA%' and ConfigName not like '%flna%' and ConfigName not like '%qtg%' and ConfigName not like '%Gatorade%' and reportname not like '%valid%' and CHARINDEX('WK',ReportName)=0  then 'Daily POS' 
 when reportname like '%valid%'    then 'Daily Valid' 

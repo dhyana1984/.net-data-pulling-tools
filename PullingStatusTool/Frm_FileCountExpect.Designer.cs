@@ -65,9 +65,9 @@
             // 
             // GC_FileExpect
             // 
-            this.GC_FileExpect.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.GC_FileExpect.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.GC_FileExpect.Location = new System.Drawing.Point(12, 73);
             this.GC_FileExpect.MainView = this.gridView1;
             this.GC_FileExpect.Name = "GC_FileExpect";
@@ -170,7 +170,7 @@
             this.txt_Vendor.Location = new System.Drawing.Point(445, 21);
             this.txt_Vendor.Name = "txt_Vendor";
             this.txt_Vendor.Properties.MaxLength = 50;
-            this.txt_Vendor.Size = new System.Drawing.Size(189, 20);
+            this.txt_Vendor.Size = new System.Drawing.Size(95, 20);
             this.txt_Vendor.TabIndex = 3;
             // 
             // labelControl1
@@ -183,7 +183,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(640, 24);
+            this.labelControl2.Location = new System.Drawing.Point(546, 24);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(47, 13);
             this.labelControl2.TabIndex = 6;
@@ -191,7 +191,7 @@
             // 
             // txt_DataType
             // 
-            this.txt_DataType.Location = new System.Drawing.Point(693, 21);
+            this.txt_DataType.Location = new System.Drawing.Point(599, 21);
             this.txt_DataType.Name = "txt_DataType";
             this.txt_DataType.Properties.MaxLength = 50;
             this.txt_DataType.Size = new System.Drawing.Size(100, 20);
@@ -199,7 +199,7 @@
             // 
             // lbl_Subgroup
             // 
-            this.lbl_Subgroup.Location = new System.Drawing.Point(799, 24);
+            this.lbl_Subgroup.Location = new System.Drawing.Point(705, 24);
             this.lbl_Subgroup.Name = "lbl_Subgroup";
             this.lbl_Subgroup.Size = new System.Drawing.Size(47, 13);
             this.lbl_Subgroup.TabIndex = 8;
@@ -207,7 +207,7 @@
             // 
             // txt_SubGrp
             // 
-            this.txt_SubGrp.Location = new System.Drawing.Point(852, 21);
+            this.txt_SubGrp.Location = new System.Drawing.Point(758, 21);
             this.txt_SubGrp.Name = "txt_SubGrp";
             this.txt_SubGrp.Properties.MaxLength = 20;
             this.txt_SubGrp.Size = new System.Drawing.Size(100, 20);
@@ -215,7 +215,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(958, 24);
+            this.labelControl4.Location = new System.Drawing.Point(864, 24);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(49, 13);
             this.labelControl4.TabIndex = 10;
@@ -223,7 +223,7 @@
             // 
             // txt_FileExpect
             // 
-            this.txt_FileExpect.Location = new System.Drawing.Point(1013, 21);
+            this.txt_FileExpect.Location = new System.Drawing.Point(919, 21);
             this.txt_FileExpect.Name = "txt_FileExpect";
             this.txt_FileExpect.Properties.Mask.EditMask = "####";
             this.txt_FileExpect.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
@@ -234,7 +234,7 @@
             // 
             // btn_AddFileExpect
             // 
-            this.btn_AddFileExpect.Location = new System.Drawing.Point(1113, 44);
+            this.btn_AddFileExpect.Location = new System.Drawing.Point(1019, 44);
             this.btn_AddFileExpect.Name = "btn_AddFileExpect";
             this.btn_AddFileExpect.Size = new System.Drawing.Size(75, 23);
             this.btn_AddFileExpect.TabIndex = 11;
@@ -243,7 +243,7 @@
             // 
             // btn_Edit
             // 
-            this.btn_Edit.Location = new System.Drawing.Point(1194, 44);
+            this.btn_Edit.Location = new System.Drawing.Point(1100, 44);
             this.btn_Edit.Name = "btn_Edit";
             this.btn_Edit.Size = new System.Drawing.Size(75, 23);
             this.btn_Edit.TabIndex = 12;
@@ -252,7 +252,7 @@
             // 
             // btn_Delete
             // 
-            this.btn_Delete.Location = new System.Drawing.Point(1275, 44);
+            this.btn_Delete.Location = new System.Drawing.Point(1181, 44);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(75, 23);
             this.btn_Delete.TabIndex = 13;
@@ -288,7 +288,7 @@
             this.txt_delay.Location = new System.Drawing.Point(81, 47);
             this.txt_delay.Name = "txt_delay";
             this.txt_delay.Properties.MaxLength = 200;
-            this.txt_delay.Size = new System.Drawing.Size(1026, 20);
+            this.txt_delay.Size = new System.Drawing.Size(932, 20);
             this.txt_delay.TabIndex = 16;
             // 
             // Frm_FileCountExpect

@@ -42,7 +42,7 @@ namespace PullingStatusTool
    
 
 
-             db_helper.getSLAChart("192.168.10.68", "T3ci94043", txt_StartDate.Text, txt_EndDate.Text);
+             db_helper.getSLAChart(  txt_StartDate.Text, txt_EndDate.Text);
             //db_helper.getSLAChart("192.168.28.70", "T3ci94043", txt_StartDate.Text, txt_EndDate.Text, period);
             //db_helper.getSLAChart("192.168.10.71", "t3ci94043", txt_StartDate.Text, txt_EndDate.Text, period);
             //db_helper.getSLAChart("192.168.10.72", "T3ci94043", txt_StartDate.Text, txt_EndDate.Text, period);
@@ -52,7 +52,7 @@ namespace PullingStatusTool
             string startDate = AMESTime.BeijingTimeToAMESTime(Convert.ToDateTime(txt_StartDate.Text + " 00:00:00")).ToString("yyyy-MM-dd HH:mm:ss");
             string endDate = AMESTime.BeijingTimeToAMESTime(Convert.ToDateTime(txt_EndDate.Text + " 23:59:59")).ToString("yyyy-MM-dd HH:mm:ss");
 
-            db_hhelper.getRepullChart("192.168.10.68", "T3ci94043", startDate, endDate); 
+            db_hhelper.getRepullChart(  startDate, endDate); 
             //db_hhelper.getRepullChart("192.168.28.70", "T3ci94043", startDate, endDate);
             //db_hhelper.getRepullChart("192.168.10.71", "t3ci94043", startDate, endDate);
             //db_hhelper.getRepullChart("192.168.10.72", "T3ci94043", startDate, endDate);
@@ -68,7 +68,7 @@ namespace PullingStatusTool
                 ChartSLA.DataSource = ListSLA;
             string SLATotal=ListSLA.Where(t=>Convert.ToDateTime(t.c_repulldate).DayOfWeek.ToString()!="Saturday").Sum(t => t.c_filecount).ToString();
              string RepullTotal = ListRepull.Where(t => Convert.ToDateTime(t.c_repulldate).DayOfWeek.ToString() != "Saturday").Sum(t => t.c_filecount).ToString();
-             float Total = db_helper.getAllPulledFileByWeek(startDate, endDate, "192.168.10.68", "T3ci94043");
+             float Total = db_helper.getAllPulledFileByWeek(startDate, endDate);
              lblTotalRepull.Text = "RepullRate: " + (float.Parse(RepullTotal)*100 / Total).ToString("0.00")+"%";
              lblTotalSLA.Text = "SLARate :" + ((Total-float.Parse(SLATotal)) * 100 / Total).ToString("0.00") + "%";
         }

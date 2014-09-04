@@ -36,7 +36,7 @@ namespace PullingStatusTool
                 DB_Helper db_heler = new DB_Helper();
                 if (ckbx_68.Checked)
                 {
-                    db_heler.getStatusData("192.168.10.68", "T3ci94043", txt_StartDate.Text + " 00:00:00", txt_EndDate.Text + " 23:59:59");
+                    db_heler.getStatusData("192.168.28.68", "T3ci94043", txt_StartDate.Text + " 00:00:00", txt_EndDate.Text + " 23:59:59");
 
                 }
                 if (ckbx_70.Checked)

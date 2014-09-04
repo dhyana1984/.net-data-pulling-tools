@@ -12,7 +12,7 @@ namespace PullingStatusTool
        static public void getReportExpect()
         {
             DB_Helper db_helper = new DB_Helper();
-            db_helper.getReportExpectData("192.168.10.68", "T3ci94043");
+            db_helper.getReportExpectData();
             LstReportExpect = db_helper.getReportExpect();
 
         }

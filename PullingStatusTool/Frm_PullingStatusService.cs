@@ -23,7 +23,7 @@ namespace PullingStatusTool
             DB_Helper db_helper = new DB_Helper();
             drp_DailyDate.Text = DateTime.Now.ToShortDateString();
             txt_year.Text = DateTime.Now.Year.ToString();
-            string weekly = db_helper.getIRCalendarbyDate("192.168.10.68", "T3ci94043", drp_DailyDate.Text);//根据当前日期查询Target IR Calendar 出来的mohth_weekofmonth
+            string weekly = db_helper.getIRCalendarbyDate( drp_DailyDate.Text);//根据当前日期查询Target IR Calendar 出来的mohth_weekofmonth
            // string weekly = "2014-08 wk 3";
             txt_month.Text = weekly.Substring(5, 2);
             txt_Week.Text = weekly.Substring(11, 1);
@@ -40,7 +40,7 @@ namespace PullingStatusTool
           
             DataPullingFileCountStatus fileStatus = new DataPullingFileCountStatus();
 
-            db_helper.getReportExpectData("192.168.10.68", "T3ci94043");
+            db_helper.getReportExpectData();
             ListReportExpect = isMonday ? db_helper.getReportExpect().Where(t => t.c_dayofweek.Contains("VIP")).ToList() : db_helper.getReportExpect().Where(t => t.c_dayofweek.Contains(dayofweek)).ToList();
             
             string vendor = "";
@@ -73,7 +73,7 @@ namespace PullingStatusTool
                 file.c_filexpectformatted += "/" + fileExceot;
                 file.c_finishuploaded = file.c_filexpectuploaded.Split('/')[0] == file.c_filexpectuploaded.Split('/')[1] ? "Y" : "N";
                 file.c_finishformatted = file.c_filexpectformatted.Split('/')[0] == file.c_filexpectformatted.Split('/')[1] ? "Y" : "N";
-                file.c_finishtime = file.c_finishformatted == "Y" ? temp.ToList()[0].c_finishTime : "";
+                file.c_finishtime = temp.Count()>0?AMESTime.AMESTimeToBeijingTime(temp.ToList()[0].c_finishTime).ToString():"";
                 
             }
 
@@ -88,13 +88,13 @@ namespace PullingStatusTool
             DB_Helper db_helper = new DB_Helper();
             string dailydate = "";
             string resdate = "";//R7文件的日期
-            dailydate = cbx_daily.Checked ? String.Format("%{0:yyyy-MM-dd}%", Convert.ToDateTime(drp_DailyDate.Text).AddDays(-1)) : "";//在daily上不打钩就传""去查询
+            dailydate = String.Format("%{0:yyyy-MM-dd}%", Convert.ToDateTime(drp_DailyDate.Text).AddDays(-1));//在daily上不打钩就传""去查询
             string weeklyPeriod = String.Format("%{0}-{1} WK {2}%", txt_year.Text.Trim(), txt_month.Text.Trim(),txt_Week.Text.Trim());
             resdate = dailydate == "" ? "" : String.Format("%{0:yyyy-MM-dd}-%", Convert.ToDateTime(dailydate.Replace("%", "")).AddDays(-7).ToString("yyyy-MM-dd"));//如果查daily的，也要讲7天前的日期传过去作为查询R7文件的条件
-            weeklyPeriod = cbx_weekly.Checked ? weeklyPeriod : "";
+
             //if (ckbx_68.Checked)
             //{
-            //    db_helper.getPullingFileCountStatus("192.168.10.68", "T3ci94043", dailydate, weeklyPeriod, resdate, cbx_Attrib.Checked, isMonday);
+            //    db_helper.getPullingFileCountStatus(  dailydate, weeklyPeriod, resdate, cbx_Attrib.Checked, isMonday);
             //}
             //if (ckbx_70.Checked)
             //{
@@ -117,7 +117,7 @@ namespace PullingStatusTool
             //    db_helper.getPullingFileCountStatus("192.168.10.78", "T3ci94043", dailydate, weeklyPeriod, resdate, cbx_Attrib.Checked, isMonday);
             //}
 
-            db_helper.getPullingFileCountStatus_view("192.168.10.68", "T3ci94043", dailydate, weeklyPeriod, resdate, cbx_Attrib.Checked, isMonday);
+            db_helper.getPullingFileCountStatus_view( dailydate, weeklyPeriod, resdate, true, isMonday);
 
             ListFileStatus = db_helper.getPullingFileCount();
             GC_PullingFileStatus.DataSource = getReportExpect(isMonday);
@@ -132,15 +132,9 @@ namespace PullingStatusTool
   
             if (txt_month.Text != "" && txt_year.Text != "" && txt_Week.Text != "")
             {
-                if (cbx_daily.Checked || cbx_weekly.Checked)
-                {
+        
                     getDS(false);//获得所有的vendor的status，不仅仅是礼拜一的VIP
-                }
-                else
-                {
 
-                    MessageBox.Show("At least serch for daily or weekly!");
-                }
             }
             else
             {
@@ -150,20 +144,8 @@ namespace PullingStatusTool
    
         }
 
-        private void cbx_weekly_CheckedChanged(object sender, EventArgs e)
-        {
-       
-                txt_Week.Enabled = cbx_weekly.Checked;
-                txt_month.Enabled = cbx_weekly.Checked;
-                txt_year.Enabled = cbx_weekly.Checked;
-            
-      
-        }
 
-        private void cbx_daily_CheckedChanged(object sender, EventArgs e)
-        {
-            drp_DailyDate.Enabled = cbx_daily.Checked;
-        }
+
 
         private void rToolStripMenuItem_TCGUI_Click(object sender, EventArgs e)
         {
@@ -172,19 +154,25 @@ namespace PullingStatusTool
 
         }
 
-        private void cbx_Attrib_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbx_Attrib.Checked)
-            {
-                cbx_daily.Checked=true;
-                cbx_weekly.Checked=true;
-            }
-        }
+
 
         private void fileCoutExpectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_FileCountExpect frm = new Frm_FileCountExpect();
-            frm.Show();
+            Frm_Password password = new Frm_Password();
+            if (!Users.Flag)
+            {
+                if (password.ShowDialog() == DialogResult.OK)
+                {
+                    Users.Flag = true;
+                    Frm_FileCountExpect frm = new Frm_FileCountExpect();
+                    frm.Show();
+                }
+            }
+            {
+
+                Frm_FileCountExpect frm = new Frm_FileCountExpect();
+                frm.Show();
+            }
         }
 
         private void gridView1_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
@@ -232,15 +220,9 @@ namespace PullingStatusTool
 
             if (txt_month.Text != "" && txt_year.Text != "" && txt_Week.Text != "")
             {
-                if (cbx_daily.Checked || cbx_weekly.Checked)
-                {
+       
                     getDS(true);//获得礼拜一的VIP vendor的Status
-                }
-                else
-                {
-
-                    MessageBox.Show("At least serch for a weekly!");
-                }
+                
             }
             else
             {
@@ -250,9 +232,50 @@ namespace PullingStatusTool
 
         private void repullSLAChartToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_SLAChart frm_Chart = new Frm_SLAChart();
-            frm_Chart.Show();
+                        Frm_Password password = new Frm_Password();
+                        if (!Users.Flag)
+                        {
+                            if (password.ShowDialog() == DialogResult.OK)
+                            {
+                                Users.Flag = true;
+                                Frm_SLAChart frm_Chart = new Frm_SLAChart();
+                                frm_Chart.Show();
+                            }
+                        }
+                        else 
+                        {
+
+                            Frm_SLAChart frm_Chart = new Frm_SLAChart();
+                            frm_Chart.Show();
+                        }
         }
+
+        private void uploadFileSetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+                        Frm_Password password = new Frm_Password();
+                        if (!Users.Flag)
+                        {
+                            if (password.ShowDialog() == DialogResult.OK)
+                            {
+                                Users.Flag = true;
+                                Frm_FileUploadManage FileUploadSet = new Frm_FileUploadManage();
+                                FileUploadSet.Show();
+                            }
+                        }
+                        else
+                        {
+                            Frm_FileUploadManage FileUploadSet = new Frm_FileUploadManage();
+                            FileUploadSet.Show();
+                        }         
+
+        }
+
+        private void fToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
 
 
 

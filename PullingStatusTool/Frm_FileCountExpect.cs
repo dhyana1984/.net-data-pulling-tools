@@ -34,7 +34,7 @@ namespace PullingStatusTool
             if (txt_dayofwk.Text.Trim()!=""&&txt_DataType.Text.Trim() != "" && txt_FileExpect.Text != ""  && txt_Vendor.Text != "")
             {
                 DB_Helper db = new DB_Helper();
-                db.insertNewFileExpect(txt_dayofwk.Text.Trim(),txt_Vendor.Text, txt_DataType.Text, txt_SubGrp.Text, txt_FileExpect.Text, "192.168.10.68", "T3ci94043",txt_delay.Text);
+                db.insertNewFileExpect(txt_dayofwk.Text.Trim(),txt_Vendor.Text, txt_DataType.Text, txt_SubGrp.Text, txt_FileExpect.Text,  txt_delay.Text);
                 ListFileExpect.getReportExpect();
                 GC_FileExpect.DataSource = ListFileExpect.LstReportExpect;
                 report = ListFileExpect.LstReportExpect;
@@ -49,7 +49,7 @@ namespace PullingStatusTool
         private void updateFileExpect(ReportExpect fileExpect)
         {
             DB_Helper db = new DB_Helper();
-            db.editFileExpect(fileExpect, "192.168.10.68", "T3ci94043");
+            db.editFileExpect(fileExpect);
         }
 
         private void btn_Edit_Click(object sender, EventArgs e)
@@ -77,7 +77,7 @@ namespace PullingStatusTool
         {
             DB_Helper db = new DB_Helper();
             string id = gridView1.GetFocusedRowCellValue("c_expfileid").ToString().Trim();
-            db.deleteFileExpect(id, "192.168.10.68", "T3ci94043");
+            db.deleteFileExpect(id);
             ListFileExpect.getReportExpect();
             GC_FileExpect.DataSource = ListFileExpect.LstReportExpect;
             report = ListFileExpect.LstReportExpect;

@@ -22,7 +22,13 @@ namespace PullingStatusTool
 
         private const int TIMEZONE_OFFSET_DAY_SAVING_LIGHT = -12;
         private const int TIMEZONE_OFFSET = -13;
+        public static string BeijingTimeToAMESTime(string beijingTime)
+        {
+            
+            int offsetHours = (IsNowAMESDayLightSavingTime ? TIMEZONE_OFFSET_DAY_SAVING_LIGHT : TIMEZONE_OFFSET);
 
+             return Convert.ToDateTime(beijingTime).AddHours(offsetHours).ToString();
+        }
         public static DateTime BeijingTimeToAMESTime(DateTime beijingTime)
         {
             int offsetHours = (IsNowAMESDayLightSavingTime ? TIMEZONE_OFFSET_DAY_SAVING_LIGHT : TIMEZONE_OFFSET);
@@ -34,6 +40,13 @@ namespace PullingStatusTool
             int offsetHours = (IsNowAMESDayLightSavingTime ? TIMEZONE_OFFSET_DAY_SAVING_LIGHT : TIMEZONE_OFFSET);
 
             return AMESTime.AddHours(0-offsetHours);
+        }
+
+        public static string AMESTimeToBeijingTime(string AMESTime)
+        {
+            int offsetHours = (IsNowAMESDayLightSavingTime ? TIMEZONE_OFFSET_DAY_SAVING_LIGHT : TIMEZONE_OFFSET);
+
+            return Convert.ToDateTime(AMESTime).AddHours(0 - offsetHours).ToString();
         }
         public static DateTime AMESNow
         {

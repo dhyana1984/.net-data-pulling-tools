@@ -49,28 +49,28 @@ namespace PullingStatusTool
               
                 if (ckbx_68.Checked)
                 {
-                    db_heler.getRepull("192.168.10.68", "T3ci94043", startDate, endDate);
+                    db_heler.getRepull(  startDate, endDate);
 
                 }
                 if (ckbx_70.Checked)
                 {
-                    db_heler.getRepull("192.168.28.70", "T3ci94043", startDate, endDate);
+                    db_heler.getRepull( startDate, endDate);
                 }
                 if (ckbx_71.Checked)
                 {
-                    db_heler.getRepull("192.168.10.71", "t3ci94043", startDate, endDate);
+                    db_heler.getRepull(  startDate, endDate);
                 }
                 if (ckbx_72.Checked)
                 {
-                    db_heler.getRepull("192.168.10.72", "T3ci94043", startDate, endDate);
+                    db_heler.getRepull( startDate, endDate);
                 }
                 if (ckbx_77.Checked)
                 {
-                    db_heler.getRepull("192.168.10.77", "T3ci94043", startDate, endDate);
+                    db_heler.getRepull( startDate, endDate);
                 }
                 if (ckbx_78.Checked)
                 {
-                    db_heler.getRepull("192.168.10.78", "T3ci94043", startDate, endDate);
+                    db_heler.getRepull( startDate, endDate);
                 }
                 GC_Repull.DataSource = db_heler.getRePullList();
             }

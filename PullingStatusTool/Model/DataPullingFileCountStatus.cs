@@ -12,7 +12,7 @@ namespace PullingStatusTool
         
         }
 
-        public DataPullingFileCountStatus(string Vendor,string Datatype,string Subgroup,string fileCount,string Status,string ServerIP,string PSW,string finishTime)
+        public DataPullingFileCountStatus(string Vendor,string Datatype,string Subgroup,string fileCount,string Status,string ServerIP,string finishTime)
         {
 
             this.vendor = Vendor;
@@ -21,7 +21,6 @@ namespace PullingStatusTool
             this.status = Status;
             this.filecount = fileCount;
             this.serverIP = ServerIP;
-            this.passWord = PSW;
             this.finiTime = finishTime;
         }
         string finiTime;
@@ -80,13 +79,7 @@ namespace PullingStatusTool
             get { return fileCount; }
             set { fileCount = value; }
         }
-        string passWord;
 
-        public string PassWord
-        {
-            get { return passWord; }
-            set { passWord = value; }
-        }
 
     }
 }
