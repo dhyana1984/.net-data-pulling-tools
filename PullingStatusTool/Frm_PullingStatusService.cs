@@ -270,9 +270,25 @@ namespace PullingStatusTool
 
         }
 
-        private void fToolStripMenuItem_Click(object sender, EventArgs e)
-        {
 
+
+        private void uploadRecordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Password password = new Frm_Password();
+            if (!Users.Flag)
+            {
+                if (password.ShowDialog() == DialogResult.OK)
+                {
+                    Users.Flag = true;
+                    Frm_UploadRecord uploadRecord = new Frm_UploadRecord();
+                    uploadRecord.Show();
+                }
+            }
+            else
+            {
+                Frm_UploadRecord uploadRecord = new Frm_UploadRecord();
+                uploadRecord.Show();
+            }         
         }
 
 

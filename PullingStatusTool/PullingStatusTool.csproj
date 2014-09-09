@@ -36,7 +36,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <ApplicationRevision>1</ApplicationRevision>
-    <ApplicationVersion>1.4.0.%2a</ApplicationVersion>
+    <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -168,6 +168,12 @@
     <Compile Include="Frm_SLAChart.Designer.cs">
       <DependentUpon>Frm_SLAChart.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_UploadRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_UploadRecord.Designer.cs">
+      <DependentUpon>Frm_UploadRecord.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\UploadFile.cs" />
     <Compile Include="Model\DataPullingFileCountStatus.cs" />
     <Compile Include="App\DB_Helper.cs" />
@@ -217,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Password.resx">
       <DependentUpon>Frm_Password.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_UploadRecord.resx">
+      <DependentUpon>Frm_UploadRecord.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

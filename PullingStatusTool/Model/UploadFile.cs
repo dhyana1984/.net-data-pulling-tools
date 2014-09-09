@@ -10,6 +10,94 @@ namespace PullingStatusTool
     using System.Linq;
     using System.Text;
 
+      public  class UploadRecord
+        {
+          public UploadRecord()
+          { }
+          public UploadRecord(string id, string retailer, string vendor, string downloadpath, string uploadpath, string uploadtime, bool issla, bool isongoing, string filetype,string filename)
+          {
+              Id = id;
+              Retailer = retailer;
+              Vendor = vendor;
+              Downloadpath = downloadpath;
+              Uploadpath = uploadpath;
+              UploadTime = uploadtime;
+              isSLA = issla;
+              isOngoing = isongoing;
+              FileType = filetype;
+              FileName = filename;
+          }
+          string Id;
+
+          public string c_id
+          {
+              get { return Id; }
+              set { Id = value; }
+          }
+          string Retailer;
+
+          public string c_retailer
+          {
+              get { return Retailer; }
+              set { Retailer = value; }
+          }
+          string Vendor;
+
+          public string c_vendor
+          {
+              get { return Vendor; }
+              set { Vendor = value; }
+          }
+          string Downloadpath;
+
+          public string c_downloadpath
+          {
+              get { return Downloadpath; }
+              set { Downloadpath = value; }
+          }
+          string Uploadpath;
+
+          public string c_uploadpath
+          {
+              get { return Uploadpath; }
+              set { Uploadpath = value; }
+          }
+          string UploadTime;
+
+          public string c_uploadtime
+          {
+              get { return UploadTime; }
+              set { UploadTime = value; }
+          }
+          bool isSLA;
+
+          public bool c_issla
+          {
+              get { return isSLA; }
+              set { isSLA = value; }
+          }
+          bool isOngoing;
+
+          public bool c_isongoing
+          {
+              get { return isOngoing; }
+              set { isOngoing = value; }
+          }
+          string FileType;
+
+          public string c_filetype
+          {
+              get { return FileType; }
+              set { FileType = value; }
+          }
+          string FileName;
+
+          public string c_filename
+          {
+              get { return FileName; }
+              set { FileName = value; }
+          }
+        }
 
         public class UploadFilePath
         {

@@ -21,6 +21,50 @@ namespace PullingStatusTool
         List<PullingPerformance> ListPerformance = new List<PullingPerformance>();
         List<UploadFileSet> ListFileset = new List<UploadFileSet>();
         List<UploadFilePath> ListUploadPath = new List<UploadFilePath>();
+        List<UploadRecord> ListUploadRecord = new List<UploadRecord>();
+
+        public void getUploadRecordData(string STDate,string EDDate,string isSLA,string isOngoing)
+        {
+            string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
+            SqlConnection mySqlConnection = new SqlConnection();
+            mySqlConnection.ConnectionString = connStr;
+            string SLA =isSLA=="All"?"":" and isSLA = '"+isSLA+"'";
+            string ongoing= isOngoing=="All"?"":" and isongoing = '"+isOngoing+"'";
+            string sqlStr = "select * from FileUploadRecord  where "
+                                        + " uploadtime >='" + STDate+"' and "
+                                        + " uploadtime <='" + EDDate+"'"
+                                        + SLA
+                                        + ongoing;
+
+
+            try
+            {
+                mySqlConnection.Open();//打开连接  
+                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
+                SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
+                while (sdr.Read())
+                {
+                    UploadRecord uploadPath = new UploadRecord(sdr[0].ToString(), sdr[1].ToString(), sdr[2].ToString(), sdr[3].ToString(), sdr[4].ToString(), sdr[5].ToString(), (bool)sdr[6],(bool)sdr[7],sdr[8].ToString(),sdr[9].ToString());
+                    ListUploadRecord.Add(uploadPath);
+                }
+                sdr.Close();//读取完毕即关闭  
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                mySqlConnection.Close();//关闭连接  
+            }
+
+        }
 
         public void getUploadPathByIDData(string fileSetId)
         {
@@ -1000,6 +1044,12 @@ namespace PullingStatusTool
 
 
         }
+        public List<UploadRecord> getUploadRecord(string STtime, string EDtime, string ongoing, string SLA)
+        {
+            getUploadRecordData(STtime, EDtime, SLA, ongoing);
+            return ListUploadRecord;
+        }
+
         public List<UploadFilePath> getUploadPath()
         {
             return ListUploadPath;
