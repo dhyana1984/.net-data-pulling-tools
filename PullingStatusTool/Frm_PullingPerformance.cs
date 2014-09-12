@@ -29,7 +29,7 @@ namespace PullingStatusTool
 
         }
 
-        List<PullingPerformance> ListPerformance = new List<PullingPerformance>();
+     
         string weekly = "";
         private void getDS()
         {
@@ -40,10 +40,7 @@ namespace PullingStatusTool
             string weeklyPeriod = weekly;
             //resdate = dailydate == "" ? "" : String.Format("%{0:yyyy-MM-dd}-%", Convert.ToDateTime(dailydate.Replace("%", "")).AddDays(-7).ToString("yyyy-MM-dd"));//如果查daily的，也要讲7天前的日期传过去作为查询R7文件的条件
 
-                db_helper.getSLAPerformanceStatus(  dailydate, weeklyPeriod);
-
-            ListPerformance = db_helper.getPerformance();
-            GC_Performance.DataSource = ListPerformance;
+                GC_Performance.DataSource = db_helper.getPerformance(dailydate, weeklyPeriod);
 
         }
 

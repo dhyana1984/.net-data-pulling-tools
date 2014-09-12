@@ -54,8 +54,7 @@ namespace PullingStatusTool
         private void getDS()
         {
             DB_Helper dbhelp = new DB_Helper();
-            dbhelp.getUploadPathByIDData(FileSetid);
-            gridControl1.DataSource = dbhelp.getUploadPath();
+            gridControl1.DataSource = dbhelp.getUploadPath(FileSetid);
         
         }
 

@@ -376,7 +376,7 @@ namespace PullingStatusTool
             return period;
         }
 
-        public void getSLAChart( string startDate, string endDate)
+        public void getSLAChartData( string startDate, string endDate)
         {
             DB_Helper db_helper = new DB_Helper();
             string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
@@ -494,7 +494,7 @@ namespace PullingStatusTool
             return FileCount;
         }
 
-        public void getRepullChart( string startDate, string endDate)
+        public void getRepullChartData( string startDate, string endDate)
         {
             string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
             SqlConnection mySqlConnection = new SqlConnection();
@@ -1050,23 +1050,26 @@ namespace PullingStatusTool
             return ListUploadRecord;
         }
 
-        public List<UploadFilePath> getUploadPath()
+        public List<UploadFilePath> getUploadPath(string FileSetid)
         {
+            getUploadPathByIDData(FileSetid);
             return ListUploadPath;
         }
 
         public List<UploadFileSet> getFileSet()
         {
+            getFileSetData();
             return ListFileset;
         }
-        public List<PullingPerformance> getPerformance()
+        public List<PullingPerformance> getPerformance( string dayTime, string period)
         {
+            getSLAPerformanceStatus(dayTime, period);
             return ListPerformance;
         
         }
         public List<ReportExpect> getReportExpect()
         {
-
+            getReportExpectData();
             return ListReportExpect;
         }
         public List<ReportDetails> getReportDetail()
@@ -1085,8 +1088,14 @@ namespace PullingStatusTool
         
         }
 
-        public List<Repull> getRePullChart()
+        public List<Repull> getRePullChart( string startDate, string endDate)
         {
+            getRepullChartData(startDate, endDate); 
+            return ListRePullChart;
+        }
+        public List<Repull> getSLAChart(string startDate, string endDate)
+        {
+            getSLAChartData(startDate, endDate);
             return ListRePullChart;
         }
         public List<ServerStatus> getServerStatus()
@@ -1094,9 +1103,9 @@ namespace PullingStatusTool
 
             return ListServerstatus.OrderBy(t => t.c_vendor).ThenBy(t => t.c_dataType).ToList();
         }
-        public List<DataPullingFileCountStatus> getPullingFileCount()
+        public List<DataPullingFileCountStatus> getPullingFileCount(string dayTime, string period, string restatementDate, bool attribute, bool isMonday)
         {
-
+            getPullingFileCountStatus_view(dayTime, period, restatementDate, true, isMonday);
              //去掉重复行，并将文件数累加，针对同个vendor的同种类型数据在不同server上跑
             foreach (DataPullingFileCountStatus t in ListPullFileStatus)
             {

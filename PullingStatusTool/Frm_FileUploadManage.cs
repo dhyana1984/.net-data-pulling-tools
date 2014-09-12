@@ -46,7 +46,7 @@ namespace PullingStatusTool
         private void getDS()
         {
             DB_Helper dbhelper = new DB_Helper();
-            dbhelper.getFileSetData();
+       
             gridControl1.DataSource = dbhelper.getFileSet();
         
         }

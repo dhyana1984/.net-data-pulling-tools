@@ -12,7 +12,6 @@ namespace PullingStatusTool
        static public void getReportExpect()
         {
             DB_Helper db_helper = new DB_Helper();
-            db_helper.getReportExpectData();
             LstReportExpect = db_helper.getReportExpect();
 
         }

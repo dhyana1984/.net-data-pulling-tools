@@ -50,10 +50,9 @@ namespace PullingStatusTool
             DB_Helper db_heler = new DB_Helper();
             List<Repull> ListRepullChart = new List<Repull>();
        
-                    db_heler.getRepullChart(  startDate, endDate);
-                
 
-             ListRepullChart = db_heler.getRePullChart();
+
+                    ListRepullChart = db_heler.getRePullChart(startDate, endDate);
 
              Chart_Repull.DataSource = null;
              Chart_Repull.DataSource = ListRepullChart;

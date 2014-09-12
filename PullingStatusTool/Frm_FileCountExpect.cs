@@ -20,24 +20,24 @@ namespace PullingStatusTool
 
         private void Frm_FileCountExpect_Load(object sender, EventArgs e)
         {
-        
-                ListFileExpect.getReportExpect();
-                report = ListFileExpect.LstReportExpect;
-            
-            
-            GC_FileExpect.DataSource = ListFileExpect.LstReportExpect;
+
+            getDS();
           
         }
-        List<ReportExpect> report = new List<ReportExpect>();
+        
+        private void getDS()
+        {
+        DB_Helper dbhelper = new DB_Helper();
+        GC_FileExpect.DataSource=dbhelper.getReportExpect();
+        
+        }
         private void btn_AddFileExpect_Click(object sender, EventArgs e)
         {
             if (txt_dayofwk.Text.Trim()!=""&&txt_DataType.Text.Trim() != "" && txt_FileExpect.Text != ""  && txt_Vendor.Text != "")
             {
                 DB_Helper db = new DB_Helper();
                 db.insertNewFileExpect(txt_dayofwk.Text.Trim(),txt_Vendor.Text, txt_DataType.Text, txt_SubGrp.Text, txt_FileExpect.Text,  txt_delay.Text);
-                ListFileExpect.getReportExpect();
-                GC_FileExpect.DataSource = ListFileExpect.LstReportExpect;
-                report = ListFileExpect.LstReportExpect;
+                getDS();
             }
             else
             {
@@ -67,10 +67,8 @@ namespace PullingStatusTool
                 updateFileExpect(file);
                 id = "";
             }
-                     
-            
-            ListFileExpect.getReportExpect();
-            GC_FileExpect.DataSource = ListFileExpect.LstReportExpect;
+
+            getDS();
         }
 
         private void btn_Delete_Click(object sender, EventArgs e)
@@ -78,9 +76,7 @@ namespace PullingStatusTool
             DB_Helper db = new DB_Helper();
             string id = gridView1.GetFocusedRowCellValue("c_expfileid").ToString().Trim();
             db.deleteFileExpect(id);
-            ListFileExpect.getReportExpect();
-            GC_FileExpect.DataSource = ListFileExpect.LstReportExpect;
-            report = ListFileExpect.LstReportExpect;
+            getDS();
         }
          string id = "";
         private void GC_FileExpect_MouseDoubleClick(object sender, MouseEventArgs e)
