@@ -137,6 +137,7 @@ namespace PullingStatusTool
                     frm.Show();
                 }
             }
+            else
             {
 
                 Frm_FileCountExpect frm = new Frm_FileCountExpect();

@@ -1,0 +1,85 @@
+select     
+case 
+when reportname like '%cat%' or ScheduleName like '%Category%' or configname like '%Category%'  or ScheduleName like '%Cattrib%' or configname like '%Cattrib%' then vendor +' Category' else vendor end vendor,
+case  
+when  vendor not like '%Pepsico%' and reportname not like '% dc %' and reportname not like '%attri%' and reportname like '%store%' or (reportname like '%stock%' or ReportName like '%inv1%' or ReportName like '%inv2%')    then 'Store Inventory' 
+when reportname like '%DC %' and reportname not like '%attrib%' and reportname not like '%store%' and configname not like '%qtg%' and ReportName not like '%receipt%'  then 'DC Inventory' 
+when(reportname like '%pos%' or ReportName like '%daily%')and configname not like '%PCNA%' and ConfigName not like '%flna%' and ConfigName not like '%qtg%' and ConfigName not like '%Gatorade%' and reportname not like '%valid%' and CHARINDEX('WK',ReportName)=0  then 'Daily POS' 
+when reportname like '%valid%'    then 'Daily Valid' 
+when 1=1 and reportname not like '%store%' and reportname like '%attri%'  and reportname not like '%msc%' then 'Item Attribute' 
+when 1=1 and reportname like '%store%' and reportname  like '%attri%' and (ConfigName not like '%flna%' or ScheduleName not like '%flna%') and (ConfigName not like '%pcna%' or ScheduleName not like '%pcna%') and (ConfigName not like '%qtg%' or ScheduleName not like '%qtg%')  and reportname not like '%msc%'  then 'Store Attribute' 
+when ReportName like '%pos%' and CHARINDEX('WK',ReportName)>0   then 'Weekly POS' 
+when ReportName like '%cat%'  and ReportName not like '%attrib%' then 'Weekly POS' 
+when reportname  like '%Rece%' and Vendor not like '%pepsico%'   then 'DC Receipt' 
+when configname like '%flna%' and (reportname like '%pos%' or reportname like '%daily%') and reportname not like '%valid%'  then 'FLNA - Daily POS' 
+when reportname like '%store%' and configname  like '%flna%' and reportname not like '%dc%' and reportname not like '%attri%'    then 'FLNA - Store Inventory' 
+when configname like '%PCNA%'  and (reportname like '%pos%' or reportname like '%daily%') and reportname not like '%valid%'  then 'PCNA - Daily POS'  
+when reportname like '%store%' and configname  like '%PCNA%' and reportname not like '%dc%' and reportname not like '%attri%'    then 'PCNA - Store Inventory'
+when configname like '%qtg%'  and (reportname like '%pos%' or reportname like '%daily%') and reportname not like '%valid%'  then 'QTG - Daily POS'  
+when reportname like '%store%' and configname  like '%qtg%' and reportname not like '%dc%' and reportname not like '%attri%'    then 'QTG - Store Inventory'
+when configname like '%Gatorade%'  and (reportname like '%pos%' or reportname like '%daily%') and reportname not like '%valid%'  then 'Gatorade - Daily POS'  
+when reportname like '%store%' and configname  like '%Gatorade%' and reportname not like '%dc%' and reportname not like '%attri%'    then 'Gatorade - Store Inventory'
+when reportname not like '%store%' and configname  like '%qtg%' and reportname  like '%dc%' and reportname not like '%attri%' and ReportName not like '%receipt%'   then 'QTG - DC Inventory'
+when ReportName like '%receipt%' and vendor like '%pepsico%' then 'QTG - DC Receipts'  
+when (configname like '%qtg%' or ScheduleName like '%qtg%') and reportname like '%wk sales%'  then 'QTG Weekly Sales' 
+when (configname like '%flna%' or ScheduleName like '%flna%') and reportname like '%wk sales%'  then 'FLNA Weekly Sales' 
+when configname not like '%flna%' and ScheduleName not like '%qtg%' and reportname like '% sales %' then 'Weekly Sales' 
+when reportname like '% msc %' and ReportName like '%attri%' and reportname not like '%inv%'  then 'Target Store Attributes - MSC'
+end datatype,
+case
+when reportname not like '%r7%' and (reportname like '%pos%' or ReportName like '%daily%') and reportname not like '%valid%' and CHARINDEX('WK',ReportName)=0  then 'Current' 
+when  2=2 and reportname  like '%r7%' and (reportname like '%pos%' or ReportName like '%daily%') and reportname not like '%valid%' and CHARINDEX('WK',ReportName)=0 then 'Restatement'
+when (ConfigName like '%inv1%' or ScheduleName like '%inv1%' or ReportName like 'inv1') and configname not like '%pcna%' and configname not like '%flna%' and configname not like '%qtg%' and reportname not like '%dc%' and reportname not like '%attri%'   then 'INV1' 
+when (ConfigName like '%inv2%' or ScheduleName like '%inv2%' or ReportName like 'inv2') and configname not like '%pcna%' and configname not like '%flna%' and configname not like '%qtg%' and reportname not like '%dc%' and reportname not like '%attri%'   then 'INV2' 
+when reportname not like '%store%' and reportname like '%attri%'   and (ConfigName  like '%flna%' or ScheduleName  like '%flna%') then 'FLNA' 
+when reportname not like '%store%' and reportname like '%attri%'   and (ConfigName  like '%PCNA%' or ScheduleName  like '%PCNA%') then 'PCNA' 
+when reportname not like '%store%' and reportname like '%attri%'   and (ConfigName  like '%QTG%' or ScheduleName  like '%QTG%') then 'QTG' 
+when reportname not like '%store%' and reportname like '%attri%'   and (ConfigName  like '%Gatorade%' or ScheduleName  like '%Gatorade%') then 'Gatorade' 
+else ''
+end Subgroup,
+COUNT(distinct reportname) filecount,status, MAX(EndFormattingTime) finishTime,IP
+from view_pullingstatus
+where
+group by 
+status,
+case 
+when reportname like '%cat%' or ScheduleName like '%Category%' or configname like '%Category%'  or ScheduleName like '%Cattrib%' or configname like '%Cattrib%' then vendor +' Category' else vendor end ,
+case  
+when  vendor not like '%Pepsico%' and reportname not like '% dc %' and reportname not like '%attri%' and reportname like '%store%' or (reportname like '%stock%' or ReportName like '%inv1%' or ReportName like '%inv2%')    then 'Store Inventory' 
+when reportname like '%DC %' and reportname not like '%attrib%' and reportname not like '%store%' and configname not like '%qtg%' and ReportName not like '%receipt%'  then 'DC Inventory' 
+when(reportname like '%pos%' or ReportName like '%daily%')and configname not like '%PCNA%' and ConfigName not like '%flna%' and ConfigName not like '%qtg%' and ConfigName not like '%Gatorade%' and reportname not like '%valid%' and CHARINDEX('WK',ReportName)=0  then 'Daily POS' 
+when reportname like '%valid%'    then 'Daily Valid' 
+when 1=1 and reportname not like '%store%' and reportname like '%attri%'  and reportname not like '%msc%' then 'Item Attribute' 
+when 1=1 and reportname like '%store%' and reportname  like '%attri%' and (ConfigName not like '%flna%' or ScheduleName not like '%flna%') and (ConfigName not like '%pcna%' or ScheduleName not like '%pcna%') and (ConfigName not like '%qtg%' or ScheduleName not like '%qtg%')  and reportname not like '%msc%'  then 'Store Attribute' 
+when ReportName like '%pos%' and CHARINDEX('WK',ReportName)>0   then 'Weekly POS' 
+when ReportName like '%cat%'   and ReportName not like '%attrib%' then 'Weekly POS' 
+when reportname  like '%Rece%' and Vendor not like '%pepsico%'   then 'DC Receipt' 
+when configname like '%flna%' and (reportname like '%pos%' or reportname like '%daily%') and reportname not like '%valid%'  then 'FLNA - Daily POS' 
+when reportname like '%store%' and configname  like '%flna%' and reportname not like '%dc%' and reportname not like '%attri%'    then 'FLNA - Store Inventory' 
+when configname like '%PCNA%'  and (reportname like '%pos%' or reportname like '%daily%') and reportname not like '%valid%'  then 'PCNA - Daily POS'  
+when reportname like '%store%' and configname  like '%PCNA%' and reportname not like '%dc%' and reportname not like '%attri%'    then 'PCNA - Store Inventory'
+when configname like '%qtg%'  and (reportname like '%pos%' or reportname like '%daily%') and reportname not like '%valid%'  then 'QTG - Daily POS'  
+when reportname like '%store%' and configname  like '%qtg%' and reportname not like '%dc%' and reportname not like '%attri%'    then 'QTG - Store Inventory'
+when configname like '%Gatorade%'  and (reportname like '%pos%' or reportname like '%daily%') and reportname not like '%valid%'  then 'Gatorade - Daily POS'  
+when reportname like '%store%' and configname  like '%Gatorade%' and reportname not like '%dc%' and reportname not like '%attri%'    then 'Gatorade - Store Inventory'
+when reportname not like '%store%' and configname  like '%qtg%' and reportname  like '%dc%' and reportname not like '%attri%' and ReportName not like '%receipt%'   then 'QTG - DC Inventory'
+when ReportName like '%receipt%' and vendor like '%pepsico%' then 'QTG - DC Receipts'  
+when (configname like '%qtg%' or ScheduleName like '%qtg%') and reportname like '%wk sales%'  then 'QTG Weekly Sales' 
+when (configname like '%flna%' or ScheduleName like '%flna%') and reportname like '%wk sales%'  then 'FLNA Weekly Sales' 
+when configname not like '%flna%' and ScheduleName not like '%qtg%' and reportname like '% sales %' then 'Weekly Sales' 
+when reportname like '% msc %' and ReportName like '%attri%' and reportname not like '%inv%'  then 'Target Store Attributes - MSC'
+end,
+case
+when reportname not like '%r7%' and (reportname like '%pos%' or ReportName like '%daily%') and reportname not like '%valid%' and CHARINDEX('WK',ReportName)=0  then 'Current' 
+when 2=2 and  reportname  like '%r7%' and (reportname like '%pos%' or ReportName like '%daily%') and reportname not like '%valid%' and CHARINDEX('WK',ReportName)=0 then 'Restatement'
+when (ConfigName like '%inv1%' or ScheduleName like '%inv1%' or ReportName like 'inv1') and configname not like '%pcna%' and configname not like '%flna%' and configname not like '%qtg%' and reportname not like '%dc%' and reportname not like '%attri%'   then 'INV1' 
+when (ConfigName like '%inv2%' or ScheduleName like '%inv2%' or ReportName like 'inv2') and configname not like '%pcna%' and configname not like '%flna%' and configname not like '%qtg%' and reportname not like '%dc%' and reportname not like '%attri%'   then 'INV2' 
+when reportname not like '%store%' and reportname like '%attri%'   and (ConfigName  like '%flna%' or ScheduleName  like '%flna%') then 'FLNA' 
+when reportname not like '%store%' and reportname like '%attri%'   and (ConfigName  like '%PCNA%' or ScheduleName  like '%PCNA%') then 'PCNA' 
+when reportname not like '%store%' and reportname like '%attri%'   and (ConfigName  like '%QTG%' or ScheduleName  like '%QTG%') then 'QTG' 
+when reportname not like '%store%' and reportname like '%attri%'   and (ConfigName  like '%Gatorade%' or ScheduleName  like '%Gatorade%') then 'Gatorade' 
+else ''
+end,IP
+order by vendor,datatype
+
+
