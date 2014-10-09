@@ -30,7 +30,7 @@ namespace PullingStatusTool
             mySqlConnection.ConnectionString = connStr;
             string SLA =isSLA=="All"?"":" and isSLA = '"+isSLA+"'";
             string ongoing= isOngoing=="All"?"":" and isongoing = '"+isOngoing+"'";
-            string sqlStr = "select * from FileUploadRecord  where "
+            string sqlStr = @"select * from FileUploadRecord  where "
                                         + " uploadtime >='" + STDate+"' and "
                                         + " uploadtime <='" + EDDate+"'"
                                         + SLA

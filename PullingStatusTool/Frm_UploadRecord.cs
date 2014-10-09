@@ -30,8 +30,8 @@ namespace PullingStatusTool
         private void getDS()
         {
             DB_Helper dbhelper = new DB_Helper();
-            string STTime = AMESTime.BeijingTimeToAMESTime(txt_STtime.Text + " 00:00:00");
-            string EDTime = AMESTime.BeijingTimeToAMESTime(txt_EDtime.Text + " 23:59:59");
+            string STTime = txt_STtime.Text + " 00:00:00";
+            string EDTime =txt_EDtime.Text + " 23:59:59";
             string isSLA = "All";
             string isOngoing = "All";
             switch (Rdg_SLA.SelectedIndex)
