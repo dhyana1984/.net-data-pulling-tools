@@ -18,7 +18,7 @@ namespace PullingStatusTool
 
         private void Frm_UploadRecord_Load(object sender, EventArgs e)
         {
-            txt_STtime.Text="1/1 2014";
+            txt_STtime.Text = DateTime.Now.ToShortDateString();
             txt_EDtime.Text=DateTime.Now.ToShortDateString();
         }
 
