@@ -217,7 +217,7 @@ namespace PullingStatusTool
             string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
             SqlConnection mySqlConnection = new SqlConnection();
             mySqlConnection.ConnectionString = connStr;
-            string sqlStr = "insert into   FileUploadSet (Retailer,Vendor,DownloadPath,FileType,SLATime,Frequency,Dayof,Flag) values"
+            string sqlStr = "insert into   FileUploadSet (Retailer,Vendor,DownloadPath,FileType,SLATime,Frequency,Dayof,Datalag,Flag) values"
                                     + "('" + fileSet.c_retailer + "',"
                                     + "'" + fileSet.c_vendor + "',"
                                     + "'" + fileSet.c_downloadpath + "',"
@@ -225,6 +225,7 @@ namespace PullingStatusTool
                                     + "'" + fileSet.c_slatime + "',"
                                     + "'" + fileSet.c_freqency + "',"
                                     + "'" + fileSet.c_dayof + "',"
+                                    + "'" + fileSet.c_datalag + "',"
                                     + "'" + fileSet.c_flag + "' )";
                   
             try
@@ -265,6 +266,7 @@ namespace PullingStatusTool
                                     + "SLATime ='" + fileSet.c_slatime + "',"
                                     + "Frequency ='" + fileSet.c_freqency + "',"
                                     + "Dayof ='" + fileSet.c_dayof + "',"
+                                     + "Datalag ='" + fileSet.c_datalag + "',"
                                     + "Flag ='" + fileSet.c_flag + "' "
                                     +" Where id=" + fileSet.c_id;
             try
@@ -311,7 +313,7 @@ namespace PullingStatusTool
                 SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
                 while (sdr.Read())
                 {
-                    UploadFileSet fileset = new UploadFileSet(sdr[0].ToString(), sdr[1].ToString(), sdr[2].ToString(), sdr[3].ToString(), sdr[4].ToString(), sdr[5].ToString(),sdr[6].ToString(),sdr[7].ToString() ,(bool)sdr[10]);
+                    UploadFileSet fileset = new UploadFileSet(sdr[0].ToString(), sdr[1].ToString(), sdr[2].ToString(), sdr[3].ToString(), sdr[4].ToString(), sdr[5].ToString(),sdr[6].ToString(),sdr[7].ToString() ,(bool)sdr[10],int.Parse(sdr[9].ToString()));
                     ListFileset.Add(fileset);
                 }
                 sdr.Close();//读取完毕即关闭  

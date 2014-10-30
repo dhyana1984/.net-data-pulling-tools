@@ -90,6 +90,7 @@
             this.gridView1.GridControl = this.GC_FileExpect;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.CopyToClipboardWithColumnHeaders = false;
+            this.gridView1.OptionsView.ShowAutoFilterRow = true;
             // 
             // vendor
             // 
@@ -99,6 +100,8 @@
             this.vendor.OptionsColumn.AllowEdit = false;
             this.vendor.OptionsColumn.AllowSize = false;
             this.vendor.OptionsColumn.ReadOnly = true;
+            this.vendor.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.vendor.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.vendor.Visible = true;
             this.vendor.VisibleIndex = 1;
             this.vendor.Width = 170;
@@ -111,6 +114,8 @@
             this.dataType.OptionsColumn.AllowEdit = false;
             this.dataType.OptionsColumn.AllowSize = false;
             this.dataType.OptionsColumn.ReadOnly = true;
+            this.dataType.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.dataType.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.dataType.Visible = true;
             this.dataType.VisibleIndex = 2;
             this.dataType.Width = 176;
@@ -121,6 +126,8 @@
             this.subgroup.FieldName = "c_subgroup";
             this.subgroup.Name = "subgroup";
             this.subgroup.OptionsColumn.AllowEdit = false;
+            this.subgroup.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.subgroup.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.subgroup.Visible = true;
             this.subgroup.VisibleIndex = 3;
             this.subgroup.Width = 157;

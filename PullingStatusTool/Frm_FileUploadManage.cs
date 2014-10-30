@@ -30,7 +30,7 @@ namespace PullingStatusTool
                 fileset.c_retailer = txt_retailer.Text;
                 fileset.c_slatime = txt_SLA.Text;
                 fileset.c_vendor = txt_vendor.Text;
-
+                fileset.c_datalag = int.Parse(txtDatalag.Text);
                 if (dbhelper.addFileSet(fileset))
                 {
                     getDS();
@@ -64,6 +64,7 @@ namespace PullingStatusTool
                 cbx_Dayof.Text = gridView1.GetFocusedRowCellValue("c_dayof").ToString().Trim();
                 txt_downloadpath.Text = gridView1.GetFocusedRowCellValue("c_downloadpath").ToString().Trim();
                 cbx_enable.Checked = (bool)gridView1.GetFocusedRowCellValue("c_flag");
+                txtDatalag.Text = gridView1.GetFocusedRowCellValue("c_datalag").ToString();
 
 
 
@@ -120,6 +121,7 @@ namespace PullingStatusTool
                     fileset.c_slatime = txt_SLA.Text;
                     fileset.c_vendor = txt_vendor.Text;
                     fileset.c_id = FileSetid;
+                    fileset.c_datalag = int.Parse(txtDatalag.Text);
                     if (dbhelper.editFileSet(fileset))
                     {
                         getDS();

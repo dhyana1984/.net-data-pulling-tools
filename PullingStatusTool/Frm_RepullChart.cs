@@ -45,22 +45,41 @@ namespace PullingStatusTool
         }
        
        
-        private void getDS()
+   
+         private void getDS()
         {
-            DB_Helper db_heler = new DB_Helper();
-            List<Repull> ListRepullChart = new List<Repull>();
-       
-
-
-                    ListRepullChart = db_heler.getRePullChart(startDate, endDate);
-
-             Chart_Repull.DataSource = null;
-             Chart_Repull.DataSource = ListRepullChart;
-            
-                   
+        DB_Helper dbhelper = new DB_Helper();
+        GC_FileExpect.DataSource=dbhelper.getReportExpect();
+        
         }
 
 
 
-    }
+
+
+         private void txt_Vendor_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
+         {
+          gridView1.ActiveFilterString = "c_vendor Contains " + txt_Vendor + "";
+          //   gridView1.ShowFilterEditor
+            // MessageBox.Show(gridView1.ActiveFilterString);
+       
+         }
+
+         private void gridView1_ColumnFilterChanged(object sender, EventArgs e)
+         {
+        
+         }
+
+         private void FuzzyQuery()
+         {
+             string newFilter = string.Empty;
+             string filter = gridView1.ActiveFilterString;
+
+             gridView1.ActiveFilterString = newFilter;
+         }  
+        }
+
+
+
+    
 }

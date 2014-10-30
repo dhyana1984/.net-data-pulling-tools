@@ -36,6 +36,7 @@
             this.downloadpath = new DevExpress.XtraGrid.Columns.GridColumn();
             this.filetype = new DevExpress.XtraGrid.Columns.GridColumn();
             this.slatime = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.datalag = new DevExpress.XtraGrid.Columns.GridColumn();
             this.frequency = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dayof = new DevExpress.XtraGrid.Columns.GridColumn();
             this.enable = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -58,6 +59,8 @@
             this.btn_Save = new DevExpress.XtraEditors.SimpleButton();
             this.txt_SLA = new DevExpress.XtraEditors.TimeEdit();
             this.cbx_Dayof = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.txtDatalag = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbx_enable.Properties)).BeginInit();
@@ -68,6 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_retailer.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_SLA.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbx_Dayof.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDatalag.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl1
@@ -92,12 +96,14 @@
             this.downloadpath,
             this.filetype,
             this.slatime,
+            this.datalag,
             this.frequency,
             this.dayof,
             this.enable,
             this.id});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.ShowAutoFilterRow = true;
             // 
             // retailer
             // 
@@ -105,9 +111,11 @@
             this.retailer.FieldName = "c_retailer";
             this.retailer.Name = "retailer";
             this.retailer.OptionsColumn.AllowEdit = false;
+            this.retailer.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.retailer.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.retailer.Visible = true;
             this.retailer.VisibleIndex = 0;
-            this.retailer.Width = 90;
+            this.retailer.Width = 83;
             // 
             // vendor
             // 
@@ -115,9 +123,11 @@
             this.vendor.FieldName = "c_vendor";
             this.vendor.Name = "vendor";
             this.vendor.OptionsColumn.AllowEdit = false;
+            this.vendor.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.vendor.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.vendor.Visible = true;
             this.vendor.VisibleIndex = 1;
-            this.vendor.Width = 88;
+            this.vendor.Width = 81;
             // 
             // downloadpath
             // 
@@ -125,9 +135,11 @@
             this.downloadpath.FieldName = "c_downloadpath";
             this.downloadpath.Name = "downloadpath";
             this.downloadpath.OptionsColumn.AllowEdit = false;
+            this.downloadpath.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.downloadpath.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.downloadpath.Visible = true;
             this.downloadpath.VisibleIndex = 2;
-            this.downloadpath.Width = 459;
+            this.downloadpath.Width = 381;
             // 
             // filetype
             // 
@@ -135,9 +147,11 @@
             this.filetype.FieldName = "c_filetype";
             this.filetype.Name = "filetype";
             this.filetype.OptionsColumn.AllowEdit = false;
+            this.filetype.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.filetype.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.filetype.Visible = true;
             this.filetype.VisibleIndex = 3;
-            this.filetype.Width = 84;
+            this.filetype.Width = 86;
             // 
             // slatime
             // 
@@ -146,8 +160,18 @@
             this.slatime.Name = "slatime";
             this.slatime.OptionsColumn.AllowEdit = false;
             this.slatime.Visible = true;
-            this.slatime.VisibleIndex = 4;
-            this.slatime.Width = 63;
+            this.slatime.VisibleIndex = 5;
+            this.slatime.Width = 64;
+            // 
+            // datalag
+            // 
+            this.datalag.Caption = "Datalag";
+            this.datalag.FieldName = "c_datalag";
+            this.datalag.Name = "datalag";
+            this.datalag.OptionsColumn.AllowEdit = false;
+            this.datalag.Visible = true;
+            this.datalag.VisibleIndex = 4;
+            this.datalag.Width = 76;
             // 
             // frequency
             // 
@@ -155,9 +179,11 @@
             this.frequency.FieldName = "c_freqency";
             this.frequency.Name = "frequency";
             this.frequency.OptionsColumn.AllowEdit = false;
+            this.frequency.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.frequency.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.frequency.Visible = true;
-            this.frequency.VisibleIndex = 5;
-            this.frequency.Width = 62;
+            this.frequency.VisibleIndex = 6;
+            this.frequency.Width = 63;
             // 
             // dayof
             // 
@@ -166,8 +192,8 @@
             this.dayof.Name = "dayof";
             this.dayof.OptionsColumn.AllowEdit = false;
             this.dayof.Visible = true;
-            this.dayof.VisibleIndex = 6;
-            this.dayof.Width = 70;
+            this.dayof.VisibleIndex = 7;
+            this.dayof.Width = 72;
             // 
             // enable
             // 
@@ -176,8 +202,8 @@
             this.enable.Name = "enable";
             this.enable.OptionsColumn.AllowEdit = false;
             this.enable.Visible = true;
-            this.enable.VisibleIndex = 7;
-            this.enable.Width = 89;
+            this.enable.VisibleIndex = 8;
+            this.enable.Width = 99;
             // 
             // id
             // 
@@ -188,11 +214,11 @@
             // 
             // cbx_enable
             // 
-            this.cbx_enable.Location = new System.Drawing.Point(511, 9);
+            this.cbx_enable.Location = new System.Drawing.Point(511, 36);
             this.cbx_enable.Name = "cbx_enable";
             this.cbx_enable.Properties.Caption = "Enable";
             this.cbx_enable.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cbx_enable.Size = new System.Drawing.Size(75, 19);
+            this.cbx_enable.Size = new System.Drawing.Size(66, 19);
             this.cbx_enable.TabIndex = 50;
             // 
             // txt_downloadpath
@@ -296,9 +322,9 @@
             // 
             // btn_Edit
             // 
-            this.btn_Edit.Location = new System.Drawing.Point(511, 32);
+            this.btn_Edit.Location = new System.Drawing.Point(768, 60);
             this.btn_Edit.Name = "btn_Edit";
-            this.btn_Edit.Size = new System.Drawing.Size(70, 23);
+            this.btn_Edit.Size = new System.Drawing.Size(87, 23);
             this.btn_Edit.TabIndex = 51;
             this.btn_Edit.Text = "UploadPath";
             this.btn_Edit.Click += new System.EventHandler(this.btn_Edit_Click);
@@ -351,11 +377,32 @@
             this.cbx_Dayof.Size = new System.Drawing.Size(100, 20);
             this.cbx_Dayof.TabIndex = 55;
             // 
+            // txtDatalag
+            // 
+            this.txtDatalag.EditValue = "1";
+            this.txtDatalag.Location = new System.Drawing.Point(557, 9);
+            this.txtDatalag.Name = "txtDatalag";
+            this.txtDatalag.Properties.Mask.EditMask = "##";
+            this.txtDatalag.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtDatalag.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.txtDatalag.Size = new System.Drawing.Size(100, 20);
+            this.txtDatalag.TabIndex = 56;
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Location = new System.Drawing.Point(511, 12);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(40, 13);
+            this.labelControl8.TabIndex = 57;
+            this.labelControl8.Text = "DataLag";
+            // 
             // Frm_FileUploadManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1050, 438);
+            this.Controls.Add(this.labelControl8);
+            this.Controls.Add(this.txtDatalag);
             this.Controls.Add(this.cbx_Dayof);
             this.Controls.Add(this.txt_SLA);
             this.Controls.Add(this.btn_Save);
@@ -390,6 +437,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_retailer.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_SLA.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbx_Dayof.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDatalag.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -426,5 +474,8 @@
         private DevExpress.XtraEditors.SimpleButton btn_Save;
         private DevExpress.XtraEditors.TimeEdit txt_SLA;
         private DevExpress.XtraEditors.ComboBoxEdit cbx_Dayof;
+        private DevExpress.XtraEditors.TextEdit txtDatalag;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraGrid.Columns.GridColumn datalag;
     }
 }
