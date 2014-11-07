@@ -38,7 +38,7 @@ namespace PullingStatusTool
             DB_Helper db_helper = new DB_Helper();
             string dayOfweek = Convert.ToDateTime(drp_DailyDate.Text).DayOfWeek.ToString();         
             DataPullingFileCountStatus fileStatus = new DataPullingFileCountStatus();
-            ListReportExpect = isMonday ? db_helper.getReportExpect().Where(t => t.c_dayofweek.Contains("VIP")).ToList() : db_helper.getReportExpect().Where(t => t.c_dayofweek.Contains(dayofweek)).ToList();
+            ListReportExpect = isMonday ? db_helper.getReportExpect("retailer='Target'").Where(t => t.c_dayofweek.Contains("VIP")).ToList() : db_helper.getReportExpect("retailer='Target'").Where(t => t.c_dayofweek.Contains(dayofweek)).ToList();
             
             string vendor = "";
             string subgroup = "";
@@ -259,6 +259,12 @@ namespace PullingStatusTool
                 Frm_UploadRecord uploadRecord = new Frm_UploadRecord();
                 uploadRecord.Show();
             }         
+        }
+
+        private void uploadStatusToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_ManuUplStas manuUpload = new Frm_ManuUplStas();
+            manuUpload.Show();
         }
 
 

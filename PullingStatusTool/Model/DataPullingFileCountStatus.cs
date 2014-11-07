@@ -23,6 +23,22 @@ namespace PullingStatusTool
             this.serverIP = ServerIP;
             this.finiTime = finishTime;
         }
+        string retailer;
+
+        public string c_retailer
+        {
+            get { return retailer; }
+            set { retailer = value; }
+        }
+        string freqency;
+
+        public string c_freqency
+        {
+            get { return freqency; }
+            set { freqency = value; }
+        }
+
+
         string finiTime;
 
         public string c_finishTime

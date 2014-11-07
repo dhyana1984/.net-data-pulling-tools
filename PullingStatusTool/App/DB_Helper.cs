@@ -505,7 +505,7 @@ namespace PullingStatusTool
             //                 " from v$RSI_TOOLS_TargetConn_EventStatus"+
             //                 " where eventstarttime >= '" + startDate + "' and eventstarttime <= '"+ endDate + "'";//SQL语句  
 
-            string sqlStr = "select repulldate,COUNT(*)-9 from "
+            string sqlStr = "select repulldate,COUNT(*) from "
                            + " (select ReportName,Vendor,CONVERT(VARCHAR(10),dateadd(hour,12,EndFormattingTime) ,120) repulldate from"
                            + " View_PullingStatus"
                            + " where EndFormattingTime between '"+startDate+"' and '"+endDate+"'"
@@ -743,7 +743,75 @@ namespace PullingStatusTool
 
 
         }
+        private void getNoTargetpullingStatus(string date)
+        {
+            string dailyDate = Convert.ToDateTime(date).ToString("yyyyMMdd");
+          //  string period = "dateadd(day,7,cast(20030520 as datetime))";
+            string sql = "SELECT "
+                              + " a.Retailer,"
+                              + " a.Vendor,"
+                              + " a.FileType,"
+                              + " COUNT(distinct FileName) filenumber,"
+                              + " max(uploadtime),"
+                              + " a.comments"
+                              + " FROM [TargetPullingStatus].[dbo].[FileUploadRecord] a join TargetPullingStatus.dbo.FileUploadSet b on"
+                              + " a.Retailer=b.Retailer and a.Vendor=b.Vendor and a.FileType=b.FileType"
+                              + " where  (a.Comments='Daily' and a.FileName like '%'+convert(char(8),dateadd(day,0-Datalag,'" + date + "'),112)+'%' ) or"
+                              + " (a.Comments='Weekly' and a.FileName like  '%'+convert(char(8),DATEADD(wk,  DATEDIFF(wk,0,'"+ date +"'),  0-Datalag*7) ,112)+'%' ) or"
+                              + " (a.Comments='Weekly' and a.FileName like  '%'+convert(char(8),DATEADD(wk,  DATEDIFF(wk,0,'" + date + "'),  5-Datalag*7) ,112)+'%' ) or"
+                              + " (a.Comments='Weekly' and a.FileName like  '%'+convert(char(8),DATEADD(wk,  DATEDIFF(wk,0,'" + date + "'),  3-Datalag*7) ,112)+'%' ) or"
+                              + " (a.Comments='Weekly' and a.FileName like  '%'+convert(char(8),DATEADD(wk,  DATEDIFF(wk,0,'" + date + "'),  1-Datalag*7) ,112)+'%' ) or"
+                              + " (a.Comments='Weekly' and a.FileName like  '%'+convert(char(8),DATEADD(wk,  DATEDIFF(wk,0,'"+ date +"'),  6-Datalag*7) ,112)+'%' )    "
+                              + " group by "
+                              + " a.Retailer,"
+                              + " a.Vendor,"
+                              + " a.Comments,"
+                              + " CONVERT(varchar(100), uploadtime, 23),"
+                              + " a.FileType"
+                              + " order by CONVERT(varchar(100), uploadtime, 23) desc,Retailer,Vendor,FileType";
+  
 
+                   string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
+                SqlConnection mySqlConnection = new SqlConnection();
+                mySqlConnection.ConnectionString = connStr;
+                try
+                {
+                    mySqlConnection.Open();//打开连接  
+                    SqlCommand mycmd = new SqlCommand(sql, mySqlConnection);//新建SqlCommand对象  
+                    SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
+                    while (sdr.Read())
+                    {
+                     
+                            DataPullingFileCountStatus fileCount = new DataPullingFileCountStatus();
+                            fileCount.c_retailer =sdr[0].ToString();
+                            fileCount.c_vendor=sdr[1].ToString();
+                            fileCount.c_dataType=sdr[2].ToString();
+                            fileCount.c_filecount=sdr[3].ToString();
+                            fileCount.c_finishTime=sdr[4].ToString();
+                            fileCount.c_freqency=sdr[5].ToString();
+                            ListPullFileStatus.Add(fileCount);
+                        
+                    }
+                    sdr.Close();//读取完毕即关闭  
+
+                }
+
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    mySqlConnection.Close();//关闭连接  
+
+
+                }
+        }
         public void getPullingFileCountStatus_view(string dayTime, string period, string restatementDate, bool attribute, bool isMonday)
         {
 
@@ -892,12 +960,12 @@ namespace PullingStatusTool
          
 
 
-        public void insertNewFileExpect(string dayofwk,string vendor, string datatype, string subgroup, string fileExpect,string delay)
+        public void insertNewFileExpect(string dayofwk,string vendor, string datatype, string subgroup, string fileExpect,string delay,string retailer)
         {
             string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
             SqlConnection mySqlConnection = new SqlConnection();
             mySqlConnection.ConnectionString = connStr;
-            string sqlStr = string.Format("insert into ReportDataType (dayofweek,vendor,datatype,subgroup,fileExpect,delayreason) values ('{0}','{1}','{2}','{3}','{4}','{5}')",dayofwk, vendor, datatype, subgroup, fileExpect,delay);
+            string sqlStr = string.Format("insert into ReportDataType (dayofweek,vendor,datatype,subgroup,fileExpect,delayreason,retailer) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", dayofwk, vendor, datatype, subgroup, fileExpect, delay, retailer);
             try
             {
                 mySqlConnection.Open();//打开连接  
@@ -936,12 +1004,14 @@ namespace PullingStatusTool
             string id = fileExpect.c_expfileid;
             string dayofweek = fileExpect.c_dayofweek;
             string delay = fileExpect.c_delayreason;
+            string retailer = fileExpect.c_retailer;
             string sqlStr = "update reportdatatype set "
                             + " dayofweek ='" + dayofweek + "',"
                             + " vendor='" + vendor + "',"
                             + " datatype='" + dataType + "',"
                             + " subgroup ='" + subGroup + "',"
                             + " fileexpect='" + fileCount + "',"
+                              + " retailer='" + retailer + "',"
                             + " delayreason='" + delay + "' "
                             + " where id = "+id;
           try  {
@@ -1006,12 +1076,13 @@ namespace PullingStatusTool
 
 
         }
-        public void getReportExpectData()
+        public void getReportExpectData(string retailer)
         {
             string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
             SqlConnection mySqlConnection = new SqlConnection();
             mySqlConnection.ConnectionString = connStr;
-            string sqlStr = "select vendor,datatype,subgroup,fileexpect,id,dayofweek,delayreason from ReportDataType";
+            string sqlStr = "select vendor,datatype,subgroup,fileexpect,id,dayofweek,delayreason,retailer from ReportDataType"
+                                    + " where " + retailer;
 
         
 
@@ -1022,7 +1093,7 @@ namespace PullingStatusTool
                 SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
                 while (sdr.Read())
                 {
-                    ReportExpect reportExpect = new ReportExpect(sdr[4].ToString(), sdr[5].ToString(), sdr[0].ToString(), sdr[1].ToString(), sdr[2].ToString(), sdr[3].ToString(),sdr[6].ToString(),"");
+                    ReportExpect reportExpect = new ReportExpect(sdr[4].ToString(), sdr[5].ToString(), sdr[0].ToString(), sdr[1].ToString(), sdr[2].ToString(), sdr[3].ToString(),sdr[6].ToString(),"",sdr[7].ToString());
 
                     ListReportExpect.Add(reportExpect);
                 }
@@ -1069,9 +1140,9 @@ namespace PullingStatusTool
             return ListPerformance;
         
         }
-        public List<ReportExpect> getReportExpect()
+        public List<ReportExpect> getReportExpect(string retailer)
         {
-            getReportExpectData();
+            getReportExpectData(retailer);
             return ListReportExpect;
         }
         public List<ReportDetails> getReportDetail()
@@ -1105,6 +1176,12 @@ namespace PullingStatusTool
 
             return ListServerstatus.OrderBy(t => t.c_vendor).ThenBy(t => t.c_dataType).ToList();
         }
+        public List<DataPullingFileCountStatus> getNoTargetFileCount(string date)
+        {
+             getNoTargetpullingStatus(date);
+            return ListPullFileStatus;
+        }
+
         public List<DataPullingFileCountStatus> getPullingFileCount(string dayTime, string period, string restatementDate, bool attribute, bool isMonday)
         {
             getPullingFileCountStatus_view(dayTime, period, restatementDate, true, isMonday);

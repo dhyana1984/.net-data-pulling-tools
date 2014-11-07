@@ -160,6 +160,8 @@
             this.id});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.ShowAutoFilterRow = true;
+            this.gridView1.OptionsView.ShowFooter = true;
             // 
             // retailer
             // 
@@ -167,6 +169,7 @@
             this.retailer.FieldName = "c_retailer";
             this.retailer.Name = "retailer";
             this.retailer.OptionsColumn.AllowEdit = false;
+            this.retailer.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
             this.retailer.Visible = true;
             this.retailer.VisibleIndex = 0;
             this.retailer.Width = 53;

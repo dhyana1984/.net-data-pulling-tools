@@ -35,7 +35,7 @@
     <InstallUrl>http://10.176.1.50:8002/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -150,11 +150,11 @@
     <Compile Include="Frm_ReportDetail.Designer.cs">
       <DependentUpon>Frm_ReportDetail.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm_RepullChart.cs">
+    <Compile Include="Frm_ManuUplStas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm_RepullChart.Designer.cs">
-      <DependentUpon>Frm_RepullChart.cs</DependentUpon>
+    <Compile Include="Frm_ManuUplStas.Designer.cs">
+      <DependentUpon>Frm_ManuUplStas.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_RepullMonitor.cs">
       <SubType>Form</SubType>
@@ -212,8 +212,8 @@
     <EmbeddedResource Include="Frm_ReportDetail.resx">
       <DependentUpon>Frm_ReportDetail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm_RepullChart.resx">
-      <DependentUpon>Frm_RepullChart.cs</DependentUpon>
+    <EmbeddedResource Include="Frm_ManuUplStas.resx">
+      <DependentUpon>Frm_ManuUplStas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_RepullMonitor.resx">
       <DependentUpon>Frm_RepullMonitor.cs</DependentUpon>

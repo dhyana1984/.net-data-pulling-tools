@@ -382,9 +382,11 @@
             this.txtDatalag.EditValue = "1";
             this.txtDatalag.Location = new System.Drawing.Point(557, 9);
             this.txtDatalag.Name = "txtDatalag";
-            this.txtDatalag.Properties.Mask.EditMask = "##";
+            this.txtDatalag.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtDatalag.Properties.Mask.EditMask = "#0#";
             this.txtDatalag.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtDatalag.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.txtDatalag.Properties.MaxLength = 2;
             this.txtDatalag.Size = new System.Drawing.Size(100, 20);
             this.txtDatalag.TabIndex = 56;
             // 

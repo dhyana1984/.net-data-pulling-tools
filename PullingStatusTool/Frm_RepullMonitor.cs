@@ -84,8 +84,6 @@ namespace PullingStatusTool
         {
             startDate = AMESTime.BeijingTimeToAMESTime(Convert.ToDateTime(txt_StartDate.Text + " 00:00:00")).ToString("yyyy-MM-dd");
             endDate = AMESTime.BeijingTimeToAMESTime(Convert.ToDateTime(txt_EndDate.Text + " 23:59:59")).ToString("yyyy-MM-dd");
-            Frm_RepullChart repullChart = new Frm_RepullChart(startDate, endDate, ckbx_68.Checked, ckbx_70.Checked, ckbx_71.Checked, ckbx_72.Checked, ckbx_77.Checked, ckbx_78.Checked);
-            repullChart.Show();
         }
 
   

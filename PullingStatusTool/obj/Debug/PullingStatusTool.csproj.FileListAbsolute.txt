@@ -14,7 +14,6 @@ D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\Pull
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.Frm_PullingPerformance.resources
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.Frm_PullingStatusService.resources
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.Frm_ReportDetail.resources
-D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.Frm_RepullChart.resources
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.Frm_RepullMonitor.resources
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\bin\Debug\PullingStatusTool.exe.manifest
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\bin\Debug\PullingStatusTool.application
@@ -26,3 +25,4 @@ D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\Pull
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.Frm_UploadPath.resources
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\bin\Debug\PullingStatusTool.exe.config
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.Frm_UploadRecord.resources
+D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.Frm_ManuUplStas.resources

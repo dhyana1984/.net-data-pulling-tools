@@ -9,10 +9,10 @@ namespace PullingStatusTool
     {
         static public List<ReportExpect> LstReportExpect = new List<ReportExpect>();
 
-       static public void getReportExpect()
+       static public void getReportExpect(string retailer)
         {
             DB_Helper db_helper = new DB_Helper();
-            LstReportExpect = db_helper.getReportExpect();
+            LstReportExpect = db_helper.getReportExpect(retailer);
 
         }
     }

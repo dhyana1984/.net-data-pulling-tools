@@ -28,15 +28,15 @@ namespace PullingStatusTool
         private void getDS()
         {
         DB_Helper dbhelper = new DB_Helper();
-        GC_FileExpect.DataSource=dbhelper.getReportExpect();
+        GC_FileExpect.DataSource=dbhelper.getReportExpect(" 1=1");
         
         }
         private void btn_AddFileExpect_Click(object sender, EventArgs e)
         {
-            if (txt_dayofwk.Text.Trim()!=""&&txt_DataType.Text.Trim() != "" && txt_FileExpect.Text != ""  && txt_Vendor.Text != "")
+            if (txt_dayofwk.Text.Trim()!=""&&txt_DataType.Text.Trim() != "" && txt_FileExpect.Text != ""  && txt_Vendor.Text != ""&&txt_Retailer.Text!="")
             {
                 DB_Helper db = new DB_Helper();
-                db.insertNewFileExpect(txt_dayofwk.Text.Trim(),txt_Vendor.Text, txt_DataType.Text, txt_SubGrp.Text, txt_FileExpect.Text,  txt_delay.Text);
+                db.insertNewFileExpect(txt_dayofwk.Text.Trim(),txt_Vendor.Text, txt_DataType.Text, txt_SubGrp.Text, txt_FileExpect.Text,  txt_delay.Text,txt_Retailer.Text);
                 getDS();
             }
             else
@@ -64,6 +64,7 @@ namespace PullingStatusTool
                 file.c_dayofweek = txt_dayofwk.Text;
                 file.c_expfileid = id;
                 file.c_delayreason = txt_delay.Text;
+                file.c_retailer = txt_Retailer.Text.Trim();
                 updateFileExpect(file);
                 id = "";
             }
@@ -91,12 +92,14 @@ namespace PullingStatusTool
                 string delayreason = gridView1.GetFocusedRowCellValue("c_delayreason").ToString().Trim();
                 id = gridView1.GetFocusedRowCellValue("c_expfileid").ToString().Trim();
                 string dayOfWeek = gridView1.GetFocusedRowCellValue("c_dayofweek").ToString().Trim();
+                string retailer = gridView1.GetFocusedRowCellValue("c_retailer").ToString().Trim();
                 txt_dayofwk.Text = dayOfWeek;
                 txt_DataType.Text = dataType;
                 txt_FileExpect.Text=fileCount;
                 txt_SubGrp.Text = subGroup;
                 txt_Vendor.Text = vendor;
                 txt_delay.Text = delayreason;
+                txt_Retailer.Text = retailer;
           
             }
 

@@ -61,6 +61,7 @@
             this.uploadFileSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Btn_MondayStatus = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.uploadStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.GC_PullingFileStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.drp_DailyDate.Properties.VistaTimeProperties)).BeginInit();
@@ -104,6 +105,7 @@
             this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
             this.gridView1.OptionsView.ShowAutoFilterRow = true;
+            this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gridView1_CustomDrawCell);
             // 
             // vendor
@@ -115,6 +117,7 @@
             this.vendor.OptionsColumn.AllowSize = false;
             this.vendor.OptionsColumn.ReadOnly = true;
             this.vendor.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.vendor.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
             this.vendor.Visible = true;
             this.vendor.VisibleIndex = 0;
             this.vendor.Width = 94;
@@ -306,7 +309,8 @@
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.rToolStripMenuItem_TCGUI,
             this.rePullToolStripMenuItem,
-            this.uploadRecordToolStripMenuItem});
+            this.uploadRecordToolStripMenuItem,
+            this.uploadStatusToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -380,6 +384,13 @@
             this.labelControl1.TabIndex = 24;
             this.labelControl1.Text = "Choose Date";
             // 
+            // uploadStatusToolStripMenuItem
+            // 
+            this.uploadStatusToolStripMenuItem.Name = "uploadStatusToolStripMenuItem";
+            this.uploadStatusToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.uploadStatusToolStripMenuItem.Text = "UploadStatus";
+            this.uploadStatusToolStripMenuItem.Click += new System.EventHandler(this.uploadStatusToolStripMenuItem_Click);
+            // 
             // Frm_PullingStatusService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -450,5 +461,6 @@
         private System.Windows.Forms.ToolStripMenuItem uploadFileSetToolStripMenuItem;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private System.Windows.Forms.ToolStripMenuItem uploadRecordToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem uploadStatusToolStripMenuItem;
     }
 }

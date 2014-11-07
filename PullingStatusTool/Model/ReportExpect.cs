@@ -9,7 +9,7 @@ namespace PullingStatusTool
     {
         public ReportExpect() { }
 
-        public ReportExpect(string id, string day, string vendor, string datatype, string subgroup, string fileexceptupload,string delay,string finTime)
+        public ReportExpect(string id, string day, string vendor, string datatype, string subgroup, string fileexceptupload,string delay,string finTime,string retailer)
         {
 
             this.vendor = vendor;
@@ -20,6 +20,23 @@ namespace PullingStatusTool
             this.dayofweek = day;
             this.delayreason = delay;
            // this.finishTime = finishTime;
+            this.retailer = retailer;
+        }
+        string freqency;
+
+        public string c_freqency
+        {
+            get { return freqency; }
+            set { freqency = value; }
+        }
+
+
+        string retailer;
+
+        public string c_retailer
+        {
+            get { return retailer; }
+            set { retailer = value; }
         }
         string finishtime;
 
