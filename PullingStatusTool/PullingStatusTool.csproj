@@ -35,8 +35,8 @@
     <InstallUrl>http://10.176.1.50:8002/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>7</ApplicationRevision>
-    <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -74,6 +74,7 @@
     <Reference Include="DevExpress.Data.v10.1, Version=10.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v10.1, Version=10.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpo.v10.1, Version=10.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v10.1, Version=10.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraCharts.v10.1, Version=10.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>dll\DevExpress.XtraCharts.v10.1.dll</HintPath>
@@ -156,11 +157,11 @@
     <Compile Include="Frm_ManuUplStas.Designer.cs">
       <DependentUpon>Frm_ManuUplStas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm_RepullMonitor.cs">
+    <Compile Include="Frm_Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm_RepullMonitor.Designer.cs">
-      <DependentUpon>Frm_RepullMonitor.cs</DependentUpon>
+    <Compile Include="Frm_Main.Designer.cs">
+      <DependentUpon>Frm_Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_SLAChart.cs">
       <SubType>Form</SubType>
@@ -194,6 +195,48 @@
     <Compile Include="Frm_UploadPath.Designer.cs">
       <DependentUpon>Frm_UploadPath.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\UC_FileExpectMgr.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UC_FileExpectMgr.Designer.cs">
+      <DependentUpon>UC_FileExpectMgr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\UC_FileSetMgr.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UC_FileSetMgr.Designer.cs">
+      <DependentUpon>UC_FileSetMgr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\UC_Functions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UC_Functions.Designer.cs">
+      <DependentUpon>UC_Functions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\UC_NoTargetMonitor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UC_NoTargetMonitor.Designer.cs">
+      <DependentUpon>UC_NoTargetMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\UC_TargetDPChart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UC_TargetDPChart.Designer.cs">
+      <DependentUpon>UC_TargetDPChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\UC_TargetMonitor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UC_TargetMonitor.Designer.cs">
+      <DependentUpon>UC_TargetMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\UC_UploadRecord.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UC_UploadRecord.Designer.cs">
+      <DependentUpon>UC_UploadRecord.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Frm_FileUploadManage.resx">
       <DependentUpon>Frm_FileUploadManage.cs</DependentUpon>
     </EmbeddedResource>
@@ -215,8 +258,8 @@
     <EmbeddedResource Include="Frm_ManuUplStas.resx">
       <DependentUpon>Frm_ManuUplStas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm_RepullMonitor.resx">
-      <DependentUpon>Frm_RepullMonitor.cs</DependentUpon>
+    <EmbeddedResource Include="Frm_Main.resx">
+      <DependentUpon>Frm_Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_SLAChart.resx">
       <DependentUpon>Frm_SLAChart.cs</DependentUpon>
@@ -240,6 +283,27 @@
     </Compile>
     <EmbeddedResource Include="Frm_UploadPath.resx">
       <DependentUpon>Frm_UploadPath.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UC_FileExpectMgr.resx">
+      <DependentUpon>UC_FileExpectMgr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UC_FileSetMgr.resx">
+      <DependentUpon>UC_FileSetMgr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UC_Functions.resx">
+      <DependentUpon>UC_Functions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UC_NoTargetMonitor.resx">
+      <DependentUpon>UC_NoTargetMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UC_TargetDPChart.resx">
+      <DependentUpon>UC_TargetDPChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UC_TargetMonitor.resx">
+      <DependentUpon>UC_TargetMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UC_UploadRecord.resx">
+      <DependentUpon>UC_UploadRecord.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\app.manifest" />
@@ -525,6 +589,7 @@
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -43,6 +43,7 @@
             this.txt_password.Properties.PasswordChar = '*';
             this.txt_password.Size = new System.Drawing.Size(104, 20);
             this.txt_password.TabIndex = 0;
+            this.txt_password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_password_KeyDown);
             // 
             // labelControl1
             // 
@@ -84,6 +85,7 @@
             this.Name = "Frm_Password";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Password";
+            this.Load += new System.EventHandler(this.Frm_Password_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txt_password.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

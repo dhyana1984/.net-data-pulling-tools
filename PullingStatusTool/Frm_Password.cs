@@ -36,6 +36,28 @@ namespace PullingStatusTool
             this.Close();
         }
 
+        private void Frm_Password_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_password_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)     //检测是否按Enter键
+            {
+                if (txt_password.Text == "T3ci94043")
+                {
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("Sorry, you don't have access to this form");
+                }
+            
+            }
+        }
+
+
 
     }
 }

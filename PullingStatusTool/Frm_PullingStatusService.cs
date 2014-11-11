@@ -174,7 +174,7 @@ namespace PullingStatusTool
 
         private void rePullToolStripMenuItem1_Click(object sender, EventArgs e)//Repull monitor 
         {
-            Frm_RepullMonitor Fr_Repull = new Frm_RepullMonitor();
+            Frm_Main Fr_Repull = new Frm_Main();
             Fr_Repull.Show();
         }
 
