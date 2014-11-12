@@ -242,7 +242,7 @@
             this.downloadpath.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.downloadpath.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.downloadpath.Visible = true;
-            this.downloadpath.VisibleIndex = 2;
+            this.downloadpath.VisibleIndex = 3;
             this.downloadpath.Width = 381;
             // 
             // labelControl3
@@ -268,6 +268,7 @@
             this.retailer.OptionsColumn.AllowEdit = false;
             this.retailer.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.retailer.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
+            this.retailer.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
             this.retailer.Visible = true;
             this.retailer.VisibleIndex = 0;
             this.retailer.Width = 83;
@@ -320,6 +321,7 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowAutoFilterRow = true;
+            this.gridView1.OptionsView.ShowFooter = true;
             // 
             // filetype
             // 
@@ -330,7 +332,7 @@
             this.filetype.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.filetype.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.filetype.Visible = true;
-            this.filetype.VisibleIndex = 3;
+            this.filetype.VisibleIndex = 2;
             this.filetype.Width = 86;
             // 
             // slatime
@@ -383,7 +385,7 @@
             this.gridControl1.Location = new System.Drawing.Point(13, 92);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(872, 408);
+            this.gridControl1.Size = new System.Drawing.Size(1011, 408);
             this.gridControl1.TabIndex = 58;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -423,7 +425,7 @@
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.gridControl1);
             this.Name = "UC_FileSetMgr";
-            this.Size = new System.Drawing.Size(888, 503);
+            this.Size = new System.Drawing.Size(1027, 503);
             this.Tag = "File Set Management";
             this.Load += new System.EventHandler(this.FileUploadManage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtDatalag.Properties)).EndInit();

@@ -14,7 +14,7 @@ namespace PullingStatusTool.UserControl
         public UC_Functions()
         {
             InitializeComponent();
-  this.Dock = System.Windows.Forms.DockStyle.Fill;
+this.Dock = System.Windows.Forms.DockStyle.Fill;
         }
     }
 }

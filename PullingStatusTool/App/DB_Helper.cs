@@ -227,11 +227,15 @@ namespace PullingStatusTool
                                     + "'" + fileSet.c_dayof + "',"
                                     + "'" + fileSet.c_datalag + "',"
                                     + "'" + fileSet.c_flag + "' )";
-                  
+            string dayofweek=fileSet.c_freqency=="Daily'"?"Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday" : fileSet.c_dayof;
+
+            string sqlStrExpect = string.Format("insert into ReportDataType (dayofweek,vendor,datatype,subgroup,fileExpect,delayreason,retailer) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", dayofweek, fileSet.c_vendor, fileSet.c_filetype, fileSet.c_freqency, "1", "", fileSet.c_retailer);//   插入一条fileSet的时候自动插入到fileExpect
+
             try
             {
+          
                 mySqlConnection.Open();//打开连接  
-                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
+                SqlCommand mycmd = new SqlCommand(sqlStr+";"+sqlStrExpect, mySqlConnection);//新建SqlCommand对象  
                 mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
                 MessageBox.Show("Added FileSet successfully!");
                 return true;
@@ -303,7 +307,7 @@ namespace PullingStatusTool
             //                 " from v$RSI_TOOLS_TargetConn_EventStatus"+
             //                 " where eventstarttime >= '" + startDate + "' and eventstarttime <= '"+ endDate + "'";//SQL语句  
 
-            string sqlStr = "select * from FileUploadSet  ";
+            string sqlStr = "select * from FileUploadSet   order by Retailer, Vendor,FileType,Frequency";
 
 
             try
@@ -1082,7 +1086,8 @@ namespace PullingStatusTool
             SqlConnection mySqlConnection = new SqlConnection();
             mySqlConnection.ConnectionString = connStr;
             string sqlStr = "select vendor,datatype,subgroup,fileexpect,id,dayofweek,delayreason,retailer from ReportDataType"
-                                    + " where " + retailer;
+                                    + " where " + retailer
+                                    + " order by retailer, vendor, datatype,subgroup";
 
         
 

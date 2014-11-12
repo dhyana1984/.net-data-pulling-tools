@@ -61,7 +61,7 @@
             this.gridControl1.Location = new System.Drawing.Point(12, 72);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(866, 428);
+            this.gridControl1.Size = new System.Drawing.Size(1005, 428);
             this.gridControl1.TabIndex = 15;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -90,6 +90,8 @@
             this.retailer.FieldName = "c_retailer";
             this.retailer.Name = "retailer";
             this.retailer.OptionsColumn.AllowEdit = false;
+            this.retailer.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.retailer.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.retailer.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
             this.retailer.Visible = true;
             this.retailer.VisibleIndex = 0;
@@ -101,6 +103,8 @@
             this.vendor.FieldName = "c_vendor";
             this.vendor.Name = "vendor";
             this.vendor.OptionsColumn.AllowEdit = false;
+            this.vendor.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.vendor.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.vendor.Visible = true;
             this.vendor.VisibleIndex = 1;
             this.vendor.Width = 45;
@@ -161,6 +165,8 @@
             this.filetype.FieldName = "c_filetype";
             this.filetype.Name = "filetype";
             this.filetype.OptionsColumn.AllowEdit = false;
+            this.filetype.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.filetype.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.filetype.Visible = true;
             this.filetype.VisibleIndex = 7;
             this.filetype.Width = 40;
@@ -246,7 +252,7 @@
             this.Controls.Add(this.txt_EDtime);
             this.Controls.Add(this.labelControl2);
             this.Name = "UC_UploadRecord";
-            this.Size = new System.Drawing.Size(888, 503);
+            this.Size = new System.Drawing.Size(1027, 503);
             this.Tag = "None Target Data Upload Record";
             this.Load += new System.EventHandler(this.Frm_UploadRecord_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();

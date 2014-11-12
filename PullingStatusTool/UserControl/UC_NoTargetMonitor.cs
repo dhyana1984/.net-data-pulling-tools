@@ -61,7 +61,7 @@ namespace PullingStatusTool.UserControl
                 fileCount = temp.Count() > 0 ? temp.ToList()[0].c_filecount : "0";  //如果取了应该取的数据，则可以拿到取数据的个数
                 file.c_filexpectuploaded = fileCount + "/" + file.c_filexpectuploaded;//把实际取的数据个数和应该取的数据个数拼接取来，例子:3/5
                 file.c_finishuploaded = (file.c_filexpectuploaded.Split('/')[0] == file.c_filexpectuploaded.Split('/')[1]) && file.c_filexpectuploaded.Split('/')[0] != "0" ? "Y" : "N";//如果实际取的数据和应该取的数据相同，则显示Y，反之则是N
-                file.c_finishtime = temp.Count() > 0 ? AMESTime.AMESTimeToBeijingTime(temp.ToList()[0].c_finishTime).ToString() : "";//取最后一个文件的时间
+                file.c_finishtime = temp.Count() > 0 ? temp.ToList()[0].c_finishTime.ToString() : "";//取最后一个文件的时间
 
 
             }
