@@ -7,6 +7,10 @@ namespace PullingStatusTool
 {
     public class Repull
     {
+        public Repull()
+        {
+   
+        }
 
         public Repull(string vendor, string fileCount)
         {
@@ -45,6 +49,14 @@ namespace PullingStatusTool
         {
             get { return C_FFilecount; }
             set { C_FFilecount = value; }
+        }
+
+        string retailer;
+
+        public string c_retailer
+        {
+            get { return retailer; }
+            set { retailer = value; }
         }
 
     }

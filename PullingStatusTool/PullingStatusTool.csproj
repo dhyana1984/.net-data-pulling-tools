@@ -213,6 +213,12 @@
     <Compile Include="UserControl\UC_Functions.Designer.cs">
       <DependentUpon>UC_Functions.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\UC_NoTargetDPChart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UC_NoTargetDPChart.Designer.cs">
+      <DependentUpon>UC_NoTargetDPChart.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\UC_NoTargetMonitor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -292,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UC_Functions.resx">
       <DependentUpon>UC_Functions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UC_NoTargetDPChart.resx">
+      <DependentUpon>UC_NoTargetDPChart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UC_NoTargetMonitor.resx">
       <DependentUpon>UC_NoTargetMonitor.cs</DependentUpon>

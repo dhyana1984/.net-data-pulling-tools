@@ -42,6 +42,7 @@
             this.grp_performancechart = new DevExpress.XtraNavBar.NavBarGroup();
             this.item_targetchart = new DevExpress.XtraNavBar.NavBarItem();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.item_notargetchart = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -64,7 +65,8 @@
             this.item_expectfile,
             this.item_fileset,
             this.item_targetchart,
-            this.item_uploadrecord});
+            this.item_uploadrecord,
+            this.item_notargetchart});
             this.navBarControl1.Location = new System.Drawing.Point(3, 3);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 140;
@@ -130,6 +132,7 @@
             this.grp_performancechart.Caption = "Performance Chart";
             this.grp_performancechart.Expanded = true;
             this.grp_performancechart.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.item_notargetchart),
             new DevExpress.XtraNavBar.NavBarItemLink(this.item_targetchart)});
             this.grp_performancechart.Name = "grp_performancechart";
             // 
@@ -153,6 +156,12 @@
             this.splitContainerControl1.SplitterPosition = 165;
             this.splitContainerControl1.TabIndex = 1;
             this.splitContainerControl1.Text = "splitContainerControl1";
+            // 
+            // item_notargetchart
+            // 
+            this.item_notargetchart.Caption = "NoTarget Chart";
+            this.item_notargetchart.Name = "item_notargetchart";
+            this.item_notargetchart.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.item_notargetchart_LinkClicked);
             // 
             // Frm_Main
             // 
@@ -186,6 +195,7 @@
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraNavBar.NavBarItem item_targetchart;
         private DevExpress.XtraNavBar.NavBarItem item_uploadrecord;
+        private DevExpress.XtraNavBar.NavBarItem item_notargetchart;
 
 
 

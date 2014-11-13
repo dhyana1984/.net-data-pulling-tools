@@ -26,9 +26,9 @@ namespace PullingStatusTool.UserControl
             DateTime thursday = d.AddDays(thursdayByte - tempB);//本星期四
             DateTime friday = thursday.AddDays(-6);//上周五
 
-            txt_StartDate.Text = friday.ToString("MM/dd/yyyy");
+            txt_StartDate.Text = friday.ToString("yyyy-MM-dd");
 
-            txt_EndDate.Text = thursday.ToString("MM/dd/yyyy");
+            txt_EndDate.Text = thursday.ToString("yyyy-MM-dd");
         }
 
         private void getDS()

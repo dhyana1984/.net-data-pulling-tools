@@ -33,3 +33,4 @@ D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\Pull
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.UserControl.UC_NoTargetMonitor.resources
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.UserControl.UC_TargetDPChart.resources
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.UserControl.UC_UploadRecord.resources
+D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.UserControl.UC_NoTargetDPChart.resources

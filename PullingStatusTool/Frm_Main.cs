@@ -25,6 +25,7 @@ namespace PullingStatusTool
         UC_TargetDPChart UC_TargetChart = new UC_TargetDPChart();
         UC_TargetMonitor UC_TargetStatus = new UC_TargetMonitor();
         UC_UploadRecord UC_UploadRecord = new UC_UploadRecord();
+        UC_NoTargetDPChart UC_NoTargetChart = new UC_NoTargetDPChart();
 
         private void showFunctions(UC_Functions function)//加载功能用户控件的统一方法
         {
@@ -105,6 +106,23 @@ namespace PullingStatusTool
             else
             {
                 showFunctions(UC_TargetChart);
+            }
+        }
+
+        private void item_notargetchart_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            Frm_Password password = new Frm_Password();
+            if (!Users.Flag)
+            {
+                if (password.ShowDialog() == DialogResult.OK)
+                {
+                    Users.Flag = true;
+                    showFunctions(UC_NoTargetChart);
+                }
+            }
+            else
+            {
+                showFunctions(UC_NoTargetChart);
             }
         }
 

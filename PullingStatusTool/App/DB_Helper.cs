@@ -381,6 +381,58 @@ namespace PullingStatusTool
             }
             return period;
         }
+        
+        public void getNoTargetSLAChartData(string startDate, string endDate)
+        {
+            string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
+            SqlConnection mySqlConnection = new SqlConnection();
+            mySqlConnection.ConnectionString = connStr;
+            //string sqlStr = "select distinct vendor,schedulename,status,eventstarttime,DownloadingStatus,FormattingStatus,UploadingStatus,configname,eventid,IRID" + 
+            //                 " from v$RSI_TOOLS_TargetConn_EventStatus"+
+            //                 " where eventstarttime >= '" + startDate + "' and eventstarttime <= '"+ endDate + "'";//SQL语句  
+
+            string sqlStr = " SELECT "
+                                    + " Retailer,CONVERT(varchar(100), uploadtime, 23) UploadDate, COUNT(distinct FileName) as missSLA "
+                                    + " FROM [TargetPullingStatus].[dbo].[FileUploadRecord]  "
+                                    + " where isSLA='false'  and CONVERT(varchar(100), uploadtime, 23) between '"+startDate+"' and '"+endDate+"' " 
+                                    + " group by Retailer,CONVERT(varchar(100), uploadtime, 23)";
+            try
+            {
+                mySqlConnection.Open();//打开连接  
+                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
+                SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader
+                DateTime STdate = Convert.ToDateTime(startDate);
+                DateTime EDdate = Convert.ToDateTime(endDate);
+                while (sdr.Read())
+                {
+      
+                    Repull repull = new Repull();
+                    repull.c_retailer = sdr[0].ToString();
+                    repull.c_repulldate = sdr[1].ToString();
+                    repull.c_filecount = (int)sdr[2];
+                    ListRePullChart.Add(repull);
+                }
+                sdr.Close();//读取完毕即关闭  
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                mySqlConnection.Close();//关闭连接  
+
+
+            }
+
+        }
+
 
         public void getSLAChartData( string startDate, string endDate)
         {
@@ -1122,6 +1174,8 @@ namespace PullingStatusTool
 
 
         }
+       
+
         public List<UploadRecord> getUploadRecord(string STtime, string EDtime, string ongoing, string SLA)
         {
             getUploadRecordData(STtime, EDtime, SLA, ongoing);
@@ -1165,6 +1219,12 @@ namespace PullingStatusTool
             ListRePullChart.Clear();
         
         }
+        public List<Repull> getNoTargetPerformance(string startDate, string endDate)
+        {
+            getNoTargetSLAChartData(startDate, endDate);
+            return ListRePullChart;
+        }
+
 
         public List<Repull> getRePullChart( string startDate, string endDate)
         {
@@ -1307,8 +1367,8 @@ namespace PullingStatusTool
                     if (sql.Trim().ToUpper() == "WHERE")
                     {
                         //sql += " (a.uploadstatus like '%suc%' or a.dataformatstatus like '%suc%') and a.currentlocation !='existent' and ";
-                        sql += " ((reportname not like '%r7%' and ReportName like '" + date + "') or ReportName like '" + period + "' ";//查询daily或者weekly的时间条件     
-                        sql +=resdate==""?")": " or ReportName like '" + resdate + "')";//如果查询R7的数据就把条件附上
+                        sql += " (retailer = 'Target' and ((reportname not like '%r7%' and ReportName like '" + date + "') or ReportName like '" + period + "' ";//查询daily或者weekly的时间条件     
+                        sql +=resdate==""?")": " or ReportName like '" + resdate + "'))";//如果查询R7的数据就把条件附上
                     }
                     if (sql.Trim().Contains("1=1"))
                     {
