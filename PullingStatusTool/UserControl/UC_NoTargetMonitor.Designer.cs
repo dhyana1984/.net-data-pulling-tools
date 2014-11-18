@@ -88,7 +88,7 @@
             this.GC_ManUplStas.Location = new System.Drawing.Point(13, 36);
             this.GC_ManUplStas.MainView = this.gridView1;
             this.GC_ManUplStas.Name = "GC_ManUplStas";
-            this.GC_ManUplStas.Size = new System.Drawing.Size(1001, 464);
+            this.GC_ManUplStas.Size = new System.Drawing.Size(922, 464);
             this.GC_ManUplStas.TabIndex = 28;
             this.GC_ManUplStas.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -107,6 +107,8 @@
             this.gridView1.GridControl = this.GC_ManUplStas;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.CopyToClipboardWithColumnHeaders = false;
+            this.gridView1.OptionsSelection.MultiSelect = true;
+            this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
             this.gridView1.OptionsView.ShowAutoFilterRow = true;
             this.gridView1.OptionsView.ShowFooter = true;
             // 
@@ -209,7 +211,7 @@
             this.Controls.Add(this.drp_DailyDate);
             this.Controls.Add(this.GC_ManUplStas);
             this.Name = "UC_NoTargetMonitor";
-            this.Size = new System.Drawing.Size(1027, 503);
+            this.Size = new System.Drawing.Size(948, 503);
             this.Tag = "None Target Data Pulling Status";
             this.Load += new System.EventHandler(this.Frm_ManuUplStas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.drp_DailyDate.Properties.VistaTimeProperties)).EndInit();

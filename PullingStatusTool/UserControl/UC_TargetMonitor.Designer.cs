@@ -153,7 +153,7 @@
             this.GC_PullingFileStatus.Location = new System.Drawing.Point(13, 37);
             this.GC_PullingFileStatus.MainView = this.gridView1;
             this.GC_PullingFileStatus.Name = "GC_PullingFileStatus";
-            this.GC_PullingFileStatus.Size = new System.Drawing.Size(872, 463);
+            this.GC_PullingFileStatus.Size = new System.Drawing.Size(932, 463);
             this.GC_PullingFileStatus.TabIndex = 25;
             this.GC_PullingFileStatus.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -290,6 +290,8 @@
             // finishTm
             // 
             this.finishTm.Caption = "FinishTime";
+            this.finishTm.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm:ss";
+            this.finishTm.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.finishTm.FieldName = "c_finishtime";
             this.finishTm.Name = "finishTm";
             this.finishTm.OptionsColumn.AllowEdit = false;
@@ -313,7 +315,7 @@
             this.Controls.Add(this.drp_DailyDate);
             this.Controls.Add(this.GC_PullingFileStatus);
             this.Name = "UC_TargetMonitor";
-            this.Size = new System.Drawing.Size(888, 503);
+            this.Size = new System.Drawing.Size(948, 503);
             this.Tag = "Target Data Pulling Status";
             this.Load += new System.EventHandler(this.Frm_PullingStatusService_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txt_Week.Properties)).EndInit();

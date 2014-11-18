@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,29 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA
-        AAAA8///APP//wDz//8A8///APP//wDz//8A8v//APP//wDz//8A8///APP//wTy//8optT/AIe3/wCn
-        y/8Aw9v/AOb//wDm//8A5v//AOb//wDm//8A5v//AOb//wDm//8A5v//AOb//wDm//8E5v//nev+/yel
-        1P8Ahrf/AKfL/wDa//8A2f//ANn//wDa//8A2f//ANn//wDY/v8A0/v/ANH7/wDX/f8A2v7/ANn//5ft
-        //+Y6f7/LqfU/wCHt/8BzP//Ac3//wHM//8BzP//Acz+/xm98v+G0O//x+Py/87l8/+c1u//Lbzv/wHK
-        /f8W0P//l+j//5/q/v81qNT/C73//wq9//8Vtvf/C7P4/0K37//t9Pn//////+z2/f+Z2Pn/h9P5/7vg
-        9/9avO7/Cr3+/wu+//8Pvv//Dr/+/xSv//8Vrv//RrT3/87h8//s8/r//////9ns+/8orPn/Fa7+/xSu
-        /v8Urf3/WrTz/ySl9f8Ur///FK///xWu//8co///HKT//x2b+f/s9Pz///////////91tfH/G6H9/xyj
-        //8cov//HKP//xui/f8hm/j/HKL//xyk//8co///HaH//xyi//8cov7/rNP4///////7/f7/1uj5/1Cs
-        9v86rv7/MqX6/0Kh8P9/uO//grru/xyg/f8dof//HKP//x2i//8zqv//T7f//4LH+/+g0/v/fcX7/3bG
-        /v93x/7/d8P8/8vh9//+/v7///////X4/P9Krvn/Lan//x2h//9jwP//cMT//3DD//9wv/v/dsD4/3DE
-        /v9wxP//b8X//3DE/v+Bwfb//v7+////////////lcr3/2/F//9iv///acH//2nC//9pwf//ab/+/6LM
-        9P93vfX/aL38/2i+/P91vPX/3er4///////5+/7/s9j5/6vU9/9pwf7/acL//2K+//9ivv//Yb///2K+
-        //9pvPv/z+b5/9jm9v/V5fb/+fr8///////x9/3/isj6/2G+/v9hvf3/Yr7+/2K+//9avP//Wrv//1q7
-        //9avP//Wrv//1u4/f+Iyfr/tNr7/7nc+/+a0Pr/Yrv7/1q7/v9au///Wrz//1q8//9au///U7n//1O5
-        //9TuP//U7j//1O5//9TuP//VLj//1O5/v9Tuf7/U7j//1O4//9Tuf//U7j//1O4//9Tuf//U7n//021
-        //9Mtv//TLb//021//9Mtf//TLb//0y2//9Ntf//TLb//0y2//9Ntf//TLX//0y2//9Mtf//TbX//0y2
-        //9Fsv//RbL//0Wz//9Fs///RbL//0Wy//9Fs///RbP//0Wy//9Fs///RbP//0Wy//9Fsv//RbP//0Wz
-        //9Fsv//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAA==
-</value>
-  </data>
 </root>

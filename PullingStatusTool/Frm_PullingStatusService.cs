@@ -118,8 +118,7 @@ namespace PullingStatusTool
 
         private void rToolStripMenuItem_TCGUI_Click(object sender, EventArgs e)
         {
-            Frm_DataPullingStatus frm_TCGUI = new Frm_DataPullingStatus();
-            frm_TCGUI.Show();
+
 
         }
 

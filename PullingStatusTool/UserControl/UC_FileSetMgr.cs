@@ -59,7 +59,7 @@ namespace PullingStatusTool.UserControl
                 txt_vendor.Text = gridView1.GetFocusedRowCellValue("c_vendor").ToString().Trim();
                 txt_filetype.Text = gridView1.GetFocusedRowCellValue("c_filetype").ToString().Trim();
                 txt_retailer.Text = gridView1.GetFocusedRowCellValue("c_retailer").ToString().Trim();
-                txt_SLA.Text = gridView1.GetFocusedRowCellValue("c_slatime").ToString().Trim();
+                txt_SLA.EditValue= gridView1.GetFocusedRowCellValue("c_slatime").ToString().Trim();
                 cbx_Freq.Text = gridView1.GetFocusedRowCellValue("c_freqency").ToString().Trim();
                 FileSetid = gridView1.GetFocusedRowCellValue("c_id").ToString().Trim();
                 cbx_Dayof.Text = gridView1.GetFocusedRowCellValue("c_dayof").ToString().Trim();

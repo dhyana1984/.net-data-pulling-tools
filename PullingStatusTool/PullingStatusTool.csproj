@@ -35,7 +35,7 @@
     <InstallUrl>http://10.176.1.50:8002/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>6</ApplicationRevision>
     <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -114,18 +114,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App\AMESTime.cs" />
+    <Compile Include="App\Connector_DBhelper.cs" />
     <Compile Include="App\Users.cs" />
     <Compile Include="Frm_FileUploadManage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frm_FileUploadManage.Designer.cs">
       <DependentUpon>Frm_FileUploadManage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm_DataPullingStatus.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_DataPullingStatus.Designer.cs">
-      <DependentUpon>Frm_DataPullingStatus.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_FileCountExpect.cs">
       <SubType>Form</SubType>
@@ -144,12 +139,6 @@
     </Compile>
     <Compile Include="Frm_PullingStatusService.Designer.cs">
       <DependentUpon>Frm_PullingStatusService.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm_ReportDetail.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_ReportDetail.Designer.cs">
-      <DependentUpon>Frm_ReportDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_ManuUplStas.cs">
       <SubType>Form</SubType>
@@ -175,6 +164,7 @@
     <Compile Include="Frm_UploadRecord.Designer.cs">
       <DependentUpon>Frm_UploadRecord.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Connectors.cs" />
     <Compile Include="Model\UploadFile.cs" />
     <Compile Include="Model\DataPullingFileCountStatus.cs" />
     <Compile Include="App\DB_Helper.cs" />
@@ -195,6 +185,12 @@
     <Compile Include="Frm_UploadPath.Designer.cs">
       <DependentUpon>Frm_UploadPath.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\UC_AccountManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UC_AccountManagement.Designer.cs">
+      <DependentUpon>UC_AccountManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\UC_FileExpectMgr.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -212,6 +208,12 @@
     </Compile>
     <Compile Include="UserControl\UC_Functions.Designer.cs">
       <DependentUpon>UC_Functions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\UC_MRSConnector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UC_MRSConnector.Designer.cs">
+      <DependentUpon>UC_MRSConnector.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl\UC_NoTargetDPChart.cs">
       <SubType>UserControl</SubType>
@@ -246,9 +248,6 @@
     <EmbeddedResource Include="Frm_FileUploadManage.resx">
       <DependentUpon>Frm_FileUploadManage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm_DataPullingStatus.resx">
-      <DependentUpon>Frm_DataPullingStatus.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Frm_FileCountExpect.resx">
       <DependentUpon>Frm_FileCountExpect.cs</DependentUpon>
     </EmbeddedResource>
@@ -257,9 +256,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_PullingStatusService.resx">
       <DependentUpon>Frm_PullingStatusService.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Frm_ReportDetail.resx">
-      <DependentUpon>Frm_ReportDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_ManuUplStas.resx">
       <DependentUpon>Frm_ManuUplStas.cs</DependentUpon>
@@ -290,6 +286,9 @@
     <EmbeddedResource Include="Frm_UploadPath.resx">
       <DependentUpon>Frm_UploadPath.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UC_AccountManagement.resx">
+      <DependentUpon>UC_AccountManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UC_FileExpectMgr.resx">
       <DependentUpon>UC_FileExpectMgr.cs</DependentUpon>
     </EmbeddedResource>
@@ -298,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UC_Functions.resx">
       <DependentUpon>UC_Functions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UC_MRSConnector.resx">
+      <DependentUpon>UC_MRSConnector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UC_NoTargetDPChart.resx">
       <DependentUpon>UC_NoTargetDPChart.cs</DependentUpon>
@@ -376,6 +378,20 @@
     <Content Include="dll\DevExpress.XtraVerticalGrid.v10.1.dll" />
     <Content Include="icon_32X32.ico" />
     <Content Include="icon_64X64.ico" />
+    <None Include="img\fileset.jpg" />
+    <None Include="img\expectfile.jpg" />
+    <None Include="img\Account.jpg" />
+    <Content Include="img\icon_16X16.ico" />
+    <Content Include="img\icon_32X32.ico" />
+    <Content Include="img\icon_64X64.ico" />
+    <None Include="img\NoTarget.jpg" />
+    <None Include="img\NoTargetChart.jpg" />
+    <None Include="img\Morrisons.jpg" />
+    <Content Include="img\Target.jpg" />
+    <None Include="Resources\Target.bmp" />
+    <None Include="img\UploadRecord.jpg" />
+    <None Include="img\TargetChart.jpg" />
+    <Content Include="img\Target.png" />
     <Content Include="SQL\DataPullingFileStatusSql.txt" />
     <Content Include="SQL\SLAPerformance.txt" />
     <Content Include="SQL\VIP.txt" />

@@ -313,7 +313,7 @@
             this.GC_FileExpect.Location = new System.Drawing.Point(6, 64);
             this.GC_FileExpect.MainView = this.gridView1;
             this.GC_FileExpect.Name = "GC_FileExpect";
-            this.GC_FileExpect.Size = new System.Drawing.Size(1018, 436);
+            this.GC_FileExpect.Size = new System.Drawing.Size(939, 436);
             this.GC_FileExpect.TabIndex = 20;
             this.GC_FileExpect.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -359,7 +359,7 @@
             this.Controls.Add(this.txt_Vendor);
             this.Controls.Add(this.GC_FileExpect);
             this.Name = "UC_FileExpectMgr";
-            this.Size = new System.Drawing.Size(1027, 503);
+            this.Size = new System.Drawing.Size(948, 503);
             this.Tag = "Expect File Management";
             this.Load += new System.EventHandler(this.UC_FileExpectMgr_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txt_Retailer.Properties)).EndInit();

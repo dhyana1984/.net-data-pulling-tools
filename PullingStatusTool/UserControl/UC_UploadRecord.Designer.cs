@@ -61,7 +61,7 @@
             this.gridControl1.Location = new System.Drawing.Point(12, 72);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1005, 428);
+            this.gridControl1.Size = new System.Drawing.Size(926, 428);
             this.gridControl1.TabIndex = 15;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -81,6 +81,9 @@
             this.id});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.CopyToClipboardWithColumnHeaders = false;
+            this.gridView1.OptionsSelection.MultiSelect = true;
+            this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
             this.gridView1.OptionsView.ShowAutoFilterRow = true;
             this.gridView1.OptionsView.ShowFooter = true;
             // 
@@ -252,7 +255,7 @@
             this.Controls.Add(this.txt_EDtime);
             this.Controls.Add(this.labelControl2);
             this.Name = "UC_UploadRecord";
-            this.Size = new System.Drawing.Size(1027, 503);
+            this.Size = new System.Drawing.Size(948, 503);
             this.Tag = "None Target Data Upload Record";
             this.Load += new System.EventHandler(this.Frm_UploadRecord_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();

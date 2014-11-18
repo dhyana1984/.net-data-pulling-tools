@@ -17,7 +17,10 @@ namespace PullingStatusTool
         {
             InitializeComponent();
         }
-
+        private void labelControl1_Paint(object sender, PaintEventArgs e)
+        {
+            labelControl1.Text = "RSi " + this.Text;//显示主页面的欢迎信息
+        }
         //======先实例化所有的功能，由于是用split container加载，所以全部是用户控件
         UC_FileExpectMgr UC_ExpectFile = new UC_FileExpectMgr();
         UC_FileSetMgr UC_filesetMgr = new UC_FileSetMgr();
@@ -26,7 +29,8 @@ namespace PullingStatusTool
         UC_TargetMonitor UC_TargetStatus = new UC_TargetMonitor();
         UC_UploadRecord UC_UploadRecord = new UC_UploadRecord();
         UC_NoTargetDPChart UC_NoTargetChart = new UC_NoTargetDPChart();
-
+        UC_MRSConnector UC_MorrisonConnector = new UC_MRSConnector();
+        UC_AccountManagement UC_AccountMgr = new UC_AccountManagement();
         private void showFunctions(UC_Functions function)//加载功能用户控件的统一方法
         {
 
@@ -123,6 +127,44 @@ namespace PullingStatusTool
             else
             {
                 showFunctions(UC_NoTargetChart);
+            }
+        }
+
+        private void item_morrison_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            
+                            Frm_Password password = new Frm_Password();
+            if (!Users.Flag)
+            {
+                if (password.ShowDialog() == DialogResult.OK)
+                {
+                    Users.Flag = true;
+                    showFunctions(UC_MorrisonConnector);
+                }
+            }
+            else
+            {
+                showFunctions(UC_MorrisonConnector);
+            }
+        }
+
+
+
+        private void item_AccountMgr_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+
+            Frm_Password password = new Frm_Password();
+            if (!Users.Flag)
+            {
+                if (password.ShowDialog() == DialogResult.OK)
+                {
+                    Users.Flag = true;
+                    showFunctions(UC_AccountMgr);
+                }
+            }
+            else
+            {
+                showFunctions(UC_AccountMgr);
             }
         }
 

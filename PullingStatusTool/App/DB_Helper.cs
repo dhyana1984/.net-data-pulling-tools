@@ -22,8 +22,141 @@ namespace PullingStatusTool
         List<UploadFileSet> ListFileset = new List<UploadFileSet>();
         List<UploadFilePath> ListUploadPath = new List<UploadFilePath>();
         List<UploadRecord> ListUploadRecord = new List<UploadRecord>();
+        List<ConnectorAccount> ListAccount = new List<ConnectorAccount>();
 
-        public void getUploadRecordData(string STDate,string EDDate,string isSLA,string isOngoing)
+        private bool addAccountData(ConnectorAccount account)
+        {
+            string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
+            SqlConnection mySqlConnection = new SqlConnection();
+            mySqlConnection.ConnectionString = connStr;
+            //string sqlStr = "select distinct vendor,schedulename,status,eventstarttime,DownloadingStatus,FormattingStatus,UploadingStatus,configname,eventid,IRID" + 
+            //                 " from v$RSI_TOOLS_TargetConn_EventStatus"+
+            //                 " where eventstarttime >= '" + startDate + "' and eventstarttime <= '"+ endDate + "'";//SQL语句  
+
+            string sqlStr = "insert into   IRAccount (Vendor,userid,PassWord,CategoryAccess,Owner,subvendor,Retailer) values "
+                           + "('" + account.c_vendor + "',"
+                           + "'" + account.c_accountname + "',"
+                           + "'" + account.c_password + "',"
+                           + "'" + account.c_category + "',"
+                           + "'" + account.c_owner + "',"
+                           + "'" + account.c_subvendor + "',"
+                           + "'" + account.c_retailer + "' )";
+            try
+            {
+                mySqlConnection.Open();//打开连接  
+                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
+                SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
+
+                sdr.Close();//读取完毕即关闭  
+                MessageBox.Show("Add Account successfully!");
+                return true;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+            finally
+            {
+                mySqlConnection.Close();//关闭连接  
+            }
+
+
+        }
+
+
+        private void editAccountData(ConnectorAccount account)//立即run Schedule, 实际上就是update next runtime 到当前时间
+        {
+
+            string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
+            SqlConnection mySqlConnection = new SqlConnection();
+            mySqlConnection.ConnectionString = connStr;
+            string sqlStr = "update  IRAccount "
+                                      + " set [Vendor]='" + account.c_vendor + "', "
+                                       + "  [userid]='" + account.c_accountname + "', "
+                                      + "  [PassWord]='" + account.c_password + "', "
+                                      + "  [CategoryAccess]='" + account.c_category + "', "
+                                      + "  [Owner]='" + account.c_owner + "', "
+                                      + "  [subvendor]='" + account.c_subvendor + "', "
+                                      + "  [Retailer]='" + account.c_retailer + "' "
+                                      + " where id in(" + account.c_id + ")";
+
+            try
+            {
+                mySqlConnection.Open();//打开连接  
+                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
+                SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
+                sdr.Close();//读取完毕即关闭  
+                MessageBox.Show("Successfully Saved!");
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                mySqlConnection.Close();//关闭连接  
+            }
+        }
+
+        private void getAllAccountData()
+        {
+            string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
+            SqlConnection mySqlConnection = new SqlConnection();
+            mySqlConnection.ConnectionString = connStr;
+            string sqlStr ="SELECT * FROM [TargetPullingStatus].[dbo].[IRAccount]"
+                                    + "order by Retailer,Vendor,UserID,SubVendor" ;
+
+
+            try
+            {
+                mySqlConnection.Open();//打开连接  
+                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
+                SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
+                while (sdr.Read())
+                {
+                    ConnectorAccount account = new ConnectorAccount();
+                    account.c_accountname = sdr["userid"].ToString();
+                    account.c_category = sdr["CategoryAccess"].ToString();
+                    account.c_id = sdr["id"].ToString();
+                    account.c_owner = sdr["owner"].ToString();
+                    account.c_password = sdr["password"].ToString();
+                    account.c_retailer = sdr["retailer"].ToString();
+                    account.c_vendor = sdr["vendor"].ToString();
+                    account.c_subvendor = sdr["subvendor"].ToString();
+                    ListAccount.Add(account);
+                   
+                }
+                sdr.Close();//读取完毕即关闭  
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                mySqlConnection.Close();//关闭连接  
+            }
+
+        }
+
+        private void getUploadRecordData(string STDate,string EDDate,string isSLA,string isOngoing)
         {
             string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
             SqlConnection mySqlConnection = new SqlConnection();
@@ -66,7 +199,7 @@ namespace PullingStatusTool
 
         }
 
-        public void getUploadPathByIDData(string fileSetId)
+        private void getUploadPathByIDData(string fileSetId)
         {
             string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
             SqlConnection mySqlConnection = new SqlConnection();
@@ -298,7 +431,7 @@ namespace PullingStatusTool
             }
         }
 
-        public void getFileSetData()
+        private void getFileSetData()
         {
             string connStr = ConfigurationManager.ConnectionStrings["68server"].ConnectionString;  
             SqlConnection mySqlConnection = new SqlConnection();
@@ -382,7 +515,7 @@ namespace PullingStatusTool
             return period;
         }
         
-        public void getNoTargetSLAChartData(string startDate, string endDate)
+        private void getNoTargetSLAChartData(string startDate, string endDate)
         {
             string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
             SqlConnection mySqlConnection = new SqlConnection();
@@ -434,7 +567,7 @@ namespace PullingStatusTool
         }
 
 
-        public void getSLAChartData( string startDate, string endDate)
+        private void getSLAChartData( string startDate, string endDate)
         {
             DB_Helper db_helper = new DB_Helper();
             string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
@@ -552,7 +685,7 @@ namespace PullingStatusTool
             return FileCount;
         }
 
-        public void getRepullChartData( string startDate, string endDate)
+        private void getRepullChartData( string startDate, string endDate)
         {
             string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
             SqlConnection mySqlConnection = new SqlConnection();
@@ -562,11 +695,11 @@ namespace PullingStatusTool
             //                 " where eventstarttime >= '" + startDate + "' and eventstarttime <= '"+ endDate + "'";//SQL语句  
 
             string sqlStr = "select repulldate,COUNT(*) from "
-                           + " (select ReportName,Vendor,CONVERT(VARCHAR(10),dateadd(hour,12,EndFormattingTime) ,120) repulldate from"
+                           + " (select ReportName,Vendor,CONVERT(VARCHAR(10),dateadd(hour,13,EndFormattingTime) ,120) repulldate from"
                            + " View_PullingStatus"
                            + " where EndFormattingTime between '"+startDate+"' and '"+endDate+"'"
 
-                           + " group by ReportName,Vendor,CONVERT(VARCHAR(10),dateadd(hour,12,EndFormattingTime) ,120) "
+                           + " group by ReportName,Vendor,CONVERT(VARCHAR(10),dateadd(hour,13,EndFormattingTime) ,120) "
                            + " having COUNT(ReportName)>1) t"
                            + " group by repulldate";
                         
@@ -671,55 +804,55 @@ namespace PullingStatusTool
 
         }
 
-        public void getStatusData(string serverIP,string psw,string startDate,string endDate)
-        {
-             string connStr ="server="+serverIP+";database =TargetConnector;user id=sa;password="+psw;//连接字符串  
-            SqlConnection mySqlConnection = new SqlConnection();
-            mySqlConnection.ConnectionString = connStr;
-            //string sqlStr = "select distinct vendor,schedulename,status,eventstarttime,DownloadingStatus,FormattingStatus,UploadingStatus,configname,eventid,IRID" + 
-            //                 " from v$RSI_TOOLS_TargetConn_EventStatus"+
-            //                 " where eventstarttime >= '" + startDate + "' and eventstarttime <= '"+ endDate + "'";//SQL语句  
+        //private void getStatusData(string serverIP,string psw,string startDate,string endDate)
+        //{
+        //     string connStr ="server="+serverIP+";database =TargetConnector;user id=sa;password="+psw;//连接字符串  
+        //    SqlConnection mySqlConnection = new SqlConnection();
+        //    mySqlConnection.ConnectionString = connStr;
+        //    //string sqlStr = "select distinct vendor,schedulename,status,eventstarttime,DownloadingStatus,FormattingStatus,UploadingStatus,configname,eventid,IRID" + 
+        //    //                 " from v$RSI_TOOLS_TargetConn_EventStatus"+
+        //    //                 " where eventstarttime >= '" + startDate + "' and eventstarttime <= '"+ endDate + "'";//SQL语句  
 
-            string sqlStr = "select vendor,schedulename,t.status,eventstarttime,DownloadingStatus,FormattingStatus,UploadingStatus,configname,eventid,IRID from " +
-                          " ( select  vendor,IRID,a.EventID,schedulename,a.status,eventstarttime,reportname,DownloadingStatus,FormattingStatus,UploadingStatus,configname," +
-                          " ROW_NUMBER() over (partition  by vendor,schedulename,IRID,reportname order by eventstarttime desc)rn from  v$RSI_TOOLS_TargetConn_EventStatus a " +
-                          " join RSI_TOOLS_TargetConn_report b on a.EventID=b.EventID " +
-                          " where eventstarttime >= '" + AMESTime.BeijingTimeToAMESTime(startDate) + "' and eventstarttime <= '" + AMESTime.BeijingTimeToAMESTime(endDate) + "') t where   rn=1" +
-                          " group by eventid,IRID,vendor,schedulename,status,eventstarttime,DownloadingStatus,FormattingStatus,UploadingStatus,configname" +
-                          " order by eventstarttime desc";
+        //    string sqlStr = "select vendor,schedulename,t.status,eventstarttime,DownloadingStatus,FormattingStatus,UploadingStatus,configname,eventid,IRID from " +
+        //                  " ( select  vendor,IRID,a.EventID,schedulename,a.status,eventstarttime,reportname,DownloadingStatus,FormattingStatus,UploadingStatus,configname," +
+        //                  " ROW_NUMBER() over (partition  by vendor,schedulename,IRID,reportname order by eventstarttime desc)rn from  v$RSI_TOOLS_TargetConn_EventStatus a " +
+        //                  " join RSI_TOOLS_TargetConn_report b on a.EventID=b.EventID " +
+        //                  " where eventstarttime >= '" + AMESTime.BeijingTimeToAMESTime(startDate) + "' and eventstarttime <= '" + AMESTime.BeijingTimeToAMESTime(endDate) + "') t where   rn=1" +
+        //                  " group by eventid,IRID,vendor,schedulename,status,eventstarttime,DownloadingStatus,FormattingStatus,UploadingStatus,configname" +
+        //                  " order by eventstarttime desc";
 
-            try
-            {
-                mySqlConnection.Open();//打开连接  
-                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
-                SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
-                while (sdr.Read())
-                {
+        //    try
+        //    {
+        //        mySqlConnection.Open();//打开连接  
+        //        SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
+        //        SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
+        //        while (sdr.Read())
+        //        {
 
-                    ServerStatus status = new ServerStatus(sdr[0].ToString(), sdr[1].ToString(), sdr[2].ToString(), sdr[3].ToString(), sdr[4].ToString(), sdr[5].ToString(), sdr[6].ToString(), sdr[7].ToString(), sdr[8].ToString(), serverIP, psw, sdr[9].ToString(), getReportPeriod(sdr[8].ToString(),serverIP,psw));
-                    ListServerstatus.Add(status);
-                }
-                sdr.Close();//读取完毕即关闭  
+        //            ServerStatus status = new ServerStatus(sdr[0].ToString(), sdr[1].ToString(), sdr[2].ToString(), sdr[3].ToString(), sdr[4].ToString(), sdr[5].ToString(), sdr[6].ToString(), sdr[7].ToString(), sdr[8].ToString(), serverIP, psw, sdr[9].ToString(), getReportPeriod(sdr[8].ToString(),serverIP,psw));
+        //            ListServerstatus.Add(status);
+        //        }
+        //        sdr.Close();//读取完毕即关闭  
               
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(serverIP + ":" + ex.Message);
+        //    }
+        //    catch (SqlException ex)
+        //    {
+        //        MessageBox.Show(serverIP + ":" + ex.Message);
              
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                mySqlConnection.Close();//关闭连接  
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        mySqlConnection.Close();//关闭连接  
              
                
-            }
+        //    }
      
 
-        }
+        //}
 
         public string getReportPeriod(string eventid, string serverIP, string psw)
         {
@@ -761,41 +894,41 @@ namespace PullingStatusTool
         
         }
 
-        public void getReportDetailData(string eventid,string serverIP, string psw)
+        private void getReportDetailData(string eventid,string serverIP, string psw)
         {
-            string connStr = "server=" + serverIP + ";database =TargetConnector;user id=sa;password=" + psw;//连接字符串  
-            SqlConnection mySqlConnection = new SqlConnection();
-            mySqlConnection.ConnectionString = connStr;
-            string sqlStr = "select reportname,status,datapullstatus,dataformatstatus,uploadstatus from RSI_TOOLS_TargetConn_report where EventID=" +eventid;
+            //string connStr = "server=" + serverIP + ";database =TargetConnector;user id=sa;password=" + psw;//连接字符串  
+            //SqlConnection mySqlConnection = new SqlConnection();
+            //mySqlConnection.ConnectionString = connStr;
+            //string sqlStr = "select reportname,status,datapullstatus,dataformatstatus,uploadstatus from RSI_TOOLS_TargetConn_report where EventID=" +eventid;
 
-            try
-            {
-                mySqlConnection.Open();//打开连接  
-                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
-                SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
-                while (sdr.Read())
-                {
-                    ReportDetails detail = new ReportDetails(sdr[0].ToString(), sdr[1].ToString(), sdr[2].ToString(), sdr[3].ToString(), sdr[4].ToString());
+            //try
+            //{
+            //    mySqlConnection.Open();//打开连接  
+            //    SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
+            //    SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
+            //    while (sdr.Read())
+            //    {
+            //        ReportDetails detail = new ReportDetails(sdr[0].ToString(), sdr[1].ToString(), sdr[2].ToString(), sdr[3].ToString(), sdr[4].ToString());
                   
-                    ListReportDetails.Add(detail);
-                }
-                sdr.Close();//读取完毕即关闭  
+            //        ListReportDetails.Add(detail);
+            //    }
+            //    sdr.Close();//读取完毕即关闭  
 
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(serverIP + ":" + ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                mySqlConnection.Close();//关闭连接  
+            //}
+            //catch (SqlException ex)
+            //{
+            //    MessageBox.Show(serverIP + ":" + ex.Message);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+            //finally
+            //{
+            //    mySqlConnection.Close();//关闭连接  
 
 
-            }
+            //}
 
 
         }
@@ -1132,7 +1265,7 @@ namespace PullingStatusTool
 
 
         }
-        public void getReportExpectData(string retailer)
+        private void getReportExpectData(string retailer)
         {
             string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
             SqlConnection mySqlConnection = new SqlConnection();
@@ -1204,9 +1337,9 @@ namespace PullingStatusTool
             getReportExpectData(retailer);
             return ListReportExpect;
         }
-        public List<ReportDetails> getReportDetail()
+        public List<ReportDetails> getReportDetail(string eid,string server,string psw)
         {
-
+            getReportDetailData(eid, server, psw);
             return ListReportDetails;
         }
 
@@ -1247,6 +1380,20 @@ namespace PullingStatusTool
             return ListPullFileStatus;
         }
 
+        public List<ConnectorAccount> getAllAccount()
+        {
+            getAllAccountData();
+            return ListAccount;
+        }
+        public void editAccount(ConnectorAccount account)
+        {
+            editAccountData(account);
+        }
+
+        public void addAccount(ConnectorAccount account)
+        {
+            addAccountData(account);
+        }
         public List<DataPullingFileCountStatus> getPullingFileCount(string dayTime, string period, string restatementDate, bool attribute, bool isMonday)
         {
             getPullingFileCountStatus_view(dayTime, period, restatementDate, true, isMonday);
@@ -1389,5 +1536,5 @@ namespace PullingStatusTool
         }
     }
 
-
+   
 }
