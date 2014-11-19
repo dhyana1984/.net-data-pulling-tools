@@ -14,5 +14,7 @@ namespace PullingStatusTool
             get { return flag; }
             set { flag = value; }
         }
+
+
     }
 }

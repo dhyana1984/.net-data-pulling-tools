@@ -68,7 +68,7 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(511, 15);
+            this.labelControl6.Location = new System.Drawing.Point(170, 12);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(37, 13);
             this.labelControl6.TabIndex = 37;
@@ -76,7 +76,7 @@
             // 
             // txt_Retailer
             // 
-            this.txt_Retailer.Location = new System.Drawing.Point(554, 12);
+            this.txt_Retailer.Location = new System.Drawing.Point(213, 9);
             this.txt_Retailer.Name = "txt_Retailer";
             this.txt_Retailer.Properties.MaxLength = 50;
             this.txt_Retailer.Size = new System.Drawing.Size(86, 20);
@@ -84,7 +84,7 @@
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(13, 41);
+            this.labelControl5.Location = new System.Drawing.Point(13, 64);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(63, 13);
             this.labelControl5.TabIndex = 35;
@@ -92,15 +92,15 @@
             // 
             // txt_delay
             // 
-            this.txt_delay.Location = new System.Drawing.Point(106, 38);
+            this.txt_delay.Location = new System.Drawing.Point(82, 61);
             this.txt_delay.Name = "txt_delay";
             this.txt_delay.Properties.MaxLength = 200;
-            this.txt_delay.Size = new System.Drawing.Size(736, 20);
+            this.txt_delay.Size = new System.Drawing.Size(674, 20);
             this.txt_delay.TabIndex = 34;
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(13, 15);
+            this.labelControl3.Location = new System.Drawing.Point(18, 38);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(58, 13);
             this.labelControl3.TabIndex = 33;
@@ -108,15 +108,15 @@
             // 
             // txt_dayofwk
             // 
-            this.txt_dayofwk.Location = new System.Drawing.Point(107, 12);
+            this.txt_dayofwk.Location = new System.Drawing.Point(82, 35);
             this.txt_dayofwk.Name = "txt_dayofwk";
             this.txt_dayofwk.Properties.MaxLength = 100;
-            this.txt_dayofwk.Size = new System.Drawing.Size(250, 20);
+            this.txt_dayofwk.Size = new System.Drawing.Size(674, 20);
             this.txt_dayofwk.TabIndex = 32;
             // 
             // btn_Delete
             // 
-            this.btn_Delete.Location = new System.Drawing.Point(974, 38);
+            this.btn_Delete.Location = new System.Drawing.Point(888, 61);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(57, 20);
             this.btn_Delete.TabIndex = 31;
@@ -125,7 +125,7 @@
             // 
             // btn_Edit
             // 
-            this.btn_Edit.Location = new System.Drawing.Point(911, 38);
+            this.btn_Edit.Location = new System.Drawing.Point(825, 61);
             this.btn_Edit.Name = "btn_Edit";
             this.btn_Edit.Size = new System.Drawing.Size(57, 20);
             this.btn_Edit.TabIndex = 30;
@@ -134,7 +134,7 @@
             // 
             // btn_AddFileExpect
             // 
-            this.btn_AddFileExpect.Location = new System.Drawing.Point(848, 38);
+            this.btn_AddFileExpect.Location = new System.Drawing.Point(762, 61);
             this.btn_AddFileExpect.Name = "btn_AddFileExpect";
             this.btn_AddFileExpect.Size = new System.Drawing.Size(57, 20);
             this.btn_AddFileExpect.TabIndex = 29;
@@ -143,7 +143,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(938, 15);
+            this.labelControl4.Location = new System.Drawing.Point(661, 12);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(49, 13);
             this.labelControl4.TabIndex = 28;
@@ -151,18 +151,18 @@
             // 
             // txt_FileExpect
             // 
-            this.txt_FileExpect.Location = new System.Drawing.Point(993, 12);
+            this.txt_FileExpect.Location = new System.Drawing.Point(716, 10);
             this.txt_FileExpect.Name = "txt_FileExpect";
             this.txt_FileExpect.Properties.Mask.EditMask = "####";
             this.txt_FileExpect.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txt_FileExpect.Properties.MaxLength = 4;
             this.txt_FileExpect.Properties.ValidateOnEnterKey = true;
-            this.txt_FileExpect.Size = new System.Drawing.Size(38, 20);
+            this.txt_FileExpect.Size = new System.Drawing.Size(40, 20);
             this.txt_FileExpect.TabIndex = 27;
             // 
             // lbl_Subgroup
             // 
-            this.lbl_Subgroup.Location = new System.Drawing.Point(802, 15);
+            this.lbl_Subgroup.Location = new System.Drawing.Point(491, 12);
             this.lbl_Subgroup.Name = "lbl_Subgroup";
             this.lbl_Subgroup.Size = new System.Drawing.Size(47, 13);
             this.lbl_Subgroup.TabIndex = 26;
@@ -170,15 +170,15 @@
             // 
             // txt_SubGrp
             // 
-            this.txt_SubGrp.Location = new System.Drawing.Point(855, 12);
+            this.txt_SubGrp.Location = new System.Drawing.Point(544, 9);
             this.txt_SubGrp.Name = "txt_SubGrp";
             this.txt_SubGrp.Properties.MaxLength = 20;
-            this.txt_SubGrp.Size = new System.Drawing.Size(77, 20);
+            this.txt_SubGrp.Size = new System.Drawing.Size(111, 20);
             this.txt_SubGrp.TabIndex = 25;
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(646, 15);
+            this.labelControl2.Location = new System.Drawing.Point(305, 12);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(47, 13);
             this.labelControl2.TabIndex = 24;
@@ -186,10 +186,10 @@
             // 
             // txt_DataType
             // 
-            this.txt_DataType.Location = new System.Drawing.Point(708, 12);
+            this.txt_DataType.Location = new System.Drawing.Point(358, 9);
             this.txt_DataType.Name = "txt_DataType";
             this.txt_DataType.Properties.MaxLength = 50;
-            this.txt_DataType.Size = new System.Drawing.Size(88, 20);
+            this.txt_DataType.Size = new System.Drawing.Size(127, 20);
             this.txt_DataType.TabIndex = 23;
             // 
             // dataType
@@ -310,10 +310,10 @@
             this.GC_FileExpect.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.GC_FileExpect.Location = new System.Drawing.Point(6, 64);
+            this.GC_FileExpect.Location = new System.Drawing.Point(6, 87);
             this.GC_FileExpect.MainView = this.gridView1;
             this.GC_FileExpect.Name = "GC_FileExpect";
-            this.GC_FileExpect.Size = new System.Drawing.Size(939, 436);
+            this.GC_FileExpect.Size = new System.Drawing.Size(939, 413);
             this.GC_FileExpect.TabIndex = 20;
             this.GC_FileExpect.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -321,7 +321,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(363, 15);
+            this.labelControl1.Location = new System.Drawing.Point(42, 11);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(34, 13);
             this.labelControl1.TabIndex = 22;
@@ -330,10 +330,10 @@
             // 
             // txt_Vendor
             // 
-            this.txt_Vendor.Location = new System.Drawing.Point(403, 12);
+            this.txt_Vendor.Location = new System.Drawing.Point(82, 9);
             this.txt_Vendor.Name = "txt_Vendor";
             this.txt_Vendor.Properties.MaxLength = 50;
-            this.txt_Vendor.Size = new System.Drawing.Size(102, 20);
+            this.txt_Vendor.Size = new System.Drawing.Size(82, 20);
             this.txt_Vendor.TabIndex = 21;
             // 
             // UC_FileExpectMgr

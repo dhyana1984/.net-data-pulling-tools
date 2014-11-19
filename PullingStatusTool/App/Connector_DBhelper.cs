@@ -262,6 +262,7 @@ namespace PullingStatusTool.App
                     schedule.c_enable = (bool)sdr["enable"];
                     schedule.c_running = (bool)sdr["running"];
                     schedule.c_vendor = sdr["vname"].ToString();
+                    schedule.c_selected = false;
                     ListSchedule.Add(schedule);
                 }
                 sdr.Close();//读取完毕即关闭  

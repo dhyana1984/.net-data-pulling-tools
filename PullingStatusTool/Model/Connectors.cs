@@ -97,6 +97,13 @@ namespace PullingStatusTool.Model
             set { running = value; }
         }
 
+        bool selected;
+
+        public bool c_selected//这个属性是为了在表格里面有一行Select culomn用来选择多列操作
+        {
+            get { return selected; }
+            set { selected = value; }
+        }
 
     
     

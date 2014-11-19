@@ -9,7 +9,7 @@ using DevExpress.XtraEditors;
 
 namespace PullingStatusTool.UserControl
 {
-    public partial class UC_FileExpectMgr : UC_Functions
+    public partial class UC_FileExpectMgr :UC_Functions
     {
         public UC_FileExpectMgr()
         {

@@ -21,6 +21,7 @@ namespace PullingStatusTool.UserControl
         {
 
             txt_RecordTime.Text = DateTime.Now.ToString("yyyy-MM-dd");
+
         }
 
 
@@ -60,6 +61,7 @@ namespace PullingStatusTool.UserControl
                 string ids = "";
                 for (int i = 0; i < gridView1.RowCount; i++)
                 {
+                    if ((bool)gridView1.GetRowCellValue(i, "c_selected"))
                     ids += gridView1.GetRowCellValue(i, "c_id") + ",";//将显示在grid表格中的id传入runnow方法，批量runnow
                 }
                 MorrisonDBHelper MorrisonConnector = new MorrisonDBHelper();
@@ -139,5 +141,20 @@ namespace PullingStatusTool.UserControl
             MorrisonDBHelper MorrisonConnector = new MorrisonDBHelper();
             gc_Record.DataSource = MorrisonConnector.getAllRecord(txt_RecordTime.Text);
         }
+
+        private void gc_Schedule_Click(object sender, EventArgs e)
+        {
+            if (gridView1.FocusedColumn.FieldName == "c_selected" && gridView1.SelectedRowsCount > 0)
+            {
+                         gridView1.SetFocusedRowCellValue("c_selected", !(bool)gridView1.GetFocusedRowCellValue("c_selected"));
+            }
+        }
+
+
+
+
+
+
+
     }
 }

@@ -28,8 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraCharts.PointSeriesLabel pointSeriesLabel1 = new DevExpress.XtraCharts.PointSeriesLabel();
-            DevExpress.XtraCharts.SplineSeriesView splineSeriesView1 = new DevExpress.XtraCharts.SplineSeriesView();
+            DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.PointSeriesLabel pointSeriesLabel4 = new DevExpress.XtraCharts.PointSeriesLabel();
+            DevExpress.XtraCharts.SplineSeriesView splineSeriesView4 = new DevExpress.XtraCharts.SplineSeriesView();
+            DevExpress.XtraCharts.Series series4 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.PointSeriesLabel pointSeriesLabel5 = new DevExpress.XtraCharts.PointSeriesLabel();
+            DevExpress.XtraCharts.SplineSeriesView splineSeriesView5 = new DevExpress.XtraCharts.SplineSeriesView();
+            DevExpress.XtraCharts.PointSeriesLabel pointSeriesLabel6 = new DevExpress.XtraCharts.PointSeriesLabel();
+            DevExpress.XtraCharts.SplineSeriesView splineSeriesView6 = new DevExpress.XtraCharts.SplineSeriesView();
             this.lblTotalSLA = new DevExpress.XtraEditors.LabelControl();
             this.btn_Fresh = new DevExpress.XtraEditors.SimpleButton();
             this.txt_EndDate = new DevExpress.XtraEditors.DateEdit();
@@ -42,14 +49,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_StartDate.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_StartDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChartSLA)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(pointSeriesLabel1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(splineSeriesView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pointSeriesLabel4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(splineSeriesView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pointSeriesLabel5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(splineSeriesView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pointSeriesLabel6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(splineSeriesView6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbx_Retailer.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTotalSLA
             // 
-            this.lblTotalSLA.Location = new System.Drawing.Point(126, 6);
+            this.lblTotalSLA.Location = new System.Drawing.Point(126, 8);
             this.lblTotalSLA.Name = "lblTotalSLA";
             this.lblTotalSLA.Size = new System.Drawing.Size(42, 13);
             this.lblTotalSLA.TabIndex = 23;
@@ -86,7 +100,7 @@
             // txt_StartDate
             // 
             this.txt_StartDate.EditValue = null;
-            this.txt_StartDate.Location = new System.Drawing.Point(20, 3);
+            this.txt_StartDate.Location = new System.Drawing.Point(20, 5);
             this.txt_StartDate.Name = "txt_StartDate";
             this.txt_StartDate.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
             this.txt_StartDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -108,17 +122,34 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ChartSLA.AppearanceName = "Dark";
+            xyDiagram2.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
+            xyDiagram2.AxisX.Range.SideMarginsEnabled = true;
+            xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram2.AxisY.Range.ScrollingRange.SideMarginsEnabled = true;
+            xyDiagram2.AxisY.Range.SideMarginsEnabled = true;
+            xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
+            this.ChartSLA.Diagram = xyDiagram2;
             this.ChartSLA.Location = new System.Drawing.Point(20, 57);
             this.ChartSLA.Name = "ChartSLA";
             this.ChartSLA.PaletteBaseColorNumber = 1;
             this.ChartSLA.PaletteName = "Palette 1";
             this.ChartSLA.PaletteRepository.Add("Palette 1", new DevExpress.XtraCharts.Palette("Palette 1", DevExpress.XtraCharts.PaletteScaleMode.Repeat, new DevExpress.XtraCharts.PaletteEntry[] {
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.Silver, System.Drawing.Color.Silver)}));
-            this.ChartSLA.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
-            pointSeriesLabel1.LineVisible = true;
-            this.ChartSLA.SeriesTemplate.Label = pointSeriesLabel1;
-            this.ChartSLA.SeriesTemplate.View = splineSeriesView1;
-            this.ChartSLA.Size = new System.Drawing.Size(1012, 443);
+            pointSeriesLabel4.LineVisible = true;
+            series3.Label = pointSeriesLabel4;
+            series3.Name = "Series 1";
+            series3.View = splineSeriesView4;
+            pointSeriesLabel5.LineVisible = true;
+            series4.Label = pointSeriesLabel5;
+            series4.Name = "Series 2";
+            series4.View = splineSeriesView5;
+            this.ChartSLA.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
+        series3,
+        series4};
+            pointSeriesLabel6.LineVisible = true;
+            this.ChartSLA.SeriesTemplate.Label = pointSeriesLabel6;
+            this.ChartSLA.SeriesTemplate.View = splineSeriesView6;
+            this.ChartSLA.Size = new System.Drawing.Size(916, 443);
             this.ChartSLA.TabIndex = 24;
             // 
             // cbx_Retailer
@@ -151,14 +182,21 @@
             this.Controls.Add(this.txt_EndDate);
             this.Controls.Add(this.txt_StartDate);
             this.Name = "UC_NoTargetDPChart";
-            this.Size = new System.Drawing.Size(1044, 503);
+            this.Size = new System.Drawing.Size(948, 503);
             this.Load += new System.EventHandler(this.UC_NoTargetDPChart_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txt_EndDate.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_EndDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_StartDate.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_StartDate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(pointSeriesLabel1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(splineSeriesView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pointSeriesLabel4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(splineSeriesView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pointSeriesLabel5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(splineSeriesView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pointSeriesLabel6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(splineSeriesView6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChartSLA)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbx_Retailer.Properties)).EndInit();
             this.ResumeLayout(false);

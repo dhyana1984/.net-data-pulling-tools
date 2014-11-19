@@ -39,6 +39,7 @@
             this.enable = new DevExpress.XtraGrid.Columns.GridColumn();
             this.isrunning = new DevExpress.XtraGrid.Columns.GridColumn();
             this.configid = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gc_Record = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -122,6 +123,7 @@
             this.gc_Schedule.TabIndex = 26;
             this.gc_Schedule.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.gc_Schedule.Click += new System.EventHandler(this.gc_Schedule_Click);
             this.gc_Schedule.DoubleClick += new System.EventHandler(this.gc_Schedule_DoubleClick);
             // 
             // gridView1
@@ -135,7 +137,8 @@
             this.nextruntime,
             this.enable,
             this.isrunning,
-            this.configid});
+            this.configid,
+            this.gridColumn10});
             this.gridView1.GridControl = this.gc_Schedule;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.CopyToClipboardWithColumnHeaders = false;
@@ -158,8 +161,8 @@
             this.vendor.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.vendor.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
             this.vendor.Visible = true;
-            this.vendor.VisibleIndex = 0;
-            this.vendor.Width = 113;
+            this.vendor.VisibleIndex = 1;
+            this.vendor.Width = 99;
             // 
             // configname
             // 
@@ -170,8 +173,8 @@
             this.configname.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.configname.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.configname.Visible = true;
-            this.configname.VisibleIndex = 1;
-            this.configname.Width = 81;
+            this.configname.VisibleIndex = 2;
+            this.configname.Width = 148;
             // 
             // dataType
             // 
@@ -184,8 +187,8 @@
             this.dataType.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.dataType.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.dataType.Visible = true;
-            this.dataType.VisibleIndex = 2;
-            this.dataType.Width = 125;
+            this.dataType.VisibleIndex = 3;
+            this.dataType.Width = 93;
             // 
             // time
             // 
@@ -196,8 +199,8 @@
             this.time.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.time.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.time.Visible = true;
-            this.time.VisibleIndex = 5;
-            this.time.Width = 110;
+            this.time.VisibleIndex = 6;
+            this.time.Width = 49;
             // 
             // datelag
             // 
@@ -208,8 +211,8 @@
             this.datelag.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.datelag.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.datelag.Visible = true;
-            this.datelag.VisibleIndex = 6;
-            this.datelag.Width = 110;
+            this.datelag.VisibleIndex = 7;
+            this.datelag.Width = 48;
             // 
             // nextruntime
             // 
@@ -219,8 +222,8 @@
             this.nextruntime.OptionsColumn.AllowEdit = false;
             this.nextruntime.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.nextruntime.Visible = true;
-            this.nextruntime.VisibleIndex = 4;
-            this.nextruntime.Width = 110;
+            this.nextruntime.VisibleIndex = 5;
+            this.nextruntime.Width = 149;
             // 
             // enable
             // 
@@ -230,20 +233,20 @@
             this.enable.OptionsColumn.AllowEdit = false;
             this.enable.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.enable.Visible = true;
-            this.enable.VisibleIndex = 7;
-            this.enable.Width = 135;
+            this.enable.VisibleIndex = 8;
+            this.enable.Width = 88;
             // 
             // isrunning
             // 
             this.isrunning.Caption = "isRunning";
-            this.isrunning.FieldName = "c_isrunning";
+            this.isrunning.FieldName = "c_running";
             this.isrunning.Name = "isrunning";
             this.isrunning.OptionsColumn.AllowEdit = false;
             this.isrunning.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.isrunning.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.isrunning.Visible = true;
-            this.isrunning.VisibleIndex = 3;
-            this.isrunning.Width = 80;
+            this.isrunning.VisibleIndex = 4;
+            this.isrunning.Width = 95;
             // 
             // configid
             // 
@@ -253,11 +256,23 @@
             this.configid.OptionsColumn.AllowEdit = false;
             this.configid.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.configid.Visible = true;
-            this.configid.VisibleIndex = 8;
+            this.configid.VisibleIndex = 9;
+            this.configid.Width = 57;
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.Caption = "Select";
+            this.gridColumn10.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.gridColumn10.FieldName = "c_selected";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 0;
+            this.gridColumn10.Width = 45;
             // 
             // repositoryItemCheckEdit1
             // 
             this.repositoryItemCheckEdit1.AutoHeight = false;
+            this.repositoryItemCheckEdit1.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
             this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
             // 
             // gc_Record
@@ -827,5 +842,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
     }
 }
