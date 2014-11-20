@@ -402,6 +402,7 @@
             this.tab_users,
             this.txt_nextruntime1,
             this.tab_Record});
+            this.Tab_Schedule.Tag = "Morrisons Connector";
             // 
             // txt_nextruntime1
             // 

@@ -36,7 +36,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <ApplicationRevision>1</ApplicationRevision>
-    <ApplicationVersion>2.2.0.%2a</ApplicationVersion>
+    <ApplicationVersion>2.2.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -116,53 +116,17 @@
     <Compile Include="App\AMESTime.cs" />
     <Compile Include="App\Connector_DBhelper.cs" />
     <Compile Include="App\Users.cs" />
-    <Compile Include="Frm_FileUploadManage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_FileUploadManage.Designer.cs">
-      <DependentUpon>Frm_FileUploadManage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm_FileCountExpect.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_FileCountExpect.Designer.cs">
-      <DependentUpon>Frm_FileCountExpect.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm_PullingPerformance.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_PullingPerformance.Designer.cs">
-      <DependentUpon>Frm_PullingPerformance.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm_PullingStatusService.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_PullingStatusService.Designer.cs">
-      <DependentUpon>Frm_PullingStatusService.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm_ManuUplStas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_ManuUplStas.Designer.cs">
-      <DependentUpon>Frm_ManuUplStas.cs</DependentUpon>
-    </Compile>
     <Compile Include="Frm_Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frm_Main.Designer.cs">
       <DependentUpon>Frm_Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm_SLAChart.cs">
+    <Compile Include="Frm_UploadPath.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm_SLAChart.Designer.cs">
-      <DependentUpon>Frm_SLAChart.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm_UploadRecord.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_UploadRecord.Designer.cs">
-      <DependentUpon>Frm_UploadRecord.cs</DependentUpon>
+    <Compile Include="Frm_UploadPath.Designer.cs">
+      <DependentUpon>Frm_UploadPath.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Connectors.cs" />
     <Compile Include="Model\UploadFile.cs" />
@@ -179,12 +143,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Frm_UploadPath.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_UploadPath.Designer.cs">
-      <DependentUpon>Frm_UploadPath.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControl\UC_AccountManagement.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -245,32 +203,14 @@
     <Compile Include="UserControl\UC_UploadRecord.Designer.cs">
       <DependentUpon>UC_UploadRecord.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Frm_FileUploadManage.resx">
-      <DependentUpon>Frm_FileUploadManage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Frm_FileCountExpect.resx">
-      <DependentUpon>Frm_FileCountExpect.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Frm_PullingPerformance.resx">
-      <DependentUpon>Frm_PullingPerformance.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Frm_PullingStatusService.resx">
-      <DependentUpon>Frm_PullingStatusService.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Frm_ManuUplStas.resx">
-      <DependentUpon>Frm_ManuUplStas.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Main.resx">
       <DependentUpon>Frm_Main.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Frm_SLAChart.resx">
-      <DependentUpon>Frm_SLAChart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Password.resx">
       <DependentUpon>Frm_Password.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm_UploadRecord.resx">
-      <DependentUpon>Frm_UploadRecord.cs</DependentUpon>
+    <EmbeddedResource Include="Frm_UploadPath.resx">
+      <DependentUpon>Frm_UploadPath.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -283,9 +223,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Frm_UploadPath.resx">
-      <DependentUpon>Frm_UploadPath.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UC_AccountManagement.resx">
       <DependentUpon>UC_AccountManagement.cs</DependentUpon>
     </EmbeddedResource>
