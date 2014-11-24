@@ -45,6 +45,8 @@ namespace PullingStatusTool.Model
             set { datatype = value; }
         }
 
+        string getSql;
+
     }
 
     class ConnectorSchedule:Connectors

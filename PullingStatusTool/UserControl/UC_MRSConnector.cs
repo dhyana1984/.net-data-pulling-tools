@@ -137,9 +137,22 @@ namespace PullingStatusTool.UserControl
         }
         private void getRecordDS()
         {
-
+       
             MorrisonDBHelper MorrisonConnector = new MorrisonDBHelper();
             gc_Record.DataSource = MorrisonConnector.getAllRecord(txt_RecordTime.Text);
+
+        }
+
+        private void getNullInstance()
+        {
+            MorrisonDBHelper MorrisonConnector = new MorrisonDBHelper();
+            List<ConnectorSchedule> Listschedule = new List<ConnectorSchedule>();
+            Listschedule = MorrisonConnector.getNullInstance();
+            foreach(ConnectorSchedule schedule in Listschedule)
+            {
+                lbx_NullInstance.Items.Add(schedule.c_id + " " + schedule.c_configname);
+            }
+        
         }
 
         private void gc_Schedule_Click(object sender, EventArgs e)

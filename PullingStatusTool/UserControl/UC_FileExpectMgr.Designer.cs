@@ -55,6 +55,7 @@
             this.GC_FileExpect = new DevExpress.XtraGrid.GridControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txt_Vendor = new DevExpress.XtraEditors.TextEdit();
+            this.btn_Refresh = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Retailer.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_delay.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_dayofwk.Properties)).BeginInit();
@@ -95,7 +96,7 @@
             this.txt_delay.Location = new System.Drawing.Point(82, 61);
             this.txt_delay.Name = "txt_delay";
             this.txt_delay.Properties.MaxLength = 200;
-            this.txt_delay.Size = new System.Drawing.Size(674, 20);
+            this.txt_delay.Size = new System.Drawing.Size(573, 20);
             this.txt_delay.TabIndex = 34;
             // 
             // labelControl3
@@ -111,12 +112,12 @@
             this.txt_dayofwk.Location = new System.Drawing.Point(82, 35);
             this.txt_dayofwk.Name = "txt_dayofwk";
             this.txt_dayofwk.Properties.MaxLength = 100;
-            this.txt_dayofwk.Size = new System.Drawing.Size(674, 20);
+            this.txt_dayofwk.Size = new System.Drawing.Size(825, 20);
             this.txt_dayofwk.TabIndex = 32;
             // 
             // btn_Delete
             // 
-            this.btn_Delete.Location = new System.Drawing.Point(888, 61);
+            this.btn_Delete.Location = new System.Drawing.Point(787, 61);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(57, 20);
             this.btn_Delete.TabIndex = 31;
@@ -125,7 +126,7 @@
             // 
             // btn_Edit
             // 
-            this.btn_Edit.Location = new System.Drawing.Point(825, 61);
+            this.btn_Edit.Location = new System.Drawing.Point(724, 61);
             this.btn_Edit.Name = "btn_Edit";
             this.btn_Edit.Size = new System.Drawing.Size(57, 20);
             this.btn_Edit.TabIndex = 30;
@@ -134,7 +135,7 @@
             // 
             // btn_AddFileExpect
             // 
-            this.btn_AddFileExpect.Location = new System.Drawing.Point(762, 61);
+            this.btn_AddFileExpect.Location = new System.Drawing.Point(661, 61);
             this.btn_AddFileExpect.Name = "btn_AddFileExpect";
             this.btn_AddFileExpect.Size = new System.Drawing.Size(57, 20);
             this.btn_AddFileExpect.TabIndex = 29;
@@ -143,7 +144,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(661, 12);
+            this.labelControl4.Location = new System.Drawing.Point(743, 12);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(49, 13);
             this.labelControl4.TabIndex = 28;
@@ -151,18 +152,18 @@
             // 
             // txt_FileExpect
             // 
-            this.txt_FileExpect.Location = new System.Drawing.Point(716, 10);
+            this.txt_FileExpect.Location = new System.Drawing.Point(798, 9);
             this.txt_FileExpect.Name = "txt_FileExpect";
             this.txt_FileExpect.Properties.Mask.EditMask = "####";
             this.txt_FileExpect.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txt_FileExpect.Properties.MaxLength = 4;
             this.txt_FileExpect.Properties.ValidateOnEnterKey = true;
-            this.txt_FileExpect.Size = new System.Drawing.Size(40, 20);
+            this.txt_FileExpect.Size = new System.Drawing.Size(109, 20);
             this.txt_FileExpect.TabIndex = 27;
             // 
             // lbl_Subgroup
             // 
-            this.lbl_Subgroup.Location = new System.Drawing.Point(491, 12);
+            this.lbl_Subgroup.Location = new System.Drawing.Point(510, 12);
             this.lbl_Subgroup.Name = "lbl_Subgroup";
             this.lbl_Subgroup.Size = new System.Drawing.Size(47, 13);
             this.lbl_Subgroup.TabIndex = 26;
@@ -170,10 +171,10 @@
             // 
             // txt_SubGrp
             // 
-            this.txt_SubGrp.Location = new System.Drawing.Point(544, 9);
+            this.txt_SubGrp.Location = new System.Drawing.Point(563, 9);
             this.txt_SubGrp.Name = "txt_SubGrp";
             this.txt_SubGrp.Properties.MaxLength = 20;
-            this.txt_SubGrp.Size = new System.Drawing.Size(111, 20);
+            this.txt_SubGrp.Size = new System.Drawing.Size(174, 20);
             this.txt_SubGrp.TabIndex = 25;
             // 
             // labelControl2
@@ -189,7 +190,7 @@
             this.txt_DataType.Location = new System.Drawing.Point(358, 9);
             this.txt_DataType.Name = "txt_DataType";
             this.txt_DataType.Properties.MaxLength = 50;
-            this.txt_DataType.Size = new System.Drawing.Size(127, 20);
+            this.txt_DataType.Size = new System.Drawing.Size(146, 20);
             this.txt_DataType.TabIndex = 23;
             // 
             // dataType
@@ -336,10 +337,20 @@
             this.txt_Vendor.Size = new System.Drawing.Size(82, 20);
             this.txt_Vendor.TabIndex = 21;
             // 
+            // btn_Refresh
+            // 
+            this.btn_Refresh.Location = new System.Drawing.Point(850, 61);
+            this.btn_Refresh.Name = "btn_Refresh";
+            this.btn_Refresh.Size = new System.Drawing.Size(57, 20);
+            this.btn_Refresh.TabIndex = 38;
+            this.btn_Refresh.Text = "Refresh";
+            this.btn_Refresh.Click += new System.EventHandler(this.btn_Refresh_Click);
+            // 
             // UC_FileExpectMgr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btn_Refresh);
             this.Controls.Add(this.labelControl6);
             this.Controls.Add(this.txt_Retailer);
             this.Controls.Add(this.labelControl5);
@@ -405,5 +416,6 @@
         private DevExpress.XtraGrid.GridControl GC_FileExpect;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit txt_Vendor;
+        private DevExpress.XtraEditors.SimpleButton btn_Refresh;
     }
 }

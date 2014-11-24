@@ -106,5 +106,10 @@ namespace PullingStatusTool.UserControl
             }
         }
 
+        private void btn_Refresh_Click(object sender, EventArgs e)
+        {
+            getDS();
+        }
+
     }
 }

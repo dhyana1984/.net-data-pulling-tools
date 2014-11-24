@@ -21,7 +21,60 @@ namespace PullingStatusTool.App
 
         }
 
+        
+        private List<ConnectorSchedule> getNullInstanceData()//获取所有下载的report
+        {
+            List<ConnectorSchedule> ListSchedule = new List<ConnectorSchedule>();
+            string connStr = ConfigurationManager.ConnectionStrings["MRSConnector"].ConnectionString;
+            SqlConnection mySqlConnection = new SqlConnection();
+            mySqlConnection.ConnectionString = connStr;
+            //string sqlStr = "select distinct vendor,schedulename,status,eventstarttime,DownloadingStatus,FormattingStatus,UploadingStatus,configname,eventid,IRID" + 
+            //                 " from v$RSI_TOOLS_TargetConn_EventStatus"+
+            //                 " where eventstarttime >= '" + startDate + "' and eventstarttime <= '"+ endDate + "'";//SQL语句  
+
+            string sqlStr = "SELECT a.id, configname"
+                                        + "FROM [MorrisonConnector].[dbo].[RSI_TOOLS_Conn_INSTANCE] a join "
+                                        + " [MorrisonConnector].dbo.RSI_TOOLS_Conn_CONTEXT b on a.CONTEXTID=b.id"
+                                        + "join [MorrisonConnector].dbo.RSI_TOOLS_Conn_REPORTCONFIG c on b.reportcfgid=c.rid"
+                                        + " where ENDTIME is null";
+
+            try
+            {
+                mySqlConnection.Open();//打开连接  
+                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
+                SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
+                while (sdr.Read())
+                {
+                    ConnectorSchedule schedule = new ConnectorSchedule();
+                    schedule.c_configname=sdr["configname"].ToString();
+                    schedule.c_id= sdr["id"].ToString();
+                    ListSchedule.Add(schedule);
+
+                }
+                sdr.Close();//读取完毕即关闭  
+               
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                mySqlConnection.Close();//关闭连接  
+            }
+
+            return ListSchedule;
+        }
+
+
         List<ConnectorRecord> ListRecord = new List<ConnectorRecord>();
+
+
         private void getAllRecordData(string date)//获取所有下载的report
         {
 
@@ -315,6 +368,13 @@ namespace PullingStatusTool.App
             return ListRecord;
         
         }
+
+        public List<ConnectorSchedule> getNullInstance()
+        {
+            return getNullInstanceData();
+        }
+
+
 
     }
 }

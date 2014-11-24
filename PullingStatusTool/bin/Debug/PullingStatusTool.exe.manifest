@@ -286,14 +286,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PullingStatusTool.exe" size="177152">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PullingStatusTool.exe" size="179200">
       <assemblyIdentity name="PullingStatusTool" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>KYJlKs3lzZoL7wvR+eX/yX1ycO4=</dsig:DigestValue>
+        <dsig:DigestValue>ZI4uaTDooK2u/L9PeT/pnMKOoz4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
