@@ -31,6 +31,7 @@ namespace PullingStatusTool
         UC_NoTargetDPChart UC_NoTargetChart = new UC_NoTargetDPChart();
         UC_MRSConnector UC_MorrisonConnector = new UC_MRSConnector();
         UC_AccountManagement UC_AccountMgr = new UC_AccountManagement();
+        UC_WMBasket UC_Basket = new UC_WMBasket();
         private void showFunctions(UC_Functions function)//加载功能用户控件的统一方法
         {
 
@@ -165,6 +166,23 @@ namespace PullingStatusTool
             else
             {
                 showFunctions(UC_AccountMgr);
+            }
+        }
+
+        private void item_wmbasket_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            Frm_Password password = new Frm_Password();
+            if (!Users.Flag)
+            {
+                if (password.ShowDialog() == DialogResult.OK)
+                {
+                    Users.Flag = true;
+                    showFunctions(UC_Basket);
+                }
+            }
+            else
+            {
+                showFunctions(UC_Basket);
             }
         }
 

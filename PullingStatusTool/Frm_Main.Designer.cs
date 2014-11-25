@@ -44,6 +44,7 @@
             this.item_notargetchart = new DevExpress.XtraNavBar.NavBarItem();
             this.item_targetchart = new DevExpress.XtraNavBar.NavBarItem();
             this.grp_connector = new DevExpress.XtraNavBar.NavBarGroup();
+            this.item_wmbasket = new DevExpress.XtraNavBar.NavBarItem();
             this.item_morrison = new DevExpress.XtraNavBar.NavBarItem();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -73,7 +74,8 @@
             this.item_uploadrecord,
             this.item_notargetchart,
             this.item_morrison,
-            this.item_AccountMgr});
+            this.item_AccountMgr,
+            this.item_wmbasket});
             this.navBarControl1.Location = new System.Drawing.Point(3, 3);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 140;
@@ -175,8 +177,16 @@
             this.grp_connector.Caption = "Connector";
             this.grp_connector.Expanded = true;
             this.grp_connector.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.item_morrison)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.item_morrison),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.item_wmbasket)});
             this.grp_connector.Name = "grp_connector";
+            // 
+            // item_wmbasket
+            // 
+            this.item_wmbasket.Caption = "WMBasket";
+            this.item_wmbasket.Name = "item_wmbasket";
+            this.item_wmbasket.SmallImage = global::PullingStatusTool.Properties.Resources.Walmart;
+            this.item_wmbasket.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.item_wmbasket_LinkClicked);
             // 
             // item_morrison
             // 
@@ -250,6 +260,7 @@
         private DevExpress.XtraNavBar.NavBarItem item_morrison;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraNavBar.NavBarItem item_AccountMgr;
+        private DevExpress.XtraNavBar.NavBarItem item_wmbasket;
 
 
 

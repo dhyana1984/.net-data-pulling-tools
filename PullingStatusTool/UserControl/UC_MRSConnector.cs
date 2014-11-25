@@ -140,7 +140,7 @@ namespace PullingStatusTool.UserControl
        
             MorrisonDBHelper MorrisonConnector = new MorrisonDBHelper();
             gc_Record.DataSource = MorrisonConnector.getAllRecord(txt_RecordTime.Text);
-
+            getNullInstance();
         }
 
         private void getNullInstance()

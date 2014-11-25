@@ -35,8 +35,8 @@
     <InstallUrl>http://10.176.1.50:8002/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>1</ApplicationRevision>
-    <ApplicationVersion>2.2.1.%2a</ApplicationVersion>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>2.2.2.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -203,6 +203,12 @@
     <Compile Include="UserControl\UC_UploadRecord.Designer.cs">
       <DependentUpon>UC_UploadRecord.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\UC_WMBasket.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UC_WMBasket.Designer.cs">
+      <DependentUpon>UC_WMBasket.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Frm_Main.resx">
       <DependentUpon>Frm_Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -252,6 +258,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UC_UploadRecord.resx">
       <DependentUpon>UC_UploadRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UC_WMBasket.resx">
+      <DependentUpon>UC_WMBasket.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\app.manifest" />
@@ -329,6 +338,7 @@
     <None Include="img\UploadRecord.jpg" />
     <None Include="img\TargetChart.jpg" />
     <Content Include="img\Target.png" />
+    <None Include="img\Walmart.jpg" />
     <Content Include="SQL\DataPullingFileStatusSql.txt" />
     <Content Include="SQL\SLAPerformance.txt" />
     <Content Include="SQL\VIP.txt" />

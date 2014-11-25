@@ -32,10 +32,10 @@ namespace PullingStatusTool.App
             //                 " from v$RSI_TOOLS_TargetConn_EventStatus"+
             //                 " where eventstarttime >= '" + startDate + "' and eventstarttime <= '"+ endDate + "'";//SQL语句  
 
-            string sqlStr = "SELECT a.id, configname"
-                                        + "FROM [MorrisonConnector].[dbo].[RSI_TOOLS_Conn_INSTANCE] a join "
+            string sqlStr = "SELECT a.id, configname "
+                                        + " FROM [MorrisonConnector].[dbo].[RSI_TOOLS_Conn_INSTANCE] a join "
                                         + " [MorrisonConnector].dbo.RSI_TOOLS_Conn_CONTEXT b on a.CONTEXTID=b.id"
-                                        + "join [MorrisonConnector].dbo.RSI_TOOLS_Conn_REPORTCONFIG c on b.reportcfgid=c.rid"
+                                        + " join [MorrisonConnector].dbo.RSI_TOOLS_Conn_REPORTCONFIG c on b.reportcfgid=c.rid"
                                         + " where ENDTIME is null";
 
             try
