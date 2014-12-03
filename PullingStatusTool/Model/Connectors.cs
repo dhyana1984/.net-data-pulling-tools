@@ -17,27 +17,27 @@ namespace PullingStatusTool.Model
         
         public Connectors()
         { }
-        string id;
+     private   string id;
 
         public string c_id
         {
             get { return id; }
             set { id = value; }
         }
-        string vendor;
+        private string vendor;
         public string c_vendor
         {
             get { return vendor; }
             set { vendor = value; }
         }
 
-        string retailer;
+        private string retailer;
         public string c_retailer
         {
             get { return retailer; }
             set { retailer = value; }
         }
-        string datatype;
+        private string datatype;
 
         public string c_datatype
         {
@@ -55,7 +55,7 @@ namespace PullingStatusTool.Model
         { }
 
 
-        string configname;
+        private string configname;
 
         public string c_configname
         {
@@ -63,35 +63,35 @@ namespace PullingStatusTool.Model
             set { configname = value; }
         }
 
-        string time;
+        private string time;
 
         public string c_time
         {
             get { return time; }
             set { time = value; }
         }
-        string nextruntime;
+        private string nextruntime;
 
         public string c_nextruntime
         {
             get { return nextruntime; }
             set { nextruntime = value; }
         }
-        string datelag;
+        private string datelag;
 
         public string c_datelag
         {
             get { return datelag; }
             set { datelag = value; }
         }
-        bool enable;
+        private bool enable;
 
         public bool c_enable
         {
             get { return enable; }
             set { enable = value; }
         }
-        bool running;
+        private bool running;
 
         public bool c_running
         {
@@ -99,7 +99,7 @@ namespace PullingStatusTool.Model
             set { running = value; }
         }
 
-        bool selected;
+        private bool selected;
 
         public bool c_selected//这个属性是为了在表格里面有一行Select culomn用来选择多列操作
         {
@@ -107,8 +107,30 @@ namespace PullingStatusTool.Model
             set { selected = value; }
         }
 
-    
-    
+        private string progress;
+
+        public string c_progress
+        {
+            get { return progress; }
+            set { progress = value; }
+        }
+
+
+        private string storenumber;
+
+        public string c_storenumber
+        {
+            get { return storenumber; }
+            set { storenumber = value; }
+        }
+
+        private string week;
+
+        public string c_week
+        {
+            get { return week; }
+            set { week = value; }
+        }
     }
 
 
@@ -120,7 +142,7 @@ namespace PullingStatusTool.Model
         }
 
 
-            string suffix;
+        private string suffix;
 
             public string c_suffix
             {
@@ -128,14 +150,14 @@ namespace PullingStatusTool.Model
                 set { suffix = value; }
             }
 
-            string account;
+            private string account;
 
             public string c_accountname
             {
                 get { return account; }
                 set { account = value; }
             }
-            string password;
+            private string password;
 
             public string c_password
             {
@@ -143,29 +165,31 @@ namespace PullingStatusTool.Model
                 set { password = value; }
             }
 
-    
-            string subvendor;
+
+            private string subvendor;
 
             public string c_subvendor
             {
                 get { return subvendor; }
                 set { subvendor = value; }
             }
-          
-            string category;
+
+            private string category;
 
             public string c_category
             {
                 get { return category; }
                 set { category = value; }
             }
-            string owner;
+            private string owner;
 
             public string c_owner
             {
                 get { return owner; }
                 set { owner = value; }
             }
+
+
     
     }
 
@@ -175,28 +199,28 @@ namespace PullingStatusTool.Model
 
 
 
-        string configname;
+        private string configname;
 
         public string c_configname
         {
             get { return configname; }
             set { configname = value; }
         }
-        string downloadtime;
+        private string downloadtime;
 
         public string c_downloadtime
         {
             get { return downloadtime; }
             set { downloadtime = value; }
         }
-        string downloadstatus;
+        private string downloadstatus;
 
         public string c_downloadstatus
         {
             get { return downloadstatus; }
             set { downloadstatus = value; }
         }
-        string reporttype;
+        private string reporttype;
 
         public string c_reporttype
         {
@@ -204,7 +228,7 @@ namespace PullingStatusTool.Model
             set { reporttype = value; }
         }
 
-        string filename;
+        private string filename;
 
         public string c_filename
         {
@@ -213,8 +237,6 @@ namespace PullingStatusTool.Model
         }
     
     }
-
-
 
 
 }

@@ -64,9 +64,12 @@ namespace PullingStatusTool.UserControl
                     if ((bool)gridView1.GetRowCellValue(i, "c_selected"))
                     ids += gridView1.GetRowCellValue(i, "c_id") + ",";//将显示在grid表格中的id传入runnow方法，批量runnow
                 }
-                MorrisonDBHelper MorrisonConnector = new MorrisonDBHelper();
-                MorrisonConnector.runNowSchedules(ids.TrimEnd(','));
-                getScheduleDS();
+                if (ids != "")
+                {
+                    MorrisonDBHelper MorrisonConnector = new MorrisonDBHelper();
+                    MorrisonConnector.runNowSchedules(ids.TrimEnd(','));
+                    getScheduleDS();
+                }
             }
         }
 
@@ -94,12 +97,14 @@ namespace PullingStatusTool.UserControl
 
         private void btn_EditUser_Click(object sender, EventArgs e)
         {
-             MorrisonDBHelper MorrisonConnector = new MorrisonDBHelper();
-             ConnectorAccount account = new ConnectorAccount();
-             account.c_accountname = txt_Account.Text;
-             account.c_password = txt_Password.Text;
+
                 if (userid != "")
                 {
+                    MorrisonDBHelper MorrisonConnector = new MorrisonDBHelper();
+                    ConnectorAccount account = new ConnectorAccount();
+                    account.c_accountname = txt_Account.Text;
+                    account.c_password = txt_Password.Text;
+                    account.c_suffix = txt_Suffix.Text;
                     account.c_id = userid;
                     MorrisonConnector.editAccount(account);
                     getAccountDS();
@@ -145,12 +150,13 @@ namespace PullingStatusTool.UserControl
 
         private void getNullInstance()
         {
+            lbx_NullInstance.Items.Clear();
             MorrisonDBHelper MorrisonConnector = new MorrisonDBHelper();
-            List<ConnectorSchedule> Listschedule = new List<ConnectorSchedule>();
-            Listschedule = MorrisonConnector.getNullInstance();
-            foreach(ConnectorSchedule schedule in Listschedule)
+            DataTable dt = new DataTable();
+               dt= MorrisonConnector.getNullInstance();
+               foreach (DataRow row in dt.Rows)
             {
-                lbx_NullInstance.Items.Add(schedule.c_id + " " + schedule.c_configname);
+                lbx_NullInstance.Items.Add(row["c_id"] + " " + row["c_configname"]);
             }
         
         }

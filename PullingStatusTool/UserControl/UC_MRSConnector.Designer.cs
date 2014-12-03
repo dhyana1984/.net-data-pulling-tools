@@ -122,10 +122,10 @@
             this.gc_Schedule.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gc_Schedule.Location = new System.Drawing.Point(3, 59);
+            this.gc_Schedule.Location = new System.Drawing.Point(0, 59);
             this.gc_Schedule.MainView = this.gridView1;
             this.gc_Schedule.Name = "gc_Schedule";
-            this.gc_Schedule.Size = new System.Drawing.Size(943, 406);
+            this.gc_Schedule.Size = new System.Drawing.Size(945, 409);
             this.gc_Schedule.TabIndex = 26;
             this.gc_Schedule.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -223,6 +223,8 @@
             // nextruntime
             // 
             this.nextruntime.Caption = "Next Run Time";
+            this.nextruntime.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm:ss";
+            this.nextruntime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.nextruntime.FieldName = "c_nextruntime";
             this.nextruntime.Name = "nextruntime";
             this.nextruntime.OptionsColumn.AllowEdit = false;
@@ -371,6 +373,8 @@
             // gridColumn4
             // 
             this.gridColumn4.Caption = "DownLoadTime";
+            this.gridColumn4.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm:ss";
+            this.gridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn4.FieldName = "c_downloadtime";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
@@ -393,10 +397,10 @@
             this.Tab_Schedule.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Tab_Schedule.Location = new System.Drawing.Point(3, 3);
+            this.Tab_Schedule.Location = new System.Drawing.Point(0, 0);
             this.Tab_Schedule.Name = "Tab_Schedule";
             this.Tab_Schedule.SelectedTabPage = this.txt_nextruntime1;
-            this.Tab_Schedule.Size = new System.Drawing.Size(956, 497);
+            this.Tab_Schedule.Size = new System.Drawing.Size(955, 500);
             this.Tab_Schedule.TabIndex = 28;
             this.Tab_Schedule.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tab_users,
@@ -420,7 +424,7 @@
             this.txt_nextruntime1.Controls.Add(this.txt_Configname);
             this.txt_nextruntime1.Controls.Add(this.gc_Schedule);
             this.txt_nextruntime1.Name = "txt_nextruntime1";
-            this.txt_nextruntime1.Size = new System.Drawing.Size(949, 468);
+            this.txt_nextruntime1.Size = new System.Drawing.Size(948, 471);
             this.txt_nextruntime1.Text = "Schedule";
             // 
             // txt_NextRunTime
@@ -428,6 +432,7 @@
             this.txt_NextRunTime.EditValue = null;
             this.txt_NextRunTime.Location = new System.Drawing.Point(83, 33);
             this.txt_NextRunTime.Name = "txt_NextRunTime";
+            this.txt_NextRunTime.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
             this.txt_NextRunTime.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txt_NextRunTime.Properties.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm:ss";
@@ -435,6 +440,7 @@
             this.txt_NextRunTime.Properties.EditFormat.FormatString = "yyyy-MM-dd HH:mm:ss";
             this.txt_NextRunTime.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.txt_NextRunTime.Properties.Mask.EditMask = "yyyy-MM-dd HH:mm:ss";
+            this.txt_NextRunTime.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.txt_NextRunTime.Properties.VistaEditTime = DevExpress.Utils.DefaultBoolean.True;
             this.txt_NextRunTime.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -544,7 +550,7 @@
             this.tab_users.Controls.Add(this.btn_EditUser);
             this.tab_users.Controls.Add(this.gc_Account);
             this.tab_users.Name = "tab_users";
-            this.tab_users.Size = new System.Drawing.Size(949, 468);
+            this.tab_users.Size = new System.Drawing.Size(948, 471);
             this.tab_users.Text = "Users";
             // 
             // btn_RfreshAccount
@@ -558,7 +564,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(328, 11);
+            this.labelControl4.Location = new System.Drawing.Point(328, 9);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(28, 13);
             this.labelControl4.TabIndex = 36;
@@ -573,7 +579,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(170, 13);
+            this.labelControl3.Location = new System.Drawing.Point(170, 9);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(46, 13);
             this.labelControl3.TabIndex = 34;
@@ -588,7 +594,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(19, 13);
+            this.labelControl2.Location = new System.Drawing.Point(19, 9);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(39, 13);
             this.labelControl2.TabIndex = 32;
@@ -709,7 +715,7 @@
             this.tab_Record.Controls.Add(this.labelControl1);
             this.tab_Record.Controls.Add(this.gc_Record);
             this.tab_Record.Name = "tab_Record";
-            this.tab_Record.Size = new System.Drawing.Size(949, 468);
+            this.tab_Record.Size = new System.Drawing.Size(948, 471);
             this.tab_Record.Text = "Record";
             // 
             // lbx_NullInstance
@@ -763,7 +769,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.Tab_Schedule);
             this.Name = "UC_MRSConnector";
-            this.Size = new System.Drawing.Size(962, 503);
+            this.Size = new System.Drawing.Size(958, 503);
             this.Tag = "Morrisons Connector";
             this.Load += new System.EventHandler(this.UC_MRSConnector_Load);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
