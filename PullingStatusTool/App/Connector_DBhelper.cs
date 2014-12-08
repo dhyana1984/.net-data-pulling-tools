@@ -125,7 +125,7 @@ namespace PullingStatusTool.App
  
         }
     
-    }
+    }//WMBasket Connector的DBhelper
 
     class MorrisonDBHelper//Morrison connector的DBhelper
     {
@@ -262,6 +262,10 @@ namespace PullingStatusTool.App
     class ConnectDB
     {
         public ConnectDB() { }
+        public ConnectDB( string strSqlCon) 
+        {
+            SqlConString = strSqlCon;
+        }
         private string SqlConString;//连接字符串，用来设置不同的数据库配置
 
         public string c_sqlConString
@@ -354,13 +358,14 @@ namespace PullingStatusTool.App
             return getTableData(sql);
         }
 
-        public void submit(string sql)
+        public bool submit(string sql)
         {
             if (submitData(sql))
             {
                 MessageBox.Show("Save Successfully!");
-
+                return true;
             }
+            return false;
         }
     }
 }

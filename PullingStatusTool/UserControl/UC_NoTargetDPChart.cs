@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraCharts;
 using System.Linq;
+using PullingStatusTool.Model;
 
 namespace PullingStatusTool.UserControl
 {
@@ -35,16 +36,17 @@ namespace PullingStatusTool.UserControl
             ChartSLA.Series.Clear();   //清空所有曲线
             ChartSLA.SeriesDataMember = "c_retailer";
             ChartSLA.SeriesTemplate.ValueDataMembers.AddRange(new string[] { "c_filecount" });
-            ChartSLA.SeriesTemplate.ArgumentDataMember = "c_repulldate";
-            ChartSLA.DataSource = db_help.getNoTargetPerformance(txt_StartDate.Text, txt_EndDate.Text);
+            ChartSLA.SeriesTemplate.ArgumentDataMember = "c_uploaddate";
+            ChartSLA.DataSource = db_help.getNoPerfomances(txt_StartDate.Text, txt_EndDate.Text);
             Random rd = new Random();
             cbx_Retailer.Properties.Items.Clear();
             cbx_Retailer.Properties.Items.Add("All");
             cbx_Retailer.SelectedIndex = 0;
             foreach (Series line in ChartSLA.Series)
             {
+                string color = RetailerColor.getColorbyRetailer(line.Name);//根据retailer获得线条的颜色，有新retailer的时候需要手工定义
                 ((LineSeriesView)line.View).LineStyle.Thickness = 3;
-                ((LineSeriesView)line.View).Color = Color.FromArgb(rd.Next(256), rd.Next(255), rd.Next(255), rd.Next(255));
+                ((LineSeriesView)line.View).Color = ColorTranslator.FromHtml(color);
                 cbx_Retailer.Properties.Items.Add(line.Name);
             }
          

@@ -388,7 +388,7 @@
             this.gridControl1.Location = new System.Drawing.Point(13, 92);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(932, 408);
+            this.gridControl1.Size = new System.Drawing.Size(916, 502);
             this.gridControl1.TabIndex = 58;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -428,7 +428,7 @@
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.gridControl1);
             this.Name = "UC_FileSetMgr";
-            this.Size = new System.Drawing.Size(948, 503);
+            this.Size = new System.Drawing.Size(932, 597);
             this.Tag = "File Set Management";
             this.Load += new System.EventHandler(this.FileUploadManage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtDatalag.Properties)).EndInit();

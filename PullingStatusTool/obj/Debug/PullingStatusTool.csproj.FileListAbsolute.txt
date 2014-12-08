@@ -5,10 +5,11 @@ D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\Pull
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\bin\Debug\PullingStatusTool.pdb
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\ResolveAssemblyReference.cache
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.csproj.ResolveComReference.cache
+D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.Frm_ConnectorReportDetail.resources
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.Frm_Main.resources
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.Frm_Password.resources
-D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.Properties.Resources.resources
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.Frm_UploadPath.resources
+D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.Properties.Resources.resources
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.UserControl.UC_AccountManagement.resources
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.UserControl.UC_FileExpectMgr.resources
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.UserControl.UC_FileSetMgr.resources
@@ -19,6 +20,7 @@ D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\Pull
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.UserControl.UC_TargetDPChart.resources
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.UserControl.UC_TargetMonitor.resources
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.UserControl.UC_UploadRecord.resources
+D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.UserControl.UC_WMBasket.resources
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\ResGen.read.1.tlog
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\ResGen.write.1.tlog
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.exe.licenses
@@ -27,5 +29,3 @@ D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\Pull
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.application
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.exe
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.pdb
-D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.UserControl.UC_WMBasket.resources
-D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.Frm_ConnectorReportDetail.resources

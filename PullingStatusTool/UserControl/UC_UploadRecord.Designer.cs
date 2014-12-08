@@ -61,7 +61,7 @@
             this.gridControl1.Location = new System.Drawing.Point(12, 72);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(926, 428);
+            this.gridControl1.Size = new System.Drawing.Size(910, 522);
             this.gridControl1.TabIndex = 15;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -135,6 +135,8 @@
             // uploadtime
             // 
             this.uploadtime.Caption = "UploadTime";
+            this.uploadtime.DisplayFormat.FormatString = "yyyy-MM-dd HH:ss:mm";
+            this.uploadtime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.uploadtime.FieldName = "c_uploadtime";
             this.uploadtime.Name = "uploadtime";
             this.uploadtime.OptionsColumn.AllowEdit = false;
@@ -255,7 +257,7 @@
             this.Controls.Add(this.txt_EDtime);
             this.Controls.Add(this.labelControl2);
             this.Name = "UC_UploadRecord";
-            this.Size = new System.Drawing.Size(948, 503);
+            this.Size = new System.Drawing.Size(932, 597);
             this.Tag = "None Target Data Upload Record";
             this.Load += new System.EventHandler(this.Frm_UploadRecord_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();

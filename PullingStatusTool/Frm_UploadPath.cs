@@ -33,10 +33,8 @@ namespace PullingStatusTool
                 uploadpath.c_filesetid = FileSetid;
                 uploadpath.c_pathname = txt_pathName.Text;
                 uploadpath.c_uploadpath = txt_uploadpath.Text;
-                if (dbhelper.addUploadPath(uploadpath))
-                {
-                    getDS();
-                }
+                if(dbhelper.addUploadPath(uploadpath))
+                   getDS();
             }
             else
             {
@@ -64,14 +62,12 @@ namespace PullingStatusTool
             {
                 UploadFilePath uploadpath = new UploadFilePath();
                 DB_Helper dbhelper = new DB_Helper();
-              
                 uploadpath.c_pathname = txt_pathName.Text;
                 uploadpath.c_uploadpath = txt_uploadpath.Text;
                 uploadpath.c_id = pathid;
-                if (dbhelper.editUploadPath(uploadpath))
-                {
-                    getDS();
-                }
+                if(dbhelper.editUploadPath(uploadpath))
+                 getDS();
+                
             }
             else
             {
@@ -93,10 +89,9 @@ namespace PullingStatusTool
         {
                 pathid = gridView1.GetFocusedRowCellValue("c_id").ToString().Trim();
                 DB_Helper dbhelper = new DB_Helper();
-                if (dbhelper.deleteUploadPath(pathid))
-                {
-                    getDS();
-                }
+                if(dbhelper.deleteUploadPath(pathid))
+                 getDS();
+                
          
             
         }

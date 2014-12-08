@@ -271,6 +271,7 @@
             this.fileCountExpect.FieldName = "c_filexpectuploaded";
             this.fileCountExpect.Name = "fileCountExpect";
             this.fileCountExpect.OptionsColumn.AllowEdit = false;
+            this.fileCountExpect.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.fileCountExpect.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             this.fileCountExpect.Visible = true;
             this.fileCountExpect.VisibleIndex = 5;
@@ -284,6 +285,7 @@
             this.ID.OptionsColumn.AllowEdit = false;
             this.ID.OptionsColumn.AllowSize = false;
             this.ID.OptionsColumn.ReadOnly = true;
+            this.ID.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.ID.Width = 153;
             // 
             // dayOfWeek
@@ -292,6 +294,7 @@
             this.dayOfWeek.FieldName = "c_dayofweek";
             this.dayOfWeek.Name = "dayOfWeek";
             this.dayOfWeek.OptionsColumn.AllowEdit = false;
+            this.dayOfWeek.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.dayOfWeek.Visible = true;
             this.dayOfWeek.VisibleIndex = 0;
             this.dayOfWeek.Width = 150;
@@ -302,6 +305,7 @@
             this.DelayReason.FieldName = "c_delayreason";
             this.DelayReason.Name = "DelayReason";
             this.DelayReason.OptionsColumn.AllowEdit = false;
+            this.DelayReason.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.DelayReason.Visible = true;
             this.DelayReason.VisibleIndex = 6;
             this.DelayReason.Width = 461;
@@ -314,7 +318,7 @@
             this.GC_FileExpect.Location = new System.Drawing.Point(6, 87);
             this.GC_FileExpect.MainView = this.gridView1;
             this.GC_FileExpect.Name = "GC_FileExpect";
-            this.GC_FileExpect.Size = new System.Drawing.Size(939, 413);
+            this.GC_FileExpect.Size = new System.Drawing.Size(949, 413);
             this.GC_FileExpect.TabIndex = 20;
             this.GC_FileExpect.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -370,7 +374,7 @@
             this.Controls.Add(this.txt_Vendor);
             this.Controls.Add(this.GC_FileExpect);
             this.Name = "UC_FileExpectMgr";
-            this.Size = new System.Drawing.Size(948, 503);
+            this.Size = new System.Drawing.Size(958, 503);
             this.Tag = "Expect File Management";
             this.Load += new System.EventHandler(this.UC_FileExpectMgr_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txt_Retailer.Properties)).EndInit();

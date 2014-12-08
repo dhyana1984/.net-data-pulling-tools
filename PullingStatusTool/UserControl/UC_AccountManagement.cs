@@ -44,7 +44,7 @@ namespace PullingStatusTool.UserControl
                 account.c_subvendor = txt_Subvendor.Text;
                 account.c_category = txt_Category.Text;
                 account.c_id = id;
-                dbhelper.editAccount(account);
+                if(dbhelper.editAccount(account))
                 getDS();
             }
         }
@@ -76,7 +76,7 @@ namespace PullingStatusTool.UserControl
             account.c_owner = txt_Owner.Text;
             account.c_subvendor = txt_Subvendor.Text;
             account.c_vendor = txt_Vendor.Text;
-            dbhelper.addAccount(account);
+            if(dbhelper.addAccount(account))
             getDS();
         }
     }

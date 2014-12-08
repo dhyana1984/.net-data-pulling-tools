@@ -128,6 +128,10 @@
             xyDiagram1.AxisY.Range.ScrollingRange.SideMarginsEnabled = true;
             xyDiagram1.AxisY.Range.SideMarginsEnabled = true;
             xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            xyDiagram1.EnableAxisXScrolling = true;
+            xyDiagram1.EnableAxisXZooming = true;
+            xyDiagram1.EnableAxisYScrolling = true;
+            xyDiagram1.EnableAxisYZooming = true;
             this.ChartSLA.Diagram = xyDiagram1;
             this.ChartSLA.Location = new System.Drawing.Point(20, 57);
             this.ChartSLA.Name = "ChartSLA";
@@ -149,7 +153,7 @@
             pointSeriesLabel3.LineVisible = true;
             this.ChartSLA.SeriesTemplate.Label = pointSeriesLabel3;
             this.ChartSLA.SeriesTemplate.View = splineSeriesView3;
-            this.ChartSLA.Size = new System.Drawing.Size(916, 443);
+            this.ChartSLA.Size = new System.Drawing.Size(926, 443);
             this.ChartSLA.TabIndex = 24;
             // 
             // cbx_Retailer
@@ -182,7 +186,7 @@
             this.Controls.Add(this.txt_EndDate);
             this.Controls.Add(this.txt_StartDate);
             this.Name = "UC_NoTargetDPChart";
-            this.Size = new System.Drawing.Size(948, 503);
+            this.Size = new System.Drawing.Size(958, 503);
             this.Tag = "None Target Data Pulling Chart";
             this.Load += new System.EventHandler(this.UC_NoTargetDPChart_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txt_EndDate.Properties.VistaTimeProperties)).EndInit();

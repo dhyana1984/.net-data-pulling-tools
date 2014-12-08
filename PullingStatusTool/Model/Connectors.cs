@@ -238,5 +238,57 @@ namespace PullingStatusTool.Model
     
     }
 
+    //用于显示非Target的SLA曲线的颜色
+ static   class RetailerColor
+    {
+        static RetailerColor()
+        {
+            ListItem.Add(new Item("Morrisons", "#FAFA5B"));
+            ListItem.Add(new Item("Sainsbury","#FFA011"));
+            ListItem.Add(new Item("Ocado", "#39D8D8"));
+            ListItem.Add(new Item("Boots", "#0753C6"));
+        }
+       static private List<Item> ListItem = new List<Item>();
 
+
+       static private string getColorData(string retailer)
+        {
+          List<Item> ColorList = ListItem.Where(t => t.c_key == retailer).ToList();
+          return ColorList.Count() > 0 ? ColorList.ToList()[0].c_value : "#E6E6E6";       //如果有没有定义颜色的Retailer，则返回#E6E6E6
+        }
+
+       static public string getColorbyRetailer(string retailer)
+        {
+            return getColorData(retailer);
+        }
+
+     }
+    class Item  
+    {
+        public Item()
+        {
+
+        }    
+        public Item(string key,string value)
+        {
+            c_key = key;
+            c_value = value;
+        }            
+            
+            private     string key;
+
+        public string c_key
+        {
+          get { return key; }
+          set { key = value; }
+        }
+
+       private string value;
+
+        public string c_value
+        {
+          get { return this.value; }
+          set { this.value = value; }
+        }
+    }
 }

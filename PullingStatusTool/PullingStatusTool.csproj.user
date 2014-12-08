@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <PublishUrlHistory>\\192.168.10.68\d%24\DataPullSystem\Publish\|\\10.176.1.50\d%24\PullStatusToolPublish\|D:\Work\Data Pulling\PullingStatusTool\publish\</PublishUrlHistory>
+    <PublishUrlHistory>\\10.176.1.50\d%24\DataPullSystem\Publish\|\\192.168.10.68\d%24\DataPullSystem\Publish\|\\10.176.1.50\d%24\PullStatusToolPublish\|D:\Work\Data Pulling\PullingStatusTool\publish\</PublishUrlHistory>
     <InstallUrlHistory>http://192.168.10.68:8002/|http://10.176.1.50:8002/</InstallUrlHistory>
     <SupportUrlHistory>
     </SupportUrlHistory>

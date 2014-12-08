@@ -7,11 +7,15 @@ using System.Windows.Forms;
 using System.IO;
 using PullingStatusTool.Model;
 using System.Configuration;
+using PullingStatusTool.App;
+using System.Data;
 
 namespace PullingStatusTool
 {
     class DB_Helper
     {
+        ConnectDB connectDB_68server = new ConnectDB("68Server");
+       
         List<ServerStatus> ListServerstatus = new List<ServerStatus>();
         List<ReportDetails> ListReportDetails = new List<ReportDetails>();
         List<DataPullingFileCountStatus> ListPullFileStatus = new List<DataPullingFileCountStatus>();
@@ -26,13 +30,6 @@ namespace PullingStatusTool
 
         private bool addAccountData(ConnectorAccount account)
         {
-            string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
-            SqlConnection mySqlConnection = new SqlConnection();
-            mySqlConnection.ConnectionString = connStr;
-            //string sqlStr = "select distinct vendor,schedulename,status,eventstarttime,DownloadingStatus,FormattingStatus,UploadingStatus,configname,eventid,IRID" + 
-            //                 " from v$RSI_TOOLS_TargetConn_EventStatus"+
-            //                 " where eventstarttime >= '" + startDate + "' and eventstarttime <= '"+ endDate + "'";//SQL语句  
-
             string sqlStr = "insert into   IRAccount (Vendor,userid,PassWord,CategoryAccess,Owner,subvendor,Retailer) values "
                            + "('" + account.c_vendor + "',"
                            + "'" + account.c_accountname + "',"
@@ -41,41 +38,13 @@ namespace PullingStatusTool
                            + "'" + account.c_owner + "',"
                            + "'" + account.c_subvendor + "',"
                            + "'" + account.c_retailer + "' )";
-            try
-            {
-                mySqlConnection.Open();//打开连接  
-                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
-                SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
-
-                sdr.Close();//读取完毕即关闭  
-                MessageBox.Show("Add Account successfully!");
-                return true;
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-                return false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return false;
-            }
-            finally
-            {
-                mySqlConnection.Close();//关闭连接  
-            }
-
+            return  connectDB_68server.submit(sqlStr);
 
         }
 
 
-        private void editAccountData(ConnectorAccount account)//立即run Schedule, 实际上就是update next runtime 到当前时间
+        private bool editAccountData(ConnectorAccount account)//
         {
-
-            string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
-            SqlConnection mySqlConnection = new SqlConnection();
-            mySqlConnection.ConnectionString = connStr;
             string sqlStr = "update  IRAccount "
                                       + " set [Vendor]='" + account.c_vendor + "', "
                                        + "  [userid]='" + account.c_accountname + "', "
@@ -85,271 +54,91 @@ namespace PullingStatusTool
                                       + "  [subvendor]='" + account.c_subvendor + "', "
                                       + "  [Retailer]='" + account.c_retailer + "' "
                                       + " where id in(" + account.c_id + ")";
-
-            try
-            {
-                mySqlConnection.Open();//打开连接  
-                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
-                SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
-                sdr.Close();//读取完毕即关闭  
-                MessageBox.Show("Successfully Saved!");
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                mySqlConnection.Close();//关闭连接  
-            }
+        return    connectDB_68server.submit(sqlStr);
         }
 
-        private void getAllAccountData()
+        private DataTable getAllAccountData()
         {
-            string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
-            SqlConnection mySqlConnection = new SqlConnection();
-            mySqlConnection.ConnectionString = connStr;
-            string sqlStr ="SELECT * FROM [TargetPullingStatus].[dbo].[IRAccount]"
-                                    + "order by Retailer,Vendor,UserID,SubVendor" ;
+            string sqlStr ="SELECT "
+                                    +" userid as c_accountname,"
+                                      + " owner as c_owner,"
+                                        + " CategoryAccess as c_category,"
+                                          + " id as c_id,"
+                                            + " password as c_password,"
+                                              + " retailer as c_retailer,"
+                                                + " vendor as c_vendor,"
+                                                  + " subvendor as c_subvendor "
+                                    +" FROM [TargetPullingStatus].[dbo].[IRAccount]"
+                                    + " order by Retailer,Vendor,UserID,SubVendor" ;
 
-
-            try
-            {
-                mySqlConnection.Open();//打开连接  
-                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
-                SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
-                while (sdr.Read())
-                {
-                    ConnectorAccount account = new ConnectorAccount();
-                    account.c_accountname = sdr["userid"].ToString();
-                    account.c_category = sdr["CategoryAccess"].ToString();
-                    account.c_id = sdr["id"].ToString();
-                    account.c_owner = sdr["owner"].ToString();
-                    account.c_password = sdr["password"].ToString();
-                    account.c_retailer = sdr["retailer"].ToString();
-                    account.c_vendor = sdr["vendor"].ToString();
-                    account.c_subvendor = sdr["subvendor"].ToString();
-                    ListAccount.Add(account);
-                   
-                }
-                sdr.Close();//读取完毕即关闭  
-
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                mySqlConnection.Close();//关闭连接  
-            }
-
+         return   connectDB_68server.getTable(sqlStr);
         }
 
-        private void getUploadRecordData(string STDate,string EDDate,string isSLA,string isOngoing)
+        private DataTable getUploadRecordData(string STDate,string EDDate,string isSLA,string isOngoing)
         {
-            string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
-            SqlConnection mySqlConnection = new SqlConnection();
-            mySqlConnection.ConnectionString = connStr;
+          
             string SLA =isSLA=="All"?"":" and isSLA = '"+isSLA+"'";
             string ongoing= isOngoing=="All"?"":" and isongoing = '"+isOngoing+"'";
-            string sqlStr = @"select * from FileUploadRecord  where "
+            string sqlStr = @"select "
+                                        +"id as c_id,"
+                                        + "retailer as c_retailer,"
+                                        + "vendor as c_vendor,"
+                                        + "Downloadpath as c_downloadpath,"
+                                        + "uploadpath as c_uploadpath,"
+                                        + "uploadtime as c_uploadtime,"
+                                        + "issla as c_issla,"
+                                        + "isongoing as c_isongoing,"
+                                        + "filetype as c_filetype,"
+                                        + "filename as c_filename"
+                                        +" from FileUploadRecord  where "
                                         + " uploadtime >='" + STDate+"' and "
                                         + " uploadtime <='" + EDDate+"'"
                                         + SLA
                                         + ongoing;
 
-
-            try
-            {
-                mySqlConnection.Open();//打开连接  
-                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
-                SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
-                while (sdr.Read())
-                {
-                    UploadRecord uploadPath = new UploadRecord(sdr[0].ToString(), sdr[1].ToString(), sdr[2].ToString(), sdr[3].ToString(), sdr[4].ToString(), sdr[5].ToString(), (bool)sdr[6],(bool)sdr[7],sdr[8].ToString(),sdr[9].ToString());
-                    ListUploadRecord.Add(uploadPath);
-                }
-                sdr.Close();//读取完毕即关闭  
-
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                mySqlConnection.Close();//关闭连接  
-            }
+          return  connectDB_68server.getTable(sqlStr);
 
         }
 
-        private void getUploadPathByIDData(string fileSetId)
+        private DataTable  getUploadPathByIDData(string fileSetId)
         {
-            string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
-            SqlConnection mySqlConnection = new SqlConnection();
-            mySqlConnection.ConnectionString = connStr;
-            //string sqlStr = "select distinct vendor,schedulename,status,eventstarttime,DownloadingStatus,FormattingStatus,UploadingStatus,configname,eventid,IRID" + 
-            //                 " from v$RSI_TOOLS_TargetConn_EventStatus"+
-            //                 " where eventstarttime >= '" + startDate + "' and eventstarttime <= '"+ endDate + "'";//SQL语句  
-
-            string sqlStr = "select * from UploadPath  where FileSetID =" + fileSetId;
-
-
-            try
-            {
-                mySqlConnection.Open();//打开连接  
-                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
-                SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
-                while (sdr.Read())
-                {
-                    UploadFilePath uploadPath = new UploadFilePath(sdr[0].ToString(), sdr[1].ToString(), sdr[2].ToString(), sdr[3].ToString());
-                    ListUploadPath.Add(uploadPath);
-                }
-                sdr.Close();//读取完毕即关闭  
-
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show( ex.Message);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                mySqlConnection.Close();//关闭连接  
-            }
+            string sqlStr = "select "
+                                         + " id c_id,"
+                                         + " filesetid c_filesetid,"
+                                         + " path c_uploadpath,"
+                                         + " pathname c_pathname"
+                                         +" from UploadPath  where FileSetID =" + fileSetId;
+           return connectDB_68server.getTable(sqlStr);
 
         }
 
         public bool addUploadPath(UploadFilePath path)
         {
-            string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
-            SqlConnection mySqlConnection = new SqlConnection();
-            mySqlConnection.ConnectionString = connStr;
-            //string sqlStr = "select distinct vendor,schedulename,status,eventstarttime,DownloadingStatus,FormattingStatus,UploadingStatus,configname,eventid,IRID" + 
-            //                 " from v$RSI_TOOLS_TargetConn_EventStatus"+
-            //                 " where eventstarttime >= '" + startDate + "' and eventstarttime <= '"+ endDate + "'";//SQL语句  
-
             string sqlStr = "insert into   UploadPath (filesetid,Path,pathname) values "
                            + "('" + path.c_filesetid + "',"
                            + "'" + path.c_uploadpath + "',"
                            + "'" + path.c_pathname + "' )";
-            try
-            {
-                mySqlConnection.Open();//打开连接  
-                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
-                SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
-
-                sdr.Close();//读取完毕即关闭  
-                MessageBox.Show("Add Upload Path successfully!");
-                return true;
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-                return false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return false;
-            }
-            finally
-            {
-                mySqlConnection.Close();//关闭连接  
-            }
-        
-        
+            return connectDB_68server.submit(sqlStr);
         }
         public bool deleteUploadPath(string id)
         {
-            string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
-            SqlConnection mySqlConnection = new SqlConnection();
-            mySqlConnection.ConnectionString = connStr;
             string sqlStr = "delete from    UploadPath where id = " + id;
-            try
-            {
-                mySqlConnection.Open();//打开连接  
-                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
-                mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
-                MessageBox.Show("Delete Upload Path successfully!");
-                return true;
-
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-                return false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return false;
-            }
-            finally
-            {
-                mySqlConnection.Close();//关闭连接  
-            }
+           return connectDB_68server.submit(sqlStr);
         }
 
         public bool editUploadPath(UploadFilePath path)
         {
-            string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
-            SqlConnection mySqlConnection = new SqlConnection();
-            mySqlConnection.ConnectionString = connStr;
+
             string sqlStr = "update   UploadPath set "
                                    
                                     + "path='" + path.c_uploadpath + "',"
                                     + "pathname ='" + path.c_pathname + "'"
                                     + " Where id=" + path.c_id;
-            try
-            {
-                mySqlConnection.Open();//打开连接  
-                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
-                mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
-                MessageBox.Show("Edited Upload Path successfully!");
-                return true;
+            return connectDB_68server.submit(sqlStr);
 
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-                return false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return false;
-            }
-            finally
-            {
-                mySqlConnection.Close();//关闭连接  
-            }
         }
         public bool addFileSet(UploadFileSet fileSet)
         {
-            string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
-            SqlConnection mySqlConnection = new SqlConnection();
-            mySqlConnection.ConnectionString = connStr;
             string sqlStr = "insert into   FileUploadSet (Retailer,Vendor,DownloadPath,FileType,SLATime,Frequency,Dayof,Datalag,Flag) values"
                                     + "('" + fileSet.c_retailer + "',"
                                     + "'" + fileSet.c_vendor + "',"
@@ -363,38 +152,12 @@ namespace PullingStatusTool
             string dayofweek=fileSet.c_freqency=="Daily'"?"Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday" : fileSet.c_dayof;
 
             string sqlStrExpect = string.Format("insert into ReportDataType (dayofweek,vendor,datatype,subgroup,fileExpect,delayreason,retailer) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", dayofweek, fileSet.c_vendor, fileSet.c_filetype, fileSet.c_freqency, "1", "", fileSet.c_retailer);//   插入一条fileSet的时候自动插入到fileExpect
-
-            try
-            {
-          
-                mySqlConnection.Open();//打开连接  
-                SqlCommand mycmd = new SqlCommand(sqlStr+";"+sqlStrExpect, mySqlConnection);//新建SqlCommand对象  
-                mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
-                MessageBox.Show("Added FileSet successfully!");
-                return true;
-
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-                return false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return false;
-            }
-            finally
-            {
-                mySqlConnection.Close();//关闭连接  
-            }
+            return connectDB_68server.submit(sqlStr + ";" + sqlStrExpect);
+       
         
         }
         public bool editFileSet( UploadFileSet fileSet )
         {
-            string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
-            SqlConnection mySqlConnection = new SqlConnection();
-            mySqlConnection.ConnectionString = connStr;
             string sqlStr = "update   FileUploadSet set "
                                     + "Retailer='" + fileSet.c_retailer + "',"
                                     + "Vendor='" + fileSet.c_vendor + "',"
@@ -406,166 +169,107 @@ namespace PullingStatusTool
                                      + "Datalag ='" + fileSet.c_datalag + "',"
                                     + "Flag ='" + fileSet.c_flag + "' "
                                     +" Where id=" + fileSet.c_id;
-            try
-            {
-                mySqlConnection.Open();//打开连接  
-                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
-                mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
-                MessageBox.Show("Edited FileSet successfully!");
-                return true;
+           return  connectDB_68server.submit(sqlStr);
 
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-                return false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return false;
-            }
-            finally
-            {
-                mySqlConnection.Close();//关闭连接  
-            }
         }
 
-        private void getFileSetData()
+        private DataTable getFileSetData()
         {
-            string connStr = ConfigurationManager.ConnectionStrings["68server"].ConnectionString;  
-            SqlConnection mySqlConnection = new SqlConnection();
-            mySqlConnection.ConnectionString = connStr;
-            //string sqlStr = "select distinct vendor,schedulename,status,eventstarttime,DownloadingStatus,FormattingStatus,UploadingStatus,configname,eventid,IRID" + 
-            //                 " from v$RSI_TOOLS_TargetConn_EventStatus"+
-            //                 " where eventstarttime >= '" + startDate + "' and eventstarttime <= '"+ endDate + "'";//SQL语句  
 
-            string sqlStr = "select * from FileUploadSet   order by Retailer, Vendor,FileType,Frequency";
+            string sqlStr = "select  "
+                                        +"id c_id,"
+                                        + "retailer c_retailer,"
+                                        + "vendor c_vendor,"
+                                        + "downloadpath c_downloadpath,"
+                                        + "dayof c_dayof,"
+                                        + "slatime c_slatime,"
+                                        + "filetype c_filetype,"
+                                        + "flag  c_flag, "
+                                        + "datalag c_datalag, "
+                                         + "Frequency  c_freqency "
+                                        +" from FileUploadSet   order by Retailer, Vendor,FileType,Frequency";
 
+       return     connectDB_68server.getTable(sqlStr);
 
-            try
-            {
-                mySqlConnection.Open();//打开连接  
-                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
-                SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
-                while (sdr.Read())
-                {
-                    UploadFileSet fileset = new UploadFileSet(sdr[0].ToString(), sdr[1].ToString(), sdr[2].ToString(), sdr[3].ToString(), sdr[4].ToString(), sdr[5].ToString(),sdr[6].ToString(),sdr[7].ToString() ,(bool)sdr[10],int.Parse(sdr[9].ToString()));
-                    ListFileset.Add(fileset);
-                }
-                sdr.Close();//读取完毕即关闭  
-
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                mySqlConnection.Close();//关闭连接  
-
-
-            }
-        
+ 
         }
 
         public string getIRCalendarbyDate(string date)
         {
-            string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
-            SqlConnection mySqlConnection = new SqlConnection();
-            mySqlConnection.ConnectionString = connStr;
-            //string sqlStr = "select distinct vendor,schedulename,status,eventstarttime,DownloadingStatus,FormattingStatus,UploadingStatus,configname,eventid,IRID" + 
-            //                 " from v$RSI_TOOLS_TargetConn_EventStatus"+
-            //                 " where eventstarttime >= '" + startDate + "' and eventstarttime <= '"+ endDate + "'";//SQL语句  
 
             string sqlStr = "select top 1 * from IRCalendar  "
                                     + "where endingdate<='" + Convert.ToDateTime(date).ToShortDateString() + "' order by endingdate desc";
             string period = "2014-01 WK 1";
-
-            try
-            {
-                mySqlConnection.Open();//打开连接  
-                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
-                SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
-                sdr.Read();
-                period = sdr[0].ToString();
-                sdr.Close();//读取完毕即关闭  
-
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(  ex.Message);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                mySqlConnection.Close();//关闭连接  
-              
-
-            }
+            period =connectDB_68server.getTable(sqlStr).Rows[0].ItemArray[0].ToString();
             return period;
         }
-        
-        private void getNoTargetSLAChartData(string startDate, string endDate)
+        private DataTable getExpectFileByWeekday(string weekday)
         {
-            string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
-            SqlConnection mySqlConnection = new SqlConnection();
-            mySqlConnection.ConnectionString = connStr;
-            //string sqlStr = "select distinct vendor,schedulename,status,eventstarttime,DownloadingStatus,FormattingStatus,UploadingStatus,configname,eventid,IRID" + 
-            //                 " from v$RSI_TOOLS_TargetConn_EventStatus"+
-            //                 " where eventstarttime >= '" + startDate + "' and eventstarttime <= '"+ endDate + "'";//SQL语句  
+            string strSql = "SELECT retailer,SUM(FileExpect) expectFile "
+                                    + "  FROM [TargetPullingStatus].[dbo].[ReportDataType]"
+                                    + "  where DayofWeek like '%" + weekday + "%'"
+                                    + " group by Retailer";
+            return connectDB_68server.getTable(strSql);
+  
+        
+        }
+        //private DataTable getNoTargetSLAChartData(string startDate, string endDate)//获得非Target Retailer的SLA Chart(加入FileExpect比对，TODO)
+        //{
+        //    DataTable dt = new DataTable();//从数据库拿到的dt
+        //    DataTable ds = new DataTable();//用来做计算的dt
+        //    DataTable listFileExpect = getReportExpectDataTable("retailer!='Target'");
+        //    string sqlStr = " SELECT "
+        //                            + " Retailer c_retailer,CONVERT(varchar(100), uploadtime, 23) c_uploaddate , COUNT(distinct FileName) as c_filecount "
+        //                            + " FROM [TargetPullingStatus].[dbo].[FileUploadRecord]  "
+        //                            + " where isSLA='false'  and CONVERT(varchar(100), uploadtime, 23) between '" + startDate + "' and '" + endDate + "' "
+        //                            + " group by Retailer,CONVERT(varchar(100), uploadtime, 23)";
+        //    return ds;//计算好的ds是最后的数据源
+        //}
 
+
+        private DataTable getNoTargetSLAChartDatas(string startDate, string endDate)//获得非Target Retailer的SLA Chart
+        {
+            DataTable dt = new DataTable();//从数据库拿到的dt
+            DataTable ds = new DataTable();//用来做计算的dt
+            DataTable listFileExpect = getReportExpectDataTable("retailer!='Target'");
             string sqlStr = " SELECT "
-                                    + " Retailer,CONVERT(varchar(100), uploadtime, 23) UploadDate, COUNT(distinct FileName) as missSLA "
+                                    + " Retailer c_retailer,CONVERT(varchar(100), uploadtime, 23) c_uploaddate , COUNT(distinct FileName) as c_filecount "
                                     + " FROM [TargetPullingStatus].[dbo].[FileUploadRecord]  "
-                                    + " where isSLA='false'  and CONVERT(varchar(100), uploadtime, 23) between '"+startDate+"' and '"+endDate+"' " 
+                                    + " where isSLA='false'  and CONVERT(varchar(100), uploadtime, 23) between '" + startDate + "' and '" + endDate + "' "
                                     + " group by Retailer,CONVERT(varchar(100), uploadtime, 23)";
-            try
+
+
+            dt = connectDB_68server.getTable(sqlStr);
+            ds = dt.Copy();//ds的基础数据是从数据库中取到的
+            while (Convert.ToDateTime(startDate) <= Convert.ToDateTime(endDate))//由于从数据库取到的只有missSLA文件的日期，所以要把没有miss的日期也不上去
             {
-                mySqlConnection.Open();//打开连接  
-                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
-                SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader
-                DateTime STdate = Convert.ToDateTime(startDate);
-                DateTime EDdate = Convert.ToDateTime(endDate);
-                while (sdr.Read())
+          
+                foreach (DataRow retailer in dt.Rows)
                 {
-      
-                    Repull repull = new Repull();
-                    repull.c_retailer = sdr[0].ToString();
-                    repull.c_repulldate = sdr[1].ToString();
-                    repull.c_filecount = (int)sdr[2];
-                    ListRePullChart.Add(repull);
+                    if (dt.Select("c_retailer='" + retailer["c_retailer"].ToString() + "' and c_uploaddate='" + startDate + "'").Count() > 0)
+                        continue;
+                    else//如果在选定的时间范围内，某一天不存在于从数据库中取出来的集合中，说明这一天没有miss，所以filecount是0,并且要把这一条加到ds中
+                    {
+                        DataRow row = ds.NewRow();
+                        row["c_retailer"] = retailer["c_retailer"].ToString();
+                        row["c_uploaddate"] = startDate.Split(' ')[0];
+                        row["c_filecount"] = 0;
+                        ds.Rows.Add(row);
+                    }
+          
+
                 }
-                sdr.Close();//读取完毕即关闭  
+                startDate = Convert.ToDateTime(startDate).AddDays(1).ToString("yyyy-MM-dd");
 
+            
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                mySqlConnection.Close();//关闭连接  
-
-
-            }
-
+            DataView dv = ds.DefaultView;
+            dv.Sort="c_uploaddate";//DataTable转为DataView，按照日期排序
+            ds=dv.ToTable();
+            return ds;//计算好的ds是最后的数据源
         }
 
+       
 
         private void getSLAChartData( string startDate, string endDate)
         {
@@ -646,42 +350,10 @@ namespace PullingStatusTool
         public int getAllPulledFileByWeek(string StarDate, string endDate)
         {
             int FileCount=1;
-            string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
-            SqlConnection mySqlConnection = new SqlConnection();
-            mySqlConnection.ConnectionString = connStr;
-            //string sqlStr = "select distinct vendor,schedulename,status,eventstarttime,DownloadingStatus,FormattingStatus,UploadingStatus,configname,eventid,IRID" + 
-            //                 " from v$RSI_TOOLS_TargetConn_EventStatus"+
-            //                 " where eventstarttime >= '" + startDate + "' and eventstarttime <= '"+ endDate + "'";//SQL语句  
-
             string sqlStr = "select COUNT(*) from View_PullingStatus  "
                                     + "where	 EndFormattingTime between '"+StarDate+"' and '"+endDate+"' ";
-
-
-            try
-            {
-                mySqlConnection.Open();//打开连接  
-                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
-                SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
-                sdr.Read();
-                FileCount = int.Parse(sdr[0].ToString());
-                sdr.Close();//读取完毕即关闭  
-
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                mySqlConnection.Close();//关闭连接  
-
-
-            }
+            object count = connectDB_68server.getTable(sqlStr).Rows[0].ItemArray[0];
+            FileCount = connectDB_68server.getTable(sqlStr).Rows[0].ItemArray[0] == null ? 0 : (int)count;
             return FileCount;
         }
 
@@ -750,188 +422,8 @@ namespace PullingStatusTool
 
 
         }
-        public void getRepull(string startDate, string endDate)
-        {
-            string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
-            SqlConnection mySqlConnection = new SqlConnection();
-            mySqlConnection.ConnectionString = connStr;
-            //string sqlStr = "select distinct vendor,schedulename,status,eventstarttime,DownloadingStatus,FormattingStatus,UploadingStatus,configname,eventid,IRID" + 
-            //                 " from v$RSI_TOOLS_TargetConn_EventStatus"+
-            //                 " where eventstarttime >= '" + startDate + "' and eventstarttime <= '"+ endDate + "'";//SQL语句  
-
-            string sqlStr = "select"
-                           + " case "
-                           + " when reportname like '%Category%' or ScheduleName like '%Category%' or configname like '%Category%'  or ScheduleName like '%Cattrib%' or configname like '%Cattrib%' then vendor +' Category' else vendor end vendor,"
-                           + " count(reportname)- COUNT(distinct ReportName)"
-                           + " from  v$RSI_TOOLS_TargetConn_FormattedReport a join  v$RSI_TOOLS_TargetConn_EventStatus b on a.EventID=b.EventID"
-                           + " where EndFormattingTime between '"+startDate+"' and '"+endDate+"'"
-                           + " and CurrentLocation not like '%existent%' and DataFormatStatus like '%succ%'"
-                           + " group by "
-                           + " case "
-                           + " when reportname like '%Category%' or ScheduleName like '%Category%' or configname like '%Category%'  or ScheduleName like '%Cattrib%' or configname like '%Cattrib%' then vendor +' Category' else vendor end"
-                           + " having count(reportname)- COUNT(distinct ReportName)>0";
 
 
-            try
-            {
-                mySqlConnection.Open();//打开连接  
-                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
-                SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
-                while (sdr.Read())
-                {
-                    Repull repull = new Repull(sdr[0].ToString(), sdr[1].ToString());
-                    ListRePull.Add(repull);
-                }
-                sdr.Close();//读取完毕即关闭  
-
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show( ex.Message);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                mySqlConnection.Close();//关闭连接  
-
-
-            }
-
-
-        }
-
-        //private void getStatusData(string serverIP,string psw,string startDate,string endDate)
-        //{
-        //     string connStr ="server="+serverIP+";database =TargetConnector;user id=sa;password="+psw;//连接字符串  
-        //    SqlConnection mySqlConnection = new SqlConnection();
-        //    mySqlConnection.ConnectionString = connStr;
-        //    //string sqlStr = "select distinct vendor,schedulename,status,eventstarttime,DownloadingStatus,FormattingStatus,UploadingStatus,configname,eventid,IRID" + 
-        //    //                 " from v$RSI_TOOLS_TargetConn_EventStatus"+
-        //    //                 " where eventstarttime >= '" + startDate + "' and eventstarttime <= '"+ endDate + "'";//SQL语句  
-
-        //    string sqlStr = "select vendor,schedulename,t.status,eventstarttime,DownloadingStatus,FormattingStatus,UploadingStatus,configname,eventid,IRID from " +
-        //                  " ( select  vendor,IRID,a.EventID,schedulename,a.status,eventstarttime,reportname,DownloadingStatus,FormattingStatus,UploadingStatus,configname," +
-        //                  " ROW_NUMBER() over (partition  by vendor,schedulename,IRID,reportname order by eventstarttime desc)rn from  v$RSI_TOOLS_TargetConn_EventStatus a " +
-        //                  " join RSI_TOOLS_TargetConn_report b on a.EventID=b.EventID " +
-        //                  " where eventstarttime >= '" + AMESTime.BeijingTimeToAMESTime(startDate) + "' and eventstarttime <= '" + AMESTime.BeijingTimeToAMESTime(endDate) + "') t where   rn=1" +
-        //                  " group by eventid,IRID,vendor,schedulename,status,eventstarttime,DownloadingStatus,FormattingStatus,UploadingStatus,configname" +
-        //                  " order by eventstarttime desc";
-
-        //    try
-        //    {
-        //        mySqlConnection.Open();//打开连接  
-        //        SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
-        //        SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
-        //        while (sdr.Read())
-        //        {
-
-        //            ServerStatus status = new ServerStatus(sdr[0].ToString(), sdr[1].ToString(), sdr[2].ToString(), sdr[3].ToString(), sdr[4].ToString(), sdr[5].ToString(), sdr[6].ToString(), sdr[7].ToString(), sdr[8].ToString(), serverIP, psw, sdr[9].ToString(), getReportPeriod(sdr[8].ToString(),serverIP,psw));
-        //            ListServerstatus.Add(status);
-        //        }
-        //        sdr.Close();//读取完毕即关闭  
-              
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        MessageBox.Show(serverIP + ":" + ex.Message);
-             
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        mySqlConnection.Close();//关闭连接  
-             
-               
-        //    }
-     
-
-        //}
-
-        public string getReportPeriod(string eventid, string serverIP, string psw)
-        {
-            string connStr = "server=" + serverIP + ";database =TargetConnector;user id=sa;password=" + psw;//连接字符串  
-            SqlConnection mySqlConnection = new SqlConnection();
-            mySqlConnection.ConnectionString = connStr;
-            string sqlStr = "select top 1 reportname from RSI_TOOLS_TargetConn_report where EventID=" + eventid;
-            string period = "";
-            try
-            {
-                mySqlConnection.Open();//打开连接  
-                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
-                SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
-                while (sdr.Read())
-                {
-
-                    period = sdr[0].ToString();
-                    period = period.Substring(period.IndexOf('-') + 1, period.Length - period.IndexOf('-') - 1);
-                }
-                sdr.Close();//读取完毕即关闭  
-
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(serverIP + ":" + ex.Message);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                mySqlConnection.Close();//关闭连接  
-
-
-            }
-            return period.TrimStart().TrimEnd();
-        
-        }
-
-        private void getReportDetailData(string eventid,string serverIP, string psw)
-        {
-            //string connStr = "server=" + serverIP + ";database =TargetConnector;user id=sa;password=" + psw;//连接字符串  
-            //SqlConnection mySqlConnection = new SqlConnection();
-            //mySqlConnection.ConnectionString = connStr;
-            //string sqlStr = "select reportname,status,datapullstatus,dataformatstatus,uploadstatus from RSI_TOOLS_TargetConn_report where EventID=" +eventid;
-
-            //try
-            //{
-            //    mySqlConnection.Open();//打开连接  
-            //    SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
-            //    SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
-            //    while (sdr.Read())
-            //    {
-            //        ReportDetails detail = new ReportDetails(sdr[0].ToString(), sdr[1].ToString(), sdr[2].ToString(), sdr[3].ToString(), sdr[4].ToString());
-                  
-            //        ListReportDetails.Add(detail);
-            //    }
-            //    sdr.Close();//读取完毕即关闭  
-
-            //}
-            //catch (SqlException ex)
-            //{
-            //    MessageBox.Show(serverIP + ":" + ex.Message);
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
-            //finally
-            //{
-            //    mySqlConnection.Close();//关闭连接  
-
-
-            //}
-
-
-        }
         private void getNoTargetpullingStatus(string date)
         {
             string dailyDate = Convert.ToDateTime(date).ToString("yyyyMMdd");
@@ -1049,143 +541,17 @@ namespace PullingStatusTool
 
 
         }
+ 
 
-        //========用于在5台Target pulling server 找report status的老方法，已经被View取代=====
-        //public void getPullingFileCountStatus(string dayTime,string period,string restatementDate,bool attribute,bool isMonday)
-        //{
-
-        //    string sql = isMonday ?  getMondayStatusSQL(period):getFileCountStatusSQL(dayTime, period, restatementDate, attribute) ;
-            
-        //    if (sql != "")
-        //    {
-        //        string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
-        //        SqlConnection mySqlConnection = new SqlConnection();
-        //        mySqlConnection.ConnectionString = connStr;
-        //        try
-        //        {
-        //            mySqlConnection.Open();//打开连接  
-        //            SqlCommand mycmd = new SqlCommand(sql, mySqlConnection);//新建SqlCommand对象  
-        //            SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
-        //            while (sdr.Read())
-        //            {
-        //                if (sdr[1].ToString() != "")//只选取当天的Attribute
-        //                {
-        //                    DataPullingFileCountStatus fileCount = new DataPullingFileCountStatus(sdr[0].ToString(), sdr[1].ToString(), sdr[2].ToString(), sdr[3].ToString(), sdr[4].ToString(), IP, pswd, sdr[5].ToString());
-        //                    ListPullFileStatus.Add(fileCount);
-        //                }
-        //            }
-        //            sdr.Close();//读取完毕即关闭  
-
-        //        }
-       
-        //        catch (SqlException ex)
-        //        {
-        //            MessageBox.Show(ex.Message);
-
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show(ex.Message);
-        //        }
-        //        finally
-        //        {
-        //            mySqlConnection.Close();//关闭连接  
-
-
-        //        }
-            
-        //    }
-         
-         
-        
-        //}
-
-
-        public void getSLAPerformanceStatus(  string dayTime, string period)
+        /*2014-12-04 */
+        public bool insertNewFileExpect(string dayofwk,string vendor, string datatype, string subgroup, string fileExpect,string delay,string retailer)
         {
-
-            string sql = getSLAPerformanceSQL(dayTime, period);
-
-            if (sql != "")
-            {
-                string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
-                SqlConnection mySqlConnection = new SqlConnection();
-                mySqlConnection.ConnectionString = connStr;
-                try
-                {
-                    mySqlConnection.Open();//打开连接  
-                    SqlCommand mycmd = new SqlCommand(sql, mySqlConnection);//新建SqlCommand对象  
-                    SqlDataReader sdr = mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
-                    while (sdr.Read())
-                    {
-                        if (sdr[1].ToString() != "")//只选取当天的Attribute
-                        {
-                            PullingPerformance performance = new PullingPerformance(sdr[0].ToString(), sdr[1].ToString(), sdr[2].ToString(), sdr[3].ToString(), sdr[4].ToString(), sdr[5].ToString(), sdr[6].ToString(), sdr[7].ToString());
-                            ListPerformance.Add(performance);
-                        }
-                    }
-                    sdr.Close();//读取完毕即关闭  
-
-                }
-
-                catch (SqlException ex)
-                {
-                    MessageBox.Show(ex.Message);
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    mySqlConnection.Close();//关闭连接  
-
-
-                }
-
-            }
-        }
-         
-
-
-        public void insertNewFileExpect(string dayofwk,string vendor, string datatype, string subgroup, string fileExpect,string delay,string retailer)
-        {
-            string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
-            SqlConnection mySqlConnection = new SqlConnection();
-            mySqlConnection.ConnectionString = connStr;
             string sqlStr = string.Format("insert into ReportDataType (dayofweek,vendor,datatype,subgroup,fileExpect,delayreason,retailer) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", dayofwk, vendor, datatype, subgroup, fileExpect, delay, retailer);
-            try
-            {
-                mySqlConnection.Open();//打开连接  
-                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
-               mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 
-               MessageBox.Show("Successfully Saved!");
-               
-
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show( ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                mySqlConnection.Close();//关闭连接  
-
-
-            }
-
-
+            return connectDB_68server.submit(sqlStr);
         }
-        public void editFileExpect(ReportExpect fileExpect)
+        public bool editFileExpect(ReportExpect fileExpect)
         {
-            string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
-            SqlConnection mySqlConnection = new SqlConnection();
-            mySqlConnection.ConnectionString = connStr;
+
             string vendor = fileExpect.c_vendor;
             string dataType = fileExpect.c_datatype;
             string subGroup = fileExpect.c_subgroup;
@@ -1203,68 +569,25 @@ namespace PullingStatusTool
                               + " retailer='" + retailer + "',"
                             + " delayreason='" + delay + "' "
                             + " where id = "+id;
-          try  {
-                
-                mySqlConnection.Open();//打开连接  
-                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
-                mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
-                MessageBox.Show("Successfully Saved!");
-      
-
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show( ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                mySqlConnection.Close();//关闭连接  
-
-
-            }
-
+          return  connectDB_68server.submit(sqlStr);
 
         }
 
-        public void deleteFileExpect(string  id)
+        public bool deleteFileExpect(string  id)
         {
-            string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
-            SqlConnection mySqlConnection = new SqlConnection();
-            mySqlConnection.ConnectionString = connStr;
-
             string sqlStr = "delete from  reportdatatype where id= " + id;
-                           
-            try
-            {
-
-                mySqlConnection.Open();//打开连接  
-                SqlCommand mycmd = new SqlCommand(sqlStr, mySqlConnection);//新建SqlCommand对象  
-                mycmd.ExecuteReader();//ExecuteReader方法将 CommandText 发送到 Connection 并生成一个 SqlDataReader  
-                MessageBox.Show("Successfully Delete!");
-
-
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show( ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                mySqlConnection.Close();//关闭连接  
-
-
-            }
-
-
+           return  connectDB_68server.submit(sqlStr);
         }
+        private DataTable getReportExpectDataTable(string retailer)
+        {
+            string sqlStr = "select vendor c_vendor,datatype c_datatype,subgroup c_subgroup ,fileexpect c_fileexpect ,id c_id ,dayofweek c_dayofweek,delayreason c_delayreason,retailer c_retailer from ReportDataType"
+                            + " where " + retailer
+                            + " order by retailer, vendor, datatype,subgroup";
+
+            return connectDB_68server.getTable(sqlStr);
+        
+        }
+
         private void getReportExpectData(string retailer)
         {
             string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
@@ -1309,39 +632,30 @@ namespace PullingStatusTool
         }
        
 
-        public List<UploadRecord> getUploadRecord(string STtime, string EDtime, string ongoing, string SLA)
+        public DataTable getUploadRecord(string STtime, string EDtime, string ongoing, string SLA)
         {
-            getUploadRecordData(STtime, EDtime, SLA, ongoing);
-            return ListUploadRecord;
+            return getUploadRecordData(STtime, EDtime, SLA, ongoing);
+         
         }
 
-        public List<UploadFilePath> getUploadPath(string FileSetid)
+        public DataTable getUploadPath(string FileSetid)
         {
-            getUploadPathByIDData(FileSetid);
-            return ListUploadPath;
+            return getUploadPathByIDData(FileSetid);
+           
         }
 
-        public List<UploadFileSet> getFileSet()
+        public DataTable getFileSet()
         {
-            getFileSetData();
-            return ListFileset;
+            return getFileSetData();
+            
         }
-        public List<PullingPerformance> getPerformance( string dayTime, string period)
-        {
-            getSLAPerformanceStatus(dayTime, period);
-            return ListPerformance;
-        
-        }
+
         public List<ReportExpect> getReportExpect(string retailer)
         {
             getReportExpectData(retailer);
             return ListReportExpect;
         }
-        public List<ReportDetails> getReportDetail(string eid,string server,string psw)
-        {
-            getReportDetailData(eid, server, psw);
-            return ListReportDetails;
-        }
+
 
         public List<Repull> getRePullList()
         {
@@ -1352,12 +666,11 @@ namespace PullingStatusTool
             ListRePullChart.Clear();
         
         }
-        public List<Repull> getNoTargetPerformance(string startDate, string endDate)
-        {
-            getNoTargetSLAChartData(startDate, endDate);
-            return ListRePullChart;
-        }
 
+        public DataTable getNoPerfomances(string startDate, string endDate)
+        {
+            return getNoTargetSLAChartDatas(startDate, endDate);
+        }
 
         public List<Repull> getRePullChart( string startDate, string endDate)
         {
@@ -1380,19 +693,19 @@ namespace PullingStatusTool
             return ListPullFileStatus;
         }
 
-        public List<ConnectorAccount> getAllAccount()
+        public DataTable  getAllAccount()
         {
-            getAllAccountData();
-            return ListAccount;
+            return getAllAccountData();
+        
         }
-        public void editAccount(ConnectorAccount account)
+        public bool editAccount(ConnectorAccount account)
         {
-            editAccountData(account);
+            return editAccountData(account);
         }
 
-        public void addAccount(ConnectorAccount account)
+        public bool addAccount(ConnectorAccount account)
         {
-            addAccountData(account);
+          return  addAccountData(account);
         }
         public List<DataPullingFileCountStatus> getPullingFileCount(string dayTime, string period, string restatementDate, bool attribute, bool isMonday)
         {
@@ -1471,12 +784,7 @@ namespace PullingStatusTool
         }
          private string getMondayStatusSQL(string period)
          {
-
              string query = "";
-
-
-        
-
              try
              {
                  StreamReader sr = new StreamReader("SQL\\VIP.txt", Encoding.Default);

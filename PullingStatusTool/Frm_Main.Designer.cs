@@ -44,8 +44,8 @@
             this.item_notargetchart = new DevExpress.XtraNavBar.NavBarItem();
             this.item_targetchart = new DevExpress.XtraNavBar.NavBarItem();
             this.grp_connector = new DevExpress.XtraNavBar.NavBarGroup();
-            this.item_wmbasket = new DevExpress.XtraNavBar.NavBarItem();
             this.item_morrison = new DevExpress.XtraNavBar.NavBarItem();
+            this.item_wmbasket = new DevExpress.XtraNavBar.NavBarItem();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController1)).BeginInit();
@@ -53,6 +53,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // barAndDockingController1
+            // 
+            this.barAndDockingController1.PropertiesBar.AllowLinkLighting = false;
             // 
             // navBarControl1
             // 
@@ -181,19 +185,19 @@
             new DevExpress.XtraNavBar.NavBarItemLink(this.item_wmbasket)});
             this.grp_connector.Name = "grp_connector";
             // 
-            // item_wmbasket
-            // 
-            this.item_wmbasket.Caption = "WMBasket";
-            this.item_wmbasket.Name = "item_wmbasket";
-            this.item_wmbasket.SmallImage = global::PullingStatusTool.Properties.Resources.Walmart;
-            this.item_wmbasket.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.item_wmbasket_LinkClicked);
-            // 
             // item_morrison
             // 
             this.item_morrison.Caption = "Morrison";
             this.item_morrison.Name = "item_morrison";
             this.item_morrison.SmallImage = global::PullingStatusTool.Properties.Resources.Morrisons;
             this.item_morrison.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.item_morrison_LinkClicked);
+            // 
+            // item_wmbasket
+            // 
+            this.item_wmbasket.Caption = "WMBasket";
+            this.item_wmbasket.Name = "item_wmbasket";
+            this.item_wmbasket.SmallImage = global::PullingStatusTool.Properties.Resources.Walmart;
+            this.item_wmbasket.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.item_wmbasket_LinkClicked);
             // 
             // splitContainerControl1
             // 
@@ -231,7 +235,7 @@
             this.Controls.Add(this.splitContainerControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Frm_Main";
-            this.Text = "DataPulling Tool V2.2";
+            this.Text = "DataPulling Tool V2.3";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();

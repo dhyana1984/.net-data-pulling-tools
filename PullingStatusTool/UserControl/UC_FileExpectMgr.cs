@@ -32,7 +32,7 @@ namespace PullingStatusTool.UserControl
             if (txt_dayofwk.Text.Trim() != "" && txt_DataType.Text.Trim() != "" && txt_FileExpect.Text != "" && txt_Vendor.Text != "" && txt_Retailer.Text != "")
             {
                 DB_Helper db = new DB_Helper();
-                db.insertNewFileExpect(txt_dayofwk.Text.Trim(), txt_Vendor.Text, txt_DataType.Text, txt_SubGrp.Text, txt_FileExpect.Text, txt_delay.Text, txt_Retailer.Text);
+                if(db.insertNewFileExpect(txt_dayofwk.Text.Trim(), txt_Vendor.Text, txt_DataType.Text, txt_SubGrp.Text, txt_FileExpect.Text, txt_delay.Text, txt_Retailer.Text))
                 getDS();
             }
             else
@@ -42,10 +42,10 @@ namespace PullingStatusTool.UserControl
 
         }
 
-        private void updateFileExpect(ReportExpect fileExpect)
+        private bool updateFileExpect(ReportExpect fileExpect)
         {
             DB_Helper db = new DB_Helper();
-            db.editFileExpect(fileExpect);
+          return  db.editFileExpect(fileExpect);
         }
 
         private void btn_Edit_Click(object sender, EventArgs e)
@@ -61,8 +61,9 @@ namespace PullingStatusTool.UserControl
                 file.c_expfileid = id;
                 file.c_delayreason = txt_delay.Text;
                 file.c_retailer = txt_Retailer.Text.Trim();
-                updateFileExpect(file);
-                id = "";
+                if (updateFileExpect(file))
+                    getDS();
+           
             }
 
             getDS();
@@ -72,7 +73,7 @@ namespace PullingStatusTool.UserControl
         {
             DB_Helper db = new DB_Helper();
             string id = gridView1.GetFocusedRowCellValue("c_expfileid").ToString().Trim();
-            db.deleteFileExpect(id);
+           if( db.deleteFileExpect(id))
             getDS();
         }
         string id = "";

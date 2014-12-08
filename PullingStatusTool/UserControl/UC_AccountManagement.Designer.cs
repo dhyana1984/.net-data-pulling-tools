@@ -201,7 +201,7 @@
             this.gc_Account.Name = "gc_Account";
             this.gc_Account.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gc_Account.Size = new System.Drawing.Size(942, 439);
+            this.gc_Account.Size = new System.Drawing.Size(926, 533);
             this.gc_Account.TabIndex = 27;
             this.gc_Account.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -362,7 +362,7 @@
             this.Controls.Add(this.txt_Retailer);
             this.Controls.Add(this.lable1);
             this.Name = "UC_AccountManagement";
-            this.Size = new System.Drawing.Size(948, 503);
+            this.Size = new System.Drawing.Size(932, 597);
             this.Tag = "Account Management";
             ((System.ComponentModel.ISupportInitialize)(this.txt_Retailer.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Vendor.Properties)).EndInit();

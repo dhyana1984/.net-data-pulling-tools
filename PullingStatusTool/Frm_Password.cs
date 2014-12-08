@@ -28,6 +28,8 @@ namespace PullingStatusTool
             else
             {
                 MessageBox.Show("Sorry, you don't have access to this form");
+                txt_password.SelectAll();
+                txt_password.Focus();
             }
         }
 
