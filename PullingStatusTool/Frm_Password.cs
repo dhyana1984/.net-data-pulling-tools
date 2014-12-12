@@ -16,10 +16,7 @@ namespace PullingStatusTool
             InitializeComponent();
         }
 
-
-
-
-        private void btn_OK_Click(object sender, EventArgs e)
+        private void validPassword()
         {
             if (txt_password.Text == "T3ci94043")
             {
@@ -31,6 +28,12 @@ namespace PullingStatusTool
                 txt_password.SelectAll();
                 txt_password.Focus();
             }
+        }
+
+
+        private void btn_OK_Click(object sender, EventArgs e)
+        {
+            validPassword();
         }
 
         private void Btn_Cancel_Click(object sender, EventArgs e)
@@ -47,14 +50,7 @@ namespace PullingStatusTool
         {
             if (e.KeyValue == 13)     //检测是否按Enter键
             {
-                if (txt_password.Text == "T3ci94043")
-                {
-                    this.DialogResult = DialogResult.OK;
-                }
-                else
-                {
-                    MessageBox.Show("Sorry, you don't have access to this form");
-                }
+                validPassword();
             
             }
         }

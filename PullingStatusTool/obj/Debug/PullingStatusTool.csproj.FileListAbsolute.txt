@@ -29,3 +29,5 @@ D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\Pull
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.application
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.exe
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.pdb
+D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.UserControl.UC_TescoUKConnector.resources
+D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.UserControl.UC_TescoUKStatus.resources

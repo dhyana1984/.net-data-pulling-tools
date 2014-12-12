@@ -42,7 +42,7 @@ namespace PullingStatusTool.UserControl
             DB_Helper db_helper = new DB_Helper();
             string dayOfweek = Convert.ToDateTime(drp_DailyDate.Text).DayOfWeek.ToString();
             DataPullingFileCountStatus fileStatus = new DataPullingFileCountStatus();
-            ListReportExpect = db_helper.getReportExpect("retailer!='Target'").Where(t => t.c_dayofweek.Contains(dayofweek)).ToList();//获得非Target的那些ExpectFile信息
+            ListReportExpect = db_helper.getReportExpect("retailer!='Target' and retailer!='TescoUK' ").Where(t => t.c_dayofweek.Contains(dayofweek)).ToList();//获得非Target的那些ExpectFile信息
             ListFileStatus = db_helper.getNoTargetFileCount(drp_DailyDate.Text);//根据所选日期，获得当天取的那些report
             string vendor = "";
             string retailer = "";

@@ -29,10 +29,13 @@ namespace PullingStatusTool.App
 
         public void editSchedule(ConnectorSchedule schedule)
         {
-            string sqlStr = "update [RSI_TOOLS_Conn_REPORTCONFIG]"
-                              + " set stores='" + schedule.c_storenumber + "', "
+            string store = string.IsNullOrEmpty(schedule.c_storenumber) ? " stores = null, " : "  stores='" + schedule.c_storenumber + "', ";
+            string week = string.IsNullOrEmpty(schedule.c_week) ? " ext3  = null, " : " ext3='" + schedule.c_week + "',";
+            string sqlStr = "update [RSI_TOOLS_Conn_REPORTCONFIG] set "
+                              + store
                               + " nextruntime='" + schedule.c_nextruntime + "',"
                               + " time='" + schedule.c_time + "',"
+                              + week
                               + " enable='" + schedule.c_enable.ToString() + "'"
                               + " where rid in(" + schedule.c_id + ")";
             dbhelper.submit(sqlStr);
@@ -41,7 +44,8 @@ namespace PullingStatusTool.App
         public void runnow(string id)
         {
             string sqlStr = "update [RSI_TOOLS_Conn_REPORTCONFIG]"
-                              + " set nextruntime=GETDATE()"
+                              + " set nextruntime=GETDATE(),"
+                              +" enable =1 "
                               + " where rid in(" + id + ")";
             dbhelper.submit(sqlStr);
         }
@@ -63,6 +67,13 @@ namespace PullingStatusTool.App
                                      +"join RSI_TOOLS_Conn_CONTEXT b on a.CONTEXTID=b.id "
                                      +"join RSI_TOOLS_Conn_RLBasket_Job c on b.processid=c.pid "
                                      +" where c.id ="+id;
+                    sqlStr += ";";
+                    sqlStr += "update a "
+                                      + " set a.running =0 "
+                                      + " from RSI_TOOLS_Conn_REPORTCONFIG a "
+                                      + " join RSI_TOOLS_Conn_RLBasket_Job b on a.rid=b.rid "
+                                      + " where b.id=" + id;
+  
             dbhelper.submit(sqlStr);
        
        }
@@ -187,7 +198,7 @@ namespace PullingStatusTool.App
         private void runNow(string id)//立即run Schedule, 实际上就是update next runtime 到当前时间
         {
             string sqlStr = "update [MorrisonConnector].[dbo].[RSI_TOOLS_Conn_REPORTCONFIG]"
-                                      + " set nextruntime=GETDATE()"
+                                      + " set nextruntime=GETDATE(),enable = 1 "
                                       + " where rid in(" + id + ")";
             dbhelper.submit(sqlStr);
 
@@ -257,7 +268,14 @@ namespace PullingStatusTool.App
 
 
     }
-
+    class TescoUKDBHelper//TescoUK 的DBhelper
+    {
+        ConnectDB dbhelper = new ConnectDB();
+        public TescoUKDBHelper()
+        { 
+       // dbhelper.c_sqlConString=
+        }
+    }
 
     class ConnectDB
     {

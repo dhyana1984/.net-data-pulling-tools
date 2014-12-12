@@ -1,6 +1,6 @@
 ﻿namespace PullingStatusTool.UserControl
 {
-    partial class UC_WMBasket
+    partial class UC_TescoUKConnector
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txt_Stores = new DevExpress.XtraEditors.TextEdit();
             this.Tab_Schedule = new DevExpress.XtraTab.XtraTabControl();
             this.txt_nextruntime1 = new DevExpress.XtraTab.XtraTabPage();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
@@ -36,6 +35,7 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txt_NextRunTime = new DevExpress.XtraEditors.DateEdit();
             this.btn_SchedueRefresh = new DevExpress.XtraEditors.SimpleButton();
+            this.txt_Stores = new DevExpress.XtraEditors.TextEdit();
             this.btn_Runnow = new DevExpress.XtraEditors.SimpleButton();
             this.btn_BulkEdit = new DevExpress.XtraEditors.SimpleButton();
             this.cbx_Enable = new DevExpress.XtraEditors.CheckEdit();
@@ -84,13 +84,13 @@
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_Stores.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tab_Schedule)).BeginInit();
             this.Tab_Schedule.SuspendLayout();
             this.txt_nextruntime1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txt_week.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_NextRunTime.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_NextRunTime.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_Stores.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbx_Enable.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Time.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_Schedule)).BeginInit();
@@ -107,23 +107,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             this.SuspendLayout();
             // 
-            // txt_Stores
-            // 
-            this.txt_Stores.Location = new System.Drawing.Point(296, 5);
-            this.txt_Stores.Name = "txt_Stores";
-            this.txt_Stores.Size = new System.Drawing.Size(352, 20);
-            this.txt_Stores.TabIndex = 0;
-            // 
             // Tab_Schedule
             // 
             this.Tab_Schedule.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Tab_Schedule.Location = new System.Drawing.Point(6, 3);
+            this.Tab_Schedule.Location = new System.Drawing.Point(3, 3);
             this.Tab_Schedule.Name = "Tab_Schedule";
             this.Tab_Schedule.SelectedTabPage = this.txt_nextruntime1;
-            this.Tab_Schedule.Size = new System.Drawing.Size(952, 497);
-            this.Tab_Schedule.TabIndex = 29;
+            this.Tab_Schedule.Size = new System.Drawing.Size(872, 491);
+            this.Tab_Schedule.TabIndex = 30;
             this.Tab_Schedule.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tab_users,
             this.txt_nextruntime1,
@@ -146,7 +139,7 @@
             this.txt_nextruntime1.Controls.Add(this.labelControl9);
             this.txt_nextruntime1.Controls.Add(this.gc_Schedule);
             this.txt_nextruntime1.Name = "txt_nextruntime1";
-            this.txt_nextruntime1.Size = new System.Drawing.Size(945, 468);
+            this.txt_nextruntime1.Size = new System.Drawing.Size(865, 462);
             this.txt_nextruntime1.Text = "Schedule";
             // 
             // labelControl5
@@ -199,7 +192,13 @@
             this.btn_SchedueRefresh.Size = new System.Drawing.Size(75, 23);
             this.btn_SchedueRefresh.TabIndex = 51;
             this.btn_SchedueRefresh.Text = "Refresh";
-            this.btn_SchedueRefresh.Click += new System.EventHandler(this.btn_SchedueRefresh_Click);
+            // 
+            // txt_Stores
+            // 
+            this.txt_Stores.Location = new System.Drawing.Point(296, 5);
+            this.txt_Stores.Name = "txt_Stores";
+            this.txt_Stores.Size = new System.Drawing.Size(352, 20);
+            this.txt_Stores.TabIndex = 0;
             // 
             // btn_Runnow
             // 
@@ -208,7 +207,6 @@
             this.btn_Runnow.Size = new System.Drawing.Size(75, 23);
             this.btn_Runnow.TabIndex = 50;
             this.btn_Runnow.Text = "Run Now";
-            this.btn_Runnow.Click += new System.EventHandler(this.btn_Runnow_Click);
             // 
             // btn_BulkEdit
             // 
@@ -217,7 +215,6 @@
             this.btn_BulkEdit.Size = new System.Drawing.Size(75, 23);
             this.btn_BulkEdit.TabIndex = 49;
             this.btn_BulkEdit.Text = "Edit";
-            this.btn_BulkEdit.Click += new System.EventHandler(this.btn_BulkEdit_Click);
             // 
             // cbx_Enable
             // 
@@ -258,17 +255,15 @@
             this.gc_Schedule.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gc_Schedule.Location = new System.Drawing.Point(3, 58);
+            this.gc_Schedule.Location = new System.Drawing.Point(3, 55);
             this.gc_Schedule.MainView = this.gridView1;
             this.gc_Schedule.Name = "gc_Schedule";
             this.gc_Schedule.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gc_Schedule.Size = new System.Drawing.Size(942, 407);
+            this.gc_Schedule.Size = new System.Drawing.Size(862, 401);
             this.gc_Schedule.TabIndex = 26;
             this.gc_Schedule.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            this.gc_Schedule.Click += new System.EventHandler(this.gc_Schedule_Click);
-            this.gc_Schedule.DoubleClick += new System.EventHandler(this.gc_Schedule_DoubleClick);
             // 
             // gridView1
             // 
@@ -427,7 +422,7 @@
             this.tab_users.Controls.Add(this.btn_EditUser);
             this.tab_users.Controls.Add(this.gc_Account);
             this.tab_users.Name = "tab_users";
-            this.tab_users.Size = new System.Drawing.Size(945, 468);
+            this.tab_users.Size = new System.Drawing.Size(865, 462);
             this.tab_users.Text = "Users";
             // 
             // btn_RfreshAccount
@@ -437,7 +432,6 @@
             this.btn_RfreshAccount.Size = new System.Drawing.Size(75, 23);
             this.btn_RfreshAccount.TabIndex = 37;
             this.btn_RfreshAccount.Text = "Refresh";
-            this.btn_RfreshAccount.Click += new System.EventHandler(this.btn_RfreshAccount_Click);
             // 
             // labelControl4
             // 
@@ -491,7 +485,6 @@
             this.btn_EditUser.Size = new System.Drawing.Size(75, 23);
             this.btn_EditUser.TabIndex = 28;
             this.btn_EditUser.Text = "Edit";
-            this.btn_EditUser.Click += new System.EventHandler(this.btn_EditUser_Click);
             // 
             // gc_Account
             // 
@@ -501,11 +494,10 @@
             this.gc_Account.Location = new System.Drawing.Point(3, 34);
             this.gc_Account.MainView = this.gridView3;
             this.gc_Account.Name = "gc_Account";
-            this.gc_Account.Size = new System.Drawing.Size(943, 431);
+            this.gc_Account.Size = new System.Drawing.Size(863, 425);
             this.gc_Account.TabIndex = 27;
             this.gc_Account.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
-            this.gc_Account.DoubleClick += new System.EventHandler(this.gc_Account_DoubleClick);
             // 
             // gridView3
             // 
@@ -571,7 +563,7 @@
             this.tab_Record.Controls.Add(this.btn_ReportRefresh);
             this.tab_Record.Controls.Add(this.gc_Record);
             this.tab_Record.Name = "tab_Record";
-            this.tab_Record.Size = new System.Drawing.Size(945, 468);
+            this.tab_Record.Size = new System.Drawing.Size(865, 462);
             this.tab_Record.Text = "Record";
             // 
             // lbl_Configname
@@ -588,7 +580,6 @@
             this.btn_Stop.Size = new System.Drawing.Size(75, 23);
             this.btn_Stop.TabIndex = 31;
             this.btn_Stop.Text = "Stop";
-            this.btn_Stop.Click += new System.EventHandler(this.btn_Stop_Click);
             // 
             // btn_ReportRefresh
             // 
@@ -597,7 +588,6 @@
             this.btn_ReportRefresh.Size = new System.Drawing.Size(75, 23);
             this.btn_ReportRefresh.TabIndex = 30;
             this.btn_ReportRefresh.Text = "Refresh";
-            this.btn_ReportRefresh.Click += new System.EventHandler(this.btn_ReportRefresh_Click);
             // 
             // gc_Record
             // 
@@ -607,12 +597,10 @@
             this.gc_Record.Location = new System.Drawing.Point(3, 32);
             this.gc_Record.MainView = this.gridView2;
             this.gc_Record.Name = "gc_Record";
-            this.gc_Record.Size = new System.Drawing.Size(955, 451);
+            this.gc_Record.Size = new System.Drawing.Size(859, 445);
             this.gc_Record.TabIndex = 27;
             this.gc_Record.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
-            this.gc_Record.Click += new System.EventHandler(this.gc_Record_Click);
-            this.gc_Record.DoubleClick += new System.EventHandler(this.gc_Record_DoubleClick);
             // 
             // gridView2
             // 
@@ -725,15 +713,13 @@
             this.gridColumn8.VisibleIndex = 6;
             this.gridColumn8.Width = 142;
             // 
-            // UC_WMBasket
+            // UC_TescoUKConnector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.Tab_Schedule);
-            this.Name = "UC_WMBasket";
-            this.Size = new System.Drawing.Size(958, 503);
-            this.Tag = "Walmart Basket Connector";
-            ((System.ComponentModel.ISupportInitialize)(this.txt_Stores.Properties)).EndInit();
+            this.Name = "UC_TescoUKConnector";
+            this.Size = new System.Drawing.Size(878, 497);
             ((System.ComponentModel.ISupportInitialize)(this.Tab_Schedule)).EndInit();
             this.Tab_Schedule.ResumeLayout(false);
             this.txt_nextruntime1.ResumeLayout(false);
@@ -741,6 +727,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_week.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_NextRunTime.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_NextRunTime.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_Stores.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbx_Enable.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Time.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_Schedule)).EndInit();
@@ -763,11 +750,14 @@
 
         #endregion
 
-        private DevExpress.XtraEditors.TextEdit txt_Stores;
         private DevExpress.XtraTab.XtraTabControl Tab_Schedule;
         private DevExpress.XtraTab.XtraTabPage txt_nextruntime1;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.TextEdit txt_week;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.DateEdit txt_NextRunTime;
         private DevExpress.XtraEditors.SimpleButton btn_SchedueRefresh;
+        private DevExpress.XtraEditors.TextEdit txt_Stores;
         private DevExpress.XtraEditors.SimpleButton btn_Runnow;
         private DevExpress.XtraEditors.SimpleButton btn_BulkEdit;
         private DevExpress.XtraEditors.CheckEdit cbx_Enable;
@@ -785,8 +775,12 @@
         private DevExpress.XtraGrid.Columns.GridColumn isrunning;
         private DevExpress.XtraGrid.Columns.GridColumn configid;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraTab.XtraTabPage tab_users;
         private DevExpress.XtraEditors.SimpleButton btn_RfreshAccount;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.TextEdit txt_Desc;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.TextEdit txt_Password;
         private DevExpress.XtraEditors.LabelControl labelControl2;
@@ -799,6 +793,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn desc;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraTab.XtraTabPage tab_Record;
+        private DevExpress.XtraEditors.LabelControl lbl_Configname;
+        private DevExpress.XtraEditors.SimpleButton btn_Stop;
         private DevExpress.XtraEditors.SimpleButton btn_ReportRefresh;
         private DevExpress.XtraGrid.GridControl gc_Record;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
@@ -808,16 +804,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
-        private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.TextEdit txt_Desc;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
-        private DevExpress.XtraEditors.SimpleButton btn_Stop;
-        private DevExpress.XtraEditors.LabelControl lbl_Configname;
-        private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.TextEdit txt_week;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+
     }
 }

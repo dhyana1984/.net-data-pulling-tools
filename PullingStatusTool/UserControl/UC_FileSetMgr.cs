@@ -18,26 +18,30 @@ namespace PullingStatusTool.UserControl
 
 
         private void btn_Add_Click(object sender, EventArgs e)
-        {
-            if (checkTextbox())
+        {    MessageBoxButtons messButton = MessageBoxButtons.OKCancel;
+            DialogResult dr = MessageBox.Show("Are you sure to add?", "Confirm to add", messButton);
+            if (dr == DialogResult.OK)
             {
-                UploadFileSet fileset = new UploadFileSet();
-                DB_Helper dbhelper = new DB_Helper();
-                fileset.c_dayof = cbx_Dayof.Text;
-                fileset.c_downloadpath = txt_downloadpath.Text;
-                fileset.c_filetype = txt_filetype.Text;
-                fileset.c_flag = cbx_enable.Checked;
-                fileset.c_freqency = cbx_Freq.Text;
-                fileset.c_retailer = txt_retailer.Text;
-                fileset.c_slatime = txt_SLA.Text;
-                fileset.c_vendor = txt_vendor.Text;
-                fileset.c_datalag = int.Parse(txtDatalag.Text);
-                if (dbhelper.addFileSet(fileset))
+                if (checkTextbox())
                 {
-                    getDS();
+                    UploadFileSet fileset = new UploadFileSet();
+                    DB_Helper dbhelper = new DB_Helper();
+                    fileset.c_dayof = cbx_Dayof.Text;
+                    fileset.c_downloadpath = txt_downloadpath.Text;
+                    fileset.c_filetype = txt_filetype.Text;
+                    fileset.c_flag = cbx_enable.Checked;
+                    fileset.c_freqency = cbx_Freq.Text;
+                    fileset.c_retailer = txt_retailer.Text;
+                    fileset.c_slatime = txt_SLA.Text;
+                    fileset.c_vendor = txt_vendor.Text;
+                    fileset.c_datalag = int.Parse(txtDatalag.Text);
+                    fileset.c_fileextend = txt_FileExten.Text;
+                    if (dbhelper.addFileSet(fileset, cbx_addExpectFile.Checked))
+                    {
+                        getDS();
+                    }
                 }
             }
-
         }
 
         private void FileUploadManage_Load(object sender, EventArgs e)
@@ -66,7 +70,7 @@ namespace PullingStatusTool.UserControl
                 txt_downloadpath.Text = gridView1.GetFocusedRowCellValue("c_downloadpath").ToString().Trim();
                 cbx_enable.Checked = (bool)gridView1.GetFocusedRowCellValue("c_flag");
                 txtDatalag.Text = gridView1.GetFocusedRowCellValue("c_datalag").ToString();
-
+                txt_FileExten.Text = gridView1.GetFocusedRowCellValue("c_fileextend").ToString();
 
 
             }
@@ -74,18 +78,23 @@ namespace PullingStatusTool.UserControl
         string FileSetid = "";
         private void btn_Edit_Click(object sender, EventArgs e)
         {
-            int selectedHandle;
-            if (this.gridView1.SelectedRowsCount > 0)
+                MessageBoxButtons messButton = MessageBoxButtons.OKCancel;
+            DialogResult dr = MessageBox.Show("Are you sure to edit?", "Confirm to edit", messButton);
+            if (dr == DialogResult.OK)
             {
-                selectedHandle = this.gridView1.GetSelectedRows()[0];
-                if (gridView1.GetRowCellValue(selectedHandle, "c_id") != null)
+                int selectedHandle;
+                if (this.gridView1.SelectedRowsCount > 0)
                 {
-                    string id = gridView1.GetFocusedRowCellValue("c_id").ToString().Trim();
-                    string vendor = gridView1.GetFocusedRowCellValue("c_vendor").ToString().Trim();
-                    string filetype = gridView1.GetFocusedRowCellValue("c_filetype").ToString().Trim();
-                    string retailer = gridView1.GetFocusedRowCellValue("c_retailer").ToString().Trim();
-                    Frm_UploadPath Frm_uploadpath = new Frm_UploadPath(id, retailer, vendor, filetype);
-                    Frm_uploadpath.Show();
+                    selectedHandle = this.gridView1.GetSelectedRows()[0];
+                    if (gridView1.GetRowCellValue(selectedHandle, "c_id") != null)
+                    {
+                        string id = gridView1.GetFocusedRowCellValue("c_id").ToString().Trim();
+                        string vendor = gridView1.GetFocusedRowCellValue("c_vendor").ToString().Trim();
+                        string filetype = gridView1.GetFocusedRowCellValue("c_filetype").ToString().Trim();
+                        string retailer = gridView1.GetFocusedRowCellValue("c_retailer").ToString().Trim();
+                        Frm_UploadPath Frm_uploadpath = new Frm_UploadPath(id, retailer, vendor, filetype);
+                        Frm_uploadpath.Show();
+                    }
                 }
             }
         }
@@ -122,7 +131,8 @@ namespace PullingStatusTool.UserControl
                     fileset.c_vendor = txt_vendor.Text;
                     fileset.c_id = FileSetid;
                     fileset.c_datalag = int.Parse(txtDatalag.Text);
-                    if (dbhelper.editFileSet(fileset))
+                    fileset.c_fileextend = txt_FileExten.Text;
+                    if (dbhelper.editFileSet(fileset,cbx_addExpectFile.Checked))
                     {
                         getDS();
                     }
@@ -157,5 +167,23 @@ namespace PullingStatusTool.UserControl
             }
             return true;
         }
+
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+            MessageBoxButtons messButton = MessageBoxButtons.OKCancel;
+            DialogResult dr = MessageBox.Show("Are you sure to delete?", "Confirm to delete", messButton);
+            if (dr == DialogResult.OK)
+            {
+                if (FileSetid != "")
+                {
+                    DB_Helper dbhelper = new DB_Helper();
+                    if (dbhelper.deleteFileSet(FileSetid))
+                        getDS();
+
+                }
+            }
+        }
+
+
     }
 }

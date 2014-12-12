@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Main));
-            this.barAndDockingController1 = new DevExpress.XtraBars.BarAndDockingController(this.components);
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.grp_dpmonitor = new DevExpress.XtraNavBar.NavBarGroup();
             this.item_target = new DevExpress.XtraNavBar.NavBarItem();
             this.item_notarget = new DevExpress.XtraNavBar.NavBarItem();
+            this.item_TescoStatus = new DevExpress.XtraNavBar.NavBarItem();
             this.item_uploadrecord = new DevExpress.XtraNavBar.NavBarItem();
             this.grp_systemsetting = new DevExpress.XtraNavBar.NavBarGroup();
             this.item_fileset = new DevExpress.XtraNavBar.NavBarItem();
@@ -48,15 +47,10 @@
             this.item_wmbasket = new DevExpress.XtraNavBar.NavBarItem();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // barAndDockingController1
-            // 
-            this.barAndDockingController1.PropertiesBar.AllowLinkLighting = false;
             // 
             // navBarControl1
             // 
@@ -79,7 +73,8 @@
             this.item_notargetchart,
             this.item_morrison,
             this.item_AccountMgr,
-            this.item_wmbasket});
+            this.item_wmbasket,
+            this.item_TescoStatus});
             this.navBarControl1.Location = new System.Drawing.Point(3, 3);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 140;
@@ -98,6 +93,7 @@
             this.grp_dpmonitor.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.item_target),
             new DevExpress.XtraNavBar.NavBarItemLink(this.item_notarget),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.item_TescoStatus),
             new DevExpress.XtraNavBar.NavBarItemLink(this.item_uploadrecord)});
             this.grp_dpmonitor.Name = "grp_dpmonitor";
             // 
@@ -114,6 +110,13 @@
             this.item_notarget.Name = "item_notarget";
             this.item_notarget.SmallImage = global::PullingStatusTool.Properties.Resources.NoTarget;
             this.item_notarget.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.item_notarget_LinkClicked);
+            // 
+            // item_TescoStatus
+            // 
+            this.item_TescoStatus.Caption = "Tesco Status";
+            this.item_TescoStatus.Name = "item_TescoStatus";
+            this.item_TescoStatus.SmallImage = global::PullingStatusTool.Properties.Resources.Tesco;
+            this.item_TescoStatus.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.item_TescoStatus_LinkClicked);
             // 
             // item_uploadrecord
             // 
@@ -235,9 +238,8 @@
             this.Controls.Add(this.splitContainerControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Frm_Main";
-            this.Text = "DataPulling Tool V2.3";
+            this.Text = "DataPulling Tool V2.4";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
@@ -247,7 +249,6 @@
 
         #endregion
 
-        private DevExpress.XtraBars.BarAndDockingController barAndDockingController1;
         private DevExpress.XtraNavBar.NavBarControl navBarControl1;
         private DevExpress.XtraNavBar.NavBarGroup grp_dpmonitor;
         private DevExpress.XtraNavBar.NavBarGroup grp_systemsetting;
@@ -265,6 +266,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraNavBar.NavBarItem item_AccountMgr;
         private DevExpress.XtraNavBar.NavBarItem item_wmbasket;
+        private DevExpress.XtraNavBar.NavBarItem item_TescoStatus;
 
 
 

@@ -150,7 +150,7 @@ namespace PullingStatusTool
             public UploadFileSet()
             { }
 
-            public UploadFileSet(string id, string retailer, string vendor, string downloadpath, string fileType, string slatime, string frequency, string dayof, bool flag,int datalag)
+            public UploadFileSet(string id, string retailer, string vendor, string downloadpath, string fileType, string slatime, string frequency, string dayof, bool flag,int datalag,string fileextend)
             {
                 ID = id;
                 Retailer = retailer;
@@ -162,7 +162,17 @@ namespace PullingStatusTool
                 DayOf = dayof;
                 Flag = flag;
                 DataLag = datalag;
+                fileExtend = fileextend;
             }
+
+            string fileExtend;
+
+            public string c_fileextend
+            {
+                get { return fileExtend; }
+                set { fileExtend = value; }
+            }
+
             int DataLag;
 
             public int c_datalag

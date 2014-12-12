@@ -28,6 +28,55 @@ namespace PullingStatusTool
         List<UploadRecord> ListUploadRecord = new List<UploadRecord>();
         List<ConnectorAccount> ListAccount = new List<ConnectorAccount>();
 
+        private string getTescoDataPeriod(string date,int datelag, bool isWeekly)//跟传入数据的真实时间，datelag，以及是否是Weekly的判断，拿到需要的日期以及weekly number
+        {
+            string sql = "select * "
+                                + " from Engv1ukdp1.Tescoconnector.dbo.RSI_TOOLS_TescoConn_TescoCalendar ";//先把Calendar全部取出来
+                              //  + " where '"+Convert.ToDateTime(date).ToString("dd/MM/yyyy")+"' between startdate and enddate";
+            string weekNum = "";
+         
+            foreach (DataRow row in connectDB_68server.getTable(sql).Rows)//根据传入的date找到week number
+            {
+                //由于calendar表里面的日期格式是dd/MM/yyyy，要转成c#日期格式
+                DateTime stdate = DateTime.ParseExact(row["startdate"].ToString(), "dd/MM/yyyy", System.Globalization.CultureInfo.GetCultureInfo("en-US"));
+                DateTime endate = DateTime.ParseExact(row["enddate"].ToString(), "dd/MM/yyyy", System.Globalization.CultureInfo.GetCultureInfo("en-US"));
+
+                if (Convert.ToDateTime(date).AddDays(-7) <= endate && Convert.ToDateTime(date).AddDays(-7) >=stdate)
+                {
+                    weekNum =  row["year"].ToString()+"/"+row["WeekNbrInYear"].ToString();//拿到weeknumber
+                    break;
+                }
+            } 
+            return  isWeekly ? weekNum : Convert.ToDateTime(date).AddDays(0 - datelag).ToString("dd/MM/yyyy");//如果是daily的period则返回dd/MM/yyyy格式的日期，如果weekly返回weekly number
+        }
+
+
+        private DataTable getTescoUKPullingStatusData(string stDate)
+        {
+            string cuurent = getTescoDataPeriod(stDate, 0, false); //当天日期
+            string restate_3 = getTescoDataPeriod(stDate, 2, false); //today -3 
+            string restate_2 = getTescoDataPeriod(stDate, 1, false);//today -2  
+            string week = getTescoDataPeriod(stDate, 2, true); // week number
+            string sqlstr = "select  c_vendor,c_userid,SUM(SSSD) c_sssd,SUM(SSDCD) c_ssdcd,SUM(WASD) c_wasd,SUM(GSSD) c_gssd,SUM(RSSSD) c_rsssd,SUM(sssw) c_sssw,SUM(STCW) c_stcw from "
+                                     + "(select   c_vendor, c_userid,c_startdate, "
+                                     + "case when c_Data='Sales and Stock' and c_DataSet='Store' and c_FileName like '%SSSD%' and (c_FileName not like '%RS%' and c_FileName not like '%DR%' and  c_FileName not like '% R%' ) and  c_StartDate='" + cuurent + "' then COUNT(*) else 0 end as SSSD, "
+                                     + " case when c_Data='Sales and Stock' and c_DataSet='DC' and c_FileName not like '%NPDR%' and c_startdate='"+restate_3+"'then COUNT(*) else 0 end as SSDCD, "
+                                     + " case when c_Data='Waste Analysis' and c_DataSet='Store'and  c_startdate='"+restate_3+"'then COUNT(*) else 0 end as WASD, "
+                                    + " case when c_Data='Gap Scan' and c_DataSet='Store' and  c_startdate='"+restate_2+"' then COUNT(*)  else 0 end as GSSD , "
+                                    + " case when c_Data='Sales and Stock' and c_DataSet='Store' and (c_FileName like '%RSSSD%' or c_FileName like '%SSSDR%' or c_FileName like '%SSSD R%' )and  c_startdate='"+restate_3+"' then COUNT(*) else 0  end as RSSSD, "
+                                    + " case when c_Data='Sales and Stock' and c_DataSet='Store' and  c_startdate='"+week+"' then COUNT(*)  else 0 end as SSSW, "
+                                    + " case when c_Data='Sales and Stock' and c_DataSet='Total Co'  and c_startdate='"+week+"' then COUNT(*)  else 0 end as STCW "
+                                    + " from View_NoTargetDPStatus a "
+                                    + " group by c_vendor,c_Data,c_DataSet,c_FileName,c_startdate,c_startdate,c_userid) t "
+                                    + " group by c_vendor,c_userid "
+                                    + " order by c_vendor ";
+
+        return connectDB_68server.getTable(sqlstr);
+        
+        }
+
+
+
         private bool addAccountData(ConnectorAccount account)
         {
             string sqlStr = "insert into   IRAccount (Vendor,userid,PassWord,CategoryAccess,Owner,subvendor,Retailer) values "
@@ -137,9 +186,9 @@ namespace PullingStatusTool
             return connectDB_68server.submit(sqlStr);
 
         }
-        public bool addFileSet(UploadFileSet fileSet)
+        public bool addFileSet(UploadFileSet fileSet,bool addToExpect)
         {
-            string sqlStr = "insert into   FileUploadSet (Retailer,Vendor,DownloadPath,FileType,SLATime,Frequency,Dayof,Datalag,Flag) values"
+            string sqlStr = "insert into   FileUploadSet (Retailer,Vendor,DownloadPath,FileType,SLATime,Frequency,Dayof,Datalag,Flag,FileExten) values"
                                     + "('" + fileSet.c_retailer + "',"
                                     + "'" + fileSet.c_vendor + "',"
                                     + "'" + fileSet.c_downloadpath + "',"
@@ -148,15 +197,23 @@ namespace PullingStatusTool
                                     + "'" + fileSet.c_freqency + "',"
                                     + "'" + fileSet.c_dayof + "',"
                                     + "'" + fileSet.c_datalag + "',"
-                                    + "'" + fileSet.c_flag + "' )";
+                                    + "'" + fileSet.c_flag +"',"
+                                    + "'" + fileSet.c_fileextend+"' )";
             string dayofweek=fileSet.c_freqency=="Daily'"?"Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday" : fileSet.c_dayof;
-
             string sqlStrExpect = string.Format("insert into ReportDataType (dayofweek,vendor,datatype,subgroup,fileExpect,delayreason,retailer) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", dayofweek, fileSet.c_vendor, fileSet.c_filetype, fileSet.c_freqency, "1", "", fileSet.c_retailer);//   插入一条fileSet的时候自动插入到fileExpect
-            return connectDB_68server.submit(sqlStr + ";" + sqlStrExpect);
+            return addToExpect?connectDB_68server.submit(sqlStr + ";" + sqlStrExpect):connectDB_68server.submit(sqlStr);
        
         
         }
-        public bool editFileSet( UploadFileSet fileSet )
+
+        public bool deleteFileSet(string id)
+        {
+            string sql = "delete from [FileUploadSet] where id =" +id;
+            return connectDB_68server.submit(sql);
+
+
+        }
+        public bool editFileSet( UploadFileSet fileSet, bool editExpect )
         {
             string sqlStr = "update   FileUploadSet set "
                                     + "Retailer='" + fileSet.c_retailer + "',"
@@ -166,7 +223,8 @@ namespace PullingStatusTool
                                     + "SLATime ='" + fileSet.c_slatime + "',"
                                     + "Frequency ='" + fileSet.c_freqency + "',"
                                     + "Dayof ='" + fileSet.c_dayof + "',"
-                                     + "Datalag ='" + fileSet.c_datalag + "',"
+                                     + "FileExten ='" + fileSet.c_fileextend + "',"
+                                       + "Datalag ='" + fileSet.c_datalag + "',"
                                     + "Flag ='" + fileSet.c_flag + "' "
                                     +" Where id=" + fileSet.c_id;
            return  connectDB_68server.submit(sqlStr);
@@ -186,7 +244,8 @@ namespace PullingStatusTool
                                         + "filetype c_filetype,"
                                         + "flag  c_flag, "
                                         + "datalag c_datalag, "
-                                         + "Frequency  c_freqency "
+                                         + "Frequency  c_freqency, "
+                                         + "FileExten c_fileextend "
                                         +" from FileUploadSet   order by Retailer, Vendor,FileType,Frequency";
 
        return     connectDB_68server.getTable(sqlStr);
@@ -630,7 +689,10 @@ namespace PullingStatusTool
 
 
         }
-       
+        public DataTable getTescoUKPullingStatus(string stDate)
+        {
+            return getTescoUKPullingStatusData(stDate);
+        }
 
         public DataTable getUploadRecord(string STtime, string EDtime, string ongoing, string SLA)
         {

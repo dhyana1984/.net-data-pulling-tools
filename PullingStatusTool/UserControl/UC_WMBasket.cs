@@ -124,8 +124,8 @@ namespace PullingStatusTool.UserControl
                 schedule.c_enable = cbx_Enable.Checked;
                 schedule.c_nextruntime = txt_NextRunTime.Text;
                 schedule.c_time = txt_Time.Text;
-                schedule.c_storenumber = string.IsNullOrEmpty(getRidOfSpace(txt_Stores.Text)) ? null : getRidOfSpace(txt_Stores.Text);
-                schedule.c_week = string.IsNullOrEmpty(getRidOfSpace(txt_week.Text)) ? null : getRidOfSpace(txt_Stores.Text);
+                schedule.c_storenumber = getRidOfSpace(txt_Stores.Text);
+                schedule.c_week = getRidOfSpace(txt_week.Text);
                 schedule.c_id = scheduleid;
                 if (scheduleid != "")
                 {

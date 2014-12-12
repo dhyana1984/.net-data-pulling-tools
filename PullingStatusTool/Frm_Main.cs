@@ -32,32 +32,46 @@ namespace PullingStatusTool
         UC_MRSConnector UC_MorrisonConnector = new UC_MRSConnector();
         UC_AccountManagement UC_AccountMgr = new UC_AccountManagement();
         UC_WMBasket UC_Basket = new UC_WMBasket();
-        private void showFunctions(UC_Functions function)//加载功能用户控件的统一方法
+        UC_TescoUKStatus UC_TscUKStatus = new UC_TescoUKStatus();
+        private void showFunctions(UC_Functions function,bool valid)//加载功能用户控件的统一方法
         {
+       
+            bool flag = false;
+            if (!valid)//需不需要密码
+            {
+                flag = true;
+            }
+            else
+            {
+                Frm_Password password = new Frm_Password();
+                if (!Users.Flag)
+                {
+                    if (password.ShowDialog() == DialogResult.OK)
+                    {
+                        Users.Flag = true;
+                        flag = true;
+                    }
+                }
+                else
+                {
+                    flag = true;
+                }
+            }
+            if (flag)
+            {
+                splitContainerControl1.Panel2.Controls.Clear();
+                splitContainerControl1.Panel2.Controls.Add(function);
+                function.Show();
+                this.Text = this.Text.Split('-')[0].TrimEnd() + " - " + function.Tag;//在主界面上显示界面功能名称
+            }
 
-            splitContainerControl1.Panel2.Controls.Clear();
-            splitContainerControl1.Panel2.Controls.Add(function);
-            function.Show();
-            this.Text =  this.Text.Split('-')[0].TrimEnd()+ " - " + function.Tag;//在主界面上显示界面功能名称
-        
         }
+
 
         private void item_expectfile_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
 
-            Frm_Password password = new Frm_Password();
-            if (!Users.Flag)
-            {
-                if (password.ShowDialog() == DialogResult.OK)
-                {
-                    Users.Flag = true;
-                    showFunctions(UC_ExpectFile);
-                }
-            }
-            else
-            {
-                showFunctions(UC_ExpectFile);
-            }
+            showFunctions(UC_ExpectFile, true);
 
         }
 
@@ -65,88 +79,40 @@ namespace PullingStatusTool
         {
 
 
-            Frm_Password password = new Frm_Password();
-            if (!Users.Flag)
-            {
-                if (password.ShowDialog() == DialogResult.OK)
-                {
-                    Users.Flag = true;
-                    showFunctions(UC_filesetMgr);
-                }
-            }
-            else
-            {
-                showFunctions(UC_filesetMgr);
-            }
+            showFunctions(UC_filesetMgr, true);
         }
 
         private void item_target_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
 
-            showFunctions(UC_TargetStatus);
+            showFunctions(UC_TargetStatus,false);
         }
 
         private void item_notarget_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            showFunctions(UC_noTargetStatus);
+            showFunctions(UC_noTargetStatus,false);
 
         }
 
         private void item_uploadrecord_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            showFunctions(UC_UploadRecord);
+            showFunctions(UC_UploadRecord, false);
         }
 
         private void item_targetchart_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            Frm_Password password = new Frm_Password();
-            if (!Users.Flag)
-            {
-                if (password.ShowDialog() == DialogResult.OK)
-                {
-                    Users.Flag = true;
-                    showFunctions(UC_TargetChart);
-                }
-            }
-            else
-            {
-                showFunctions(UC_TargetChart);
-            }
+            showFunctions(UC_TargetChart,true);
         }
 
         private void item_notargetchart_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            Frm_Password password = new Frm_Password();
-            if (!Users.Flag)
-            {
-                if (password.ShowDialog() == DialogResult.OK)
-                {
-                    Users.Flag = true;
-                    showFunctions(UC_NoTargetChart);
-                }
-            }
-            else
-            {
-                showFunctions(UC_NoTargetChart);
-            }
+            showFunctions(UC_NoTargetChart,true);
         }
 
         private void item_morrison_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            
-                            Frm_Password password = new Frm_Password();
-            if (!Users.Flag)
-            {
-                if (password.ShowDialog() == DialogResult.OK)
-                {
-                    Users.Flag = true;
-                    showFunctions(UC_MorrisonConnector);
-                }
-            }
-            else
-            {
-                showFunctions(UC_MorrisonConnector);
-            }
+
+            showFunctions(UC_MorrisonConnector,true);
         }
 
 
@@ -154,36 +120,17 @@ namespace PullingStatusTool
         private void item_AccountMgr_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
 
-            Frm_Password password = new Frm_Password();
-            if (!Users.Flag)
-            {
-                if (password.ShowDialog() == DialogResult.OK)
-                {
-                    Users.Flag = true;
-                    showFunctions(UC_AccountMgr);
-                }
-            }
-            else
-            {
-                showFunctions(UC_AccountMgr);
-            }
+            showFunctions(UC_AccountMgr,true);
         }
 
         private void item_wmbasket_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            Frm_Password password = new Frm_Password();
-            if (!Users.Flag)
-            {
-                if (password.ShowDialog() == DialogResult.OK)
-                {
-                    Users.Flag = true;
-                    showFunctions(UC_Basket);
-                }
-            }
-            else
-            {
-                showFunctions(UC_Basket);
-            }
+            showFunctions(UC_Basket,true);
+        }
+
+        private void item_TescoStatus_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            showFunctions(UC_TscUKStatus, false);
         }
 
 
