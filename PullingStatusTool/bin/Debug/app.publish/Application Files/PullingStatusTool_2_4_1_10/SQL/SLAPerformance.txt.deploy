@@ -1,0 +1,39 @@
+select  
+ case 
+ when reportname like '%Category%' or ScheduleName like '%Category%' or configname like '%Category%'  or ScheduleName like '%Cattrib%' or configname like '%Cattrib%' then vendor +' Category' else vendor end vendor,
+ Case 
+ when ReportName like '%store%' or ReportName like '%inv1%' or ReportName like '%INV2%' then 'Store' 
+ when ReportName like '%DC %' and ReportName not like '%recei%' then 'DC' 
+ when reportname not like '%Category%' and (ReportName like '%POS%' or ReportName like '%daily%') and ReportName not like '%WPOS%' and ReportName not like '%valid%' and ReportName not like '%-R%' then 'CPOS'
+ when Reportname like '%valid%' and ReportName not like '%-R%'then 'Valid'
+ when (ReportName like 'Cat%' OR ReportName like '%WPOS%') and ReportName not like '%valid%' then 'WPOS' 
+ when reportname  like '%Rece%'    then 'DC Receipt' 
+ end
+ DataType,
+ sum(Case
+ when dateadd(hour,12, EndUploadTime)<='@Date 17:00' then 1 else 0 end) OnTimeUpLoad,
+ sum(Case
+ when dateadd(hour,12, EndUploadTime)>'@Date 17:00' then 1 else 0 end )LateUpLoad,
+ sum(Case
+ when dateadd(hour,12, EndFormattingTime)<='@Date 17:00' then 1 else 0 end )OnTimeFormat,
+ sum(Case
+ when dateadd(hour,12, EndFormattingTime)>'@Date 17:00' then 1 else 0 end )LateFormat,
+ dateadd(hour,12, MIN(EndFormattingTime)) FirstFormatTime,dateadd(hour,12, max(EndFormattingTime)) LastFormatTime
+ from  view_pullingstatus
+ where reportname not like '%attrib%' and
+ reportname not like '%-r%' and
+ (ReportName like '%@Period%' or ReportName like '%@Daily%') and CurrentLocation not like '%existent%' and DataFormatStatus like '%succ%'
+ group by
+ case 
+ when reportname like '%Category%' or ScheduleName like '%Category%' or configname like '%Category%'  or ScheduleName like '%Cattrib%' or configname like '%Cattrib%' then vendor +' Category' else vendor end ,
+ Case 
+ when ReportName like '%store%' or ReportName like '%inv1%' or ReportName like '%INV2%' then 'Store'
+ when ReportName like '%DC %' and ReportName not like '%recei%' then 'DC'
+ when reportname not like '%Category%' and (ReportName like '%POS%' or ReportName like '%daily%') and ReportName not like '%WPOS%' and ReportName not like '%valid%' and ReportName not like '%-R%' then 'CPOS'
+ when Reportname like '%valid%' and ReportName not like '%-R%'then 'Valid'
+ when (ReportName like 'Cat%' OR ReportName like '%WPOS%') and ReportName not like '%valid%' then 'WPOS' 
+ when reportname  like '%Rece%'    then 'DC Receipt' 
+ end
+ order by vendor,DataType
+
+

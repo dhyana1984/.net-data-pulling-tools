@@ -78,10 +78,7 @@ namespace PullingStatusTool.UserControl
         string FileSetid = "";
         private void btn_Edit_Click(object sender, EventArgs e)
         {
-                MessageBoxButtons messButton = MessageBoxButtons.OKCancel;
-            DialogResult dr = MessageBox.Show("Are you sure to edit?", "Confirm to edit", messButton);
-            if (dr == DialogResult.OK)
-            {
+            
                 int selectedHandle;
                 if (this.gridView1.SelectedRowsCount > 0)
                 {
@@ -94,7 +91,7 @@ namespace PullingStatusTool.UserControl
                         string retailer = gridView1.GetFocusedRowCellValue("c_retailer").ToString().Trim();
                         Frm_UploadPath Frm_uploadpath = new Frm_UploadPath(id, retailer, vendor, filetype);
                         Frm_uploadpath.Show();
-                    }
+                    
                 }
             }
         }

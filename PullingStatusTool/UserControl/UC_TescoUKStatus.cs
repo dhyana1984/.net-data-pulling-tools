@@ -23,7 +23,7 @@ namespace PullingStatusTool.UserControl
           //  lbl_ReportDate.Text += " " + DateTime.Now;
         
             HtmlStatus = createReport(int.Parse(txt_days.Text));
-            html = "<html><body><br> <table width='100%'>"
+            html = "<html><body><br> <table width='100%' style='font-family: 微软雅黑'>"
                            + HtmlStatus   //将返回的总html代码放入
                       +"</table>"
                    + "</body></html>";
@@ -78,7 +78,7 @@ namespace PullingStatusTool.UserControl
                         cellColor = "";
                         fontWeight = "";
                         cell = dt.Rows[i][j].ToString() + "/" + fileExpect;
-                        if ((isAll && dt.Rows[i][j].ToString() != fileExpect) || dt.Rows[i][j].ToString()=="0") //如果取的文件数和expect文件数对不上
+                        if ((dt.Rows[i][j].ToString() != fileExpect) || fileExpect == "0") //如果取的文件数和expect文件数对不上
                         {
                             isAll = false; //isAll列为N
                             fontWeight = "style='font-weight: bold'";

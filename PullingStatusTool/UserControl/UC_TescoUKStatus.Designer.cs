@@ -47,7 +47,7 @@
             this.wb_Status.Location = new System.Drawing.Point(0, 35);
             this.wb_Status.MinimumSize = new System.Drawing.Size(20, 20);
             this.wb_Status.Name = "wb_Status";
-            this.wb_Status.Size = new System.Drawing.Size(955, 465);
+            this.wb_Status.Size = new System.Drawing.Size(954, 465);
             this.wb_Status.TabIndex = 0;
             // 
             // btn_Refresh
@@ -117,7 +117,8 @@
             this.Controls.Add(this.cbx_Date);
             this.Controls.Add(this.wb_Status);
             this.Name = "UC_TescoUKStatus";
-            this.Size = new System.Drawing.Size(958, 503);
+            this.Size = new System.Drawing.Size(957, 503);
+            this.Tag = "TescoUK Pulling Status";
             this.Load += new System.EventHandler(this.UC_TescoUKStatus_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cbx_Date.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbx_Date.Properties)).EndInit();
