@@ -58,10 +58,10 @@
             this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControl1.Location = new System.Drawing.Point(12, 72);
+            this.gridControl1.Location = new System.Drawing.Point(3, 72);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(910, 522);
+            this.gridControl1.Size = new System.Drawing.Size(964, 428);
             this.gridControl1.TabIndex = 15;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -84,8 +84,11 @@
             this.gridView1.OptionsBehavior.CopyToClipboardWithColumnHeaders = false;
             this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
+            this.gridView1.OptionsView.ColumnAutoWidth = false;
+            this.gridView1.OptionsView.RowAutoHeight = true;
             this.gridView1.OptionsView.ShowAutoFilterRow = true;
             this.gridView1.OptionsView.ShowFooter = true;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // retailer
             // 
@@ -118,9 +121,10 @@
             this.downloadpath.FieldName = "c_downloadpath";
             this.downloadpath.Name = "downloadpath";
             this.downloadpath.OptionsColumn.AllowEdit = false;
+            this.downloadpath.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.downloadpath.Visible = true;
             this.downloadpath.VisibleIndex = 2;
-            this.downloadpath.Width = 147;
+            this.downloadpath.Width = 500;
             // 
             // uploadpath
             // 
@@ -128,9 +132,10 @@
             this.uploadpath.FieldName = "c_uploadpath";
             this.uploadpath.Name = "uploadpath";
             this.uploadpath.OptionsColumn.AllowEdit = false;
+            this.uploadpath.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.uploadpath.Visible = true;
             this.uploadpath.VisibleIndex = 3;
-            this.uploadpath.Width = 153;
+            this.uploadpath.Width = 500;
             // 
             // uploadtime
             // 
@@ -140,9 +145,10 @@
             this.uploadtime.FieldName = "c_uploadtime";
             this.uploadtime.Name = "uploadtime";
             this.uploadtime.OptionsColumn.AllowEdit = false;
+            this.uploadtime.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.uploadtime.Visible = true;
             this.uploadtime.VisibleIndex = 4;
-            this.uploadtime.Width = 72;
+            this.uploadtime.Width = 100;
             // 
             // issla
             // 
@@ -150,6 +156,7 @@
             this.issla.FieldName = "c_issla";
             this.issla.Name = "issla";
             this.issla.OptionsColumn.AllowEdit = false;
+            this.issla.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.issla.Visible = true;
             this.issla.VisibleIndex = 5;
             this.issla.Width = 46;
@@ -160,6 +167,7 @@
             this.isongoing.FieldName = "c_isongoing";
             this.isongoing.Name = "isongoing";
             this.isongoing.OptionsColumn.AllowEdit = false;
+            this.isongoing.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.isongoing.Visible = true;
             this.isongoing.VisibleIndex = 6;
             this.isongoing.Width = 40;
@@ -174,7 +182,7 @@
             this.filetype.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.filetype.Visible = true;
             this.filetype.VisibleIndex = 7;
-            this.filetype.Width = 40;
+            this.filetype.Width = 146;
             // 
             // filename
             // 
@@ -182,15 +190,17 @@
             this.filename.FieldName = "c_filename";
             this.filename.Name = "filename";
             this.filename.OptionsColumn.AllowEdit = false;
+            this.filename.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.filename.Visible = true;
             this.filename.VisibleIndex = 8;
-            this.filename.Width = 140;
+            this.filename.Width = 53;
             // 
             // id
             // 
             this.id.Caption = "ID";
             this.id.FieldName = "c_id";
             this.id.Name = "id";
+            this.id.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             // 
             // btn_Refresh
             // 
@@ -233,6 +243,8 @@
             this.txt_EDtime.Name = "txt_EDtime";
             this.txt_EDtime.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txt_EDtime.Properties.Mask.EditMask = "yyyy-MM-dd";
+            this.txt_EDtime.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.txt_EDtime.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.txt_EDtime.Size = new System.Drawing.Size(100, 20);
@@ -257,7 +269,7 @@
             this.Controls.Add(this.txt_EDtime);
             this.Controls.Add(this.labelControl2);
             this.Name = "UC_UploadRecord";
-            this.Size = new System.Drawing.Size(932, 597);
+            this.Size = new System.Drawing.Size(970, 503);
             this.Tag = "None Target Data Upload Record";
             this.Load += new System.EventHandler(this.Frm_UploadRecord_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();

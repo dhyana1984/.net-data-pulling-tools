@@ -122,7 +122,7 @@
             this.Tab_Schedule.Location = new System.Drawing.Point(6, 3);
             this.Tab_Schedule.Name = "Tab_Schedule";
             this.Tab_Schedule.SelectedTabPage = this.txt_nextruntime1;
-            this.Tab_Schedule.Size = new System.Drawing.Size(952, 497);
+            this.Tab_Schedule.Size = new System.Drawing.Size(853, 501);
             this.Tab_Schedule.TabIndex = 29;
             this.Tab_Schedule.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tab_users,
@@ -146,7 +146,7 @@
             this.txt_nextruntime1.Controls.Add(this.labelControl9);
             this.txt_nextruntime1.Controls.Add(this.gc_Schedule);
             this.txt_nextruntime1.Name = "txt_nextruntime1";
-            this.txt_nextruntime1.Size = new System.Drawing.Size(945, 468);
+            this.txt_nextruntime1.Size = new System.Drawing.Size(846, 472);
             this.txt_nextruntime1.Text = "Schedule";
             // 
             // labelControl5
@@ -263,7 +263,7 @@
             this.gc_Schedule.Name = "gc_Schedule";
             this.gc_Schedule.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gc_Schedule.Size = new System.Drawing.Size(942, 407);
+            this.gc_Schedule.Size = new System.Drawing.Size(843, 411);
             this.gc_Schedule.TabIndex = 26;
             this.gc_Schedule.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -303,7 +303,7 @@
             this.configname.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.configname.Visible = true;
             this.configname.VisibleIndex = 1;
-            this.configname.Width = 150;
+            this.configname.Width = 122;
             // 
             // dataType
             // 
@@ -317,7 +317,7 @@
             this.dataType.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.dataType.Visible = true;
             this.dataType.VisibleIndex = 2;
-            this.dataType.Width = 94;
+            this.dataType.Width = 77;
             // 
             // time
             // 
@@ -329,7 +329,7 @@
             this.time.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.time.Visible = true;
             this.time.VisibleIndex = 6;
-            this.time.Width = 37;
+            this.time.Width = 72;
             // 
             // stores
             // 
@@ -341,7 +341,7 @@
             this.stores.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.stores.Visible = true;
             this.stores.VisibleIndex = 7;
-            this.stores.Width = 227;
+            this.stores.Width = 121;
             // 
             // nextruntime
             // 
@@ -354,7 +354,7 @@
             this.nextruntime.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.nextruntime.Visible = true;
             this.nextruntime.VisibleIndex = 5;
-            this.nextruntime.Width = 96;
+            this.nextruntime.Width = 136;
             // 
             // enable
             // 
@@ -365,7 +365,7 @@
             this.enable.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.enable.Visible = true;
             this.enable.VisibleIndex = 3;
-            this.enable.Width = 39;
+            this.enable.Width = 50;
             // 
             // isrunning
             // 
@@ -377,7 +377,7 @@
             this.isrunning.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.isrunning.Visible = true;
             this.isrunning.VisibleIndex = 4;
-            this.isrunning.Width = 66;
+            this.isrunning.Width = 52;
             // 
             // configid
             // 
@@ -397,7 +397,7 @@
             this.gridColumn10.OptionsColumn.AllowEdit = false;
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 0;
-            this.gridColumn10.Width = 49;
+            this.gridColumn10.Width = 40;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -413,7 +413,7 @@
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 8;
-            this.gridColumn3.Width = 245;
+            this.gridColumn3.Width = 152;
             // 
             // tab_users
             // 
@@ -427,7 +427,7 @@
             this.tab_users.Controls.Add(this.btn_EditUser);
             this.tab_users.Controls.Add(this.gc_Account);
             this.tab_users.Name = "tab_users";
-            this.tab_users.Size = new System.Drawing.Size(945, 468);
+            this.tab_users.Size = new System.Drawing.Size(957, 472);
             this.tab_users.Text = "Users";
             // 
             // btn_RfreshAccount
@@ -501,7 +501,7 @@
             this.gc_Account.Location = new System.Drawing.Point(3, 34);
             this.gc_Account.MainView = this.gridView3;
             this.gc_Account.Name = "gc_Account";
-            this.gc_Account.Size = new System.Drawing.Size(943, 431);
+            this.gc_Account.Size = new System.Drawing.Size(955, 435);
             this.gc_Account.TabIndex = 27;
             this.gc_Account.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -571,7 +571,7 @@
             this.tab_Record.Controls.Add(this.btn_ReportRefresh);
             this.tab_Record.Controls.Add(this.gc_Record);
             this.tab_Record.Name = "tab_Record";
-            this.tab_Record.Size = new System.Drawing.Size(945, 468);
+            this.tab_Record.Size = new System.Drawing.Size(957, 472);
             this.tab_Record.Text = "Record";
             // 
             // lbl_Configname
@@ -607,7 +607,7 @@
             this.gc_Record.Location = new System.Drawing.Point(3, 32);
             this.gc_Record.MainView = this.gridView2;
             this.gc_Record.Name = "gc_Record";
-            this.gc_Record.Size = new System.Drawing.Size(955, 451);
+            this.gc_Record.Size = new System.Drawing.Size(967, 455);
             this.gc_Record.TabIndex = 27;
             this.gc_Record.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -731,7 +731,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.Tab_Schedule);
             this.Name = "UC_WMBasket";
-            this.Size = new System.Drawing.Size(958, 503);
+            this.Size = new System.Drawing.Size(859, 507);
             this.Tag = "Walmart Basket Connector";
             ((System.ComponentModel.ISupportInitialize)(this.txt_Stores.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tab_Schedule)).EndInit();

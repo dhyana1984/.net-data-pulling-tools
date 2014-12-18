@@ -35,16 +35,17 @@
             this.item_notarget = new DevExpress.XtraNavBar.NavBarItem();
             this.item_TescoStatus = new DevExpress.XtraNavBar.NavBarItem();
             this.item_uploadrecord = new DevExpress.XtraNavBar.NavBarItem();
+            this.grp_connector = new DevExpress.XtraNavBar.NavBarGroup();
+            this.item_morrison = new DevExpress.XtraNavBar.NavBarItem();
+            this.item_wmbasket = new DevExpress.XtraNavBar.NavBarItem();
+            this.item_tescoUK = new DevExpress.XtraNavBar.NavBarItem();
+            this.grp_performancechart = new DevExpress.XtraNavBar.NavBarGroup();
+            this.item_notargetchart = new DevExpress.XtraNavBar.NavBarItem();
+            this.item_targetchart = new DevExpress.XtraNavBar.NavBarItem();
             this.grp_systemsetting = new DevExpress.XtraNavBar.NavBarGroup();
             this.item_fileset = new DevExpress.XtraNavBar.NavBarItem();
             this.item_expectfile = new DevExpress.XtraNavBar.NavBarItem();
             this.item_AccountMgr = new DevExpress.XtraNavBar.NavBarItem();
-            this.grp_performancechart = new DevExpress.XtraNavBar.NavBarGroup();
-            this.item_notargetchart = new DevExpress.XtraNavBar.NavBarItem();
-            this.item_targetchart = new DevExpress.XtraNavBar.NavBarItem();
-            this.grp_connector = new DevExpress.XtraNavBar.NavBarGroup();
-            this.item_morrison = new DevExpress.XtraNavBar.NavBarItem();
-            this.item_wmbasket = new DevExpress.XtraNavBar.NavBarItem();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
@@ -60,9 +61,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
             this.grp_dpmonitor,
-            this.grp_systemsetting,
+            this.grp_connector,
             this.grp_performancechart,
-            this.grp_connector});
+            this.grp_systemsetting});
             this.navBarControl1.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.item_target,
             this.item_notarget,
@@ -74,7 +75,8 @@
             this.item_morrison,
             this.item_AccountMgr,
             this.item_wmbasket,
-            this.item_TescoStatus});
+            this.item_TescoStatus,
+            this.item_tescoUK});
             this.navBarControl1.Location = new System.Drawing.Point(3, 3);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 140;
@@ -125,6 +127,60 @@
             this.item_uploadrecord.SmallImage = global::PullingStatusTool.Properties.Resources.UploadRecord;
             this.item_uploadrecord.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.item_uploadrecord_LinkClicked);
             // 
+            // grp_connector
+            // 
+            this.grp_connector.Caption = "Connector";
+            this.grp_connector.Expanded = true;
+            this.grp_connector.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.item_morrison),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.item_wmbasket),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.item_tescoUK)});
+            this.grp_connector.Name = "grp_connector";
+            // 
+            // item_morrison
+            // 
+            this.item_morrison.Caption = "Morrison";
+            this.item_morrison.Name = "item_morrison";
+            this.item_morrison.SmallImage = global::PullingStatusTool.Properties.Resources.Morrisons;
+            this.item_morrison.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.item_morrison_LinkClicked);
+            // 
+            // item_wmbasket
+            // 
+            this.item_wmbasket.Caption = "WMBasket";
+            this.item_wmbasket.Name = "item_wmbasket";
+            this.item_wmbasket.SmallImage = global::PullingStatusTool.Properties.Resources.Walmart;
+            this.item_wmbasket.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.item_wmbasket_LinkClicked);
+            // 
+            // item_tescoUK
+            // 
+            this.item_tescoUK.Caption = "TescoUK";
+            this.item_tescoUK.Name = "item_tescoUK";
+            this.item_tescoUK.SmallImage = ((System.Drawing.Image)(resources.GetObject("item_tescoUK.SmallImage")));
+            this.item_tescoUK.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.item_tescoUK_LinkClicked);
+            // 
+            // grp_performancechart
+            // 
+            this.grp_performancechart.Caption = "Performance Chart";
+            this.grp_performancechart.Expanded = true;
+            this.grp_performancechart.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.item_notargetchart),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.item_targetchart)});
+            this.grp_performancechart.Name = "grp_performancechart";
+            // 
+            // item_notargetchart
+            // 
+            this.item_notargetchart.Caption = "NoTarget Chart";
+            this.item_notargetchart.Name = "item_notargetchart";
+            this.item_notargetchart.SmallImage = global::PullingStatusTool.Properties.Resources.NoTargetChart;
+            this.item_notargetchart.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.item_notargetchart_LinkClicked);
+            // 
+            // item_targetchart
+            // 
+            this.item_targetchart.Caption = "Target Chart";
+            this.item_targetchart.Name = "item_targetchart";
+            this.item_targetchart.SmallImage = global::PullingStatusTool.Properties.Resources.TargetChart;
+            this.item_targetchart.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.item_targetchart_LinkClicked);
+            // 
             // grp_systemsetting
             // 
             this.grp_systemsetting.Caption = "System Setting";
@@ -155,52 +211,6 @@
             this.item_AccountMgr.Name = "item_AccountMgr";
             this.item_AccountMgr.SmallImage = global::PullingStatusTool.Properties.Resources.Account;
             this.item_AccountMgr.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.item_AccountMgr_LinkClicked);
-            // 
-            // grp_performancechart
-            // 
-            this.grp_performancechart.Caption = "Performance Chart";
-            this.grp_performancechart.Expanded = true;
-            this.grp_performancechart.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.item_notargetchart),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.item_targetchart)});
-            this.grp_performancechart.Name = "grp_performancechart";
-            // 
-            // item_notargetchart
-            // 
-            this.item_notargetchart.Caption = "NoTarget Chart";
-            this.item_notargetchart.Name = "item_notargetchart";
-            this.item_notargetchart.SmallImage = global::PullingStatusTool.Properties.Resources.NoTargetChart;
-            this.item_notargetchart.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.item_notargetchart_LinkClicked);
-            // 
-            // item_targetchart
-            // 
-            this.item_targetchart.Caption = "Target Chart";
-            this.item_targetchart.Name = "item_targetchart";
-            this.item_targetchart.SmallImage = global::PullingStatusTool.Properties.Resources.TargetChart;
-            this.item_targetchart.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.item_targetchart_LinkClicked);
-            // 
-            // grp_connector
-            // 
-            this.grp_connector.Caption = "Connector";
-            this.grp_connector.Expanded = true;
-            this.grp_connector.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.item_morrison),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.item_wmbasket)});
-            this.grp_connector.Name = "grp_connector";
-            // 
-            // item_morrison
-            // 
-            this.item_morrison.Caption = "Morrison";
-            this.item_morrison.Name = "item_morrison";
-            this.item_morrison.SmallImage = global::PullingStatusTool.Properties.Resources.Morrisons;
-            this.item_morrison.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.item_morrison_LinkClicked);
-            // 
-            // item_wmbasket
-            // 
-            this.item_wmbasket.Caption = "WMBasket";
-            this.item_wmbasket.Name = "item_wmbasket";
-            this.item_wmbasket.SmallImage = global::PullingStatusTool.Properties.Resources.Walmart;
-            this.item_wmbasket.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.item_wmbasket_LinkClicked);
             // 
             // splitContainerControl1
             // 
@@ -238,7 +248,7 @@
             this.Controls.Add(this.splitContainerControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Frm_Main";
-            this.Text = "DataPulling Tool V2.4";
+            this.Text = "DataPulling Tool V2.5";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
@@ -267,6 +277,7 @@
         private DevExpress.XtraNavBar.NavBarItem item_AccountMgr;
         private DevExpress.XtraNavBar.NavBarItem item_wmbasket;
         private DevExpress.XtraNavBar.NavBarItem item_TescoStatus;
+        private DevExpress.XtraNavBar.NavBarItem item_tescoUK;
 
 
 

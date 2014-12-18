@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly manifestVersion="1.0" xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1">
-  <asmv1:assemblyIdentity version="2.4.1.10" name="PullingStatusTool.exe" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity version="2.5.0.2" name="PullingStatusTool.exe" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="icon_32X32.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -322,14 +322,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PullingStatusTool.exe" size="220672">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PullingStatusTool.exe" size="241152">
       <assemblyIdentity name="PullingStatusTool" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>4zqLbLDrY27C6CCinLzzNQetasI=</dsig:DigestValue>
+        <dsig:DigestValue>NIpDnQVFWb6p2z5N6nZ3mBv2tNQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -495,13 +495,13 @@
       <dsig:DigestValue>VP65/02lN6r0lpQgZGHlgRM+Qa4=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="PullingStatusTool.exe.config" size="826">
+  <file name="PullingStatusTool.exe.config" size="1045">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>IU+PIOqeXmEeduHY3Wxm9/ztz1Y=</dsig:DigestValue>
+      <dsig:DigestValue>ATNc++d8tX9NKrJec2ovjvU4vM4=</dsig:DigestValue>
     </hash>
   </file>
   <file name="SQL\DataPullingFileStatusSql.txt" size="10703">

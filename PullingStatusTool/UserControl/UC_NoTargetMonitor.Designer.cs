@@ -85,10 +85,10 @@
             this.GC_ManUplStas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.GC_ManUplStas.Location = new System.Drawing.Point(13, 36);
+            this.GC_ManUplStas.Location = new System.Drawing.Point(3, 36);
             this.GC_ManUplStas.MainView = this.gridView1;
             this.GC_ManUplStas.Name = "GC_ManUplStas";
-            this.GC_ManUplStas.Size = new System.Drawing.Size(922, 464);
+            this.GC_ManUplStas.Size = new System.Drawing.Size(957, 468);
             this.GC_ManUplStas.TabIndex = 28;
             this.GC_ManUplStas.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -111,6 +111,7 @@
             this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
             this.gridView1.OptionsView.ShowAutoFilterRow = true;
             this.gridView1.OptionsView.ShowFooter = true;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // vendor
             // 
@@ -132,6 +133,7 @@
             this.retailer.FieldName = "c_retailer";
             this.retailer.Name = "retailer";
             this.retailer.OptionsColumn.AllowEdit = false;
+            this.retailer.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.retailer.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.retailer.Visible = true;
             this.retailer.VisibleIndex = 0;
@@ -145,6 +147,7 @@
             this.dataType.OptionsColumn.AllowEdit = false;
             this.dataType.OptionsColumn.AllowSize = false;
             this.dataType.OptionsColumn.ReadOnly = true;
+            this.dataType.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.dataType.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.dataType.Visible = true;
             this.dataType.VisibleIndex = 2;
@@ -156,6 +159,7 @@
             this.uploadfile.FieldName = "c_filexpectuploaded";
             this.uploadfile.Name = "uploadfile";
             this.uploadfile.OptionsColumn.AllowEdit = false;
+            this.uploadfile.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.uploadfile.Visible = true;
             this.uploadfile.VisibleIndex = 3;
             this.uploadfile.Width = 88;
@@ -166,6 +170,7 @@
             this.uploadStatus.FieldName = "c_finishuploaded";
             this.uploadStatus.Name = "uploadStatus";
             this.uploadStatus.OptionsColumn.AllowEdit = false;
+            this.uploadStatus.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.uploadStatus.Visible = true;
             this.uploadStatus.VisibleIndex = 4;
             this.uploadStatus.Width = 87;
@@ -176,6 +181,7 @@
             this.DelayReason.FieldName = "c_delayreason";
             this.DelayReason.Name = "DelayReason";
             this.DelayReason.OptionsColumn.AllowEdit = false;
+            this.DelayReason.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.DelayReason.Visible = true;
             this.DelayReason.VisibleIndex = 7;
             this.DelayReason.Width = 250;
@@ -188,6 +194,7 @@
             this.finishtime.OptionsColumn.AllowEdit = false;
             this.finishtime.OptionsColumn.AllowSize = false;
             this.finishtime.OptionsColumn.ReadOnly = true;
+            this.finishtime.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.finishtime.Visible = true;
             this.finishtime.VisibleIndex = 6;
             this.finishtime.Width = 153;
@@ -198,6 +205,7 @@
             this.freqency.FieldName = "c_subgroup";
             this.freqency.Name = "freqency";
             this.freqency.OptionsColumn.AllowEdit = false;
+            this.freqency.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.freqency.Visible = true;
             this.freqency.VisibleIndex = 5;
             this.freqency.Width = 64;
@@ -211,7 +219,7 @@
             this.Controls.Add(this.drp_DailyDate);
             this.Controls.Add(this.GC_ManUplStas);
             this.Name = "UC_NoTargetMonitor";
-            this.Size = new System.Drawing.Size(948, 503);
+            this.Size = new System.Drawing.Size(963, 507);
             this.Tag = "None Target Data Pulling Status";
             this.Load += new System.EventHandler(this.Frm_ManuUplStas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.drp_DailyDate.Properties.VistaTimeProperties)).EndInit();

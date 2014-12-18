@@ -35,8 +35,8 @@
     <InstallUrl>http://10.176.1.50:8002/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>11</ApplicationRevision>
-    <ApplicationVersion>2.4.1.%2a</ApplicationVersion>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>2.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -371,6 +371,7 @@
     <Content Include="img\Target.png" />
     <None Include="img\Walmart.jpg" />
     <None Include="Resources\Tesco.bmp" />
+    <None Include="Resources\TescoConn.bmp" />
     <Content Include="SQL\DataPullingFileStatusSql.txt" />
     <Content Include="SQL\SLAPerformance.txt" />
     <Content Include="SQL\VIP.txt" />

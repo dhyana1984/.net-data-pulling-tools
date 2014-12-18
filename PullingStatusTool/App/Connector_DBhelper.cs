@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Data;
+using PullingStatusTool.UserControl;
 
 namespace PullingStatusTool.App
 {
@@ -185,7 +186,7 @@ namespace PullingStatusTool.App
         private void editScheduleData(ConnectorSchedule schedule)//立即run Schedule, 实际上就是update next runtime 到当前时间
         {
             string sqlStr = "update [MorrisonConnector].[dbo].[RSI_TOOLS_Conn_REPORTCONFIG]"
-                                      + " set configname='" + schedule.c_configname + "', "
+                                      + " set configname='" + schedule.c_configname.Replace("'", "''") + "', "
                                       + " nextruntime='" + schedule.c_nextruntime + "',"
                                       + " time='" + schedule.c_time + "',"
                                       + " datelag='" + schedule.c_datelag + "',"
@@ -272,9 +273,152 @@ namespace PullingStatusTool.App
     {
         ConnectDB dbhelper = new ConnectDB();
         public TescoUKDBHelper()
-        { 
-       // dbhelper.c_sqlConString=
+        {
+            dbhelper.c_sqlConString = "TescoUKConnector";
         }
+
+        private DataTable getAllUserData()//获取所有的MorrisonConnector UserInfo
+        {
+            string sqlStr = "SELECT [userid] c_accountname,[password] c_password ,vendor c_vendor "
+                                    + " FROM [RSI_TOOLS_TescoConn_User] ";
+                                
+            return dbhelper.getTable(sqlStr);
+
+
+        }
+        private bool editAccountData(ConnectorAccount account)
+        {
+            string sqlStr = "update [RSI_TOOLS_TescoConn_User] "
+                                      + " set userid='" + account.c_accountname + "', "
+                                      + " vendor = '" + account.c_vendor.Replace("'","''") + "', "
+                                      + " password='" + account.c_password + "' "
+                                      + " where userid in ('" + account.c_id + "')";      
+           return  dbhelper.submit(sqlStr);
+        }
+
+        private bool  addAccountData(ConnectorAccount account)
+        {
+            string sqlStr = "INSERT INTO [TescoConnector].[dbo].[RSI_TOOLS_TescoConn_User] ([UserID] ,[Password] ,[Vendor]   ,[Retailer]  ,[UserType])  VALUES"
+                                    + " ('" + account.c_accountname + "' ,'" + account.c_password + "'  ,'" + account.c_vendor.Replace("'", "''") + "'  ,'Tesco' ,'Tesco Link')";
+         return   dbhelper.submit(sqlStr);
+        }
+
+        private bool deleteAccountData(string id)
+        {
+            string sqlStr = "delete  FROM [RSI_TOOLS_TescoConn_User]  where userid='"+id +"'" ;
+            return dbhelper.submit(sqlStr);     
+        
+        }
+
+        private DataTable getScheduleData()
+        {
+            string sqlStr = " select vendor,  a.*  from [V$RSI_TOOLS_TescoConn_ReportConfig] a join RSI_TOOLS_TescoConn_User b on a. userid =b.userid";
+            return dbhelper.getTable(sqlStr);
+        
+        }
+        private bool addScheduleData(TescoUKSchedule schedule)
+        {
+
+            string sqlstr = "insert into RSI_TOOLS_TescoConn_ReportConfig " +
+                                    "([ReportType] ,[UserID] ,[Supplier] ,[FileName] ,[Data] ,[DataSet],[ProductList] ,[TimeFrame] ,[DataLag] ,[StartDate],[EndDate] ,[DownloadDirectory],[ScheduleFrequency] ,[Weekday],[Time] ,[Enable]) "+
+                                    "values " +
+                                    string.Format("('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}')", schedule.Reporttype, schedule.Account, schedule.Supplier.Replace("'", "''"), schedule.Filename, schedule.Data, schedule.Dataset, schedule.Prodlist.Replace("'", "''"), schedule.Timeframe, schedule.Datelag, schedule.STDate, schedule.Eddate, schedule.Downloadfolder.Replace("'", "''"), schedule.ScheduleFreqency, schedule.Weekday, schedule.Time, schedule.Enable);
+           return dbhelper.submit(sqlstr);
+
+        }
+
+        private bool editScheduleData(TescoUKSchedule schedule)
+        {
+            string sqlstr = "update RSI_TOOLS_TescoConn_ReportConfig set "
+                                    + " ReportType ='" + schedule.Reporttype
+                                    + "', UserId= '" + schedule.Account
+                                    + "', Supplier ='" + schedule.Supplier.Replace("'", "''")
+                                    + "', FileName= '" + schedule.Filename
+                                    + "', Data ='" + schedule.Data
+                                    + "', DataSet= '" + schedule.Dataset
+                                    + "', ProductList ='" + schedule.Prodlist.Replace("'", "''")
+                                    + "', TimeFrame= '" + schedule.Timeframe
+                                    + "', DataLag ='" + schedule.Datelag
+                                    + "', StartDate ='" + schedule.STDate
+                                    + "', EndDate= '" + schedule.Eddate
+                                    + "', DownloadDirectory ='" + schedule.Downloadfolder.Replace("'", "''")
+                                    + "', ScheduleFrequency= '" + schedule.ScheduleFreqency
+                                    + "', Weekday ='" + schedule.Weekday
+                                    + "', Time= '" + schedule.Time
+                                    + "', Enable ='" + schedule.Enable + "' where reportid = " + schedule.ReportID;
+                         
+            return dbhelper.submit(sqlstr);
+
+        }
+
+        private DataTable getReportData(string STdate,string submitDate)
+        {
+            DataTable dt = new DataTable();
+            string sqlSubmitDate="";
+            string sqlSTDate="";
+            sqlSubmitDate =submitDate==""?"": " and [SubmitTime] between  '" + submitDate + " 00:00:00' and '" + submitDate + " 23:59:59'";
+            sqlSTDate =  STdate==""?"":" and StartDate ='"+STdate+"'";
+
+            string sqlstr = " SELECT  vendor,[HistoryID],a.[UserID] ,[Status],[FileName],[Supplier],[Data],[DataSet],[TimeFrame],[ProductList],[StartDate],[EndDate],[IsReSubmit],[SubmitTime],[DownloadTime]"
+                                    + "  FROM [TescoConnector].[dbo].[RSI_TOOLS_TescoConn_History] a left join  RSI_TOOLS_TescoConn_User b on a.userid=b.userid where 1=1  "
+                                    + sqlSubmitDate
+                                    +sqlSTDate;
+                                    
+                                    
+                                 
+           dt= dbhelper.getTable(sqlstr);
+           return dt;
+        }
+
+        private bool editReportStatusData(string historyID)
+        {
+            string sql = "update RSI_TOOLS_TescoConn_History set Status = 'New' where HistoryID = "+historyID;
+            return dbhelper.submit(sql);
+        }
+
+
+        /*外部方法*/
+        public DataTable getAllAccount()
+        {
+            return getAllUserData();
+        }
+        public bool addNewUser( ConnectorAccount account)
+        {
+            return addAccountData(account);
+        }
+        public bool editAccount(ConnectorAccount account)
+        {
+            return editAccountData(account);
+        }
+        public bool deleteAccount(string id)
+        {
+            return deleteAccountData(id);
+        }
+
+        public DataTable getSchedule()
+        {
+            return getScheduleData();
+        }
+
+        public bool addSchedule(TescoUKSchedule schedule)
+        {
+            return addScheduleData(schedule);
+        }
+        public bool editSchedule(TescoUKSchedule schedule)
+        {
+            return editScheduleData(schedule);
+        }
+
+        public DataTable getReport(string Startdate,string submitDate)
+        {
+            return getReportData(Startdate,submitDate);
+        }
+
+        public bool editReportStatus(string historyID)
+        {
+            return editReportStatusData(historyID);
+        }
+
     }
 
     class ConnectDB

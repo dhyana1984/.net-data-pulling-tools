@@ -123,6 +123,13 @@ namespace PullingStatusTool.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap TescoConn {
+            get {
+                object obj = ResourceManager.GetObject("TescoConn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap UploadRecord {
             get {
                 object obj = ResourceManager.GetObject("UploadRecord", resourceCulture);

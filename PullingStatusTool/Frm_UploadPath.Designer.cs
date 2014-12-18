@@ -96,6 +96,7 @@
             this.fileset_id});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // uploadfilepath
             // 
@@ -103,6 +104,7 @@
             this.uploadfilepath.FieldName = "c_uploadpath";
             this.uploadfilepath.Name = "uploadfilepath";
             this.uploadfilepath.OptionsColumn.AllowEdit = false;
+            this.uploadfilepath.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.uploadfilepath.Visible = true;
             this.uploadfilepath.VisibleIndex = 0;
             this.uploadfilepath.Width = 540;
@@ -113,6 +115,7 @@
             this.pathname.FieldName = "c_pathname";
             this.pathname.Name = "pathname";
             this.pathname.OptionsColumn.AllowEdit = false;
+            this.pathname.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.pathname.Visible = true;
             this.pathname.VisibleIndex = 1;
             this.pathname.Width = 113;
@@ -123,6 +126,7 @@
             this.id.FieldName = "c_id";
             this.id.Name = "id";
             this.id.OptionsColumn.AllowEdit = false;
+            this.id.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             // 
             // fileset_id
             // 
@@ -130,6 +134,7 @@
             this.fileset_id.FieldName = "c_filesetid";
             this.fileset_id.Name = "fileset_id";
             this.fileset_id.OptionsColumn.AllowEdit = false;
+            this.fileset_id.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             // 
             // Btn_Edit
             // 

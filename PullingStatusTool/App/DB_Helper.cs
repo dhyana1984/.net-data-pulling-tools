@@ -80,13 +80,13 @@ namespace PullingStatusTool
         private bool addAccountData(ConnectorAccount account)
         {
             string sqlStr = "insert into   IRAccount (Vendor,userid,PassWord,CategoryAccess,Owner,subvendor,Retailer) values "
-                           + "('" + account.c_vendor + "',"
+                           + "('" + account.c_vendor.Replace("'", "''") + "',"
                            + "'" + account.c_accountname + "',"
                            + "'" + account.c_password + "',"
                            + "'" + account.c_category + "',"
                            + "'" + account.c_owner + "',"
-                           + "'" + account.c_subvendor + "',"
-                           + "'" + account.c_retailer + "' )";
+                           + "'" + account.c_subvendor.Replace("'", "''") + "',"
+                           + "'" + account.c_retailer.Replace("'", "''") + "' )";
             return  connectDB_68server.submit(sqlStr);
 
         }
@@ -95,13 +95,13 @@ namespace PullingStatusTool
         private bool editAccountData(ConnectorAccount account)//
         {
             string sqlStr = "update  IRAccount "
-                                      + " set [Vendor]='" + account.c_vendor + "', "
+                                      + " set [Vendor]='" + account.c_vendor.Replace("'", "''") + "', "
                                        + "  [userid]='" + account.c_accountname + "', "
                                       + "  [PassWord]='" + account.c_password + "', "
                                       + "  [CategoryAccess]='" + account.c_category + "', "
                                       + "  [Owner]='" + account.c_owner + "', "
-                                      + "  [subvendor]='" + account.c_subvendor + "', "
-                                      + "  [Retailer]='" + account.c_retailer + "' "
+                                      + "  [subvendor]='" + account.c_subvendor.Replace("'", "''") + "', "
+                                      + "  [Retailer]='" + account.c_retailer.Replace("'", "''") + "' "
                                       + " where id in(" + account.c_id + ")";
         return    connectDB_68server.submit(sqlStr);
         }
@@ -165,7 +165,7 @@ namespace PullingStatusTool
         {
             string sqlStr = "insert into   UploadPath (filesetid,Path,pathname) values "
                            + "('" + path.c_filesetid + "',"
-                           + "'" + path.c_uploadpath + "',"
+                           + "'" + path.c_uploadpath.Replace("'", "''") + "',"
                            + "'" + path.c_pathname + "' )";
             return connectDB_68server.submit(sqlStr);
         }
@@ -179,8 +179,8 @@ namespace PullingStatusTool
         {
 
             string sqlStr = "update   UploadPath set "
-                                   
-                                    + "path='" + path.c_uploadpath + "',"
+
+                                    + "path='" + path.c_uploadpath.Replace("'", "''") + "',"
                                     + "pathname ='" + path.c_pathname + "'"
                                     + " Where id=" + path.c_id;
             return connectDB_68server.submit(sqlStr);
@@ -190,7 +190,7 @@ namespace PullingStatusTool
         {
             string sqlStr = "insert into   FileUploadSet (Retailer,Vendor,DownloadPath,FileType,SLATime,Frequency,Dayof,Datalag,Flag,FileExten) values"
                                     + "('" + fileSet.c_retailer + "',"
-                                    + "'" + fileSet.c_vendor + "',"
+                                    + "'" + fileSet.c_vendor.Replace("'", "''") + "',"
                                     + "'" + fileSet.c_downloadpath + "',"
                                     + "'" + fileSet.c_filetype + "',"
                                     + "'" + fileSet.c_slatime + "',"
@@ -216,9 +216,9 @@ namespace PullingStatusTool
         public bool editFileSet( UploadFileSet fileSet, bool editExpect )
         {
             string sqlStr = "update   FileUploadSet set "
-                                    + "Retailer='" + fileSet.c_retailer + "',"
-                                    + "Vendor='" + fileSet.c_vendor + "',"
-                                    + "DownloadPath ='" + fileSet.c_downloadpath + "',"
+                                    + "Retailer='" + fileSet.c_retailer.Replace("'", "''") + "',"
+                                    + "Vendor='" + fileSet.c_vendor.Replace("'", "''") + "',"
+                                    + "DownloadPath ='" + fileSet.c_downloadpath.Replace("'", "''") + "',"
                                     + "FileType='" + fileSet.c_filetype + "',"
                                     + "SLATime ='" + fileSet.c_slatime + "',"
                                     + "Frequency ='" + fileSet.c_freqency + "',"
@@ -605,7 +605,7 @@ namespace PullingStatusTool
         /*2014-12-04 */
         public bool insertNewFileExpect(string dayofwk,string vendor, string datatype, string subgroup, string fileExpect,string delay,string retailer)
         {
-            string sqlStr = string.Format("insert into ReportDataType (dayofweek,vendor,datatype,subgroup,fileExpect,delayreason,retailer) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", dayofwk, vendor, datatype, subgroup, fileExpect, delay, retailer);
+            string sqlStr = string.Format("insert into ReportDataType (dayofweek,vendor,datatype,subgroup,fileExpect,delayreason,retailer) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", dayofwk, vendor.Replace("'", "''"), datatype, subgroup, fileExpect, delay, retailer.Replace("'", "''"));
             return connectDB_68server.submit(sqlStr);
         }
         public bool editFileExpect(ReportExpect fileExpect)
@@ -621,11 +621,11 @@ namespace PullingStatusTool
             string retailer = fileExpect.c_retailer;
             string sqlStr = "update reportdatatype set "
                             + " dayofweek ='" + dayofweek + "',"
-                            + " vendor='" + vendor + "',"
+                            + " vendor='" + vendor.Replace("'", "''") + "',"
                             + " datatype='" + dataType + "',"
-                            + " subgroup ='" + subGroup + "',"
+                            + " subgroup ='" + subGroup.Replace("'", "''") + "',"
                             + " fileexpect='" + fileCount + "',"
-                              + " retailer='" + retailer + "',"
+                              + " retailer='" + retailer.Replace("'", "''") + "',"
                             + " delayreason='" + delay + "' "
                             + " where id = "+id;
           return  connectDB_68server.submit(sqlStr);

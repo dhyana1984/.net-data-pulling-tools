@@ -20,6 +20,7 @@ namespace PullingStatusTool.UserControl
         {
         
             txt_EDtime.Text = DateTime.Now.ToShortDateString();
+      
         }
 
         private void btn_Refresh_Click(object sender, EventArgs e)
@@ -53,7 +54,7 @@ namespace PullingStatusTool.UserControl
                     break;
             }
             gridControl1.DataSource = dbhelper.getUploadRecord(STTime, EDTime, isOngoing, isSLA);
-
+            gridView1.BestFitColumns();
 
         }
     }

@@ -150,10 +150,10 @@
             this.GC_PullingFileStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.GC_PullingFileStatus.Location = new System.Drawing.Point(13, 37);
+            this.GC_PullingFileStatus.Location = new System.Drawing.Point(3, 37);
             this.GC_PullingFileStatus.MainView = this.gridView1;
             this.GC_PullingFileStatus.Name = "GC_PullingFileStatus";
-            this.GC_PullingFileStatus.Size = new System.Drawing.Size(942, 463);
+            this.GC_PullingFileStatus.Size = new System.Drawing.Size(952, 463);
             this.GC_PullingFileStatus.TabIndex = 25;
             this.GC_PullingFileStatus.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -179,6 +179,7 @@
             this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
             this.gridView1.OptionsView.ShowAutoFilterRow = true;
             this.gridView1.OptionsView.ShowFooter = true;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // vendor
             // 

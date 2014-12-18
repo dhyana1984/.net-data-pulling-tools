@@ -76,6 +76,7 @@
             this.gridColumn5.FieldName = "c_downloadstatus";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
+            this.gridColumn5.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 1;
             this.gridColumn5.Width = 138;
@@ -86,6 +87,7 @@
             this.gridColumn6.FieldName = "c_filename";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.OptionsColumn.AllowEdit = false;
+            this.gridColumn6.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.gridColumn6.SummaryItem.FieldName = "c_reporttype";
             this.gridColumn6.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
             this.gridColumn6.Visible = true;
@@ -100,6 +102,7 @@
             this.gridColumn4.FieldName = "c_downloadtime";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
+            this.gridColumn4.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 2;
             this.gridColumn4.Width = 204;
@@ -110,6 +113,7 @@
             this.gridColumn7.FieldName = "c_id";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsColumn.AllowEdit = false;
+            this.gridColumn7.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.gridColumn7.Width = 230;
             // 
             // btn_Refresh

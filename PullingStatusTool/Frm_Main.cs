@@ -33,6 +33,7 @@ namespace PullingStatusTool
         UC_AccountManagement UC_AccountMgr = new UC_AccountManagement();
         UC_WMBasket UC_Basket = new UC_WMBasket();
         UC_TescoUKStatus UC_TscUKStatus = new UC_TescoUKStatus();
+        UC_TescoUKConnector UC_TescoUKConn = new UC_TescoUKConnector();
         private void showFunctions(UC_Functions function,bool valid)//加载功能用户控件的统一方法
         {
        
@@ -131,6 +132,11 @@ namespace PullingStatusTool
         private void item_TescoStatus_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             showFunctions(UC_TscUKStatus, false);
+        }
+
+        private void item_tescoUK_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            showFunctions(UC_TescoUKConn, true);
         }
 
 
