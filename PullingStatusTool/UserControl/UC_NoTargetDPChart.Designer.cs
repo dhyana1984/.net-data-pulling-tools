@@ -153,7 +153,7 @@
             pointSeriesLabel3.LineVisible = true;
             this.ChartSLA.SeriesTemplate.Label = pointSeriesLabel3;
             this.ChartSLA.SeriesTemplate.View = splineSeriesView3;
-            this.ChartSLA.Size = new System.Drawing.Size(926, 443);
+            this.ChartSLA.Size = new System.Drawing.Size(934, 450);
             this.ChartSLA.TabIndex = 24;
             // 
             // cbx_Retailer
@@ -185,8 +185,10 @@
             this.Controls.Add(this.btn_Fresh);
             this.Controls.Add(this.txt_EndDate);
             this.Controls.Add(this.txt_StartDate);
+            this.LookAndFeel.SkinName = "Black";
+            this.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.Name = "UC_NoTargetDPChart";
-            this.Size = new System.Drawing.Size(958, 503);
+            this.Size = new System.Drawing.Size(966, 507);
             this.Tag = "None Target Data Pulling Chart";
             this.Load += new System.EventHandler(this.UC_NoTargetDPChart_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txt_EndDate.Properties.VistaTimeProperties)).EndInit();

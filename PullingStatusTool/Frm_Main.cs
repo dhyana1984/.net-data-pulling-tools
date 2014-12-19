@@ -8,10 +8,11 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using PullingStatusTool.UserControl;
 using System.Reflection;
+using PullingStatusTool.UIControl;
 
 namespace PullingStatusTool
 {
-    public partial class Frm_Main : DevExpress.XtraEditors.XtraForm
+    public partial class Frm_Main : XtaFrm_Skin
     {
         public Frm_Main()
         {

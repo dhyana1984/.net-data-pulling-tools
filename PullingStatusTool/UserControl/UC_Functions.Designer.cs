@@ -34,6 +34,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.LookAndFeel.SkinName = "Black";
+            this.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.Name = "UC_Functions";
             this.Size = new System.Drawing.Size(1466, 542);
             this.ResumeLayout(false);
@@ -41,5 +43,6 @@
         }
 
         #endregion
+
     }
 }

@@ -58,6 +58,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DevExpress.BonusSkins.v10.1.dll" size="5532672">
+      <assemblyIdentity name="DevExpress.BonusSkins.v10.1" version="10.1.6.0" publicKeyToken="95FC6C5621878F0A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>UZ2aZ17eaRoZybbQ/Ot+4TybwcQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DevExpress.Charts.v10.1.Core.dll" size="143872">
       <assemblyIdentity name="DevExpress.Charts.v10.1.Core" version="10.1.6.0" publicKeyToken="B88D1754D700E49A" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -78,6 +90,18 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
         <dsig:DigestValue>ZI99p/LCAegaHoPckX0rAuxDQJg=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DevExpress.OfficeSkins.v10.1.dll" size="1907712">
+      <assemblyIdentity name="DevExpress.OfficeSkins.v10.1" version="10.1.6.0" publicKeyToken="95FC6C5621878F0A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>QVtmH7G7G8UedcDQs0a7MnAdioo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -322,14 +346,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PullingStatusTool.exe" size="241152">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PullingStatusTool.exe" size="276480">
       <assemblyIdentity name="PullingStatusTool" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>NIpDnQVFWb6p2z5N6nZ3mBv2tNQ=</dsig:DigestValue>
+        <dsig:DigestValue>RedDQPiV5w1Ly1RBbg96EqgmohA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

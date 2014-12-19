@@ -83,10 +83,10 @@
             this.navBarControl1.OptionsNavPane.ShowOverflowButton = false;
             this.navBarControl1.OptionsNavPane.ShowOverflowPanel = false;
             this.navBarControl1.OptionsNavPane.ShowSplitter = false;
-            this.navBarControl1.Size = new System.Drawing.Size(158, 407);
+            this.navBarControl1.Size = new System.Drawing.Size(158, 457);
             this.navBarControl1.TabIndex = 0;
             this.navBarControl1.Text = "navBarControl1";
-            this.navBarControl1.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinExplorerBarViewInfoRegistrator("Caramel");
+            this.navBarControl1.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinExplorerBarViewInfoRegistrator("Black");
             // 
             // grp_dpmonitor
             // 
@@ -223,7 +223,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.labelControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(863, 413);
+            this.splitContainerControl1.Size = new System.Drawing.Size(863, 463);
             this.splitContainerControl1.SplitterPosition = 165;
             this.splitContainerControl1.TabIndex = 1;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -244,11 +244,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(863, 413);
+            this.ClientSize = new System.Drawing.Size(863, 463);
             this.Controls.Add(this.splitContainerControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Frm_Main";
-            this.Text = "DataPulling Tool V2.5";
+            this.Text = "DataPulling Tool V3.0";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();

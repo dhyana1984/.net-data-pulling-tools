@@ -7,10 +7,11 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using PullingStatusTool.App;
+using PullingStatusTool.UIControl;
 
 namespace PullingStatusTool
 {
-    public partial class Frm_ConnectorReportDetail : DevExpress.XtraEditors.XtraForm
+    public partial class Frm_ConnectorReportDetail : XtaFrm_Skin
     {
         public Frm_ConnectorReportDetail()
         {

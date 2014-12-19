@@ -6,10 +6,11 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using PullingStatusTool.UIControl;
 
 namespace PullingStatusTool
 {
-    public partial class Frm_Password : DevExpress.XtraEditors.XtraForm
+    public partial class Frm_Password : XtaFrm_Skin
     {
         public Frm_Password()
         {

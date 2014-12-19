@@ -188,7 +188,7 @@ namespace PullingStatusTool
         }
         public bool addFileSet(UploadFileSet fileSet,bool addToExpect)
         {
-            string sqlStr = "insert into   FileUploadSet (Retailer,Vendor,DownloadPath,FileType,SLATime,Frequency,Dayof,Datalag,Flag,FileExten) values"
+            string sqlStr = "insert into   FileUploadSet (Retailer,Vendor,DownloadPath,FileType,SLATime,Frequency,Dayof,Datalag,Flag,isReUpload,FileExten) values"
                                     + "('" + fileSet.c_retailer + "',"
                                     + "'" + fileSet.c_vendor.Replace("'", "''") + "',"
                                     + "'" + fileSet.c_downloadpath + "',"
@@ -198,6 +198,7 @@ namespace PullingStatusTool
                                     + "'" + fileSet.c_dayof + "',"
                                     + "'" + fileSet.c_datalag + "',"
                                     + "'" + fileSet.c_flag +"',"
+                                    + "'" + fileSet.c_isreupload + "',"
                                     + "'" + fileSet.c_fileextend+"' )";
             string dayofweek=fileSet.c_freqency=="Daily'"?"Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday" : fileSet.c_dayof;
             string sqlStrExpect = string.Format("insert into ReportDataType (dayofweek,vendor,datatype,subgroup,fileExpect,delayreason,retailer) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", dayofweek, fileSet.c_vendor, fileSet.c_filetype, fileSet.c_freqency, "1", "", fileSet.c_retailer);//   插入一条fileSet的时候自动插入到fileExpect
@@ -225,6 +226,7 @@ namespace PullingStatusTool
                                     + "Dayof ='" + fileSet.c_dayof + "',"
                                      + "FileExten ='" + fileSet.c_fileextend + "',"
                                        + "Datalag ='" + fileSet.c_datalag + "',"
+                                       + "isReupload ='" + fileSet.c_isreupload + "',"
                                     + "Flag ='" + fileSet.c_flag + "' "
                                     +" Where id=" + fileSet.c_id;
            return  connectDB_68server.submit(sqlStr);
@@ -245,6 +247,7 @@ namespace PullingStatusTool
                                         + "flag  c_flag, "
                                         + "datalag c_datalag, "
                                          + "Frequency  c_freqency, "
+                                         + "isReupLoad  c_reupload, "
                                          + "FileExten c_fileextend "
                                         +" from FileUploadSet   order by Retailer, Vendor,FileType,Frequency";
 

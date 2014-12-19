@@ -164,7 +164,13 @@ namespace PullingStatusTool
                 DataLag = datalag;
                 fileExtend = fileextend;
             }
+            bool isReUpload;
 
+            public bool c_isreupload
+            {
+                get { return isReUpload; }
+                set { isReUpload = value; }
+            }
             string fileExtend;
 
             public string c_fileextend

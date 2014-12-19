@@ -12,10 +12,13 @@ namespace PullingStatusTool.UserControl
 {
     public partial class UC_Functions : DevExpress.XtraEditors.XtraUserControl
     {
+        public static DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel();
         public UC_Functions()
         {
             InitializeComponent();
-this.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Dock = System.Windows.Forms.DockStyle.Fill;
+            defaultLookAndFeel.LookAndFeel.SkinName = "Black";
+ 
         }
     }
 }

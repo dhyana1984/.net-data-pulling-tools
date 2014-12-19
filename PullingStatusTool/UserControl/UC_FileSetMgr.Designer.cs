@@ -59,12 +59,14 @@
             this.frequency = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dayof = new DevExpress.XtraGrid.Columns.GridColumn();
             this.FileExtend = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.isreupload = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.txt_FileExten = new DevExpress.XtraEditors.TextEdit();
             this.cbx_addExpectFile = new DevExpress.XtraEditors.CheckEdit();
             this.btn_delete = new DevExpress.XtraEditors.SimpleButton();
+            this.ckx_ReUploadLimit = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDatalag.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbx_Dayof.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_SLA.Properties)).BeginInit();
@@ -78,6 +80,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_FileExten.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbx_addExpectFile.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckx_ReUploadLimit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl8
@@ -164,7 +167,7 @@
             this.cbx_enable.Name = "cbx_enable";
             this.cbx_enable.Properties.Caption = "Enable";
             this.cbx_enable.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cbx_enable.Size = new System.Drawing.Size(66, 19);
+            this.cbx_enable.Size = new System.Drawing.Size(53, 18);
             this.cbx_enable.TabIndex = 71;
             // 
             // txt_downloadpath
@@ -222,7 +225,7 @@
             this.vendor.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.vendor.Visible = true;
             this.vendor.VisibleIndex = 1;
-            this.vendor.Width = 69;
+            this.vendor.Width = 121;
             // 
             // labelControl5
             // 
@@ -250,7 +253,7 @@
             this.downloadpath.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.downloadpath.Visible = true;
             this.downloadpath.VisibleIndex = 4;
-            this.downloadpath.Width = 324;
+            this.downloadpath.Width = 452;
             // 
             // labelControl3
             // 
@@ -278,7 +281,7 @@
             this.retailer.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
             this.retailer.Visible = true;
             this.retailer.VisibleIndex = 0;
-            this.retailer.Width = 70;
+            this.retailer.Width = 99;
             // 
             // txt_vendor
             // 
@@ -302,7 +305,7 @@
             this.enable.OptionsColumn.AllowEdit = false;
             this.enable.Visible = true;
             this.enable.VisibleIndex = 9;
-            this.enable.Width = 84;
+            this.enable.Width = 56;
             // 
             // labelControl2
             // 
@@ -314,6 +317,77 @@
             // 
             // gridView1
             // 
+            this.gridView1.Appearance.ColumnFilterButton.BackColor = System.Drawing.Color.DarkGray;
+            this.gridView1.Appearance.ColumnFilterButton.BorderColor = System.Drawing.Color.DarkGray;
+            this.gridView1.Appearance.ColumnFilterButton.ForeColor = System.Drawing.Color.DimGray;
+            this.gridView1.Appearance.ColumnFilterButton.Options.UseBackColor = true;
+            this.gridView1.Appearance.ColumnFilterButton.Options.UseBorderColor = true;
+            this.gridView1.Appearance.ColumnFilterButton.Options.UseForeColor = true;
+            this.gridView1.Appearance.ColumnFilterButtonActive.BackColor = System.Drawing.Color.DarkGray;
+            this.gridView1.Appearance.ColumnFilterButtonActive.BorderColor = System.Drawing.Color.DarkGray;
+            this.gridView1.Appearance.ColumnFilterButtonActive.ForeColor = System.Drawing.Color.Gainsboro;
+            this.gridView1.Appearance.ColumnFilterButtonActive.Options.UseBackColor = true;
+            this.gridView1.Appearance.ColumnFilterButtonActive.Options.UseBorderColor = true;
+            this.gridView1.Appearance.ColumnFilterButtonActive.Options.UseForeColor = true;
+            this.gridView1.Appearance.Empty.BackColor = System.Drawing.Color.DimGray;
+            this.gridView1.Appearance.Empty.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
+            this.gridView1.Appearance.Empty.Options.UseBackColor = true;
+            this.gridView1.Appearance.EvenRow.BackColor = System.Drawing.Color.White;
+            this.gridView1.Appearance.EvenRow.Options.UseBackColor = true;
+            this.gridView1.Appearance.FilterCloseButton.BackColor = System.Drawing.Color.Gray;
+            this.gridView1.Appearance.FilterCloseButton.BorderColor = System.Drawing.Color.Gray;
+            this.gridView1.Appearance.FilterCloseButton.Options.UseBackColor = true;
+            this.gridView1.Appearance.FilterCloseButton.Options.UseBorderColor = true;
+            this.gridView1.Appearance.FilterPanel.BackColor = System.Drawing.Color.Gray;
+            this.gridView1.Appearance.FilterPanel.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.FilterPanel.Options.UseBackColor = true;
+            this.gridView1.Appearance.FilterPanel.Options.UseForeColor = true;
+            this.gridView1.Appearance.FocusedRow.BackColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.FocusedRow.ForeColor = System.Drawing.Color.White;
+            this.gridView1.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gridView1.Appearance.FocusedRow.Options.UseForeColor = true;
+            this.gridView1.Appearance.FooterPanel.BackColor = System.Drawing.Color.DarkGray;
+            this.gridView1.Appearance.FooterPanel.BorderColor = System.Drawing.Color.DarkGray;
+            this.gridView1.Appearance.FooterPanel.Options.UseBackColor = true;
+            this.gridView1.Appearance.FooterPanel.Options.UseBorderColor = true;
+            this.gridView1.Appearance.GroupButton.BackColor = System.Drawing.Color.Silver;
+            this.gridView1.Appearance.GroupButton.BorderColor = System.Drawing.Color.Silver;
+            this.gridView1.Appearance.GroupButton.Options.UseBackColor = true;
+            this.gridView1.Appearance.GroupButton.Options.UseBorderColor = true;
+            this.gridView1.Appearance.GroupFooter.BackColor = System.Drawing.Color.Silver;
+            this.gridView1.Appearance.GroupFooter.BorderColor = System.Drawing.Color.Silver;
+            this.gridView1.Appearance.GroupFooter.Options.UseBackColor = true;
+            this.gridView1.Appearance.GroupFooter.Options.UseBorderColor = true;
+            this.gridView1.Appearance.GroupPanel.BackColor = System.Drawing.Color.DimGray;
+            this.gridView1.Appearance.GroupPanel.ForeColor = System.Drawing.Color.White;
+            this.gridView1.Appearance.GroupPanel.Options.UseBackColor = true;
+            this.gridView1.Appearance.GroupPanel.Options.UseForeColor = true;
+            this.gridView1.Appearance.GroupRow.BackColor = System.Drawing.Color.Silver;
+            this.gridView1.Appearance.GroupRow.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.gridView1.Appearance.GroupRow.Options.UseBackColor = true;
+            this.gridView1.Appearance.GroupRow.Options.UseFont = true;
+            this.gridView1.Appearance.HeaderPanel.BackColor = System.Drawing.Color.DarkGray;
+            this.gridView1.Appearance.HeaderPanel.BorderColor = System.Drawing.Color.DarkGray;
+            this.gridView1.Appearance.HeaderPanel.Options.UseBackColor = true;
+            this.gridView1.Appearance.HeaderPanel.Options.UseBorderColor = true;
+            this.gridView1.Appearance.HideSelectionRow.BackColor = System.Drawing.Color.LightSlateGray;
+            this.gridView1.Appearance.HideSelectionRow.Options.UseBackColor = true;
+            this.gridView1.Appearance.HorzLine.BackColor = System.Drawing.Color.LightGray;
+            this.gridView1.Appearance.HorzLine.Options.UseBackColor = true;
+            this.gridView1.Appearance.OddRow.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.gridView1.Appearance.OddRow.Options.UseBackColor = true;
+            this.gridView1.Appearance.Preview.BackColor = System.Drawing.Color.Gainsboro;
+            this.gridView1.Appearance.Preview.ForeColor = System.Drawing.Color.DimGray;
+            this.gridView1.Appearance.Preview.Options.UseBackColor = true;
+            this.gridView1.Appearance.Preview.Options.UseForeColor = true;
+            this.gridView1.Appearance.Row.BackColor = System.Drawing.Color.White;
+            this.gridView1.Appearance.Row.Options.UseBackColor = true;
+            this.gridView1.Appearance.RowSeparator.BackColor = System.Drawing.Color.DimGray;
+            this.gridView1.Appearance.RowSeparator.Options.UseBackColor = true;
+            this.gridView1.Appearance.SelectedRow.BackColor = System.Drawing.Color.DimGray;
+            this.gridView1.Appearance.SelectedRow.Options.UseBackColor = true;
+            this.gridView1.Appearance.VertLine.BackColor = System.Drawing.Color.LightGray;
+            this.gridView1.Appearance.VertLine.Options.UseBackColor = true;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.retailer,
             this.vendor,
@@ -325,12 +399,16 @@
             this.dayof,
             this.enable,
             this.id,
-            this.FileExtend});
+            this.FileExtend,
+            this.isreupload});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.CopyToClipboardWithColumnHeaders = false;
             this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
+            this.gridView1.OptionsView.ColumnAutoWidth = false;
+            this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView1.OptionsView.EnableAppearanceOddRow = true;
             this.gridView1.OptionsView.ShowAutoFilterRow = true;
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
@@ -345,7 +423,7 @@
             this.filetype.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.filetype.Visible = true;
             this.filetype.VisibleIndex = 2;
-            this.filetype.Width = 73;
+            this.filetype.Width = 94;
             // 
             // slatime
             // 
@@ -355,7 +433,7 @@
             this.slatime.OptionsColumn.AllowEdit = false;
             this.slatime.Visible = true;
             this.slatime.VisibleIndex = 6;
-            this.slatime.Width = 54;
+            this.slatime.Width = 147;
             // 
             // datalag
             // 
@@ -365,7 +443,7 @@
             this.datalag.OptionsColumn.AllowEdit = false;
             this.datalag.Visible = true;
             this.datalag.VisibleIndex = 5;
-            this.datalag.Width = 64;
+            this.datalag.Width = 63;
             // 
             // frequency
             // 
@@ -377,7 +455,7 @@
             this.frequency.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.frequency.Visible = true;
             this.frequency.VisibleIndex = 7;
-            this.frequency.Width = 53;
+            this.frequency.Width = 120;
             // 
             // dayof
             // 
@@ -387,7 +465,7 @@
             this.dayof.OptionsColumn.AllowEdit = false;
             this.dayof.Visible = true;
             this.dayof.VisibleIndex = 8;
-            this.dayof.Width = 67;
+            this.dayof.Width = 63;
             // 
             // FileExtend
             // 
@@ -398,7 +476,19 @@
             this.FileExtend.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.FileExtend.Visible = true;
             this.FileExtend.VisibleIndex = 3;
-            this.FileExtend.Width = 63;
+            this.FileExtend.Width = 86;
+            // 
+            // isreupload
+            // 
+            this.isreupload.Caption = "ReUpload Limit";
+            this.isreupload.FieldName = "c_reupload";
+            this.isreupload.Name = "isreupload";
+            this.isreupload.OptionsColumn.AllowEdit = false;
+            this.isreupload.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.isreupload.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
+            this.isreupload.Visible = true;
+            this.isreupload.VisibleIndex = 10;
+            this.isreupload.Width = 112;
             // 
             // gridControl1
             // 
@@ -408,7 +498,7 @@
             this.gridControl1.Location = new System.Drawing.Point(3, 92);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(952, 408);
+            this.gridControl1.Size = new System.Drawing.Size(949, 412);
             this.gridControl1.TabIndex = 58;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -443,7 +533,7 @@
             this.cbx_addExpectFile.Name = "cbx_addExpectFile";
             this.cbx_addExpectFile.Properties.Caption = "AddExpectFile";
             this.cbx_addExpectFile.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cbx_addExpectFile.Size = new System.Drawing.Size(93, 19);
+            this.cbx_addExpectFile.Size = new System.Drawing.Size(93, 18);
             this.cbx_addExpectFile.TabIndex = 82;
             // 
             // btn_delete
@@ -455,10 +545,20 @@
             this.btn_delete.Text = "Delete";
             this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
+            // ckx_ReUploadLimit
+            // 
+            this.ckx_ReUploadLimit.Location = new System.Drawing.Point(723, 12);
+            this.ckx_ReUploadLimit.Name = "ckx_ReUploadLimit";
+            this.ckx_ReUploadLimit.Properties.Caption = "ReUpload Now";
+            this.ckx_ReUploadLimit.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ckx_ReUploadLimit.Size = new System.Drawing.Size(91, 18);
+            this.ckx_ReUploadLimit.TabIndex = 84;
+            // 
             // UC_FileSetMgr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ckx_ReUploadLimit);
             this.Controls.Add(this.btn_delete);
             this.Controls.Add(this.cbx_addExpectFile);
             this.Controls.Add(this.txt_FileExten);
@@ -484,8 +584,10 @@
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.gridControl1);
+            this.LookAndFeel.SkinName = "Dark Side";
+            this.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.Name = "UC_FileSetMgr";
-            this.Size = new System.Drawing.Size(958, 503);
+            this.Size = new System.Drawing.Size(966, 507);
             this.Tag = "File Set Management";
             this.Load += new System.EventHandler(this.FileUploadManage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtDatalag.Properties)).EndInit();
@@ -501,6 +603,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_FileExten.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbx_addExpectFile.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckx_ReUploadLimit.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -545,5 +648,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn FileExtend;
         private DevExpress.XtraEditors.CheckEdit cbx_addExpectFile;
         private DevExpress.XtraEditors.SimpleButton btn_delete;
+        private DevExpress.XtraEditors.CheckEdit ckx_ReUploadLimit;
+        private DevExpress.XtraGrid.Columns.GridColumn isreupload;
     }
 }

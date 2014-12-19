@@ -36,6 +36,7 @@ namespace PullingStatusTool.UserControl
                     fileset.c_vendor = txt_vendor.Text;
                     fileset.c_datalag = int.Parse(txtDatalag.Text);
                     fileset.c_fileextend = txt_FileExten.Text;
+                    fileset.c_isreupload = ckx_ReUploadLimit.Checked;
                     if (dbhelper.addFileSet(fileset, cbx_addExpectFile.Checked))
                     {
                         getDS();
@@ -51,9 +52,8 @@ namespace PullingStatusTool.UserControl
         private void getDS()
         {
             DB_Helper dbhelper = new DB_Helper();
-
             gridControl1.DataSource = dbhelper.getFileSet();
-
+            gridView1.BestFitColumns();
         }
 
         private void gridControl1_DoubleClick(object sender, EventArgs e)
@@ -71,13 +71,14 @@ namespace PullingStatusTool.UserControl
                 cbx_enable.Checked = (bool)gridView1.GetFocusedRowCellValue("c_flag");
                 txtDatalag.Text = gridView1.GetFocusedRowCellValue("c_datalag").ToString();
                 txt_FileExten.Text = gridView1.GetFocusedRowCellValue("c_fileextend").ToString();
-
+                ckx_ReUploadLimit.Checked = (bool)gridView1.GetFocusedRowCellValue("c_reupload");
 
             }
         }
         string FileSetid = "";
         private void btn_Edit_Click(object sender, EventArgs e)
         {
+            
             
                 int selectedHandle;
                 if (this.gridView1.SelectedRowsCount > 0)
@@ -129,6 +130,7 @@ namespace PullingStatusTool.UserControl
                     fileset.c_id = FileSetid;
                     fileset.c_datalag = int.Parse(txtDatalag.Text);
                     fileset.c_fileextend = txt_FileExten.Text;
+                    fileset.c_isreupload=ckx_ReUploadLimit.Checked;
                     if (dbhelper.editFileSet(fileset,cbx_addExpectFile.Checked))
                     {
                         getDS();
