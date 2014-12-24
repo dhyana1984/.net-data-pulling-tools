@@ -47,7 +47,7 @@
             this.wb_Status.Location = new System.Drawing.Point(0, 35);
             this.wb_Status.MinimumSize = new System.Drawing.Size(20, 20);
             this.wb_Status.Name = "wb_Status";
-            this.wb_Status.Size = new System.Drawing.Size(960, 469);
+            this.wb_Status.Size = new System.Drawing.Size(887, 469);
             this.wb_Status.TabIndex = 0;
             // 
             // btn_Refresh
@@ -119,7 +119,7 @@
             this.LookAndFeel.SkinName = "Black";
             this.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.Name = "UC_TescoUKStatus";
-            this.Size = new System.Drawing.Size(963, 507);
+            this.Size = new System.Drawing.Size(890, 507);
             this.Tag = "TescoUK Pulling Status";
             this.Load += new System.EventHandler(this.UC_TescoUKStatus_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cbx_Date.Properties.VistaTimeProperties)).EndInit();

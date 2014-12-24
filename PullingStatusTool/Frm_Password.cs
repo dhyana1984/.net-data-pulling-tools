@@ -16,7 +16,10 @@ namespace PullingStatusTool
         {
             InitializeComponent();
         }
-
+        private void ShowMessage(string strSting)
+        {
+            DevExpress.XtraEditors.XtraMessageBox.Show(strSting, "Reminder", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         private void validPassword()
         {
             if (txt_password.Text == "T3ci94043")
@@ -25,7 +28,7 @@ namespace PullingStatusTool
             }
             else
             {
-                MessageBox.Show("Sorry, you don't have access to this form");
+               ShowMessage("Sorry, you don't have access to this form");
                 txt_password.SelectAll();
                 txt_password.Focus();
             }

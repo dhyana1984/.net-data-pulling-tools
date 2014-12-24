@@ -74,7 +74,7 @@ namespace PullingStatusTool.UserControl
                     if (j > 1 && j < 9) //文件类型列需要处理成1/1的格式，0和1列不需要
                     {
                         //根据vendor, account, datatype找到expect file
-                        string fileExpect = ListExpect.Where(t => t.c_vendor == dt.Rows[i][0].ToString() && t.c_subgroup == dt.Rows[i][1].ToString() && dt.Columns[j].ColumnName.ToUpper().Contains(t.c_datatype.ToUpper())).Count() == 0 ? "0" : ListExpect.Where(t => t.c_vendor == dt.Rows[i][0].ToString() && t.c_subgroup == dt.Rows[i][1].ToString() && dt.Columns[j].ColumnName.ToUpper().Contains(t.c_datatype.ToUpper())).ToList()[0].c_filexpectuploaded;
+                        string fileExpect = ListExpect.Where(t => t.c_vendor.ToUpper() == dt.Rows[i][0].ToString().ToUpper() && t.c_subgroup.ToUpper() == dt.Rows[i][1].ToString().ToUpper() && dt.Columns[j].ColumnName.ToUpper().Contains(t.c_datatype.ToUpper())).Count() == 0 ? "0" : ListExpect.Where(t => t.c_vendor.ToUpper() == dt.Rows[i][0].ToString().ToUpper() && t.c_subgroup.ToUpper() == dt.Rows[i][1].ToString().ToUpper() && dt.Columns[j].ColumnName.ToUpper().Contains(t.c_datatype.ToUpper())).ToList()[0].c_filexpectuploaded;
                         cellColor = "";
                         fontWeight = "";
                         cell = dt.Rows[i][j].ToString() + "/" + fileExpect;
@@ -128,7 +128,7 @@ namespace PullingStatusTool.UserControl
 
             HtmlStatus += "<tr><td align='center'>"//第一行是写死的，从第二行起拿生成的Table,即HtmlTable
                         + "<table with='95%' border=1 >"
-                        + "<tr><td colspan='11' align='left' bgcolor='lime' style='font-weight: bold'>" + "Date : " + datelag + "</tr></td>"
+                        + "<tr><td colspan='11' align='left' bgcolor='lime' style='font-weight: bold'>" + "Date : " + datelag + "</td></tr>"
                                   + "<tr style='font-weight: bold'>"
                                   + "<td>Vendor</td>"
                                   + "<td>Account</td>"

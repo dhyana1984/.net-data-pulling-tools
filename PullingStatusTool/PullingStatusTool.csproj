@@ -35,7 +35,7 @@
     <InstallUrl>http://10.176.1.50:8002/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>3.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -206,6 +206,12 @@
     <Compile Include="UserControl\UC_NoTargetMonitor.Designer.cs">
       <DependentUpon>UC_NoTargetMonitor.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\UC_RepullList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UC_RepullList.Designer.cs">
+      <DependentUpon>UC_RepullList.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\UC_TargetDPChart.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -288,6 +294,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UC_NoTargetMonitor.resx">
       <DependentUpon>UC_NoTargetMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UC_RepullList.resx">
+      <DependentUpon>UC_RepullList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UC_TargetDPChart.resx">
       <DependentUpon>UC_TargetDPChart.cs</DependentUpon>
@@ -386,6 +395,7 @@
     <None Include="img\Walmart.jpg" />
     <None Include="Resources\Tesco.bmp" />
     <None Include="Resources\TescoConn.bmp" />
+    <None Include="Resources\RepullList.bmp" />
     <Content Include="SQL\DataPullingFileStatusSql.txt" />
     <Content Include="SQL\SLAPerformance.txt" />
     <Content Include="SQL\VIP.txt" />

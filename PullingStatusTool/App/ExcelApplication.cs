@@ -20,7 +20,10 @@ namespace PullingStatusTool
     
         }
 
-
+        private static void ShowMessage(string strSting)
+        {
+            DevExpress.XtraEditors.XtraMessageBox.Show(strSting, "Reminder", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
         
         public static string getIRCalendarWeek(DateTime date)
@@ -39,7 +42,7 @@ namespace PullingStatusTool
             }
             catch(Exception ex)
             {
-                MessageBox.Show(path+": "+ex.Message);
+                ShowMessage(path + ": " + ex.Message);
             }
 
             return weekOfyear;

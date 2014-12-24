@@ -423,6 +423,15 @@ namespace PullingStatusTool.App
 
     class ConnectDB
     {
+        private DialogResult Confirm(string strString)
+        {
+            return DevExpress.XtraEditors.XtraMessageBox.Show(strString, "Reminder", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+        }
+
+        private void ShowMessage(string strSting)
+        {
+            DevExpress.XtraEditors.XtraMessageBox.Show(strSting, "Reminder", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         public ConnectDB() { }
         public ConnectDB( string strSqlCon) 
         {
@@ -447,6 +456,7 @@ namespace PullingStatusTool.App
         }
         private bool submitData(string sql)//提交的方法，包括insert,edit和delete
         {
+       
             bool flag = false;
             string connStr = ConfigurationManager.ConnectionStrings[SqlConString].ConnectionString;
             SqlConnection mySqlConnection = new SqlConnection();
@@ -462,12 +472,12 @@ namespace PullingStatusTool.App
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                ShowMessage(ex.Message);
                 flag = false;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                ShowMessage(ex.Message);
                 flag = false;
             }
             finally
@@ -496,12 +506,12 @@ namespace PullingStatusTool.App
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(ex.Message);
+               ShowMessage(ex.Message);
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+               ShowMessage(ex.Message);
             }
             finally
             {
@@ -522,9 +532,18 @@ namespace PullingStatusTool.App
 
         public bool submit(string sql)
         {
+            string str = "save";
+            if (sql.ToLower().Contains("delete"))
+                str = "delete";
+            else if (sql.ToLower().Contains("insert"))
+                str = "add";
+            
+
+            if (this.Confirm("Are you sure to "+str+"?") == DialogResult.Cancel)
+                return false;
             if (submitData(sql))
             {
-                MessageBox.Show("Save Successfully!");
+                ShowMessage("Save Successfully!");
                 return true;
             }
             return false;

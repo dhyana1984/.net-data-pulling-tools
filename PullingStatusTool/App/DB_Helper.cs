@@ -14,28 +14,73 @@ namespace PullingStatusTool
 {
     class DB_Helper
     {
+        private void ShowMessage(string strSting)
+        {
+            DevExpress.XtraEditors.XtraMessageBox.Show(strSting, "Reminder", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         ConnectDB connectDB_68server = new ConnectDB("68Server");
-       
-        List<ServerStatus> ListServerstatus = new List<ServerStatus>();
-        List<ReportDetails> ListReportDetails = new List<ReportDetails>();
         List<DataPullingFileCountStatus> ListPullFileStatus = new List<DataPullingFileCountStatus>();
         List<ReportExpect> ListReportExpect = new List<ReportExpect>();
-        List<Repull> ListRePull = new List<Repull>();
         List<Repull> ListRePullChart = new List<Repull>();
-        List<PullingPerformance> ListPerformance = new List<PullingPerformance>();
-        List<UploadFileSet> ListFileset = new List<UploadFileSet>();
-        List<UploadFilePath> ListUploadPath = new List<UploadFilePath>();
-        List<UploadRecord> ListUploadRecord = new List<UploadRecord>();
-        List<ConnectorAccount> ListAccount = new List<ConnectorAccount>();
+        private DataTable getTargetRepullListData(string str)
+        {
+            string sql = "SELECT [id] c_id"
+                               + "  ,[Retailer] c_retailer"
+                               + ",[Vendor] c_vendor"
+                               + ",[ReportName] c_reportname"
+                               + ",[ETA] c_eta"
+                               + ",[CreateDate] c_createdate"
+                               + ",[isNeedFormat] c_isneedformat"
+                               + ",[isNeedUpload] c_isneedupload"
+                               + ",[ServerIP] c_serverip"
+                               + ",[Account] c_account"
+                                + ",[flag] c_flag "
+                                 + ",[creater] c_creater "
+                               + ",[RepullStatus] c_repullstatus "
+                               + "FROM [TargetPullingStatus].[dbo].[RepullList] "
+                               + " where  1=1 " + str
+                               + " order by createdate desc";
+            return connectDB_68server.getTable(sql);
+        
+        }
 
-        private string getTescoDataPeriod(string date,int datelag, bool isWeekly)//跟传入数据的真实时间，datelag，以及是否是Weekly的判断，拿到需要的日期以及weekly number
+        private bool addNewRepullData(List<TargetRepullList> RepullList)
+        { 
+            string sqlStr ="";
+            foreach (TargetRepullList repull in RepullList)
+            {
+                sqlStr += " insert into RepullList (retailer, vendor, reportname,eta,createdate,isneedformat,isneedupload,serverip,account,repullstatus,creater) values "
+                            + string.Format("('{0}','{1}','{2}','{3}','{4}',N'{5}',N'{6}','{7}','{8}','{9}','{10}');", repull.c_retailer, repull.c_vendor, repull.c_reportname, repull.c_eta, repull.c_createdate, repull.c_isneedformat, repull.c_isneedupload, repull.c_serverip, repull.c_account, repull.c_repullstatus,repull.c_creater);
+            
+            }
+
+            return connectDB_68server.submit(sqlStr.TrimEnd(';'));
+        
+        }
+
+        private bool editRepullData(List<TargetRepullList> RepullList)
+        {
+            string sqlStr = "";
+            foreach (TargetRepullList repull in RepullList)
+            {
+                sqlStr += "update RepullList set " +
+                                " repullstatus='" + repull.c_repullstatus + "',"+
+                                " account='" + repull.c_account + "'," +
+                                " serverip='" + repull.c_serverip + "' " +
+                                " where id='" + repull.c_id + "'; ";   
+            }
+
+               return connectDB_68server.submit(sqlStr.TrimEnd(';')); 
+        }
+
+        public string getTescoDataPeriod(string date,int datelag, bool isWeekly)//跟传入数据的真实时间，datelag，以及是否是Weekly的判断，拿到需要的日期以及weekly number
         {
             string sql = "select * "
                                 + " from Engv1ukdp1.Tescoconnector.dbo.RSI_TOOLS_TescoConn_TescoCalendar ";//先把Calendar全部取出来
                               //  + " where '"+Convert.ToDateTime(date).ToString("dd/MM/yyyy")+"' between startdate and enddate";
             string weekNum = "";
-         
-            foreach (DataRow row in connectDB_68server.getTable(sql).Rows)//根据传入的date找到week number
+            DataTable dt = connectDB_68server.getTable(sql);
+            foreach (DataRow row in dt.Rows)//根据传入的date找到week number
             {
                 //由于calendar表里面的日期格式是dd/MM/yyyy，要转成c#日期格式
                 DateTime stdate = DateTime.ParseExact(row["startdate"].ToString(), "dd/MM/yyyy", System.Globalization.CultureInfo.GetCultureInfo("en-US"));
@@ -232,7 +277,10 @@ namespace PullingStatusTool
            return  connectDB_68server.submit(sqlStr);
 
         }
-
+        public DataTable getTargetRepullList(string str)
+        {
+            return getTargetRepullListData(str);
+        }
         private DataTable getFileSetData()
         {
 
@@ -392,12 +440,12 @@ namespace PullingStatusTool
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(ex.Message);
+               ShowMessage(ex.Message);
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+               ShowMessage(ex.Message);
             }
             finally
             {
@@ -468,12 +516,12 @@ namespace PullingStatusTool
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(ex.Message);
+               ShowMessage(ex.Message);
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+               ShowMessage(ex.Message);
             }
             finally
             {
@@ -541,12 +589,12 @@ namespace PullingStatusTool
 
                 catch (SqlException ex)
                 {
-                    MessageBox.Show(ex.Message);
+                   ShowMessage(ex.Message);
 
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                   ShowMessage(ex.Message);
                 }
                 finally
                 {
@@ -584,12 +632,12 @@ namespace PullingStatusTool
 
                 catch (SqlException ex)
                 {
-                    MessageBox.Show(ex.Message);
+                   ShowMessage(ex.Message);
 
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                   ShowMessage(ex.Message);
                 }
                 finally
                 {
@@ -677,11 +725,11 @@ namespace PullingStatusTool
             }
             catch (SqlException ex)
             {
-                MessageBox.Show( ex.Message);
+               ShowMessage( ex.Message);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+               ShowMessage(ex.Message);
             }
             finally
             {
@@ -722,10 +770,7 @@ namespace PullingStatusTool
         }
 
 
-        public List<Repull> getRePullList()
-        {
-            return ListRePull;
-        }
+
         public void clearRePullList()
         {
             ListRePullChart.Clear();
@@ -747,11 +792,7 @@ namespace PullingStatusTool
             getSLAChartData(startDate, endDate);
             return ListRePullChart;
         }
-        public List<ServerStatus> getServerStatus()
-        {
 
-            return ListServerstatus.OrderBy(t => t.c_vendor).ThenBy(t => t.c_dataType).ToList();
-        }
         public List<DataPullingFileCountStatus> getNoTargetFileCount(string date)
         {
              getNoTargetpullingStatus(date);
@@ -771,6 +812,16 @@ namespace PullingStatusTool
         public bool addAccount(ConnectorAccount account)
         {
           return  addAccountData(account);
+        }
+
+        public bool addRepullList( List<TargetRepullList> RepullList)
+        {
+
+            return addNewRepullData(RepullList);
+        }
+        public bool editRepull(List<TargetRepullList> RepullList)
+        {
+            return editRepullData(RepullList);
         }
         public List<DataPullingFileCountStatus> getPullingFileCount(string dayTime, string period, string restatementDate, bool attribute, bool isMonday)
         {
@@ -842,7 +893,7 @@ namespace PullingStatusTool
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message);
+               ShowMessage(ex.Message);
                 
             }
             return query;
@@ -865,7 +916,7 @@ namespace PullingStatusTool
              catch (Exception ex)
              {
 
-                 MessageBox.Show(ex.Message);
+                ShowMessage(ex.Message);
 
              }
              return query;
@@ -902,7 +953,7 @@ namespace PullingStatusTool
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message);
+               ShowMessage(ex.Message);
                 
             }
             return query;

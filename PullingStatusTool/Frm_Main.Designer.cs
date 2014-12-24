@@ -32,6 +32,7 @@
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.grp_dpmonitor = new DevExpress.XtraNavBar.NavBarGroup();
             this.item_target = new DevExpress.XtraNavBar.NavBarItem();
+            this.item_RepullList = new DevExpress.XtraNavBar.NavBarItem();
             this.item_notarget = new DevExpress.XtraNavBar.NavBarItem();
             this.item_TescoStatus = new DevExpress.XtraNavBar.NavBarItem();
             this.item_uploadrecord = new DevExpress.XtraNavBar.NavBarItem();
@@ -76,7 +77,8 @@
             this.item_AccountMgr,
             this.item_wmbasket,
             this.item_TescoStatus,
-            this.item_tescoUK});
+            this.item_tescoUK,
+            this.item_RepullList});
             this.navBarControl1.Location = new System.Drawing.Point(3, 3);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 140;
@@ -94,6 +96,7 @@
             this.grp_dpmonitor.Expanded = true;
             this.grp_dpmonitor.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.item_target),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.item_RepullList),
             new DevExpress.XtraNavBar.NavBarItemLink(this.item_notarget),
             new DevExpress.XtraNavBar.NavBarItemLink(this.item_TescoStatus),
             new DevExpress.XtraNavBar.NavBarItemLink(this.item_uploadrecord)});
@@ -105,6 +108,13 @@
             this.item_target.Name = "item_target";
             this.item_target.SmallImage = ((System.Drawing.Image)(resources.GetObject("item_target.SmallImage")));
             this.item_target.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.item_target_LinkClicked);
+            // 
+            // item_RepullList
+            // 
+            this.item_RepullList.Caption = "Repull List";
+            this.item_RepullList.Name = "item_RepullList";
+            this.item_RepullList.SmallImage = global::PullingStatusTool.Properties.Resources.RepullList;
+            this.item_RepullList.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.item_RepullList_LinkClicked);
             // 
             // item_notarget
             // 
@@ -278,6 +288,7 @@
         private DevExpress.XtraNavBar.NavBarItem item_wmbasket;
         private DevExpress.XtraNavBar.NavBarItem item_TescoStatus;
         private DevExpress.XtraNavBar.NavBarItem item_tescoUK;
+        private DevExpress.XtraNavBar.NavBarItem item_RepullList;
 
 
 

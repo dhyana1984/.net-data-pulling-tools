@@ -15,7 +15,10 @@ namespace PullingStatusTool.UserControl
         {
             InitializeComponent();
         }
-
+        private void ShowMessage(string strSting)
+        {
+            DevExpress.XtraEditors.XtraMessageBox.Show(strSting, "Reminder", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         private void labelControl1_Click(object sender, EventArgs e)
         {
 
@@ -37,7 +40,7 @@ namespace PullingStatusTool.UserControl
             }
             else
             {
-                MessageBox.Show("Complete the blanks!");
+               ShowMessage("Complete the blanks!");
             }
 
         }
@@ -71,15 +74,12 @@ namespace PullingStatusTool.UserControl
 
         private void btn_Delete_Click(object sender, EventArgs e)
         {
-             MessageBoxButtons messButton = MessageBoxButtons.OKCancel;
-            DialogResult dr = MessageBox.Show("Are you sure to delete?", "Confirm to delete", messButton);
-            if (dr == DialogResult.OK)
-            {
+ 
                 DB_Helper db = new DB_Helper();
                 string id = gridView1.GetFocusedRowCellValue("c_expfileid").ToString().Trim();
                 if (db.deleteFileExpect(id))
                     getDS();
-            }
+            
         }
         string id = "";
 

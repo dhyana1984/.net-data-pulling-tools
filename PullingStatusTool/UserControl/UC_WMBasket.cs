@@ -93,11 +93,7 @@ namespace PullingStatusTool.UserControl
 
         private void btn_Runnow_Click(object sender, EventArgs e)
         {
-            MessageBoxButtons messButton = MessageBoxButtons.OKCancel;
-            DialogResult dr = MessageBox.Show("Are you sure to RunNow?", "Confirm to run", messButton);
-          
-            if (dr == DialogResult.OK)
-            {
+        
                 string ids = "";
                 for (int i = 0; i < gridView1.RowCount; i++)
                 {
@@ -110,15 +106,12 @@ namespace PullingStatusTool.UserControl
                     BasketDBhelper.runnow(ids.TrimEnd(','));
                     getScheduleDS();
                 }
-            }
+            
         }
 
         private void btn_BulkEdit_Click(object sender, EventArgs e)
         {
-            MessageBoxButtons messButton = MessageBoxButtons.OKCancel;
-            DialogResult dr = MessageBox.Show("Are you sure to Edit?", "Confirm to edit", messButton);
-            if (dr == DialogResult.OK)
-            {
+        
                 BasketDBHelper basketdbhelper = new BasketDBHelper();
                 ConnectorSchedule schedule = new ConnectorSchedule();
                 schedule.c_enable = cbx_Enable.Checked;
@@ -131,7 +124,7 @@ namespace PullingStatusTool.UserControl
                 {
                     basketdbhelper.editSchedule(schedule);
                     getScheduleDS();
-                }
+                
             }
         }
 

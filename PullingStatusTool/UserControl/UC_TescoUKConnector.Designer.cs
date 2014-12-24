@@ -143,7 +143,7 @@
             this.Tab_Schedule.Location = new System.Drawing.Point(3, 3);
             this.Tab_Schedule.Name = "Tab_Schedule";
             this.Tab_Schedule.SelectedTabPage = this.txt_nextruntime1;
-            this.Tab_Schedule.Size = new System.Drawing.Size(963, 501);
+            this.Tab_Schedule.Size = new System.Drawing.Size(887, 501);
             this.Tab_Schedule.TabIndex = 30;
             this.Tab_Schedule.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tab_users,
@@ -189,7 +189,7 @@
             this.txt_nextruntime1.Controls.Add(this.gc_Schedule);
             this.txt_nextruntime1.Controls.Add(this.cbx_DayofWeek);
             this.txt_nextruntime1.Name = "txt_nextruntime1";
-            this.txt_nextruntime1.Size = new System.Drawing.Size(956, 473);
+            this.txt_nextruntime1.Size = new System.Drawing.Size(880, 473);
             this.txt_nextruntime1.Text = "Schedule";
             // 
             // btn_AddSchedule
@@ -506,7 +506,7 @@
             this.gc_Schedule.Name = "gc_Schedule";
             this.gc_Schedule.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gc_Schedule.Size = new System.Drawing.Size(939, 356);
+            this.gc_Schedule.Size = new System.Drawing.Size(863, 356);
             this.gc_Schedule.TabIndex = 26;
             this.gc_Schedule.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -638,7 +638,7 @@
             this.tab_users.Controls.Add(this.btn_EditUser);
             this.tab_users.Controls.Add(this.gc_Account);
             this.tab_users.Name = "tab_users";
-            this.tab_users.Size = new System.Drawing.Size(956, 473);
+            this.tab_users.Size = new System.Drawing.Size(744, 371);
             this.tab_users.Text = "Users";
             // 
             // btn_DeleteUser
@@ -881,7 +881,7 @@
             this.tab_Record.Controls.Add(this.lbl_Configname);
             this.tab_Record.Controls.Add(this.btn_ReportRefresh);
             this.tab_Record.Name = "tab_Record";
-            this.tab_Record.Size = new System.Drawing.Size(956, 473);
+            this.tab_Record.Size = new System.Drawing.Size(744, 371);
             this.tab_Record.Text = "Record";
             // 
             // lbl_Report
@@ -916,7 +916,7 @@
             this.gc_Record.Location = new System.Drawing.Point(3, 64);
             this.gc_Record.MainView = this.gridView2;
             this.gc_Record.Name = "gc_Record";
-            this.gc_Record.Size = new System.Drawing.Size(937, 405);
+            this.gc_Record.Size = new System.Drawing.Size(861, 405);
             this.gc_Record.TabIndex = 27;
             this.gc_Record.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -1084,7 +1084,7 @@
             this.LookAndFeel.SkinName = "Black";
             this.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.Name = "UC_TescoUKConnector";
-            this.Size = new System.Drawing.Size(966, 507);
+            this.Size = new System.Drawing.Size(890, 507);
             this.Tag = "TescoUK Connector";
             this.Load += new System.EventHandler(this.UC_TescoUKConnector_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Tab_Schedule)).EndInit();

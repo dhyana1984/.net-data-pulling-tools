@@ -16,9 +16,13 @@ namespace PullingStatusTool.UserControl
         {
             InitializeComponent();
         }
-
+        private void ShowMessage(string strSting)
+        {
+            DevExpress.XtraEditors.XtraMessageBox.Show(strSting, "Reminder", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         private void Frm_PullingStatusService_Load(object sender, EventArgs e)
         {
+
             DB_Helper db_helper = new DB_Helper();
             drp_DailyDate.Text = DateTime.Now.ToShortDateString();
             txt_year.Text = DateTime.Now.Year.ToString();
@@ -105,7 +109,7 @@ namespace PullingStatusTool.UserControl
             }
             else
             {
-                MessageBox.Show("Fill the period!");
+               ShowMessage("Fill the period!");
             }
 
 
@@ -134,7 +138,7 @@ namespace PullingStatusTool.UserControl
             }
             else
             {
-                MessageBox.Show("Fill the period!");
+               ShowMessage("Fill the period!");
             }
         }
 

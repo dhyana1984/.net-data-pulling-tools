@@ -16,12 +16,12 @@ namespace PullingStatusTool.UserControl
             InitializeComponent();
         }
 
-
+        private void ShowMessage(string strSting)
+        {
+            DevExpress.XtraEditors.XtraMessageBox.Show(strSting, "Reminder", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         private void btn_Add_Click(object sender, EventArgs e)
-        {    MessageBoxButtons messButton = MessageBoxButtons.OKCancel;
-            DialogResult dr = MessageBox.Show("Are you sure to add?", "Confirm to add", messButton);
-            if (dr == DialogResult.OK)
-            {
+        {   
                 if (checkTextbox())
                 {
                     UploadFileSet fileset = new UploadFileSet();
@@ -42,7 +42,7 @@ namespace PullingStatusTool.UserControl
                         getDS();
                     }
                 }
-            }
+            
         }
 
         private void FileUploadManage_Load(object sender, EventArgs e)
@@ -146,22 +146,22 @@ namespace PullingStatusTool.UserControl
 
             if (string.IsNullOrEmpty(txt_downloadpath.Text))
             {
-                MessageBox.Show("Fill the Download Path!");
+               ShowMessage("Fill the Download Path!");
                 return false;
             }
             if (string.IsNullOrEmpty(txt_filetype.Text))
             {
-                MessageBox.Show("Fill the File Type!");
+               ShowMessage("Fill the File Type!");
                 return false;
             }
             if (string.IsNullOrEmpty(txt_retailer.Text))
             {
-                MessageBox.Show("Fill the Retailer!");
+               ShowMessage("Fill the Retailer!");
                 return false;
             }
             if (string.IsNullOrEmpty(txt_vendor.Text))
             {
-                MessageBox.Show("Fill the Vendor!");
+               ShowMessage("Fill the Vendor!");
                 return false;
             }
             return true;
@@ -169,10 +169,7 @@ namespace PullingStatusTool.UserControl
 
         private void btn_delete_Click(object sender, EventArgs e)
         {
-            MessageBoxButtons messButton = MessageBoxButtons.OKCancel;
-            DialogResult dr = MessageBox.Show("Are you sure to delete?", "Confirm to delete", messButton);
-            if (dr == DialogResult.OK)
-            {
+       
                 if (FileSetid != "")
                 {
                     DB_Helper dbhelper = new DB_Helper();
@@ -181,7 +178,7 @@ namespace PullingStatusTool.UserControl
 
                 }
             }
-        }
+        
 
 
     }

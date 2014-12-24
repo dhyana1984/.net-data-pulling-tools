@@ -392,7 +392,7 @@
             this.GC_FileExpect.Location = new System.Drawing.Point(6, 87);
             this.GC_FileExpect.MainView = this.gridView1;
             this.GC_FileExpect.Name = "GC_FileExpect";
-            this.GC_FileExpect.Size = new System.Drawing.Size(944, 417);
+            this.GC_FileExpect.Size = new System.Drawing.Size(947, 417);
             this.GC_FileExpect.TabIndex = 20;
             this.GC_FileExpect.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -450,7 +450,7 @@
             this.LookAndFeel.SkinName = "Black";
             this.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.Name = "UC_FileExpectMgr";
-            this.Size = new System.Drawing.Size(963, 507);
+            this.Size = new System.Drawing.Size(966, 507);
             this.Tag = "Expect File Management";
             this.Load += new System.EventHandler(this.UC_FileExpectMgr_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txt_Retailer.Properties)).EndInit();

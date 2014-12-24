@@ -60,4 +60,96 @@ namespace PullingStatusTool
         }
 
     }
+
+
+    public class TargetRepullList
+    {
+        string creater;
+
+        public string c_creater
+        {
+            get { return creater; }
+            set { creater = value; }
+        }
+        string repullstatus;
+
+        public string c_repullstatus
+        {
+            get { return repullstatus; }
+            set { repullstatus = value; }
+        }
+
+        string account;
+
+        public string c_account
+        {
+            get { return account; }
+            set { account = value; }
+        }
+        string serverip;
+
+        public string c_serverip
+        {
+            get { return serverip; }
+            set { serverip = value; }
+        }
+
+        string isneedupload;
+        public string c_isneedupload
+        {
+            get { return isneedupload; }
+            set { isneedupload = value; }
+        }
+        string isneedformat;
+
+        public string c_isneedformat
+        {
+            get { return isneedformat; }
+            set { isneedformat = value; }
+        }
+        string createdate;
+
+        public string c_createdate
+        {
+            get { return createdate; }
+            set { createdate = value; }
+        }
+        string eta;
+
+        public string c_eta
+        {
+            get { return eta; }
+            set { eta = value; }
+        }
+        string reportname;
+
+        public string c_reportname
+        {
+            get { return reportname; }
+            set { reportname = value; }
+        }
+
+        string Vendor;
+
+        public string c_vendor
+        {
+            get { return Vendor; }
+            set { Vendor = value; }
+        }
+        string retailer;
+
+        public string c_retailer
+        {
+            get { return retailer; }
+            set { retailer = value; }
+        }
+
+        string id;
+
+        public string c_id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+    }
 }

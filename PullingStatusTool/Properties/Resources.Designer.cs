@@ -102,6 +102,13 @@ namespace PullingStatusTool.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap RepullList {
+            get {
+                object obj = ResourceManager.GetObject("RepullList", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap Target {
             get {
                 object obj = ResourceManager.GetObject("Target", resourceCulture);

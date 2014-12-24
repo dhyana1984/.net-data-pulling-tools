@@ -36,10 +36,7 @@ namespace PullingStatusTool.UserControl
         {
             if (!string.IsNullOrEmpty(accountid))
             {
-                MessageBoxButtons messButton = MessageBoxButtons.OKCancel;
-                DialogResult dr = MessageBox.Show("Are you sure to Edit?", "Confirm to Edit", messButton);
-                if (dr == DialogResult.OK)
-                {
+              
                     TescoUKDBHelper dbhelper = new TescoUKDBHelper();
                     ConnectorAccount account = new ConnectorAccount();
                     account.c_accountname = txt_Account.Text;
@@ -49,16 +46,13 @@ namespace PullingStatusTool.UserControl
                     if (dbhelper.editAccount(account))
                         getAccountDS();
                 }
-            }
+            
         }
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
 
-            MessageBoxButtons messButton = MessageBoxButtons.OKCancel;
-            DialogResult dr = MessageBox.Show("Are you sure to Add?", "Confirm to Add", messButton);
-            if (dr == DialogResult.OK)
-            {
+    
                 TescoUKDBHelper dbhelper = new TescoUKDBHelper();
                 ConnectorAccount account = new ConnectorAccount();
                 account.c_accountname = txt_Account.Text;
@@ -67,7 +61,7 @@ namespace PullingStatusTool.UserControl
 
                 if (dbhelper.addNewUser(account))
                     getAccountDS();
-            }
+            
         }
 
         private void btn_Delete_Click(object sender, EventArgs e)
@@ -75,14 +69,11 @@ namespace PullingStatusTool.UserControl
             if (!string.IsNullOrEmpty(accountid))
             {
                 TescoUKDBHelper dbhelper = new TescoUKDBHelper();
-                MessageBoxButtons messButton = MessageBoxButtons.OKCancel;
-                DialogResult dr = MessageBox.Show("Are you sure to Add?", "Confirm to Add", messButton);
-                if (dr == DialogResult.OK)
-                {
+           
                     if (dbhelper.deleteAccount(accountid))
                         getAccountDS();
                 }
-            }
+            
         }
         string accountid = "";
 
@@ -141,7 +132,12 @@ namespace PullingStatusTool.UserControl
                 gridView1.BestFitColumns();
                 gridView1.Columns["ReportID"].Visible = false;
                 gridView1.OptionsView.ShowFooter = true;
-                gridView1.Columns["vendor"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
+                for (int i = 0; i < gridView1.Columns.Count; i++)
+                {
+                    gridView1.Columns[i].OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+
+                }
+                    gridView1.Columns["vendor"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
                 gridView1.Columns["Enable"].VisibleIndex = 1;
                 string newFilter = string.Empty;
                 string filter = "Enable like 'Y'";
@@ -151,7 +147,7 @@ namespace PullingStatusTool.UserControl
 
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+               ShowMessage(e.Message);
             }
         }
 
@@ -236,7 +232,11 @@ namespace PullingStatusTool.UserControl
             gc_Record.DataSource = dbhelper.getReport(STDate, SubmitDate);
             try
             {
-             
+                for (int i = 0; i < gridView2.Columns.Count; i++)
+                {
+                    gridView2.Columns[i].OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+
+                }
                 gridView2.Columns["HistoryID"].Visible = false;
                 gridView2.OptionsView.ShowFooter = true;
                 gridView2.Columns["UserID"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
@@ -249,11 +249,14 @@ namespace PullingStatusTool.UserControl
 
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+               ShowMessage(e.Message);
             }
         
         }
-
+        private void ShowMessage(string strSting)
+        {
+            DevExpress.XtraEditors.XtraMessageBox.Show(strSting, "Reminder", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         private void btn_ReportRefresh_Click(object sender, EventArgs e)
         {
         

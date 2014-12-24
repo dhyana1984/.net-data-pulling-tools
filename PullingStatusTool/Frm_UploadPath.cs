@@ -17,6 +17,10 @@ namespace PullingStatusTool
             InitializeComponent();
         }
         string FileSetid = "";
+        private void ShowMessage(string strSting)
+        {
+            DevExpress.XtraEditors.XtraMessageBox.Show(strSting, "Reminder", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         public Frm_UploadPath(string FileSetid,string retailer,string vendor, string filetype)
         {
             InitializeComponent();
@@ -40,7 +44,7 @@ namespace PullingStatusTool
             else
             {
 
-                MessageBox.Show("Fill the path!");
+               ShowMessage("Fill the path!");
             }
 
         }
@@ -72,7 +76,7 @@ namespace PullingStatusTool
             }
             else
             {
-                MessageBox.Show("Fill the path!");
+               ShowMessage("Fill the path!");
             }
         }
         string pathid = "";

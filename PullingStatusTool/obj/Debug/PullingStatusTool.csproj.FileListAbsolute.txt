@@ -32,3 +32,4 @@ D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\Pull
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.UserControl.UC_TescoUKConnector.resources
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.UserControl.UC_TescoUKStatus.resources
 D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.UIControl.XtaFrm_Skin.resources
+D:\Work\Retailer&Vendor\Retailer_UK_USA\Target\PullingStatusTool\GitHubTest\PullingStatusTool\PullingStatusTool\obj\Debug\PullingStatusTool.UserControl.UC_RepullList.resources

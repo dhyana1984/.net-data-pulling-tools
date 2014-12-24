@@ -1,0 +1,31 @@
+select  
+case 
+when  reportname like 'cat%'  then vendor +' Category' else vendor 
+end vendor,
+case  
+when  Vendor not like '%colgate%' and vendor not like '%kcc%' and reportname not like '%dc %' and reportname not like '%attri%' and reportname like '%store %' or (ReportName like '%inv1%' or ReportName like '%inv2%')    then 'Store Inventory' 
+when Vendor not like '%colgate%' and vendor not like '%kcc%' and reportname like '%DC %' and reportname not like '%store %' and configname not like '%qtg%' and ReportName not like '%receipt%'  then 'DC Inventory' 
+when Vendor not like '%Colgate%' and vendor not like '%KCC%' and ReportName like 'cat%'  and ReportName not like '%attrib%' then 'Weekly POS' 
+when (Vendor  like '%Colgate%' or vendor like '%KCC%') and ReportName like 'cat%'  and ReportName not like '%attrib%' and (reportname like '%MTWASH%' or reportname like '%TUPAST%' or reportname like '%BBYTLT%') then 'Weekly POS' 
+end datatype,
+case
+when (ConfigName like '%inv1%' or ScheduleName like '%inv1%' or ReportName like 'inv1') and configname not like '%pcna%' and configname not like '%flna%' and configname not like '%qtg%' and reportname not like '%dc%' and reportname not like '%attri%'   then 'INV1' 
+End Subgroup,
+COUNT(distinct reportname) filecount,status, MAX(EndFormattingTime) finishTime,IP
+from view_pullingstatus
+where   reportname like '%@period%' and (vendor like '%P&G%' or vendor like '%JNJ%' or Vendor like '%Unilever%' or Vendor like '%colgate%' or Vendor like '%kcc%' or Vendor like '%dannon%')
+group by 
+status,
+case
+when  reportname like 'cat%'  then vendor +' Category' else vendor  
+end,
+case  
+when  Vendor not like '%colgate%' and vendor not like '%kcc%' and reportname not like '%dc %' and reportname not like '%attri%' and reportname like '%store %' or (ReportName like '%inv1%' or ReportName like '%inv2%')    then 'Store Inventory' 
+when Vendor not like '%colgate%' and vendor not like '%kcc%' and reportname like '%DC %' and reportname not like '%store %' and configname not like '%qtg%' and ReportName not like '%receipt%'  then 'DC Inventory' 
+when Vendor not like '%Colgate%' and vendor not like '%KCC%' and ReportName like 'cat%'  and ReportName not like '%attrib%' then 'Weekly POS' 
+when (Vendor  like '%Colgate%' or vendor like '%KCC%') and ReportName like 'cat%'  and ReportName not like '%attrib%' and (reportname like '%MTWASH%' or reportname like '%TUPAST%' or reportname like '%BBYTLT%') then 'Weekly POS' 
+end,
+case
+when (ConfigName like '%inv1%' or ScheduleName like '%inv1%' or ReportName like 'inv1') and configname not like '%pcna%' and configname not like '%flna%' and configname not like '%qtg%' and reportname not like '%dc%' and reportname not like '%attri%'   then 'INV1' 
+End,IP
+order by vendor,datatype
