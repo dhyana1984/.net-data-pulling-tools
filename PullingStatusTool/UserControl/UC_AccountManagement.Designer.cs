@@ -175,7 +175,7 @@
             // 
             // btn_Edit
             // 
-            this.btn_Edit.Location = new System.Drawing.Point(490, 32);
+            this.btn_Edit.Location = new System.Drawing.Point(571, 32);
             this.btn_Edit.Name = "btn_Edit";
             this.btn_Edit.Size = new System.Drawing.Size(75, 23);
             this.btn_Edit.TabIndex = 14;
@@ -201,7 +201,7 @@
             this.gc_Account.Name = "gc_Account";
             this.gc_Account.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gc_Account.Size = new System.Drawing.Size(957, 443);
+            this.gc_Account.Size = new System.Drawing.Size(797, 443);
             this.gc_Account.TabIndex = 27;
             this.gc_Account.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -405,7 +405,7 @@
             // 
             // btn_AddAccount
             // 
-            this.btn_AddAccount.Location = new System.Drawing.Point(571, 32);
+            this.btn_AddAccount.Location = new System.Drawing.Point(490, 32);
             this.btn_AddAccount.Name = "btn_AddAccount";
             this.btn_AddAccount.Size = new System.Drawing.Size(75, 23);
             this.btn_AddAccount.TabIndex = 28;
@@ -437,7 +437,7 @@
             this.LookAndFeel.SkinName = "Black";
             this.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.Name = "UC_AccountManagement";
-            this.Size = new System.Drawing.Size(963, 507);
+            this.Size = new System.Drawing.Size(803, 507);
             this.Tag = "Account Management";
             ((System.ComponentModel.ISupportInitialize)(this.txt_Retailer.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Vendor.Properties)).EndInit();

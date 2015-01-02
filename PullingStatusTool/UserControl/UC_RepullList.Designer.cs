@@ -51,6 +51,7 @@
             this.btn_Add = new DevExpress.XtraEditors.SimpleButton();
             this.rgp_isFinish = new DevExpress.XtraEditors.RadioGroup();
             this.btn_Finish = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Delete = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.GC_RepullList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).BeginInit();
@@ -73,7 +74,7 @@
             this.GC_RepullList_Cbx_isNeedFormat,
             this.GC_RepullList_Cbx_isNeedUpload,
             this.GC_RepullList_Cbx_RepullStatus});
-            this.GC_RepullList.Size = new System.Drawing.Size(874, 458);
+            this.GC_RepullList.Size = new System.Drawing.Size(833, 458);
             this.GC_RepullList.TabIndex = 21;
             this.GC_RepullList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -170,6 +171,7 @@
             this.gridView1.OptionsBehavior.CopyToClipboardWithColumnHeaders = false;
             this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
+            this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView1.OptionsView.EnableAppearanceOddRow = true;
             this.gridView1.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
@@ -367,7 +369,7 @@
             // 
             // btn_Refresh
             // 
-            this.btn_Refresh.Location = new System.Drawing.Point(573, 17);
+            this.btn_Refresh.Location = new System.Drawing.Point(654, 17);
             this.btn_Refresh.Name = "btn_Refresh";
             this.btn_Refresh.Size = new System.Drawing.Size(75, 23);
             this.btn_Refresh.TabIndex = 22;
@@ -404,10 +406,20 @@
             this.btn_Finish.Text = "Finish";
             this.btn_Finish.Click += new System.EventHandler(this.btn_Finish_Click);
             // 
+            // btn_Delete
+            // 
+            this.btn_Delete.Location = new System.Drawing.Point(573, 17);
+            this.btn_Delete.Name = "btn_Delete";
+            this.btn_Delete.Size = new System.Drawing.Size(75, 23);
+            this.btn_Delete.TabIndex = 26;
+            this.btn_Delete.Text = "Delete";
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
+            // 
             // UC_RepullList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btn_Delete);
             this.Controls.Add(this.btn_Finish);
             this.Controls.Add(this.rgp_isFinish);
             this.Controls.Add(this.btn_Add);
@@ -416,7 +428,7 @@
             this.LookAndFeel.SkinName = "Black";
             this.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.Name = "UC_RepullList";
-            this.Size = new System.Drawing.Size(890, 507);
+            this.Size = new System.Drawing.Size(849, 507);
             this.Tag = "Target Repull List";
             this.Load += new System.EventHandler(this.UC_RepullList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.GC_RepullList)).EndInit();
@@ -455,5 +467,6 @@
         private DevExpress.XtraEditors.SimpleButton btn_Finish;
         private DevExpress.XtraGrid.Columns.GridColumn Flag;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraEditors.SimpleButton btn_Delete;
     }
 }

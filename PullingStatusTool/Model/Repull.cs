@@ -109,6 +109,21 @@ namespace PullingStatusTool
         }
         string createdate;
 
+        DateTime FinishBefore;
+
+        public DateTime c_finishbefore
+        {
+            get { return FinishBefore; }
+            set { FinishBefore = value; }
+        }
+
+        DateTime creatime;
+
+        public DateTime c_creatime
+        {
+            get { return creatime; }
+            set { creatime = value; }
+        }
         public string c_createdate
         {
             get { return createdate; }

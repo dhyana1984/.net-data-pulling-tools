@@ -26,7 +26,7 @@ namespace PullingStatusTool.UserControl
                 {
                     UploadFileSet fileset = new UploadFileSet();
                     DB_Helper dbhelper = new DB_Helper();
-                    fileset.c_dayof = cbx_Freq.Text;
+                    fileset.c_dayof = cbx_Dayof.Text;
                     fileset.c_downloadpath = txt_downloadpath.Text;
                     fileset.c_filetype = txt_filetype.Text;
                     fileset.c_flag = cbx_enable.Checked;
@@ -178,6 +178,11 @@ namespace PullingStatusTool.UserControl
 
                 }
             }
+
+        private void btn_Refresh_Click(object sender, EventArgs e)
+        {
+            getDS();
+        }
         
 
 

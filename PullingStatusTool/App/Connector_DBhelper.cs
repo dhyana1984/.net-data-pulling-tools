@@ -533,7 +533,7 @@ namespace PullingStatusTool.App
         public bool submit(string sql)
         {
             string str = "save";
-            if (sql.ToLower().Contains("delete"))
+            if (sql.ToLower().ToLower().Contains("delete"))
                 str = "delete";
             else if (sql.ToLower().Contains("insert"))
                 str = "add";

@@ -247,6 +247,15 @@ namespace PullingStatusTool.Model
             ListItem.Add(new Item("Sainsbury","#FFA011"));
             ListItem.Add(new Item("Ocado", "#39D8D8"));
             ListItem.Add(new Item("Boots", "#0753C6"));
+            ListItem.Add(new Item("RTMart_S", "#E61A42"));
+            ListItem.Add(new Item("Yonghui_S", "#3DEE11"));
+            ListItem.Add(new Item("Lianhua_S", "#4D8AB3"));
+            ListItem.Add(new Item("Suguo_S", "#22DDDD"));
+            ListItem.Add(new Item(" Watsons", "#CC00FF"));
+            ListItem.Add(new Item(" FCL", "#8800AA"));
+            ListItem.Add(new Item(" Park", "#AAAA00"));
+            ListItem.Add(new Item(" Auchan", "#337777"));
+            ListItem.Add(new Item(" Metro_CN", "#1D4A8E"));
         }
        static private List<Item> ListItem = new List<Item>();
 

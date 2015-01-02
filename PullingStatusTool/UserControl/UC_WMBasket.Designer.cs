@@ -122,7 +122,7 @@
             this.Tab_Schedule.Location = new System.Drawing.Point(6, 3);
             this.Tab_Schedule.Name = "Tab_Schedule";
             this.Tab_Schedule.SelectedTabPage = this.txt_nextruntime1;
-            this.Tab_Schedule.Size = new System.Drawing.Size(960, 501);
+            this.Tab_Schedule.Size = new System.Drawing.Size(884, 501);
             this.Tab_Schedule.TabIndex = 29;
             this.Tab_Schedule.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tab_users,
@@ -146,7 +146,7 @@
             this.txt_nextruntime1.Controls.Add(this.labelControl9);
             this.txt_nextruntime1.Controls.Add(this.gc_Schedule);
             this.txt_nextruntime1.Name = "txt_nextruntime1";
-            this.txt_nextruntime1.Size = new System.Drawing.Size(953, 473);
+            this.txt_nextruntime1.Size = new System.Drawing.Size(877, 473);
             this.txt_nextruntime1.Text = "Schedule";
             // 
             // labelControl5
@@ -263,7 +263,7 @@
             this.gc_Schedule.Name = "gc_Schedule";
             this.gc_Schedule.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gc_Schedule.Size = new System.Drawing.Size(937, 411);
+            this.gc_Schedule.Size = new System.Drawing.Size(861, 411);
             this.gc_Schedule.TabIndex = 26;
             this.gc_Schedule.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -717,12 +717,12 @@
             this.tab_Record.Controls.Add(this.btn_ReportRefresh);
             this.tab_Record.Controls.Add(this.gc_Record);
             this.tab_Record.Name = "tab_Record";
-            this.tab_Record.Size = new System.Drawing.Size(953, 473);
+            this.tab_Record.Size = new System.Drawing.Size(877, 473);
             this.tab_Record.Text = "Record";
             // 
             // lbl_Configname
             // 
-            this.lbl_Configname.Location = new System.Drawing.Point(165, 13);
+            this.lbl_Configname.Location = new System.Drawing.Point(173, 13);
             this.lbl_Configname.Name = "lbl_Configname";
             this.lbl_Configname.Size = new System.Drawing.Size(0, 13);
             this.lbl_Configname.TabIndex = 32;
@@ -753,7 +753,7 @@
             this.gc_Record.Location = new System.Drawing.Point(3, 35);
             this.gc_Record.MainView = this.gridView2;
             this.gc_Record.Name = "gc_Record";
-            this.gc_Record.Size = new System.Drawing.Size(936, 435);
+            this.gc_Record.Size = new System.Drawing.Size(860, 435);
             this.gc_Record.TabIndex = 27;
             this.gc_Record.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -952,7 +952,7 @@
             this.LookAndFeel.SkinName = "Black";
             this.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.Name = "UC_WMBasket";
-            this.Size = new System.Drawing.Size(966, 507);
+            this.Size = new System.Drawing.Size(890, 507);
             this.Tag = "Walmart Basket Connector";
             ((System.ComponentModel.ISupportInitialize)(this.txt_Stores.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tab_Schedule)).EndInit();

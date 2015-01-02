@@ -67,6 +67,7 @@
             this.cbx_addExpectFile = new DevExpress.XtraEditors.CheckEdit();
             this.btn_delete = new DevExpress.XtraEditors.SimpleButton();
             this.ckx_ReUploadLimit = new DevExpress.XtraEditors.CheckEdit();
+            this.btn_Refresh = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.txtDatalag.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbx_Dayof.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_SLA.Properties)).BeginInit();
@@ -498,7 +499,7 @@
             this.gridControl1.Location = new System.Drawing.Point(3, 92);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(949, 412);
+            this.gridControl1.Size = new System.Drawing.Size(1033, 412);
             this.gridControl1.TabIndex = 58;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -554,10 +555,20 @@
             this.ckx_ReUploadLimit.Size = new System.Drawing.Size(91, 18);
             this.ckx_ReUploadLimit.TabIndex = 84;
             // 
+            // btn_Refresh
+            // 
+            this.btn_Refresh.Location = new System.Drawing.Point(938, 63);
+            this.btn_Refresh.Name = "btn_Refresh";
+            this.btn_Refresh.Size = new System.Drawing.Size(70, 23);
+            this.btn_Refresh.TabIndex = 85;
+            this.btn_Refresh.Text = "Refresh";
+            this.btn_Refresh.Click += new System.EventHandler(this.btn_Refresh_Click);
+            // 
             // UC_FileSetMgr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btn_Refresh);
             this.Controls.Add(this.ckx_ReUploadLimit);
             this.Controls.Add(this.btn_delete);
             this.Controls.Add(this.cbx_addExpectFile);
@@ -587,7 +598,7 @@
             this.LookAndFeel.SkinName = "Dark Side";
             this.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.Name = "UC_FileSetMgr";
-            this.Size = new System.Drawing.Size(966, 507);
+            this.Size = new System.Drawing.Size(1050, 507);
             this.Tag = "File Set Management";
             this.Load += new System.EventHandler(this.FileUploadManage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtDatalag.Properties)).EndInit();
@@ -650,5 +661,6 @@
         private DevExpress.XtraEditors.SimpleButton btn_delete;
         private DevExpress.XtraEditors.CheckEdit ckx_ReUploadLimit;
         private DevExpress.XtraGrid.Columns.GridColumn isreupload;
+        private DevExpress.XtraEditors.SimpleButton btn_Refresh;
     }
 }

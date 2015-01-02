@@ -40,16 +40,11 @@ namespace PullingStatusTool.UserControl
             ListSLA = db_helper.getSLAChart(txt_StartDate.Text, txt_EndDate.Text);
             string startDate = AMESTime.BeijingTimeToAMESTime(Convert.ToDateTime(txt_StartDate.Text + " 00:00:00")).ToString("yyyy-MM-dd HH:mm:ss");
             string endDate = AMESTime.BeijingTimeToAMESTime(Convert.ToDateTime(txt_EndDate.Text + " 23:59:59")).ToString("yyyy-MM-dd HH:mm:ss");
-            ListRepull = db_hhelper.getRePullChart(startDate, endDate);
+            ListRepull = db_hhelper.getRePullChart(txt_StartDate.Text + " 00:00:00", txt_EndDate.Text + " 23:59:59", ListSLA);//RepullList表里面用的就是中国时间，不用转化
             int count = ListRepull.Count < ListSLA.Count ? ListRepull.Count : ListSLA.Count;
-            for (int i = 0; i < count; i++)
-            {
-
-                ListSLA[i].c_ffilecount = ListRepull[i].c_filecount;
-            }
             ChartSLA.DataSource = ListSLA;
             string SLATotal = ListSLA.Where(t => Convert.ToDateTime(t.c_repulldate).DayOfWeek.ToString() != "Saturday").Sum(t => t.c_filecount).ToString();
-            string RepullTotal = ListRepull.Where(t => Convert.ToDateTime(t.c_repulldate).DayOfWeek.ToString() != "Saturday").Sum(t => t.c_filecount).ToString();
+            string RepullTotal = ListSLA.Sum(t => t.c_ffilecount).ToString();
             float Total = db_helper.getAllPulledFileByWeek(startDate, endDate);
             lblTotalRepull.Text = "RepullRate: " + (float.Parse(RepullTotal) * 100 / Total).ToString("0.00") + "%";
             lblTotalSLA.Text = "SLARate :" + ((Total - float.Parse(SLATotal)) * 100 / Total).ToString("0.00") + "%";

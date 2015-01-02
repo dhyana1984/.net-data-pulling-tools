@@ -22,6 +22,13 @@ namespace PullingStatusTool
         List<DataPullingFileCountStatus> ListPullFileStatus = new List<DataPullingFileCountStatus>();
         List<ReportExpect> ListReportExpect = new List<ReportExpect>();
         List<Repull> ListRePullChart = new List<Repull>();
+        private bool deleteRepullListData(string id)
+        {
+            string sql = "delete  FROM [TargetPullingStatus].[dbo].[RepullList] where id in (" +
+                                  id+")";
+            return connectDB_68server.submit(sql);
+        }
+
         private DataTable getTargetRepullListData(string str)
         {
             string sql = "SELECT [id] c_id"
@@ -50,7 +57,7 @@ namespace PullingStatusTool
             foreach (TargetRepullList repull in RepullList)
             {
                 sqlStr += " insert into RepullList (retailer, vendor, reportname,eta,createdate,isneedformat,isneedupload,serverip,account,repullstatus,creater) values "
-                            + string.Format("('{0}','{1}','{2}','{3}','{4}',N'{5}',N'{6}','{7}','{8}','{9}','{10}');", repull.c_retailer, repull.c_vendor, repull.c_reportname, repull.c_eta, repull.c_createdate, repull.c_isneedformat, repull.c_isneedupload, repull.c_serverip, repull.c_account, repull.c_repullstatus,repull.c_creater);
+                            + string.Format("('{0}','{1}','{2}','{3}','{4}',N'{5}',N'{6}','{7}','{8}','{9}','{10}');", repull.c_retailer, repull.c_vendor, repull.c_reportname, repull.c_finishbefore, repull.c_creatime, repull.c_isneedformat, repull.c_isneedupload, repull.c_serverip, repull.c_account, repull.c_repullstatus,repull.c_creater);
             
             }
 
@@ -245,7 +252,7 @@ namespace PullingStatusTool
                                     + "'" + fileSet.c_flag +"',"
                                     + "'" + fileSet.c_isreupload + "',"
                                     + "'" + fileSet.c_fileextend+"' )";
-            string dayofweek=fileSet.c_freqency=="Daily'"?"Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday" : fileSet.c_dayof;
+            string dayofweek=fileSet.c_freqency=="Daily"?"Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday" : fileSet.c_dayof;
             string sqlStrExpect = string.Format("insert into ReportDataType (dayofweek,vendor,datatype,subgroup,fileExpect,delayreason,retailer) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", dayofweek, fileSet.c_vendor, fileSet.c_filetype, fileSet.c_freqency, "1", "", fileSet.c_retailer);//   插入一条fileSet的时候自动插入到fileExpect
             return addToExpect?connectDB_68server.submit(sqlStr + ";" + sqlStrExpect):connectDB_68server.submit(sqlStr);
        
@@ -467,7 +474,7 @@ namespace PullingStatusTool
             return FileCount;
         }
 
-        private void getRepullChartData( string startDate, string endDate)
+        private void getRepullChartData( string startDate, string endDate,List<Repull> LsRepull)
         {
             string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;
             SqlConnection mySqlConnection = new SqlConnection();
@@ -476,14 +483,17 @@ namespace PullingStatusTool
             //                 " from v$RSI_TOOLS_TargetConn_EventStatus"+
             //                 " where eventstarttime >= '" + startDate + "' and eventstarttime <= '"+ endDate + "'";//SQL语句  
 
-            string sqlStr = "select repulldate,COUNT(*) from "
-                           + " (select ReportName,Vendor,CONVERT(VARCHAR(10),dateadd(hour,13,EndFormattingTime) ,120) repulldate from"
-                           + " View_PullingStatus"
-                           + " where EndFormattingTime between '"+startDate+"' and '"+endDate+"'"
+            //string sqlStr = "select repulldate,COUNT(*) from "
+            //               + " (select ReportName,Vendor,CONVERT(VARCHAR(10),dateadd(hour,13,EndFormattingTime) ,120) repulldate from"
+            //               + " View_PullingStatus"
+            //               + " where EndFormattingTime between '"+startDate+"' and '"+endDate+"'"
 
-                           + " group by ReportName,Vendor,CONVERT(VARCHAR(10),dateadd(hour,13,EndFormattingTime) ,120) "
-                           + " having COUNT(ReportName)>1) t"
-                           + " group by repulldate";
+            //               + " group by ReportName,Vendor,CONVERT(VARCHAR(10),dateadd(hour,13,EndFormattingTime) ,120) "
+            //               + " having COUNT(ReportName)>1) t"
+            //               + " group by repulldate";
+            string sqlStr = "SELECT CONVERT(VARCHAR(10),createdate ,120) repulldate,COUNT(id) " +
+                                     " FROM [TargetPullingStatus].[dbo].[RepullList] where createdate between '" + startDate + "' and '" + endDate + "' " +
+                                      " group by CONVERT(VARCHAR(10),createdate ,120)";
                         
 
 
@@ -496,13 +506,13 @@ namespace PullingStatusTool
                 {
                     if (sdr[0] == null)
                         continue;
-                    Repull repull = new Repull(sdr[0].ToString() + " " + Convert.ToDateTime(sdr[0].ToString()).DayOfWeek.ToString(), int.Parse(sdr[1].ToString()) < 0 ? "0" : sdr[1].ToString(), "Chart");
+                    Repull repull = new Repull(Convert.ToDateTime(sdr[0].ToString()).ToString("yyyy-MM-dd") + " " + Convert.ToDateTime(sdr[0].ToString()).DayOfWeek.ToString(), int.Parse(sdr[1].ToString()) < 0 ? "0" : sdr[1].ToString(), "Chart");
                     bool flag = true;
-                    foreach (Repull data in ListRePullChart)
+                    foreach (Repull data in LsRepull)
                     {
-                        if (data.c_repulldate == repull.c_repulldate)
+                        if (Convert.ToDateTime(data.c_repulldate.Split(' ')[0]) == Convert.ToDateTime(repull.c_repulldate.Split(' ')[0]))
                         {
-                            data.c_filecount += repull.c_filecount;
+                            data.c_ffilecount += repull.c_filecount;
                             flag = false;
                             break;
                         }
@@ -551,6 +561,7 @@ namespace PullingStatusTool
                               + " (a.Comments='Weekly' and a.FileName like  '%'+convert(char(8),DATEADD(wk,  DATEDIFF(wk,0,'"+ date +"'),  0-Datalag*7) ,112)+'%' ) or"
                               + " (a.Comments='Weekly' and a.FileName like  '%'+convert(char(8),DATEADD(wk,  DATEDIFF(wk,0,'" + date + "'),  5-Datalag*7) ,112)+'%' ) or"
                               + " (a.Comments='Weekly' and a.FileName like  '%'+convert(char(8),DATEADD(wk,  DATEDIFF(wk,0,'" + date + "'),  3-Datalag*7) ,112)+'%' ) or"
+                              + " (a.Comments='Weekly' and a.FileName like  '%'+convert(char(8),DATEADD(wk,  DATEDIFF(wk,0,'" + date + "'),  2-Datalag*7) ,112)+'%' ) or"
                               + " (a.Comments='Weekly' and a.FileName like  '%'+convert(char(8),DATEADD(wk,  DATEDIFF(wk,0,'" + date + "'),  1-Datalag*7) ,112)+'%' ) or"
                               + " (a.Comments='Weekly' and a.FileName like  '%'+convert(char(8),DATEADD(wk,  DATEDIFF(wk,0,'"+ date +"'),  6-Datalag*7) ,112)+'%' )    "
                               + " group by "
@@ -782,9 +793,9 @@ namespace PullingStatusTool
             return getNoTargetSLAChartDatas(startDate, endDate);
         }
 
-        public List<Repull> getRePullChart( string startDate, string endDate)
+        public List<Repull> getRePullChart( string startDate, string endDate,List<Repull> LTRepull)
         {
-            getRepullChartData(startDate, endDate); 
+            getRepullChartData(startDate, endDate, LTRepull); 
             return ListRePullChart;
         }
         public List<Repull> getSLAChart(string startDate, string endDate)
@@ -849,6 +860,11 @@ namespace PullingStatusTool
 
             return ListPullFileStatus.Where(t=>t.c_vendor!="").OrderBy(t => t.c_vendor).ThenBy(t => t.c_dataType).ThenBy(t => t.c_subgroup).ToList();
           //  return status.ToList();
+        }
+
+        public bool deleteRepullList(string id)
+        {
+            return deleteRepullListData(id);
         }
 
         private string getAttriDataTypeDate(string date)//找Attrib的时间后缀

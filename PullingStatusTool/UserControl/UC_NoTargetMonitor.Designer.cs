@@ -88,7 +88,7 @@
             this.GC_ManUplStas.Location = new System.Drawing.Point(3, 36);
             this.GC_ManUplStas.MainView = this.gridView1;
             this.GC_ManUplStas.Name = "GC_ManUplStas";
-            this.GC_ManUplStas.Size = new System.Drawing.Size(948, 468);
+            this.GC_ManUplStas.Size = new System.Drawing.Size(801, 562);
             this.GC_ManUplStas.TabIndex = 28;
             this.GC_ManUplStas.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -294,7 +294,7 @@
             this.LookAndFeel.SkinName = "Black";
             this.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.Name = "UC_NoTargetMonitor";
-            this.Size = new System.Drawing.Size(966, 507);
+            this.Size = new System.Drawing.Size(819, 601);
             this.Tag = "None Target Data Pulling Status";
             this.Load += new System.EventHandler(this.Frm_ManuUplStas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.drp_DailyDate.Properties.VistaTimeProperties)).EndInit();
