@@ -12,7 +12,7 @@
     <AssemblyName>PullingStatusTool</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ManifestCertificateThumbprint>F19F187DEA406576867F94F085AE73DDEECB94A6</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>7EC66297695E1BAD5899E537ED89C67B175D1FAF</ManifestCertificateThumbprint>
     <ManifestKeyFile>PullingStatusTool_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
     <SignManifests>true</SignManifests>
@@ -35,8 +35,8 @@
     <InstallUrl>http://10.176.1.50:8002/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>10</ApplicationRevision>
-    <ApplicationVersion>3.0.0.%2a</ApplicationVersion>
+    <ApplicationRevision>12</ApplicationRevision>
+    <ApplicationVersion>3.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -388,6 +388,7 @@
     <None Include="img\NoTargetChart.jpg" />
     <None Include="img\Morrisons.jpg" />
     <Content Include="img\Target.jpg" />
+    <None Include="PullingStatusTool_TemporaryKey.pfx" />
     <None Include="Resources\Target.bmp" />
     <None Include="img\UploadRecord.jpg" />
     <None Include="img\TargetChart.jpg" />

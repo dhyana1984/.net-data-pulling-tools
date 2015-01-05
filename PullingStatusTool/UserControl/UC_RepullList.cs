@@ -171,7 +171,7 @@ namespace PullingStatusTool.UserControl
                 if (Listrepull.Count > 0)
                 {
                     dbgelper.editRepull(Listrepull);
-
+                    getDS();
                 }
 
             }

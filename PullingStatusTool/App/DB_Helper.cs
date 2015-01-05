@@ -195,7 +195,8 @@ namespace PullingStatusTool
                                         + " uploadtime >='" + STDate+"' and "
                                         + " uploadtime <='" + EDDate+"'"
                                         + SLA
-                                        + ongoing;
+                                        + ongoing
+                                         +" order by uploadtime desc";
 
           return  connectDB_68server.getTable(sqlStr);
 
@@ -568,9 +569,9 @@ namespace PullingStatusTool
                               + " a.Retailer,"
                               + " a.Vendor,"
                               + " a.Comments,"
-                              + " CONVERT(varchar(100), uploadtime, 23),"
+                 
                               + " a.FileType"
-                              + " order by CONVERT(varchar(100), uploadtime, 23) desc,Retailer,Vendor,FileType";
+                              + " order by max(uploadtime) desc,Retailer,Vendor,FileType";
   
 
                    string connStr = ConfigurationManager.ConnectionStrings["68Server"].ConnectionString;

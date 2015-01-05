@@ -25,11 +25,11 @@ namespace PullingStatusTool.UserControl
 
             DB_Helper db_helper = new DB_Helper();
             drp_DailyDate.Text = DateTime.Now.ToShortDateString();
-            txt_year.Text = DateTime.Now.Year.ToString();
-            string weekly = db_helper.getIRCalendarbyDate(drp_DailyDate.Text);//根据当前日期查询Target IR Calendar 出来的mohth_weekofmonth
+            string period = db_helper.getIRCalendarbyDate(drp_DailyDate.Text);//根据当前日期查询Target IR Calendar 出来的mohth_weekofmonth
             // string weekly = "2014-08 wk 3";
-            txt_month.Text = weekly.Substring(5, 2);
-            txt_Week.Text = weekly.Substring(11, 1);
+            txt_year.Text = period.Substring(0, 4);
+            txt_month.Text = period.Substring(5, 2);
+            txt_Week.Text = period.Substring(11, 1);
 
 
 

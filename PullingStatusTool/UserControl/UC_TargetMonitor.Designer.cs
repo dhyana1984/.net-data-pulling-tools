@@ -153,7 +153,7 @@
             this.GC_PullingFileStatus.Location = new System.Drawing.Point(3, 37);
             this.GC_PullingFileStatus.MainView = this.gridView1;
             this.GC_PullingFileStatus.Name = "GC_PullingFileStatus";
-            this.GC_PullingFileStatus.Size = new System.Drawing.Size(951, 467);
+            this.GC_PullingFileStatus.Size = new System.Drawing.Size(834, 467);
             this.GC_PullingFileStatus.TabIndex = 25;
             this.GC_PullingFileStatus.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -391,7 +391,7 @@
             this.LookAndFeel.SkinName = "Black";
             this.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.Name = "UC_TargetMonitor";
-            this.Size = new System.Drawing.Size(966, 507);
+            this.Size = new System.Drawing.Size(849, 507);
             this.Tag = "Target Data Pulling Status";
             this.Load += new System.EventHandler(this.Frm_PullingStatusService_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txt_Week.Properties)).EndInit();
