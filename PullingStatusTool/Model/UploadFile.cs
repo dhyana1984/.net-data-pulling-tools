@@ -164,9 +164,22 @@ namespace PullingStatusTool
                 DataLag = datalag;
                 fileExtend = fileextend;
             }
+
+            /*isStatusByFileName字段是判断在生成Status是否根据文件名里面的period和Fileset的datelag来判断。
+            由于某些Fileset的文件名中没有yyyyMMdd的Period或者datelag不一定（类似蒙牛的订单数据），
+             所以如果文件名中有清晰yyyyMMddPeriod的文件该项就设置为false否则为true。
+             如果设置为true，则在计算文件个数判断传入的时间段总共取了多少个而不是用文件名中的period计算*/
+            bool isStatusByFileName;
+            public bool c_isbyfilename
+            {
+                get { return isStatusByFileName; }
+                set { isStatusByFileName = value; }
+            }
+
+            /* isReUpload是设置这个fileset是否能无限制重复上传，如果设置为False，则在一小时内不允许重复上传，如果设置为true，则无限制重复上传*/
             bool isReUpload;
 
-            public bool c_isreupload
+            public bool c_isreupload//fileset的文件的后缀
             {
                 get { return isReUpload; }
                 set { isReUpload = value; }

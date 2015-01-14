@@ -60,6 +60,7 @@
             this.dayof = new DevExpress.XtraGrid.Columns.GridColumn();
             this.FileExtend = new DevExpress.XtraGrid.Columns.GridColumn();
             this.isreupload = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
@@ -68,6 +69,7 @@
             this.btn_delete = new DevExpress.XtraEditors.SimpleButton();
             this.ckx_ReUploadLimit = new DevExpress.XtraEditors.CheckEdit();
             this.btn_Refresh = new DevExpress.XtraEditors.SimpleButton();
+            this.cbx_isByFilename = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDatalag.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbx_Dayof.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_SLA.Properties)).BeginInit();
@@ -82,6 +84,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_FileExten.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbx_addExpectFile.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckx_ReUploadLimit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbx_isByFilename.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl8
@@ -401,7 +404,8 @@
             this.enable,
             this.id,
             this.FileExtend,
-            this.isreupload});
+            this.isreupload,
+            this.gridColumn1});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.CopyToClipboardWithColumnHeaders = false;
@@ -491,6 +495,14 @@
             this.isreupload.VisibleIndex = 10;
             this.isreupload.Width = 112;
             // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "isByFileName";
+            this.gridColumn1.FieldName = "c_isbyfilename";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 11;
+            // 
             // gridControl1
             // 
             this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -499,7 +511,7 @@
             this.gridControl1.Location = new System.Drawing.Point(3, 92);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1033, 412);
+            this.gridControl1.Size = new System.Drawing.Size(918, 394);
             this.gridControl1.TabIndex = 58;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -548,7 +560,7 @@
             // 
             // ckx_ReUploadLimit
             // 
-            this.ckx_ReUploadLimit.Location = new System.Drawing.Point(723, 12);
+            this.ckx_ReUploadLimit.Location = new System.Drawing.Point(761, 15);
             this.ckx_ReUploadLimit.Name = "ckx_ReUploadLimit";
             this.ckx_ReUploadLimit.Properties.Caption = "ReUpload Now";
             this.ckx_ReUploadLimit.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -564,10 +576,20 @@
             this.btn_Refresh.Text = "Refresh";
             this.btn_Refresh.Click += new System.EventHandler(this.btn_Refresh_Click);
             // 
+            // cbx_isByFilename
+            // 
+            this.cbx_isByFilename.Location = new System.Drawing.Point(761, 39);
+            this.cbx_isByFilename.Name = "cbx_isByFilename";
+            this.cbx_isByFilename.Properties.Caption = "StatusByFileName";
+            this.cbx_isByFilename.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cbx_isByFilename.Size = new System.Drawing.Size(112, 18);
+            this.cbx_isByFilename.TabIndex = 86;
+            // 
             // UC_FileSetMgr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cbx_isByFilename);
             this.Controls.Add(this.btn_Refresh);
             this.Controls.Add(this.ckx_ReUploadLimit);
             this.Controls.Add(this.btn_delete);
@@ -598,7 +620,7 @@
             this.LookAndFeel.SkinName = "Dark Side";
             this.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.Name = "UC_FileSetMgr";
-            this.Size = new System.Drawing.Size(1050, 507);
+            this.Size = new System.Drawing.Size(935, 489);
             this.Tag = "File Set Management";
             this.Load += new System.EventHandler(this.FileUploadManage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtDatalag.Properties)).EndInit();
@@ -615,6 +637,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_FileExten.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbx_addExpectFile.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckx_ReUploadLimit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbx_isByFilename.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -662,5 +685,7 @@
         private DevExpress.XtraEditors.CheckEdit ckx_ReUploadLimit;
         private DevExpress.XtraGrid.Columns.GridColumn isreupload;
         private DevExpress.XtraEditors.SimpleButton btn_Refresh;
+        private DevExpress.XtraEditors.CheckEdit cbx_isByFilename;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }

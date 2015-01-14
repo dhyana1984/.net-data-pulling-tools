@@ -105,13 +105,13 @@ namespace PullingStatusTool
 
         private DataTable getTescoUKPullingStatusData(string stDate)
         {
-            string cuurent = getTescoDataPeriod(stDate, 0, false); //当天日期
+            string current = getTescoDataPeriod(stDate, 0, false); //当天日期
             string restate_3 = getTescoDataPeriod(stDate, 2, false); //today -3 
             string restate_2 = getTescoDataPeriod(stDate, 1, false);//today -2  
             string week = getTescoDataPeriod(stDate, 2, true); // week number
             string sqlstr = "select  c_vendor,c_userid,SUM(SSSD) c_sssd,SUM(SSDCD) c_ssdcd,SUM(WASD) c_wasd,SUM(GSSD) c_gssd,SUM(RSSSD) c_rsssd,SUM(sssw) c_sssw,SUM(STCW) c_stcw from "
                                      + "(select   c_vendor, c_userid,c_startdate, "
-                                     + "case when c_Data='Sales and Stock' and c_DataSet='Store' and c_FileName like '%SSSD%' and (c_FileName not like '%RS%' and c_FileName not like '%DR%' and  c_FileName not like '% R%' ) and  c_StartDate='" + cuurent + "' then COUNT(*) else 0 end as SSSD, "
+                                     + "case when c_Data='Sales and Stock' and c_DataSet='Store' and c_FileName like '%SSSD%' and (c_FileName not like '%RSS%' and c_FileName not like '%SSDR%' and  c_FileName not like '% R%' ) and  c_StartDate='" + current + "' then COUNT(*) else 0 end as SSSD, "
                                      + " case when c_Data='Sales and Stock' and c_DataSet='DC' and c_FileName not like '%NPDR%' and c_startdate='"+restate_3+"'then COUNT(*) else 0 end as SSDCD, "
                                      + " case when c_Data='Waste Analysis' and c_DataSet='Store'and  c_startdate='"+restate_3+"'then COUNT(*) else 0 end as WASD, "
                                     + " case when c_Data='Gap Scan' and c_DataSet='Store' and  c_startdate='"+restate_2+"' then COUNT(*)  else 0 end as GSSD , "
@@ -241,7 +241,7 @@ namespace PullingStatusTool
         }
         public bool addFileSet(UploadFileSet fileSet,bool addToExpect)
         {
-            string sqlStr = "insert into   FileUploadSet (Retailer,Vendor,DownloadPath,FileType,SLATime,Frequency,Dayof,Datalag,Flag,isReUpload,FileExten) values"
+            string sqlStr = "insert into   FileUploadSet (Retailer,Vendor,DownloadPath,FileType,SLATime,Frequency,Dayof,Datalag,Flag,isReUpload,isStatusbyFileName,FileExten) values"
                                     + "('" + fileSet.c_retailer + "',"
                                     + "'" + fileSet.c_vendor.Replace("'", "''") + "',"
                                     + "'" + fileSet.c_downloadpath + "',"
@@ -252,6 +252,7 @@ namespace PullingStatusTool
                                     + "'" + fileSet.c_datalag + "',"
                                     + "'" + fileSet.c_flag +"',"
                                     + "'" + fileSet.c_isreupload + "',"
+                                       + "'" + fileSet.c_isbyfilename + "',"
                                     + "'" + fileSet.c_fileextend+"' )";
             string dayofweek=fileSet.c_freqency=="Daily"?"Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday" : fileSet.c_dayof;
             string sqlStrExpect = string.Format("insert into ReportDataType (dayofweek,vendor,datatype,subgroup,fileExpect,delayreason,retailer) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", dayofweek, fileSet.c_vendor, fileSet.c_filetype, fileSet.c_freqency, "1", "", fileSet.c_retailer);//   插入一条fileSet的时候自动插入到fileExpect
@@ -280,6 +281,7 @@ namespace PullingStatusTool
                                      + "FileExten ='" + fileSet.c_fileextend + "',"
                                        + "Datalag ='" + fileSet.c_datalag + "',"
                                        + "isReupload ='" + fileSet.c_isreupload + "',"
+                                          + "isStatusbyFileName ='" + fileSet.c_isbyfilename + "',"
                                     + "Flag ='" + fileSet.c_flag + "' "
                                     +" Where id=" + fileSet.c_id;
            return  connectDB_68server.submit(sqlStr);
@@ -304,6 +306,7 @@ namespace PullingStatusTool
                                         + "datalag c_datalag, "
                                          + "Frequency  c_freqency, "
                                          + "isReupLoad  c_reupload, "
+                                         + "isStatusbyFileName  c_isbyfilename, "
                                          + "FileExten c_fileextend "
                                         +" from FileUploadSet   order by Retailer, Vendor,FileType,Frequency";
 
@@ -558,13 +561,14 @@ namespace PullingStatusTool
                               + " a.comments"
                               + " FROM [TargetPullingStatus].[dbo].[FileUploadRecord] a join TargetPullingStatus.dbo.FileUploadSet b on"
                               + " a.Retailer=b.Retailer and a.Vendor=b.Vendor and a.FileType=b.FileType"
-                              + " where  (a.Comments='Daily' and a.FileName like '%'+convert(char(8),dateadd(day,0-Datalag,'" + date + "'),112)+'%' ) or"
+                              + " where (isStatusbyFileName = 'true' and  ((a.Comments='Daily' and a.FileName like '%'+convert(char(8),dateadd(day,0-Datalag,'" + date + "'),112)+'%' ) or"
                               + " (a.Comments='Weekly' and a.FileName like  '%'+convert(char(8),DATEADD(wk,  DATEDIFF(wk,0,'"+ date +"'),  0-Datalag*7) ,112)+'%' ) or"
                               + " (a.Comments='Weekly' and a.FileName like  '%'+convert(char(8),DATEADD(wk,  DATEDIFF(wk,0,'" + date + "'),  5-Datalag*7) ,112)+'%' ) or"
                               + " (a.Comments='Weekly' and a.FileName like  '%'+convert(char(8),DATEADD(wk,  DATEDIFF(wk,0,'" + date + "'),  3-Datalag*7) ,112)+'%' ) or"
                               + " (a.Comments='Weekly' and a.FileName like  '%'+convert(char(8),DATEADD(wk,  DATEDIFF(wk,0,'" + date + "'),  2-Datalag*7) ,112)+'%' ) or"
                               + " (a.Comments='Weekly' and a.FileName like  '%'+convert(char(8),DATEADD(wk,  DATEDIFF(wk,0,'" + date + "'),  1-Datalag*7) ,112)+'%' ) or"
-                              + " (a.Comments='Weekly' and a.FileName like  '%'+convert(char(8),DATEADD(wk,  DATEDIFF(wk,0,'"+ date +"'),  6-Datalag*7) ,112)+'%' )    "
+                              + " (a.Comments='Weekly' and a.FileName like  '%'+convert(char(8),DATEADD(wk,  DATEDIFF(wk,0,'"+ date +"'),  6-Datalag*7) ,112)+'%' ) ) )  "
+                            + " or (isStatusbyFileName ='false' and convert(char(10),UploadTime,121) = '" + date + "')"
                               + " group by "
                               + " a.Retailer,"
                               + " a.Vendor,"

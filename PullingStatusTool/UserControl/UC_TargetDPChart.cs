@@ -47,7 +47,7 @@ namespace PullingStatusTool.UserControl
             string RepullTotal = ListSLA.Sum(t => t.c_ffilecount).ToString();
             float Total = db_helper.getAllPulledFileByWeek(startDate, endDate);
             lblTotalRepull.Text = "RepullRate: " + (float.Parse(RepullTotal) * 100 / Total).ToString("0.00") + "%";
-            lblTotalSLA.Text = "SLARate :" + ((Total - float.Parse(SLATotal)) * 100 / Total).ToString("0.00") + "%";
+            lblTotalSLA.Text = "OnTimeRate :" + ((Total - float.Parse(SLATotal)) * 100 / Total).ToString("0.00") + "%";
         }
 
         private void Btn_Save_Click(object sender, EventArgs e)
@@ -58,6 +58,23 @@ namespace PullingStatusTool.UserControl
         private void btn_Fresh_Click(object sender, EventArgs e)
         {
             getDS();
+        }
+
+        private void btn_SLA_Click(object sender, EventArgs e)
+        {
+            DB_Helper db_helper = new DB_Helper();
+            DB_Helper db_hhelper = new DB_Helper();
+            List<Repull> ListSLA = new List<Repull>();
+   
+            ListSLA = db_helper.getSLAChart(txt_StartDate.Text, txt_EndDate.Text);
+            string startDate = AMESTime.BeijingTimeToAMESTime(Convert.ToDateTime(txt_StartDate.Text + " 00:00:00")).ToString("yyyy-MM-dd HH:mm:ss");
+            string endDate = AMESTime.BeijingTimeToAMESTime(Convert.ToDateTime(txt_EndDate.Text + " 23:59:59")).ToString("yyyy-MM-dd HH:mm:ss");
+  
+        //    ChartSLA.DataSource = ListSLA;
+            string SLATotal = ListSLA.Where(t => Convert.ToDateTime(t.c_repulldate).DayOfWeek.ToString() != "Saturday").Sum(t => t.c_filecount).ToString();
+        
+            float Total = db_helper.getAllPulledFileByWeek(startDate, endDate);
+            lblTotalSLA.Text = "OnTimeRate :" + ((Total - float.Parse(SLATotal)) * 100 / Total).ToString("0.00") + "%";
         }
       
 

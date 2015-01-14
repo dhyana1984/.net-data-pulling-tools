@@ -18,8 +18,8 @@ namespace PullingStatusTool.UserControl
 
         private void Frm_UploadRecord_Load(object sender, EventArgs e)
         {
-        
-            txt_EDtime.Text = DateTime.Now.ToShortDateString();
+
+            txt_EDtime.Text = DateTime.Now.ToString("yyyy-MM-dd");
       
         }
 

@@ -37,6 +37,7 @@ namespace PullingStatusTool.UserControl
                     fileset.c_datalag = int.Parse(txtDatalag.Text);
                     fileset.c_fileextend = txt_FileExten.Text;
                     fileset.c_isreupload = ckx_ReUploadLimit.Checked;
+                    fileset.c_isbyfilename = cbx_isByFilename.Checked;
                     if (dbhelper.addFileSet(fileset, cbx_addExpectFile.Checked))
                     {
                         getDS();
@@ -72,6 +73,7 @@ namespace PullingStatusTool.UserControl
                 txtDatalag.Text = gridView1.GetFocusedRowCellValue("c_datalag").ToString();
                 txt_FileExten.Text = gridView1.GetFocusedRowCellValue("c_fileextend").ToString();
                 ckx_ReUploadLimit.Checked = (bool)gridView1.GetFocusedRowCellValue("c_reupload");
+                cbx_isByFilename.Checked = (bool)gridView1.GetFocusedRowCellValue("c_isbyfilename");
 
             }
         }
@@ -131,6 +133,7 @@ namespace PullingStatusTool.UserControl
                     fileset.c_datalag = int.Parse(txtDatalag.Text);
                     fileset.c_fileextend = txt_FileExten.Text;
                     fileset.c_isreupload=ckx_ReUploadLimit.Checked;
+                    fileset.c_isbyfilename = cbx_isByFilename.Checked;
                     if (dbhelper.editFileSet(fileset,cbx_addExpectFile.Checked))
                     {
                         getDS();

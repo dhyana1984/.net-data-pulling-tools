@@ -46,6 +46,7 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txt_StartDate = new DevExpress.XtraEditors.DateEdit();
             this.ChartSLA = new DevExpress.XtraCharts.ChartControl();
+            this.btn_SLA = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.txt_EndDate.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_EndDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_StartDate.Properties.VistaTimeProperties)).BeginInit();
@@ -64,7 +65,7 @@
             // 
             // lblTotalRepull
             // 
-            this.lblTotalRepull.Location = new System.Drawing.Point(252, 45);
+            this.lblTotalRepull.Location = new System.Drawing.Point(233, 40);
             this.lblTotalRepull.Name = "lblTotalRepull";
             this.lblTotalRepull.Size = new System.Drawing.Size(53, 13);
             this.lblTotalRepull.TabIndex = 20;
@@ -72,7 +73,7 @@
             // 
             // lblTotalSLA
             // 
-            this.lblTotalSLA.Location = new System.Drawing.Point(252, 26);
+            this.lblTotalSLA.Location = new System.Drawing.Point(233, 21);
             this.lblTotalSLA.Name = "lblTotalSLA";
             this.lblTotalSLA.Size = new System.Drawing.Size(42, 13);
             this.lblTotalSLA.TabIndex = 19;
@@ -81,7 +82,7 @@
             // Btn_Save
             // 
             this.Btn_Save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Btn_Save.Location = new System.Drawing.Point(1001, 11);
+            this.Btn_Save.Location = new System.Drawing.Point(1087, 11);
             this.Btn_Save.Name = "Btn_Save";
             this.Btn_Save.Size = new System.Drawing.Size(75, 23);
             this.Btn_Save.TabIndex = 18;
@@ -175,7 +176,7 @@
             series1.ArgumentDataMember = "c_repulldate";
             pointSeriesLabel1.LineVisible = true;
             series1.Label = pointSeriesLabel1;
-            series1.Name = "Miss SLA";
+            series1.Name = "Miss CutOffTime";
             series1.ValueDataMembersSerializable = "c_filecount";
             splineSeriesView1.LineStyle.Thickness = 3;
             series1.View = splineSeriesView1;
@@ -194,13 +195,23 @@
             this.ChartSLA.SeriesTemplate.Label = pointSeriesLabel3;
             splineSeriesView3.LineStyle.Thickness = 1;
             this.ChartSLA.SeriesTemplate.View = splineSeriesView3;
-            this.ChartSLA.Size = new System.Drawing.Size(830, 435);
+            this.ChartSLA.Size = new System.Drawing.Size(916, 417);
             this.ChartSLA.TabIndex = 12;
+            // 
+            // btn_SLA
+            // 
+            this.btn_SLA.Location = new System.Drawing.Point(152, 11);
+            this.btn_SLA.Name = "btn_SLA";
+            this.btn_SLA.Size = new System.Drawing.Size(75, 23);
+            this.btn_SLA.TabIndex = 21;
+            this.btn_SLA.Text = "GetSLARate";
+            this.btn_SLA.Click += new System.EventHandler(this.btn_SLA_Click);
             // 
             // UC_TargetDPChart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btn_SLA);
             this.Controls.Add(this.lblTotalRepull);
             this.Controls.Add(this.lblTotalSLA);
             this.Controls.Add(this.Btn_Save);
@@ -213,7 +224,7 @@
             this.LookAndFeel.SkinName = "Black";
             this.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.Name = "UC_TargetDPChart";
-            this.Size = new System.Drawing.Size(849, 507);
+            this.Size = new System.Drawing.Size(935, 489);
             this.Tag = "Target Performance Chart";
             this.Load += new System.EventHandler(this.Frm_SLAChart_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txt_EndDate.Properties.VistaTimeProperties)).EndInit();
@@ -246,6 +257,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.DateEdit txt_StartDate;
         private DevExpress.XtraCharts.ChartControl ChartSLA;
+        private DevExpress.XtraEditors.SimpleButton btn_SLA;
 
     }
 }

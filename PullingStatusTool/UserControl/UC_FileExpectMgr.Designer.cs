@@ -33,7 +33,6 @@
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.txt_delay = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.txt_dayofwk = new DevExpress.XtraEditors.TextEdit();
             this.btn_Delete = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Edit = new DevExpress.XtraEditors.SimpleButton();
             this.btn_AddFileExpect = new DevExpress.XtraEditors.SimpleButton();
@@ -56,15 +55,16 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txt_Vendor = new DevExpress.XtraEditors.TextEdit();
             this.btn_Refresh = new DevExpress.XtraEditors.SimpleButton();
+            this.cbx_DayofWeek = new DevExpress.XtraEditors.CheckedComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Retailer.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_delay.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_dayofwk.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_FileExpect.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_SubGrp.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_DataType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GC_FileExpect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Vendor.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbx_DayofWeek.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl6
@@ -106,14 +106,6 @@
             this.labelControl3.Size = new System.Drawing.Size(58, 13);
             this.labelControl3.TabIndex = 33;
             this.labelControl3.Text = "DayOfWeek";
-            // 
-            // txt_dayofwk
-            // 
-            this.txt_dayofwk.Location = new System.Drawing.Point(82, 35);
-            this.txt_dayofwk.Name = "txt_dayofwk";
-            this.txt_dayofwk.Properties.MaxLength = 100;
-            this.txt_dayofwk.Size = new System.Drawing.Size(825, 20);
-            this.txt_dayofwk.TabIndex = 32;
             // 
             // btn_Delete
             // 
@@ -392,7 +384,7 @@
             this.GC_FileExpect.Location = new System.Drawing.Point(6, 87);
             this.GC_FileExpect.MainView = this.gridView1;
             this.GC_FileExpect.Name = "GC_FileExpect";
-            this.GC_FileExpect.Size = new System.Drawing.Size(947, 417);
+            this.GC_FileExpect.Size = new System.Drawing.Size(934, 412);
             this.GC_FileExpect.TabIndex = 20;
             this.GC_FileExpect.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -424,17 +416,35 @@
             this.btn_Refresh.Text = "Refresh";
             this.btn_Refresh.Click += new System.EventHandler(this.btn_Refresh_Click);
             // 
+            // cbx_DayofWeek
+            // 
+            this.cbx_DayofWeek.EditValue = "";
+            this.cbx_DayofWeek.Location = new System.Drawing.Point(82, 35);
+            this.cbx_DayofWeek.Name = "cbx_DayofWeek";
+            this.cbx_DayofWeek.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbx_DayofWeek.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.CheckedListBoxItem[] {
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem("Monday", "Monday"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem("Tuesday", "Tuesday"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem("Wednesday", "Wednesday"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem("Thursday", "Thursday"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem("Friday", "Friday"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem("Saturday", "Saturday"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem("Sunday", "Sunday")});
+            this.cbx_DayofWeek.Size = new System.Drawing.Size(422, 20);
+            this.cbx_DayofWeek.TabIndex = 39;
+            // 
             // UC_FileExpectMgr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cbx_DayofWeek);
             this.Controls.Add(this.btn_Refresh);
             this.Controls.Add(this.labelControl6);
             this.Controls.Add(this.txt_Retailer);
             this.Controls.Add(this.labelControl5);
             this.Controls.Add(this.txt_delay);
             this.Controls.Add(this.labelControl3);
-            this.Controls.Add(this.txt_dayofwk);
             this.Controls.Add(this.btn_Delete);
             this.Controls.Add(this.btn_Edit);
             this.Controls.Add(this.btn_AddFileExpect);
@@ -450,18 +460,18 @@
             this.LookAndFeel.SkinName = "Black";
             this.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.Name = "UC_FileExpectMgr";
-            this.Size = new System.Drawing.Size(966, 507);
+            this.Size = new System.Drawing.Size(953, 502);
             this.Tag = "Expect File Management";
             this.Load += new System.EventHandler(this.UC_FileExpectMgr_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txt_Retailer.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_delay.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_dayofwk.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_FileExpect.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_SubGrp.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_DataType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GC_FileExpect)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Vendor.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbx_DayofWeek.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -474,7 +484,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.TextEdit txt_delay;
         private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.TextEdit txt_dayofwk;
         private DevExpress.XtraEditors.SimpleButton btn_Delete;
         private DevExpress.XtraEditors.SimpleButton btn_Edit;
         private DevExpress.XtraEditors.SimpleButton btn_AddFileExpect;
@@ -497,5 +506,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit txt_Vendor;
         private DevExpress.XtraEditors.SimpleButton btn_Refresh;
+        private DevExpress.XtraEditors.CheckedComboBoxEdit cbx_DayofWeek;
     }
 }
