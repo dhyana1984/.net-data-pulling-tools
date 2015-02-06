@@ -256,7 +256,12 @@ namespace PullingStatusTool.Model
             ListItem.Add(new Item(" Park", "#AAAA00"));
             ListItem.Add(new Item(" Auchan", "#337777"));
             ListItem.Add(new Item(" Metro_CN", "#1D4A8E"));
+            ListItem.Add(new Item("EU", "#FAFA5B"));
+            ListItem.Add(new Item("US", "#FFA011"));
+            ListItem.Add(new Item("CN", "#39D8D8"));
         }
+
+
        static private List<Item> ListItem = new List<Item>();
 
 

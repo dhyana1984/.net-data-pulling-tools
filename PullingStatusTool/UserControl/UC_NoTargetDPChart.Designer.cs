@@ -44,6 +44,7 @@
             this.ChartSLA = new DevExpress.XtraCharts.ChartControl();
             this.cbx_Retailer = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.Rgb_SelectMethod = new DevExpress.XtraEditors.RadioGroup();
             ((System.ComponentModel.ISupportInitialize)(this.txt_EndDate.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_EndDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_StartDate.Properties.VistaTimeProperties)).BeginInit();
@@ -59,11 +60,12 @@
             ((System.ComponentModel.ISupportInitialize)(pointSeriesLabel3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(splineSeriesView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbx_Retailer.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Rgb_SelectMethod.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTotalSLA
             // 
-            this.lblTotalSLA.Location = new System.Drawing.Point(126, 8);
+            this.lblTotalSLA.Location = new System.Drawing.Point(524, 12);
             this.lblTotalSLA.Name = "lblTotalSLA";
             this.lblTotalSLA.Size = new System.Drawing.Size(42, 13);
             this.lblTotalSLA.TabIndex = 23;
@@ -71,17 +73,17 @@
             // 
             // btn_Fresh
             // 
-            this.btn_Fresh.Location = new System.Drawing.Point(307, 28);
+            this.btn_Fresh.Location = new System.Drawing.Point(307, 38);
             this.btn_Fresh.Name = "btn_Fresh";
-            this.btn_Fresh.Size = new System.Drawing.Size(75, 23);
+            this.btn_Fresh.Size = new System.Drawing.Size(67, 23);
             this.btn_Fresh.TabIndex = 22;
-            this.btn_Fresh.Text = "Fresh";
+            this.btn_Fresh.Text = "Refresh";
             this.btn_Fresh.Click += new System.EventHandler(this.btn_Fresh_Click);
             // 
             // txt_EndDate
             // 
             this.txt_EndDate.EditValue = null;
-            this.txt_EndDate.Location = new System.Drawing.Point(20, 31);
+            this.txt_EndDate.Location = new System.Drawing.Point(20, 41);
             this.txt_EndDate.Name = "txt_EndDate";
             this.txt_EndDate.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
             this.txt_EndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -100,7 +102,7 @@
             // txt_StartDate
             // 
             this.txt_StartDate.EditValue = null;
-            this.txt_StartDate.Location = new System.Drawing.Point(20, 5);
+            this.txt_StartDate.Location = new System.Drawing.Point(20, 9);
             this.txt_StartDate.Name = "txt_StartDate";
             this.txt_StartDate.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
             this.txt_StartDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -133,7 +135,7 @@
             xyDiagram1.EnableAxisYScrolling = true;
             xyDiagram1.EnableAxisYZooming = true;
             this.ChartSLA.Diagram = xyDiagram1;
-            this.ChartSLA.Location = new System.Drawing.Point(20, 57);
+            this.ChartSLA.Location = new System.Drawing.Point(20, 67);
             this.ChartSLA.Name = "ChartSLA";
             this.ChartSLA.PaletteBaseColorNumber = 1;
             this.ChartSLA.PaletteName = "Palette 1";
@@ -153,12 +155,12 @@
             pointSeriesLabel3.LineVisible = true;
             this.ChartSLA.SeriesTemplate.Label = pointSeriesLabel3;
             this.ChartSLA.SeriesTemplate.View = splineSeriesView3;
-            this.ChartSLA.Size = new System.Drawing.Size(934, 450);
+            this.ChartSLA.Size = new System.Drawing.Size(921, 435);
             this.ChartSLA.TabIndex = 24;
             // 
             // cbx_Retailer
             // 
-            this.cbx_Retailer.Location = new System.Drawing.Point(201, 31);
+            this.cbx_Retailer.Location = new System.Drawing.Point(201, 41);
             this.cbx_Retailer.Name = "cbx_Retailer";
             this.cbx_Retailer.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -168,16 +170,28 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(126, 34);
+            this.labelControl1.Location = new System.Drawing.Point(126, 44);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(69, 13);
             this.labelControl1.TabIndex = 26;
             this.labelControl1.Text = "Select Retailer";
             // 
+            // Rgb_SelectMethod
+            // 
+            this.Rgb_SelectMethod.Location = new System.Drawing.Point(126, 8);
+            this.Rgb_SelectMethod.Name = "Rgb_SelectMethod";
+            this.Rgb_SelectMethod.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("0", "By_Retailer_Period"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("1", "By_Region_Month"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("2", "By_Region_Period")});
+            this.Rgb_SelectMethod.Size = new System.Drawing.Size(392, 24);
+            this.Rgb_SelectMethod.TabIndex = 29;
+            // 
             // UC_NoTargetDPChart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.Rgb_SelectMethod);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.cbx_Retailer);
             this.Controls.Add(this.ChartSLA);
@@ -188,7 +202,7 @@
             this.LookAndFeel.SkinName = "Black";
             this.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.Name = "UC_NoTargetDPChart";
-            this.Size = new System.Drawing.Size(966, 507);
+            this.Size = new System.Drawing.Size(953, 502);
             this.Tag = "None Target Data Pulling Chart";
             this.Load += new System.EventHandler(this.UC_NoTargetDPChart_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txt_EndDate.Properties.VistaTimeProperties)).EndInit();
@@ -206,6 +220,7 @@
             ((System.ComponentModel.ISupportInitialize)(splineSeriesView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChartSLA)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbx_Retailer.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Rgb_SelectMethod.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -220,5 +235,6 @@
         private DevExpress.XtraCharts.ChartControl ChartSLA;
         private DevExpress.XtraEditors.ComboBoxEdit cbx_Retailer;
         private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.RadioGroup Rgb_SelectMethod;
     }
 }

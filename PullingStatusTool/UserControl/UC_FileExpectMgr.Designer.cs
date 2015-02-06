@@ -430,7 +430,8 @@
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem("Thursday", "Thursday"),
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem("Friday", "Friday"),
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem("Saturday", "Saturday"),
-            new DevExpress.XtraEditors.Controls.CheckedListBoxItem("Sunday", "Sunday")});
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem("Sunday", "Sunday"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem("VIP", "VIP")});
             this.cbx_DayofWeek.Size = new System.Drawing.Size(422, 20);
             this.cbx_DayofWeek.TabIndex = 39;
             // 

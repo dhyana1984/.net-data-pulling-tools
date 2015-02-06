@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using PullingStatusTool.UIControl;
+using System.IO;
 
 namespace PullingStatusTool
 {
@@ -29,22 +30,28 @@ namespace PullingStatusTool
 
         }
 
+      private  bool ifPathExist(string path)
+        {
+            return Directory.Exists(path);
+        
+        }
+
         private void btn_Add_Click(object sender, EventArgs e)
         {
-            if (txt_uploadpath.Text != "")
+            if (txt_uploadpath.Text != "" && ifPathExist(txt_uploadpath.Text))
             {
                 UploadFilePath uploadpath = new UploadFilePath();
                 DB_Helper dbhelper = new DB_Helper();
                 uploadpath.c_filesetid = FileSetid;
                 uploadpath.c_pathname = txt_pathName.Text;
                 uploadpath.c_uploadpath = txt_uploadpath.Text;
-                if(dbhelper.addUploadPath(uploadpath))
+                if (dbhelper.addUploadPath(uploadpath))
                    getDS();
             }
             else
             {
 
-               ShowMessage("Fill the path!");
+               ShowMessage("The path is not correct!");
             }
 
         }
@@ -52,6 +59,7 @@ namespace PullingStatusTool
         private void UploadPath_Load(object sender, EventArgs e)
         {
             getDS();
+
         }
 
         private void getDS()

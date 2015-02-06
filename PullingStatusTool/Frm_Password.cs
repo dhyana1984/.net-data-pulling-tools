@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using PullingStatusTool.UIControl;
+using System.IO;
 
 namespace PullingStatusTool
 {

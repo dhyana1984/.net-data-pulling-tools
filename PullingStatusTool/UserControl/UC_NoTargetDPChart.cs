@@ -30,8 +30,9 @@ namespace PullingStatusTool.UserControl
             txt_EndDate.Text = thursday.ToString("yyyy-MM-dd");
         }
 
-        private void getDS()
+        private void getDSbyRetailerPeriod()
         {
+            ChartSLA.DataSource = null;
             DB_Helper db_help = new DB_Helper();
             ChartSLA.Series.Clear();   //清空所有曲线
             ChartSLA.SeriesDataMember = "c_retailer";
@@ -53,9 +54,76 @@ namespace PullingStatusTool.UserControl
         
         }
 
+        private void getDSbyMonthRegion()
+        {
+            cbx_Retailer.Properties.Items.Clear();
+            cbx_Retailer.Properties.Items.Add("All");
+            cbx_Retailer.SelectedIndex = 0;
+            ChartSLA.DataSource = null;
+            DB_Helper db_help = new DB_Helper();
+            ChartSLA.Series.Clear();   //清空所有曲线
+            ChartSLA.SeriesDataMember = "c_region";
+            ChartSLA.SeriesTemplate.ValueDataMembers.AddRange(new string[] { "c_ontimerate" });
+            ChartSLA.SeriesTemplate.ArgumentDataMember = "c_month";
+            ChartSLA.DataSource = db_help.getNoPerfomancesByRegionByMonth();
+            Random rd = new Random();
+            foreach (Series line in ChartSLA.Series)
+            {
+               
+                string color = RetailerColor.getColorbyRetailer(line.Name);//根据retailer获得线条的颜色，有新retailer的时候需要手工定义
+                line.PointOptions.ValueNumericOptions.Format = NumericFormat.Percent;
+                ((LineSeriesView)line.View).LineStyle.Thickness = 3;
+                ((LineSeriesView)line.View).Color = ColorTranslator.FromHtml(color);
+                cbx_Retailer.Properties.Items.Add(line.Name);
+            }
+
+
+        }
+        private void getDSbyRegionPeriod()
+        {
+            cbx_Retailer.Properties.Items.Clear();
+            cbx_Retailer.Properties.Items.Add("All");
+            cbx_Retailer.SelectedIndex = 0;
+            ChartSLA.DataSource = null;
+            DB_Helper db_help = new DB_Helper();
+            ChartSLA.Series.Clear();   //清空所有曲线
+            ChartSLA.SeriesDataMember = "c_region";
+            ChartSLA.SeriesTemplate.ValueDataMembers.AddRange(new string[] { "c_ontimerate" });
+            ChartSLA.SeriesTemplate.ArgumentDataMember = "c_month";
+            ChartSLA.DataSource = db_help.getNoPerfomancesByRegionPeriod(txt_StartDate.Text, txt_EndDate.Text);
+            Random rd = new Random();
+            foreach (Series line in ChartSLA.Series)
+            {
+
+                string color = RetailerColor.getColorbyRetailer(line.Name);//根据retailer获得线条的颜色，有新retailer的时候需要手工定义
+                line.PointOptions.ValueNumericOptions.Format = NumericFormat.Percent;
+                ((LineSeriesView)line.View).LineStyle.Thickness = 3;
+                ((LineSeriesView)line.View).Color = ColorTranslator.FromHtml(color);
+                cbx_Retailer.Properties.Items.Add(line.Name);
+            }
+
+
+        }
         private void btn_Fresh_Click(object sender, EventArgs e)
         {
-            getDS();
+            switch (Rgb_SelectMethod.SelectedIndex)
+            {
+                case 0:
+                    getDSbyRetailerPeriod();
+                    break;
+                case 1:
+                    getDSbyMonthRegion();
+                    break;
+                case 2:
+                    getDSbyRegionPeriod();
+                    break;
+                default:
+                    getDSbyRegionPeriod();
+                    break;
+
+            }
+
+
         }
 
         private void cbx_Retailer_SelectedIndexChanged(object sender, EventArgs e)
@@ -79,5 +147,7 @@ namespace PullingStatusTool.UserControl
             
             }
         }
+
+
     }
 }

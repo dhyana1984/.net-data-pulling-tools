@@ -88,7 +88,7 @@
             this.GC_ManUplStas.Location = new System.Drawing.Point(3, 36);
             this.GC_ManUplStas.MainView = this.gridView1;
             this.GC_ManUplStas.Name = "GC_ManUplStas";
-            this.GC_ManUplStas.Size = new System.Drawing.Size(694, 366);
+            this.GC_ManUplStas.Size = new System.Drawing.Size(935, 463);
             this.GC_ManUplStas.TabIndex = 28;
             this.GC_ManUplStas.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -185,6 +185,7 @@
             this.gridView1.OptionsView.ShowAutoFilterRow = true;
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gridView1_CustomDrawCell);
             // 
             // vendor
             // 
@@ -294,7 +295,7 @@
             this.LookAndFeel.SkinName = "Black";
             this.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.Name = "UC_NoTargetMonitor";
-            this.Size = new System.Drawing.Size(712, 405);
+            this.Size = new System.Drawing.Size(953, 502);
             this.Tag = "None Target Data Pulling Status";
             this.Load += new System.EventHandler(this.Frm_ManuUplStas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.drp_DailyDate.Properties.VistaTimeProperties)).EndInit();

@@ -68,6 +68,22 @@ namespace PullingStatusTool.UserControl
             return ListReportExpect;
         }
 
+        private void gridView1_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+        {
+            if (gridView1.GetRow(e.RowHandle) == null)
+                return;
+            else
+            {
+                string aa = gridView1.GetRowCellDisplayText(e.RowHandle, gridView1.Columns["c_filexpectuploaded"]);
+                if (aa.Split('/')[0] == "0")
+                {
+                    e.Appearance.BackColor = Color.Gold;
+                    e.Appearance.BackColor2 = Color.Gold;
+                }
+
+            }
+        }
+
 
 
 

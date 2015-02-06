@@ -40,9 +40,9 @@
             this.fileset_id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Btn_Edit = new DevExpress.XtraEditors.SimpleButton();
             this.Btn_Delete = new DevExpress.XtraEditors.SimpleButton();
-            this.txt_pathName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.lbl_FileSet = new DevExpress.XtraEditors.LabelControl();
+            this.txt_pathName = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_uploadpath.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -228,13 +228,6 @@
             this.Btn_Delete.Text = "Delete";
             this.Btn_Delete.Click += new System.EventHandler(this.Btn_Delete_Click);
             // 
-            // txt_pathName
-            // 
-            this.txt_pathName.Location = new System.Drawing.Point(76, 9);
-            this.txt_pathName.Name = "txt_pathName";
-            this.txt_pathName.Size = new System.Drawing.Size(100, 20);
-            this.txt_pathName.TabIndex = 42;
-            // 
             // labelControl2
             // 
             this.labelControl2.Location = new System.Drawing.Point(12, 12);
@@ -251,13 +244,26 @@
             this.lbl_FileSet.TabIndex = 43;
             this.lbl_FileSet.Text = "FileSet";
             // 
+            // txt_pathName
+            // 
+            this.txt_pathName.EditValue = "Upload";
+            this.txt_pathName.Location = new System.Drawing.Point(76, 9);
+            this.txt_pathName.Name = "txt_pathName";
+            this.txt_pathName.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txt_pathName.Properties.Items.AddRange(new object[] {
+            "Upload",
+            "Archive"});
+            this.txt_pathName.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.txt_pathName.Size = new System.Drawing.Size(100, 20);
+            this.txt_pathName.TabIndex = 42;
+            // 
             // Frm_UploadPath
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(698, 577);
             this.Controls.Add(this.lbl_FileSet);
-            this.Controls.Add(this.txt_pathName);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.Btn_Delete);
             this.Controls.Add(this.Btn_Edit);
@@ -265,6 +271,7 @@
             this.Controls.Add(this.txt_uploadpath);
             this.Controls.Add(this.labelControl8);
             this.Controls.Add(this.btn_Add);
+            this.Controls.Add(this.txt_pathName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Frm_UploadPath";
@@ -288,12 +295,12 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.SimpleButton Btn_Edit;
         private DevExpress.XtraEditors.SimpleButton Btn_Delete;
-        private DevExpress.XtraEditors.TextEdit txt_pathName;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraGrid.Columns.GridColumn uploadfilepath;
         private DevExpress.XtraGrid.Columns.GridColumn pathname;
         private DevExpress.XtraGrid.Columns.GridColumn id;
         private DevExpress.XtraGrid.Columns.GridColumn fileset_id;
         private DevExpress.XtraEditors.LabelControl lbl_FileSet;
+        private DevExpress.XtraEditors.ComboBoxEdit txt_pathName;
     }
 }

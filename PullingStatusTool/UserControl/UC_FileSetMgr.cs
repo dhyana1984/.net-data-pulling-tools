@@ -6,6 +6,7 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using System.IO;
 
 namespace PullingStatusTool.UserControl
 {
@@ -146,7 +147,11 @@ namespace PullingStatusTool.UserControl
 
         private bool checkTextbox()
         {
-
+            if (!Directory.Exists(txt_downloadpath.Text))
+            {
+                ShowMessage("Download path is not correct!");
+                return false;
+            }
             if (string.IsNullOrEmpty(txt_downloadpath.Text))
             {
                ShowMessage("Fill the Download Path!");

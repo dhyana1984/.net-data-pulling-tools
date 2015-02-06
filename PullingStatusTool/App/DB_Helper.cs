@@ -390,8 +390,38 @@ namespace PullingStatusTool
             return ds;//计算好的ds是最后的数据源
         }
 
-       
+        private DataTable getNoTargetSLAChartByRegionDatas()//获得非Target Retailer的SLA Chart
+        {
+        
+            string sqlStr = " select "
+                                      //  + "rtrim(cast(sum(case issla when 'true' then 1 else 0 end)*100.0/COUNT(a.id) as decimal(5,2)))+'%'  c_ontimerate, "
+                                        + " sum(case issla when 'true' then 0 else 1 end)*1.0/COUNT(a.id)  c_ontimerate, "
+                                        + " region c_region,"
+                                        + " CONVERT(varchar(7),uploadtime,121) c_month"
+                                        + " from FileUploadRecord a  join RetailerInfo b on a.Retailer=b.Retailer"
+                                        + " group  by region,CONVERT(varchar(7),uploadtime,121)";
 
+
+           return  connectDB_68server.getTable(sqlStr);
+
+        }
+
+        private DataTable getNoTargetSLAChartByRegionPeriodDatas(string stdate,string eddate)//获得非Target Retailer的SLA Chart
+        {
+
+            string sqlStr = " select "
+                //  + "rtrim(cast(sum(case issla when 'true' then 1 else 0 end)*100.0/COUNT(a.id) as decimal(5,2)))+'%'  c_ontimerate, "
+                                        + " sum(case issla when 'true' then 0 else 1 end)*1.0/COUNT(a.id)  c_ontimerate, "
+                                        + " region c_region,"
+                                        + " CONVERT(varchar(10),uploadtime,121) c_month"
+                                        + " from FileUploadRecord a  join RetailerInfo b on a.Retailer=b.Retailer"
+                                        + " where uploadtime >='" + stdate+  " 00:00:00' and uploadtime <='" + eddate + " 23:59:59'"
+                                        + " group  by region,CONVERT(varchar(10),uploadtime,121)";
+
+
+            return connectDB_68server.getTable(sqlStr);
+
+        }
         private void getSLAChartData( string startDate, string endDate)
         {
             DB_Helper db_helper = new DB_Helper();
@@ -565,8 +595,10 @@ namespace PullingStatusTool
                               + " (a.Comments='Weekly' and a.FileName like  '%'+convert(char(8),DATEADD(wk,  DATEDIFF(wk,0,'"+ date +"'),  0-Datalag*7) ,112)+'%' ) or"
                               + " (a.Comments='Weekly' and a.FileName like  '%'+convert(char(8),DATEADD(wk,  DATEDIFF(wk,0,'" + date + "'),  5-Datalag*7) ,112)+'%' ) or"
                               + " (a.Comments='Weekly' and a.FileName like  '%'+convert(char(8),DATEADD(wk,  DATEDIFF(wk,0,'" + date + "'),  3-Datalag*7) ,112)+'%' ) or"
+                               + " (a.Comments='Weekly' and a.FileName like  '%'+convert(char(8),DATEADD(wk,  DATEDIFF(wk,0,'" + date + "'),  4-Datalag*7) ,112)+'%' ) or"
                               + " (a.Comments='Weekly' and a.FileName like  '%'+convert(char(8),DATEADD(wk,  DATEDIFF(wk,0,'" + date + "'),  2-Datalag*7) ,112)+'%' ) or"
                               + " (a.Comments='Weekly' and a.FileName like  '%'+convert(char(8),DATEADD(wk,  DATEDIFF(wk,0,'" + date + "'),  1-Datalag*7) ,112)+'%' ) or"
+                             // + " (a.Comments='Weekly' and a.FileName like  '%'+convert(char(8),DATEADD(wk,  DATEDIFF(wk,0,'" + date + "'),  7-Datalag*7) ,112)+'%' ) or"
                               + " (a.Comments='Weekly' and a.FileName like  '%'+convert(char(8),DATEADD(wk,  DATEDIFF(wk,0,'"+ date +"'),  6-Datalag*7) ,112)+'%' ) ) )  "
                             + " or (isStatusbyFileName ='false' and convert(char(10),UploadTime,121) = '" + date + "')"
                               + " group by "
@@ -797,7 +829,15 @@ namespace PullingStatusTool
         {
             return getNoTargetSLAChartDatas(startDate, endDate);
         }
+        public DataTable getNoPerfomancesByRegionByMonth()
+        {
+            return getNoTargetSLAChartByRegionDatas();
+        }
 
+        public DataTable getNoPerfomancesByRegionPeriod(string stdate, string eddate)
+        {
+            return getNoTargetSLAChartByRegionPeriodDatas(stdate, eddate);
+        }
         public List<Repull> getRePullChart( string startDate, string endDate,List<Repull> LTRepull)
         {
             getRepullChartData(startDate, endDate, LTRepull); 

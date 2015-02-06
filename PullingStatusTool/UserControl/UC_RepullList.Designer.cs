@@ -74,7 +74,7 @@
             this.GC_RepullList_Cbx_isNeedFormat,
             this.GC_RepullList_Cbx_isNeedUpload,
             this.GC_RepullList_Cbx_RepullStatus});
-            this.GC_RepullList.Size = new System.Drawing.Size(833, 458);
+            this.GC_RepullList.Size = new System.Drawing.Size(937, 453);
             this.GC_RepullList.TabIndex = 21;
             this.GC_RepullList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -428,7 +428,7 @@
             this.LookAndFeel.SkinName = "Black";
             this.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.Name = "UC_RepullList";
-            this.Size = new System.Drawing.Size(849, 507);
+            this.Size = new System.Drawing.Size(953, 502);
             this.Tag = "Target Repull List";
             this.Load += new System.EventHandler(this.UC_RepullList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.GC_RepullList)).EndInit();
