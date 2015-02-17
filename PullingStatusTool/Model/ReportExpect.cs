@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PullingStatusTool
 {
-    class ReportExpect
+ public   class ReportExpect
     {
         public ReportExpect() { }
 

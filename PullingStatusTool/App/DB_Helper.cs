@@ -334,18 +334,6 @@ namespace PullingStatusTool
   
         
         }
-        //private DataTable getNoTargetSLAChartData(string startDate, string endDate)//获得非Target Retailer的SLA Chart(加入FileExpect比对，TODO)
-        //{
-        //    DataTable dt = new DataTable();//从数据库拿到的dt
-        //    DataTable ds = new DataTable();//用来做计算的dt
-        //    DataTable listFileExpect = getReportExpectDataTable("retailer!='Target'");
-        //    string sqlStr = " SELECT "
-        //                            + " Retailer c_retailer,CONVERT(varchar(100), uploadtime, 23) c_uploaddate , COUNT(distinct FileName) as c_filecount "
-        //                            + " FROM [TargetPullingStatus].[dbo].[FileUploadRecord]  "
-        //                            + " where isSLA='false'  and CONVERT(varchar(100), uploadtime, 23) between '" + startDate + "' and '" + endDate + "' "
-        //                            + " group by Retailer,CONVERT(varchar(100), uploadtime, 23)";
-        //    return ds;//计算好的ds是最后的数据源
-        //}
 
 
         private DataTable getNoTargetSLAChartDatas(string startDate, string endDate)//获得非Target Retailer的SLA Chart
@@ -356,7 +344,7 @@ namespace PullingStatusTool
             string sqlStr = " SELECT "
                                     + " Retailer c_retailer,CONVERT(varchar(100), uploadtime, 23) c_uploaddate , COUNT(distinct FileName) as c_filecount "
                                     + " FROM [TargetPullingStatus].[dbo].[FileUploadRecord]  "
-                                    + " where isSLA='false'  and CONVERT(varchar(100), uploadtime, 23) between '" + startDate + "' and '" + endDate + "' "
+                                    + " where DATEPART(weekday,uploadtime)!=1  and  DATEPART(weekday,uploadtime)!=7 and isSLA='false'  and CONVERT(varchar(100), uploadtime, 23) between '" + startDate + "' and '" + endDate + "' "
                                     + " group by Retailer,CONVERT(varchar(100), uploadtime, 23)";
 
 
@@ -395,7 +383,7 @@ namespace PullingStatusTool
         
             string sqlStr = " select "
                                       //  + "rtrim(cast(sum(case issla when 'true' then 1 else 0 end)*100.0/COUNT(a.id) as decimal(5,2)))+'%'  c_ontimerate, "
-                                        + " sum(case issla when 'true' then 0 else 1 end)*1.0/COUNT(a.id)  c_ontimerate, "
+                                        + " sum(case  when issla='true' or  DATEPART(weekday,uploadtime)=1  or  DATEPART(weekday,uploadtime)=7 then 0 else 1 end)*1.0/COUNT(a.id)  c_ontimerate, "
                                         + " region c_region,"
                                         + " CONVERT(varchar(7),uploadtime,121) c_month"
                                         + " from FileUploadRecord a  join RetailerInfo b on a.Retailer=b.Retailer"
@@ -411,7 +399,7 @@ namespace PullingStatusTool
 
             string sqlStr = " select "
                 //  + "rtrim(cast(sum(case issla when 'true' then 1 else 0 end)*100.0/COUNT(a.id) as decimal(5,2)))+'%'  c_ontimerate, "
-                                        + " sum(case issla when 'true' then 0 else 1 end)*1.0/COUNT(a.id)  c_ontimerate, "
+                                        + " sum(case  when issla='true' or  DATEPART(weekday,uploadtime)=1  or  DATEPART(weekday,uploadtime)=7 then 0 else 1 end)*1.0/COUNT(a.id)  c_ontimerate,  "
                                         + " region c_region,"
                                         + " CONVERT(varchar(10),uploadtime,121) c_month"
                                         + " from FileUploadRecord a  join RetailerInfo b on a.Retailer=b.Retailer"

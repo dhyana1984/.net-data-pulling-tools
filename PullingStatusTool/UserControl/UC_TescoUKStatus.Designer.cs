@@ -47,7 +47,7 @@
             this.wb_Status.Location = new System.Drawing.Point(0, 35);
             this.wb_Status.MinimumSize = new System.Drawing.Size(20, 20);
             this.wb_Status.Name = "wb_Status";
-            this.wb_Status.Size = new System.Drawing.Size(887, 469);
+            this.wb_Status.Size = new System.Drawing.Size(950, 464);
             this.wb_Status.TabIndex = 0;
             // 
             // btn_Refresh
@@ -83,6 +83,9 @@
             this.cbx_Date.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
             this.cbx_Date.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbx_Date.Properties.DisplayFormat.FormatString = "yyyy-MM-dd";
+            this.cbx_Date.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.cbx_Date.Properties.Mask.EditMask = "yyyy-MM-dd";
             this.cbx_Date.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cbx_Date.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -119,7 +122,7 @@
             this.LookAndFeel.SkinName = "Black";
             this.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.Name = "UC_TescoUKStatus";
-            this.Size = new System.Drawing.Size(890, 507);
+            this.Size = new System.Drawing.Size(953, 502);
             this.Tag = "TescoUK Pulling Status";
             this.Load += new System.EventHandler(this.UC_TescoUKStatus_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cbx_Date.Properties.VistaTimeProperties)).EndInit();

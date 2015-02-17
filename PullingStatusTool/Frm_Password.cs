@@ -8,6 +8,10 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using PullingStatusTool.UIControl;
 using System.IO;
+using System.Net;
+using PullingStatusTool.RestfulAPI;
+using PullingStatusTool.App;
+
 
 namespace PullingStatusTool
 {
@@ -59,6 +63,24 @@ namespace PullingStatusTool
             
             }
         }
+
+        //private void simpleButton1_Click(object sender, EventArgs e)
+        //{
+        //  //  string url = "http://localhost:8002/test/PostTestAPI";
+        //  ////  string url = "http://localhost:8002/test/1";
+        //  //  WebClient WC = new WebClient();
+        //  //  UploadFilePath patha = new UploadFilePath("aa", "aa", "aa", "aa");
+        //  //  UploadFilePath pathb = new UploadFilePath("bb", "bb", "bb", "bb");
+        //  //  List<UploadFilePath> listPath = new List<UploadFilePath>();
+        //  //  listPath.Add(patha);
+        //  //  listPath.Add(pathb);
+        //  //  string json = JsonHelper.JsonSerializer<List<UploadFilePath>>(listPath);
+        //  //  WC.Headers[HttpRequestHeader.ContentType] = "application/json";
+
+        //  //  string isSucess = WC.UploadString(url, "POST", json);
+        //  //  //UploadFilePath path = new UploadFilePath();
+        //  //  //string result = WC.DownloadString(url);
+        //}
 
 
 
