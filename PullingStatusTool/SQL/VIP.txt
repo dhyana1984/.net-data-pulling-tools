@@ -13,7 +13,7 @@ when (ConfigName like '%inv1%' or ScheduleName like '%inv1%' or ReportName like 
 End Subgroup,
 COUNT(distinct reportname) filecount,status, MAX(EndFormattingTime) finishTime,IP
 from view_pullingstatus
-where   reportname like '%@period%' and (vendor like '%P&G%' or vendor like '%JNJ%' or Vendor like '%Unilever%' or Vendor like '%colgate%' or Vendor like '%kcc%' or Vendor like '%dannon%')
+where   reportname like '%@period%' and (vendor like '%purina%' or vendor like '%P&G%' or vendor like '%JNJ%' or Vendor like '%Unilever%' or Vendor like '%colgate%' or Vendor like '%kcc%' or Vendor like '%dannon%')
 group by 
 status,
 case

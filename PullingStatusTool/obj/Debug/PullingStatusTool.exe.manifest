@@ -334,7 +334,7 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Office.dll" size="448360">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="office.dll" size="448360">
       <assemblyIdentity name="office" version="14.0.0.0" publicKeyToken="71E9BCE111E9429C" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
@@ -346,14 +346,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PullingStatusTool.exe" size="296448">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PullingStatusTool.exe" size="296960">
       <assemblyIdentity name="PullingStatusTool" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>yV0zWO/njeaOavRC6Vku2062ZUs=</dsig:DigestValue>
+        <dsig:DigestValue>y5CiTbsApOgS16MrJS5jTnQO/6M=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -546,13 +546,13 @@
       <dsig:DigestValue>t9zjIB+WE2kojyhT1XxXoixNtYc=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SQL\VIP.txt" size="2868">
+  <file name="SQL\VIP.txt" size="2894">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>q82+g22zlyCalOkPoYEA0jnvtek=</dsig:DigestValue>
+      <dsig:DigestValue>3bvl0Jgyj83ZFsFeYisxq3YBTME=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
