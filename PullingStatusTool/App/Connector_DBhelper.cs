@@ -162,9 +162,10 @@ namespace PullingStatusTool.App
         private DataTable getAllRecordData(string date)
         {
             string sqlStr = "SELECT case FileName when '' then FileName else reverse(left(reverse(FileName),charindex('\\',reverse(FileName))-1)) end as c_filename, "//FileName是带路径的，这条语句是去掉路径，直接拿到文件名
-                            + " [Vendor] c_vendor ,[ConfigName] c_configname,[status] c_downloadstatus ,[ReportType] c_reporttype,[DataType] c_datatype,[DownloadTime] c_downloadtime"
-                            + " FROM v$RSI_TOOLS_MRSConn_REPORTINFO "
-                            + " where  DownloadTime between '" + date + " 00:00:00' and '" + date + " 23:59:59' order by DownloadTime desc";
+                            + " [Vendor] c_vendor ,[ConfigName] c_configname,[status] c_downloadstatus ,[ReportType] c_reporttype,[DataType] c_datatype,[DownloadTime] c_downloadtime, account c_account, password c_psw"
+                            + " FROM v$RSI_TOOLS_MRSConn_REPORTINFO a join RSI_TOOLS_Conn_USERINFO b on b.username =a.account"
+                            + " where a.id in"
+                            + " (select MAX(id) from v$RSI_TOOLS_MRSConn_REPORTINFO where  DownloadTime between '" + date + " 00:00:00' and '" + date + " 23:59:59' group by Account)";
             return dbhelper.getTable(sqlStr);
 
         }

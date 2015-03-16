@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Linq;
-
+using System.Threading;
 namespace PullingStatusTool.UserControl
 {
     public partial class UC_NoTargetMonitor : UC_Functions
@@ -23,15 +23,25 @@ namespace PullingStatusTool.UserControl
             drp_DailyDate.Text = AMESTime.AMESTimeToBeijingTime(DateTime.Now).ToString("yyyy-MM-dd");
         }
 
+        private void updateGridControl(DevExpress.XtraGrid.GridControl ctr, List<ReportExpect> ds)
+        {
 
+            ctr.DataSource = ds;
+        }
+        delegate void UpdateGridControl(DevExpress.XtraGrid.GridControl ctr, List<ReportExpect> ds);
         private void btn_refresh_Click(object sender, EventArgs e)
         {
-            getDS();
+            ThreadStart pt = new ThreadStart(getDS);
+            Thread t = new Thread(pt);
+            t.IsBackground = true;
+            t.Start();
         }
         private void getDS()
         {
-
-            GC_ManUplStas.DataSource = getReportExpect();
+            UpdateGridControl upc = new UpdateGridControl(updateGridControl);
+            GC_ManUplStas.Invoke(upc, new object[] { GC_ManUplStas, getReportExpect() });
+           // GC_ManUplStas.DataSource = getReportExpect();
+ 
 
         }
         private List<ReportExpect> getReportExpect()

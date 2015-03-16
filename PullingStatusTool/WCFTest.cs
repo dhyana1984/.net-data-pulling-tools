@@ -10,8 +10,10 @@ using System.Net;
 using PullingStatusTool.App;
 
 
+
 namespace PullingStatusTool
 {
+    
     public partial class WCFTest : DevExpress.XtraEditors.XtraForm
     {
         public WCFTest()

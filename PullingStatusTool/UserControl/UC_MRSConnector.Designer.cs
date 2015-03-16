@@ -85,6 +85,8 @@
             this.btn_Refresh = new DevExpress.XtraEditors.SimpleButton();
             this.txt_RecordTime = new DevExpress.XtraEditors.DateEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_Schedule)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -125,7 +127,7 @@
             this.gc_Schedule.Location = new System.Drawing.Point(0, 59);
             this.gc_Schedule.MainView = this.gridView1;
             this.gc_Schedule.Name = "gc_Schedule";
-            this.gc_Schedule.Size = new System.Drawing.Size(944, 413);
+            this.gc_Schedule.Size = new System.Drawing.Size(784, 517);
             this.gc_Schedule.TabIndex = 26;
             this.gc_Schedule.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -358,7 +360,7 @@
             this.gc_Record.Location = new System.Drawing.Point(3, 29);
             this.gc_Record.MainView = this.gridView2;
             this.gc_Record.Name = "gc_Record";
-            this.gc_Record.Size = new System.Drawing.Size(820, 436);
+            this.gc_Record.Size = new System.Drawing.Size(660, 540);
             this.gc_Record.TabIndex = 27;
             this.gc_Record.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -443,7 +445,9 @@
             this.gridColumn3,
             this.gridColumn6,
             this.gridColumn4,
-            this.gridColumn7});
+            this.gridColumn7,
+            this.gridColumn11,
+            this.gridColumn12});
             this.gridView2.GridControl = this.gc_Record;
             this.gridView2.Name = "gridView2";
             this.gridView2.OptionsBehavior.CopyToClipboardWithColumnHeaders = false;
@@ -546,7 +550,7 @@
             this.Tab_Schedule.Location = new System.Drawing.Point(0, 0);
             this.Tab_Schedule.Name = "Tab_Schedule";
             this.Tab_Schedule.SelectedTabPage = this.txt_nextruntime1;
-            this.Tab_Schedule.Size = new System.Drawing.Size(963, 504);
+            this.Tab_Schedule.Size = new System.Drawing.Size(803, 608);
             this.Tab_Schedule.TabIndex = 28;
             this.Tab_Schedule.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tab_users,
@@ -570,7 +574,7 @@
             this.txt_nextruntime1.Controls.Add(this.txt_Configname);
             this.txt_nextruntime1.Controls.Add(this.gc_Schedule);
             this.txt_nextruntime1.Name = "txt_nextruntime1";
-            this.txt_nextruntime1.Size = new System.Drawing.Size(956, 476);
+            this.txt_nextruntime1.Size = new System.Drawing.Size(796, 580);
             this.txt_nextruntime1.Text = "Schedule";
             // 
             // txt_NextRunTime
@@ -934,16 +938,16 @@
             this.tab_Record.Controls.Add(this.labelControl1);
             this.tab_Record.Controls.Add(this.gc_Record);
             this.tab_Record.Name = "tab_Record";
-            this.tab_Record.Size = new System.Drawing.Size(956, 476);
+            this.tab_Record.Size = new System.Drawing.Size(796, 580);
             this.tab_Record.Text = "Record";
             // 
             // lbx_NullInstance
             // 
             this.lbx_NullInstance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbx_NullInstance.Location = new System.Drawing.Point(829, 29);
+            this.lbx_NullInstance.Location = new System.Drawing.Point(669, 29);
             this.lbx_NullInstance.Name = "lbx_NullInstance";
-            this.lbx_NullInstance.Size = new System.Drawing.Size(120, 436);
+            this.lbx_NullInstance.Size = new System.Drawing.Size(120, 540);
             this.lbx_NullInstance.TabIndex = 31;
             // 
             // btn_Refresh
@@ -982,6 +986,22 @@
             this.labelControl1.TabIndex = 28;
             this.labelControl1.Text = "Date";
             // 
+            // gridColumn11
+            // 
+            this.gridColumn11.Caption = "Account";
+            this.gridColumn11.FieldName = "c_account";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 7;
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "PSW";
+            this.gridColumn12.FieldName = "c_psw";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 8;
+            // 
             // UC_MRSConnector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -990,7 +1010,7 @@
             this.LookAndFeel.SkinName = "Black";
             this.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.Name = "UC_MRSConnector";
-            this.Size = new System.Drawing.Size(966, 507);
+            this.Size = new System.Drawing.Size(806, 611);
             this.Tag = "Morrisons Connector";
             this.Load += new System.EventHandler(this.UC_MRSConnector_Load);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
@@ -1083,5 +1103,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private DevExpress.XtraEditors.ListBoxControl lbx_NullInstance;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
     }
 }

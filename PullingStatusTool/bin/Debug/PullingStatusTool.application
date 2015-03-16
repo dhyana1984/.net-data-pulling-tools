@@ -11,14 +11,14 @@
     <deploymentProvider codebase="http://10.176.1.50:8002/PullingStatusTool.application" />
   </deployment>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="PullingStatusTool.exe.manifest" size="29763">
+    <dependentAssembly dependencyType="install" codebase="PullingStatusTool.exe.manifest" size="29066">
       <assemblyIdentity name="PullingStatusTool.exe" version="3.1.0.24" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>KXvy2sq3SE6lBfKB6WWkc9GZhms=</dsig:DigestValue>
+        <dsig:DigestValue>0yDRgN6gzx7LVCm8JmsXmHAjtGI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
