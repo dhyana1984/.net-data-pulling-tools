@@ -9,7 +9,6 @@ using DevExpress.XtraEditors;
 using System.Linq;
 using PullingStatusTool.RestfulAPI;
 using PullingStatusTool.App;
-using System.Threading;
 
 namespace PullingStatusTool.UserControl
 {
@@ -95,61 +94,30 @@ namespace PullingStatusTool.UserControl
         //    GC_PullingFileStatus.DataSource = getReportExpect(isMonday);
 
         //}
-        private void UpdateGridCtrl(DevExpress.XtraGrid.GridControl ctrl,    List<ReportExpect> n)
-        {
-            ctrl.DataSource = n;
-        }
-        private void UpdateBarstats(MarqueeProgressBarControl ctrl)
-        {
 
-            ctrl.Visible = ctrl.Visible ? false : true;
-        }
-
-        private delegate void UpdateDataGridDelegate(DevExpress.XtraGrid.GridControl ctrl, List<ReportExpect> n);
-        private delegate void UpdateBarDelegate(MarqueeProgressBarControl ctl);
-        private void  getDS(object ifMonday)
+        private void getDS(bool isMonday)
         {
-                 UpdateBarDelegate upbar = new UpdateBarDelegate(UpdateBarstats);
-                 Bar_LoadingStatus.Invoke(upbar, Bar_LoadingStatus);
-            bool isMonday = (bool)ifMonday;
-            UpdateDataGridDelegate upg = new UpdateDataGridDelegate(UpdateGridCtrl);
-       
             WCFRestfulAPI api = new WCFRestfulAPI();
             string isMondayDay = isMonday ? "True" : "False";
-            string StrJson = api.GetTargetPullingStatus(isMondayDay,drp_DailyDate.Text, txt_year.Text.Trim(), txt_month.Text.Trim(), txt_Week.Text.Trim());
+            string StrJson = api.GetTargetPullingStatus(isMondayDay, drp_DailyDate.Text, txt_year.Text.Trim(), txt_month.Text.Trim(), txt_Week.Text.Trim());
             List<ReportExpect> TGTPullingStatus = JsonHelper.JsonDeserialize<List<ReportExpect>>(StrJson);
-            if (GC_PullingFileStatus.InvokeRequired)
-            {
-                GC_PullingFileStatus.Invoke(upg, new object[] { GC_PullingFileStatus, TGTPullingStatus });
-            }
-            else
-            {
-                GC_PullingFileStatus.DataSource = TGTPullingStatus;
-            }
-
-            Bar_LoadingStatus.Invoke(upbar, Bar_LoadingStatus);
+            GC_PullingFileStatus.DataSource = TGTPullingStatus;
         }
 
 
-     
-        private  void btn_refresh_Click(object sender, EventArgs e)
+
+        private void btn_refresh_Click(object sender, EventArgs e)
         {
-            
-    
+
             if (txt_month.Text != "" && txt_year.Text != "" && txt_Week.Text != "")
             {
-                ParameterizedThreadStart pt = new ParameterizedThreadStart(getDS);
-                Thread t = new Thread(pt);
-                t.IsBackground = true;
-                t.Start(false);
-               
 
-             //   getDS(false);//获得所有的vendor的status，不仅仅是礼拜一的VIP
+                getDS(false);//获得所有的vendor的status，不仅仅是礼拜一的VIP
 
             }
             else
             {
-               ShowMessage("Fill the period!");
+                ShowMessage("Fill the period!");
             }
 
 
@@ -173,17 +141,12 @@ namespace PullingStatusTool.UserControl
             if (txt_month.Text != "" && txt_year.Text != "" && txt_Week.Text != "")
             {
 
-         //       getDS(true);//获得礼拜一的VIP vendor的Status
-
-                ParameterizedThreadStart pt = new ParameterizedThreadStart(getDS);
-                Thread t = new Thread(pt);
-                t.IsBackground = true;
-                t.Start(true);
+                getDS(true);//获得礼拜一的VIP vendor的Status
 
             }
             else
             {
-               ShowMessage("Fill the period!");
+                ShowMessage("Fill the period!");
             }
         }
 
@@ -191,7 +154,7 @@ namespace PullingStatusTool.UserControl
 
 
 
-    
+
 
 
     }

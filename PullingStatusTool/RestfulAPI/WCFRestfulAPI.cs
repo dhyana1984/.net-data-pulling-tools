@@ -10,8 +10,8 @@ namespace PullingStatusTool.RestfulAPI
 {
     class WCFRestfulAPI
     {
-      //string URL = "http://192.168.10.68:8002/";//WCF Restful api的地址，但是调用不同的api要加不同参数
-      string URL = "http://localhost:8002/";//WCF Restful api的地址，但是调用不同的api要加不同参数
+      string URL = "http://192.168.10.68:8002/";//WCF Restful api的地址，但是调用不同的api要加不同参数
+  //    string URL = "http://localhost:8002/";//WCF Restful api的地址，但是调用不同的api要加不同参数
         /*GET的API, 需要传入参数condition去获取目标资源*/
         private string GetAPIJsonResult(string condition)
         {

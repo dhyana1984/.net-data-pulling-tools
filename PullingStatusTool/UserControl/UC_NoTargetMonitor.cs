@@ -28,20 +28,30 @@ namespace PullingStatusTool.UserControl
 
             ctr.DataSource = ds;
         }
+        private void UpdateBarstats(MarqueeProgressBarControl ctrl)
+        {
+
+            ctrl.Visible = ctrl.Visible ? false : true;
+        }
         delegate void UpdateGridControl(DevExpress.XtraGrid.GridControl ctr, List<ReportExpect> ds);
+        private delegate void UpdateBarDelegate(MarqueeProgressBarControl ctl);
         private void btn_refresh_Click(object sender, EventArgs e)
         {
-            ThreadStart pt = new ThreadStart(getDS);
-            Thread t = new Thread(pt);
-            t.IsBackground = true;
-            t.Start();
+            //ThreadStart pt = new ThreadStart(getDS);
+            //Thread t = new Thread(pt);
+            //t.IsBackground = true;
+            //t.Start();
+
+            getDS();
         }
         private void getDS()
         {
+            UpdateBarDelegate upbar = new UpdateBarDelegate(UpdateBarstats);
+       //     Bar_LoadingStatus.Invoke(upbar, Bar_LoadingStatus);
             UpdateGridControl upc = new UpdateGridControl(updateGridControl);
-            GC_ManUplStas.Invoke(upc, new object[] { GC_ManUplStas, getReportExpect() });
-           // GC_ManUplStas.DataSource = getReportExpect();
- 
+          //  GC_ManUplStas.Invoke(upc, new object[] { GC_ManUplStas, getReportExpect() });
+         GC_ManUplStas.DataSource = getReportExpect();
+          //  Bar_LoadingStatus.Invoke(upbar, Bar_LoadingStatus);
 
         }
         private List<ReportExpect> getReportExpect()

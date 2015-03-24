@@ -82,7 +82,7 @@
             // Btn_Save
             // 
             this.Btn_Save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Btn_Save.Location = new System.Drawing.Point(1087, 11);
+            this.Btn_Save.Location = new System.Drawing.Point(958, 11);
             this.Btn_Save.Name = "Btn_Save";
             this.Btn_Save.Size = new System.Drawing.Size(75, 23);
             this.Btn_Save.TabIndex = 18;
@@ -195,7 +195,7 @@
             this.ChartSLA.SeriesTemplate.Label = pointSeriesLabel3;
             splineSeriesView3.LineStyle.Thickness = 1;
             this.ChartSLA.SeriesTemplate.View = splineSeriesView3;
-            this.ChartSLA.Size = new System.Drawing.Size(916, 417);
+            this.ChartSLA.Size = new System.Drawing.Size(787, 328);
             this.ChartSLA.TabIndex = 12;
             // 
             // btn_SLA
@@ -224,7 +224,7 @@
             this.LookAndFeel.SkinName = "Black";
             this.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.Name = "UC_TargetDPChart";
-            this.Size = new System.Drawing.Size(935, 489);
+            this.Size = new System.Drawing.Size(806, 400);
             this.Tag = "Target Performance Chart";
             this.Load += new System.EventHandler(this.Frm_SLAChart_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txt_EndDate.Properties.VistaTimeProperties)).EndInit();

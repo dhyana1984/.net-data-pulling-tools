@@ -30,7 +30,6 @@ namespace PullingStatusTool.UserControl
 
             txt_EndDate.Text = thursday.ToString("yyyy-MM-dd");
         }
-
         private void getDS()
         {
             DB_Helper db_helper = new DB_Helper();

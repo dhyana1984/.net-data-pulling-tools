@@ -12,7 +12,7 @@ namespace PullingStatusTool
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        [STAThread]
+     [STAThread]
         static void Main()
         {
             DevExpress.UserSkins.BonusSkins.Register();
@@ -21,8 +21,8 @@ namespace PullingStatusTool
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-     //       Application.Run(new Frm_Main());
-            Application.Run(new Frm_Main());
+   Application.Run(new Frm_Main());
+        
         
         }
     }

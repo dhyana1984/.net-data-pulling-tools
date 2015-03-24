@@ -165,7 +165,7 @@ namespace PullingStatusTool.App
                             + " [Vendor] c_vendor ,[ConfigName] c_configname,[status] c_downloadstatus ,[ReportType] c_reporttype,[DataType] c_datatype,[DownloadTime] c_downloadtime, account c_account, password c_psw"
                             + " FROM v$RSI_TOOLS_MRSConn_REPORTINFO a join RSI_TOOLS_Conn_USERINFO b on b.username =a.account"
                             + " where a.id in"
-                            + " (select MAX(id) from v$RSI_TOOLS_MRSConn_REPORTINFO where  DownloadTime between '" + date + " 00:00:00' and '" + date + " 23:59:59' group by Account)";
+                            + " (select MAX(id) from v$RSI_TOOLS_MRSConn_REPORTINFO where  DownloadTime between '" + date + " 00:00:00' and '" + date + " 23:59:59' group by Account,filename)";
             return dbhelper.getTable(sqlStr);
 
         }

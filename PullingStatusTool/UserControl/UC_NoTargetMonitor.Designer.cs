@@ -41,10 +41,12 @@
             this.DelayReason = new DevExpress.XtraGrid.Columns.GridColumn();
             this.finishtime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.freqency = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Bar_LoadingStatus = new DevExpress.XtraEditors.MarqueeProgressBarControl();
             ((System.ComponentModel.ISupportInitialize)(this.drp_DailyDate.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.drp_DailyDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GC_ManUplStas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Bar_LoadingStatus.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_refresh
@@ -88,7 +90,7 @@
             this.GC_ManUplStas.Location = new System.Drawing.Point(3, 36);
             this.GC_ManUplStas.MainView = this.gridView1;
             this.GC_ManUplStas.Name = "GC_ManUplStas";
-            this.GC_ManUplStas.Size = new System.Drawing.Size(935, 463);
+            this.GC_ManUplStas.Size = new System.Drawing.Size(788, 361);
             this.GC_ManUplStas.TabIndex = 28;
             this.GC_ManUplStas.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -284,10 +286,21 @@
             this.freqency.VisibleIndex = 5;
             this.freqency.Width = 64;
             // 
+            // Bar_LoadingStatus
+            // 
+            this.Bar_LoadingStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.Bar_LoadingStatus.EditValue = "";
+            this.Bar_LoadingStatus.Location = new System.Drawing.Point(336, 101);
+            this.Bar_LoadingStatus.Name = "Bar_LoadingStatus";
+            this.Bar_LoadingStatus.Size = new System.Drawing.Size(117, 27);
+            this.Bar_LoadingStatus.TabIndex = 37;
+            this.Bar_LoadingStatus.Visible = false;
+            // 
             // UC_NoTargetMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.Bar_LoadingStatus);
             this.Controls.Add(this.btn_refresh);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.drp_DailyDate);
@@ -295,13 +308,14 @@
             this.LookAndFeel.SkinName = "Black";
             this.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.Name = "UC_NoTargetMonitor";
-            this.Size = new System.Drawing.Size(953, 502);
+            this.Size = new System.Drawing.Size(806, 400);
             this.Tag = "None Target Data Pulling Status";
             this.Load += new System.EventHandler(this.Frm_ManuUplStas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.drp_DailyDate.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.drp_DailyDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GC_ManUplStas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Bar_LoadingStatus.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -322,6 +336,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn DelayReason;
         private DevExpress.XtraGrid.Columns.GridColumn finishtime;
         private DevExpress.XtraGrid.Columns.GridColumn freqency;
+        private DevExpress.XtraEditors.MarqueeProgressBarControl Bar_LoadingStatus;
 
     }
 }

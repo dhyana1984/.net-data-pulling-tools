@@ -51,7 +51,6 @@
             this.serverIP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.password = new DevExpress.XtraGrid.Columns.GridColumn();
             this.finishTm = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Bar_LoadingStatus = new DevExpress.XtraEditors.MarqueeProgressBarControl();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Week.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_month.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_year.Properties)).BeginInit();
@@ -59,7 +58,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.drp_DailyDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GC_PullingFileStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Bar_LoadingStatus.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -158,7 +156,7 @@
             this.GC_PullingFileStatus.Location = new System.Drawing.Point(3, 37);
             this.GC_PullingFileStatus.MainView = this.gridView1;
             this.GC_PullingFileStatus.Name = "GC_PullingFileStatus";
-            this.GC_PullingFileStatus.Size = new System.Drawing.Size(791, 571);
+            this.GC_PullingFileStatus.Size = new System.Drawing.Size(792, 360);
             this.GC_PullingFileStatus.TabIndex = 25;
             this.GC_PullingFileStatus.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -378,21 +376,10 @@
             this.finishTm.VisibleIndex = 9;
             this.finishTm.Width = 140;
             // 
-            // Bar_LoadingStatus
-            // 
-            this.Bar_LoadingStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.Bar_LoadingStatus.EditValue = "";
-            this.Bar_LoadingStatus.Location = new System.Drawing.Point(405, 277);
-            this.Bar_LoadingStatus.Name = "Bar_LoadingStatus";
-            this.Bar_LoadingStatus.Size = new System.Drawing.Size(75, 27);
-            this.Bar_LoadingStatus.TabIndex = 36;
-            this.Bar_LoadingStatus.Visible = false;
-            // 
             // UC_TargetMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.Bar_LoadingStatus);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.Btn_MondayStatus);
             this.Controls.Add(this.btn_refresh);
@@ -407,7 +394,7 @@
             this.LookAndFeel.SkinName = "Black";
             this.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.Name = "UC_TargetMonitor";
-            this.Size = new System.Drawing.Size(806, 611);
+            this.Size = new System.Drawing.Size(807, 400);
             this.Tag = "Target Data Pulling Status";
             this.Load += new System.EventHandler(this.Frm_PullingStatusService_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txt_Week.Properties)).EndInit();
@@ -417,7 +404,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.drp_DailyDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GC_PullingFileStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Bar_LoadingStatus.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -448,6 +434,5 @@
         private DevExpress.XtraGrid.Columns.GridColumn serverIP;
         private DevExpress.XtraGrid.Columns.GridColumn password;
         private DevExpress.XtraGrid.Columns.GridColumn finishTm;
-        private DevExpress.XtraEditors.MarqueeProgressBarControl Bar_LoadingStatus;
     }
 }
